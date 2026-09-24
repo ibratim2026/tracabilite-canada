@@ -9,6 +9,13 @@ Une seule page vitrine, « Ce qu'Ottawa achète », construite sur les contrats
 fédéraux de plus de 10 000 $ (exercice 2025-2026). Sert à tester deux choses :
 la qualité des données fédérales, et le ton de vulgarisation.
 
+## En ligne
+
+- Site public : https://ibratim2026.github.io/tracabilite-canada/ (branche `gh-pages`)
+- Code : https://github.com/ibratim2026/tracabilite-canada (branche `main`)
+- Republier : `.venv/bin/python pipeline/exporter.py`, puis pousser `build/` sur
+  `gh-pages`. Pas de mise à jour automatique pour l'instant.
+
 ## Faire tourner
 
 ```bash
