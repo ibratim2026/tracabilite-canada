@@ -1,0 +1,4356 @@
+{
+ "budget": {
+  "exercice": "2024-2025",
+  "charges": 547300000000.0,
+  "dette": 53400000000.0,
+  "nom": "Ministère des Finances Canada, Rapport financier annuel du gouvernement du Canada, exercice 2024-2025",
+  "url": "https://www.canada.ca/fr/ministere-finances/services/publications/rapport-financier-annuel/2025.html"
+ },
+ "naif": {
+  "2024-2025": {
+   "lignes": 79606,
+   "somme_lignes": 117007311814.36,
+   "contrats": 60587,
+   "somme_contrats": 56587529930.95
+  },
+  "2025-2026": {
+   "lignes": 80778,
+   "somme_lignes": 32347915777.97,
+   "contrats": 65034,
+   "somme_contrats": 18296996058.34
+  }
+ },
+ "geants_2024": [
+  {
+   "fournisseur": "SkyAlyne Canada Limited Partnership",
+   "ministere": "Défense nationale",
+   "valeur": 11219370646.0,
+   "description": "Autres services professionnels non précisés ailleurs"
+  },
+  {
+   "fournisseur": "Irving Shipbuilding Inc.",
+   "ministere": "Défense nationale",
+   "valeur": 10753506708.84,
+   "description": "Navires et bateaux"
+  },
+  {
+   "fournisseur": "Vancouver Shipyards Co Ltd",
+   "ministere": "Défense nationale",
+   "valeur": 4736260596.25,
+   "description": "Pièces de navires et bateaux"
+  },
+  {
+   "fournisseur": "CHANTIER DAVIE CANADA INC",
+   "ministere": "Pêches et Océans Canada",
+   "valeur": 3593412514.13,
+   "description": "Navires et bateaux"
+  },
+  {
+   "fournisseur": "VANCOUVER SHIPYARDS CO LTD",
+   "ministere": "Pêches et Océans Canada",
+   "valeur": 3548838981.5,
+   "description": "Navires et bateaux"
+  },
+  {
+   "fournisseur": "BGIS GLOBAL INTEGRATED SOLUTIONS CANADA",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "valeur": 2641973381.2,
+   "description": "Réparation et entretien - Édifices à  bureaux"
+  },
+  {
+   "fournisseur": "KNDS Deutschland GmbH & Co. KG",
+   "ministere": "Défense nationale",
+   "valeur": 1442723309.0,
+   "description": "Véhicules automobiles de route-Militaires"
+  }
+ ],
+ "genere_le": "2026-09-24",
+ "exercice": "2025-2026",
+ "sources": {
+  "contrats": {
+   "nom": "Gouvernement ouvert — Publication proactive : contrats de plus de 10 000 $",
+   "url": "https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b"
+  },
+  "population": {
+   "nom": "Statistique Canada, tableau 17-10-0009-01 (estimation au 1er juillet 2026)",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/fr/tv.action?pid=1710000901"
+  }
+ },
+ "population": 41798407,
+ "nettoyage": {
+  "lignes_brutes": 1313272,
+  "contrats_uniques": 1038146
+ },
+ "nb": 65034,
+ "total": 18296996058.34,
+ "mediane": 24966.01,
+ "jours_ouvrables": 261,
+ "par_personne": 437.743860868669,
+ "part_top1": 0.6580167416646592,
+ "nb_top1": 650,
+ "ministeres": [
+  {
+   "nom": "Défense nationale",
+   "valeur": 8421620029.55,
+   "nb": 18017
+  },
+  {
+   "nom": "Services publics et Approvisionnement Canada",
+   "valeur": 2164364883.86,
+   "nb": 4940
+  },
+  {
+   "nom": "Services partagés Canada",
+   "valeur": 1739664049.94,
+   "nb": 1253
+  },
+  {
+   "nom": "Gendarmerie royale du Canada",
+   "valeur": 708403604.31,
+   "nb": 3392
+  },
+  {
+   "nom": "Emploi et Développement social Canada",
+   "valeur": 682053700.11,
+   "nb": 1021
+  },
+  {
+   "nom": "Affaires mondiales Canada",
+   "valeur": 583087770.65,
+   "nb": 3777
+  },
+  {
+   "nom": "Pêches et Océans Canada",
+   "valeur": 529176809.63,
+   "nb": 5590
+  },
+  {
+   "nom": "Service correctionnel du Canada",
+   "valeur": 393091510.34,
+   "nb": 4704
+  },
+  {
+   "nom": "Conseil national de recherches Canada",
+   "valeur": 354113754.83,
+   "nb": 2659
+  },
+  {
+   "nom": "Agence des services frontaliers du Canada",
+   "valeur": 302956142.22,
+   "nb": 706
+  }
+ ],
+ "fournisseurs": [
+  {
+   "nom": "L3Harris MAS Inc.",
+   "valeur": 1100255852.99,
+   "nb": 2
+  },
+  {
+   "nom": "IBM Canada Ltd.",
+   "valeur": 878176224.79,
+   "nb": 71
+  },
+  {
+   "nom": "Bombardier Inc.",
+   "valeur": 710133681.02,
+   "nb": 3
+  },
+  {
+   "nom": "EBC INC",
+   "valeur": 523245438.97,
+   "nb": 3
+  },
+  {
+   "nom": "NELNET DIVERSIFIED SERVICES CANADA",
+   "valeur": 480250000.0,
+   "nb": 1
+  },
+  {
+   "nom": "Airbus Defence and Space SA",
+   "valeur": 399127300.0,
+   "nb": 1
+  },
+  {
+   "nom": "Colt Canada",
+   "valeur": 324604848.57,
+   "nb": 12
+  },
+  {
+   "nom": "MCW Custom Energy Solutions",
+   "valeur": 252867905.31,
+   "nb": 2
+  },
+  {
+   "nom": "PricewaterhouseCoopers LLP, Si Systems ULC and Accenture Inc. in joint venture",
+   "valeur": 180800000.0,
+   "nb": 1
+  },
+  {
+   "nom": "Gami Ingeniería E Instalaciones",
+   "valeur": 158010244.54,
+   "nb": 1
+  }
+ ],
+ "methodes": [
+  {
+   "code": "TC",
+   "nom": "Concurrentielle (traditionnelle)",
+   "nb": 27011,
+   "valeur": 6809500222.0
+  },
+  {
+   "code": "OB",
+   "nom": "Concurrentielle (appel d'offres ouvert)",
+   "nb": 10609,
+   "valeur": 5266906253.58
+  },
+  {
+   "code": "TN",
+   "nom": "Sans appel d'offres",
+   "nb": 23032,
+   "valeur": 5151853237.67
+  },
+  {
+   "code": "ST",
+   "nom": "Concurrentielle (appel d'offres sélectif)",
+   "nb": 3802,
+   "valeur": 875676640.73
+  },
+  {
+   "code": "AC",
+   "nom": "Préavis d'adjudication (PAC)",
+   "nb": 580,
+   "valeur": 193059704.36
+  }
+ ],
+ "raisons_sans_appel": [
+  {
+   "code": "00",
+   "nom": "Aucune raison exigée (souvent sous les seuils des accords commerciaux)",
+   "nb": 19618,
+   "valeur": 1178967645.12
+  },
+  {
+   "code": "71",
+   "nom": "Droits exclusifs (un seul fournisseur possible)",
+   "nb": 2806,
+   "valeur": 2584972057.29
+  },
+  {
+   "code": "20",
+   "nom": "Achat sur un marché de produits de base",
+   "nb": 157,
+   "valeur": 24712715.44
+  },
+  {
+   "code": "21",
+   "nom": "Conditions exceptionnellement avantageuses",
+   "nb": 103,
+   "valeur": 574882339.92
+  },
+  {
+   "code": "05",
+   "nom": "Personne n'a répondu à l'appel d'offres",
+   "nb": 100,
+   "valeur": 15776143.76
+  },
+  {
+   "code": "81",
+   "nom": "Urgence extrême",
+   "nb": 83,
+   "valeur": 727101089.1999999
+  }
+ ],
+ "modifies": {
+  "nb": 6317,
+  "croissance": 2061528958.5,
+  "top": [
+   {
+    "fournisseur": "NELNET DIVERSIFIED SERVICES CANADA",
+    "ministere": "Emploi et Développement social Canada",
+    "originale": 7910000.0,
+    "valeur": 480250000.0
+   },
+   {
+    "fournisseur": "MCW Custom Energy Solutions",
+    "ministere": "Défense nationale",
+    "originale": 690000.0,
+    "valeur": 216024281.15
+   },
+   {
+    "fournisseur": "PricewaterhouseCoopers LLP, Si Systems ULC and Accenture Inc. in joint venture",
+    "ministere": "Défense nationale",
+    "originale": 40680000.0,
+    "valeur": 180800000.0
+   },
+   {
+    "fournisseur": "IBM Canada",
+    "ministere": "Défense nationale",
+    "originale": 10170000.0,
+    "valeur": 107350000.0
+   }
+  ]
+ },
+ "etranger": 1796958135.51,
+ "pays_vide": 0,
+ "par_annee": [
+  {
+   "exercice": "2017-2018",
+   "nb": 68126,
+   "valeur": 30187736705.49
+  },
+  {
+   "exercice": "2018-2019",
+   "nb": 70432,
+   "valeur": 18934278103.5
+  },
+  {
+   "exercice": "2019-2020",
+   "nb": 62244,
+   "valeur": 26852134191.87
+  },
+  {
+   "exercice": "2020-2021",
+   "nb": 54916,
+   "valeur": 22921533600.82
+  },
+  {
+   "exercice": "2021-2022",
+   "nb": 56702,
+   "valeur": 25484957029.19
+  },
+  {
+   "exercice": "2022-2023",
+   "nb": 62562,
+   "valeur": 21119346269.84
+  },
+  {
+   "exercice": "2023-2024",
+   "nb": 62636,
+   "valeur": 30054669739.21
+  },
+  {
+   "exercice": "2024-2025",
+   "nb": 60587,
+   "valeur": 56587529930.95
+  },
+  {
+   "exercice": "2025-2026",
+   "nb": 65034,
+   "valeur": 18296996058.34
+  }
+ ],
+ "coquilles": [
+  {
+   "fournisseur": "BANCTEC (CANADA), INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2024-07-04",
+   "valeur": 20027319127.56,
+   "voisine": 27519127.56,
+   "commentaire": "Cet amendement négatif a été omis dans une divulgation publique précédente."
+  }
+ ],
+ "echantillon": [
+  {
+   "fournisseur": "Frederic Labarre",
+   "ministere": "Défense nationale",
+   "date": "2025-12-11",
+   "description": "Professeurs et instructeurs contractuels",
+   "valeur": 36800.0,
+   "originale": 36800.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Softchoice",
+   "ministere": "Défense nationale",
+   "date": "2025-11-06",
+   "description": "Logiciels d'applications et de bases de données (y compris les COTS) et logiciels de développement et de maintenance des applications et des bases de données",
+   "valeur": 16406.47,
+   "originale": 16406.47,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Petromax Limited",
+   "ministere": "Parcs Canada",
+   "date": "2025-11-25",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 24173.7,
+   "originale": 24173.7,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Interactive Audio Visual Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-08-29",
+   "description": "Équipement de communications images/vidéos (comprend le câblage, les pièces et les périphériques)",
+   "valeur": 15985.37,
+   "originale": 15985.37,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "OEI KRUEGER INTERNATIONAL INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-02-13",
+   "description": "Stocks imputés",
+   "valeur": 55935.0,
+   "originale": 55935.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TYR TACTICAL CANADA, ULC",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-12-01",
+   "description": "Matières et pièces de la sécurité et de l'hygiène",
+   "valeur": 14211.06,
+   "originale": 14211.06,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "514698 NB LTD.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-02-27",
+   "description": "Réparation et entretien - Bâtiments ou installations devant abriter du matériel de télécommunications, d'ordinateur, et de bureautique",
+   "valeur": 11440.96,
+   "originale": 11440.96,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Action Meals",
+   "ministere": "Défense nationale",
+   "date": "2025-05-16",
+   "description": "Marchandises et produits divers",
+   "valeur": 20291.75,
+   "originale": 20291.75,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "A.P. DE PTE-BASSE ET PTE-AUX-LOUP",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-07-28",
+   "description": "Réparation et entretien - Génie maritime",
+   "valeur": 80000.0,
+   "originale": 80000.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "6329276 CANADA INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-07-08",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 12995.0,
+   "originale": 12995.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "JWK Contracting",
+   "ministere": "Défense nationale",
+   "date": "2025-12-10",
+   "description": "Conseillers techniques-autres",
+   "valeur": 141250.0,
+   "originale": 141250.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TALOS TECHNOLOGIES INC.",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "date": "2025-09-08",
+   "description": "Frais d'enseignement et frais de participation",
+   "valeur": 10395.0,
+   "originale": 10395.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Black & McDonald Limited",
+   "ministere": "Musée des beaux-arts du Canada",
+   "date": "2025-11-04",
+   "description": "Déshumidificateur",
+   "valeur": 15559.5,
+   "originale": 15559.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SAUNDERS AUTO BODY LTD.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-10-29",
+   "description": "Véhicules automobiles de route-Non militaires",
+   "valeur": 12671.01,
+   "originale": 12671.01,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BEVERTEC CST INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-04-01",
+   "description": "Services d'aide temporaire",
+   "valeur": 85269.8,
+   "originale": 85269.8,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LES ALIMENTS GUY CHICOINE INC.",
+   "ministere": "Défense nationale",
+   "date": "2026-03-31",
+   "description": "Viandes, poissons et leurs préparations",
+   "valeur": 10298.59,
+   "originale": 10298.59,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "comox consolidators",
+   "ministere": "Défense nationale",
+   "date": "2025-09-26",
+   "description": "Bâtiments résidentiels",
+   "valeur": 60414.06,
+   "originale": 58512.05,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GEGRA EQUIPMENT LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-05-30",
+   "description": "Produits chimiques inorganiques, et produits chimiques organiques, incluant matières plastiques, caoutchouc et leurs pro",
+   "valeur": 36276.19,
+   "originale": 36276.19,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Asokan Business Interiors Inc.",
+   "ministere": "Service administratif des tribunaux judiciaires",
+   "date": "2025-11-19",
+   "description": "Mobilier et ameublement du bureau incluant des pièces",
+   "valeur": 18080.0,
+   "originale": 18080.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Altis Recruitment & Technology Inc.",
+   "ministere": "Commission de l'immigration et du statut de réfugié du Canada",
+   "date": "2025-11-07",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 374317.02,
+   "originale": 169147.44,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "COMMISSIONAIRES MANITOBA",
+   "ministere": "Défense nationale",
+   "date": "2025-12-11",
+   "description": "Services de protection",
+   "valeur": 27247.93,
+   "originale": 27247.93,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "RICOH CANADA INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-05-28",
+   "description": "Location de machinerie, de mobilier et d'installation de bureau, et d'autres équipement",
+   "valeur": 27533.0,
+   "originale": 27533.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "QMR STAFFING SOLUTIONS INC.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-05-28",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 14702.86,
+   "originale": 25707.5,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "CANSEL SURVEY EQUIPMENT INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-02-04",
+   "description": "Services scientifiques",
+   "valeur": 10566.15,
+   "originale": 10566.15,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Chubb Edwards UTC Fire Security Canada",
+   "ministere": "Femmes et Égalité des genres Canada",
+   "date": "2025-05-16",
+   "description": "Réparation et entretien - Autre équipement",
+   "valeur": 13084.16,
+   "originale": 13084.16,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ALCAIDE WEBSTER ARCHITECTS INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-09-02",
+   "description": "Services techniques, non spécifiés ailleurs",
+   "valeur": 168452.49,
+   "originale": 168452.49,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Krista Zawadski",
+   "ministere": "Musée des beaux-arts du Canada",
+   "date": "2026-03-13",
+   "description": "Services de conservation",
+   "valeur": 20885.6,
+   "originale": 20885.6,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ATS TRAFFIC LTD.",
+   "ministere": "Parcs Canada",
+   "date": "2026-02-25",
+   "description": "Marchandises et produits divers",
+   "valeur": 18774.0,
+   "originale": 18774.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ATCO FRONTEC LTD",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-07-23",
+   "description": "Laboratoires",
+   "valeur": 283192.06,
+   "originale": 283192.06,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CANADIAN CORPS OF COMMISSIONAIRES",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-04-01",
+   "description": "Services de protection",
+   "valeur": 11491.2,
+   "originale": 11491.2,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TALOS TECHNOLOGIES INC",
+   "ministere": "Agence de la consommation en matière financière du Canada",
+   "date": "2025-05-21",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 63000.0,
+   "originale": 45000.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "Detroit Public Media",
+   "ministere": "Commission mixte internationale",
+   "date": "2025-09-02",
+   "description": "Les services professionnels de communication non spécifiés ailleurs",
+   "valeur": 39275.0,
+   "originale": 39275.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PURE WAFER INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-06-12",
+   "description": "Autres pièces du matériel",
+   "valeur": 16097.72,
+   "originale": 16097.72,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Kings Ent. Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2026-03-17",
+   "description": "Bâtiments résidentiels",
+   "valeur": 16154.19,
+   "originale": 16154.19,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "E3 SERVICE",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-05-30",
+   "description": "Édifices institutionnels",
+   "valeur": 57270.0,
+   "originale": 57270.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FASTENAL CANADA LTD",
+   "ministere": "Défense nationale",
+   "date": "2026-02-06",
+   "description": "Produits chimiques inorganiques, et produits chimiques organiques, incluant matières plastiques, caoutchouc et leurs produits, excluant des pneus et chambres à air",
+   "valeur": 10798.31,
+   "originale": 10798.31,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Thales DIS Canada, Inc.",
+   "ministere": "Musée des beaux-arts du Canada",
+   "date": "2026-02-19",
+   "description": "Équipement de sécurité",
+   "valeur": 11519.21,
+   "originale": 11519.21,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Canadian Corps of Commissionaires",
+   "ministere": "Défense nationale",
+   "date": "2026-03-31",
+   "description": "Services de protection",
+   "valeur": 826320.72,
+   "originale": 826320.72,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Wajax Limitée",
+   "ministere": "Défense nationale",
+   "date": "2025-12-18",
+   "description": "Véhicules automobiles de route-Militaires",
+   "valeur": 104230.23,
+   "originale": 104230.23,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Long View Systems Corporation",
+   "ministere": "Défense nationale",
+   "date": "2026-02-25",
+   "description": "Licences/maintenance des logiciels d'applications et de bases de données (y compris les COTS) et logiciels de développement et de maintenance des applications et des bases de données",
+   "valeur": 71891.15,
+   "originale": 71891.15,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ESRI CANADA LTD",
+   "ministere": "Agence canadienne d'inspection des aliments",
+   "date": "2025-05-30",
+   "description": "Licences/maintenance des logiciels système et utilitaires pour les serveurs, le stockage, les périphériques et les composante",
+   "valeur": 230520.0,
+   "originale": 230520.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GEORGE COUREY INC.",
+   "ministere": "Défense nationale",
+   "date": "2026-01-08",
+   "description": "Ameublement de maison, excl. des meubles",
+   "valeur": 24626.94,
+   "originale": 24626.94,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DUBOIS CHEMICALS CANADA INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-08-27",
+   "description": "Produits chimiques divers",
+   "valeur": 23761.32,
+   "originale": 23761.32,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "C.D. NOVA-TECH",
+   "ministere": "Santé Canada",
+   "date": "2025-12-18",
+   "description": "Instruments, appareils et accessoires de mesure, de contrôle, de laboratoire, de médecine et d'optique",
+   "valeur": 32136.07,
+   "originale": 32136.07,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "REXEL CANADA ELECTRICAL INC",
+   "ministere": "Défense nationale",
+   "date": "2025-12-02",
+   "description": "Matériel et pièces de radar",
+   "valeur": 17048.75,
+   "originale": 16752.25,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "CENTRE DE FORMATION PROFESSIONNELLE ET LINGUISTIQUE CARON LTEE",
+   "ministere": "Emploi et Développement social Canada",
+   "date": "2025-08-11",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 161295.75,
+   "originale": 161295.75,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "KOETTER FIRE PROTECTION",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-07-10",
+   "description": "Logiciels de systèmes d'exploitation et utilitaires pour les serveurs, le stockage, les périphériques et les composantes",
+   "valeur": 19947.21,
+   "originale": 19947.21,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ENTREPRISES HECTOR LEBREUX INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-10-15",
+   "description": "Réparation et entretien - Génie maritime",
+   "valeur": 25162.28,
+   "originale": 25162.28,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MOBILE RESOURCES",
+   "ministere": "Transports Canada",
+   "date": "2025-10-23",
+   "description": "SERVICES DE CONSEILLERS EN GESTION",
+   "valeur": 22543.67,
+   "originale": 22543.67,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MARITIME ENVIRONMENTAL SERVICE",
+   "ministere": "Défense nationale",
+   "date": "2025-07-03",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 15301.08,
+   "originale": 6900.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Woodward's Oil Limited",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-12-03",
+   "description": "Mazout léger",
+   "valeur": 95328.58,
+   "originale": 71497.77,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "NICOLE GAGNON",
+   "ministere": "Commission canadienne de sûreté nucléaire",
+   "date": "2026-02-19",
+   "description": "Les services professionnels de communication non spécifiés ailleurs",
+   "valeur": 33342.75,
+   "originale": 33342.75,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CANCHAM",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-09-30",
+   "description": "Services de relations publiques",
+   "valeur": 10379.13,
+   "originale": 10379.13,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Cofomo Inc",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-03-30",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 107682.22,
+   "originale": 107682.22,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Battlefield Equipment",
+   "ministere": "Défense nationale",
+   "date": "2025-11-14",
+   "description": "Autre machinerie et pièces",
+   "valeur": 22079.76,
+   "originale": 22079.76,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AIRCO AIRCRAFT CHARTERS",
+   "ministere": "Services aux Autochtones Canada",
+   "date": "2025-07-07",
+   "description": "Voy fonct—Activités reliées au mandat de base",
+   "valeur": 11590.05,
+   "originale": 11590.05,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MERIDIEN MARITIME REPARATION INC",
+   "ministere": "Défense nationale",
+   "date": "2026-02-25",
+   "description": "Navires et bateaux",
+   "valeur": 387735.16,
+   "originale": 326563.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "12031507 CANADA INC. (RIBBIT)",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "date": "2025-12-02",
+   "description": "Contrats de recherche",
+   "valeur": 1303036.25,
+   "originale": 1303036.25,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MCKESSON CANADA CORPORATION",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-03-25",
+   "description": "Produits pharmaceutiques et autres produits médicaux",
+   "valeur": 11763.0,
+   "originale": 11763.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "THE CANADIAN CORPS OF",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-04-01",
+   "description": "Services de protection",
+   "valeur": 280356.45,
+   "originale": 54302.85,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TEKSYSTEMS",
+   "ministere": "Emploi et Développement social Canada",
+   "date": "2025-08-14",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 74699.26,
+   "originale": 74699.26,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "T-LANE TRANSPORTATION",
+   "ministere": "Défense nationale",
+   "date": "2026-01-16",
+   "description": "Transports d'objets non spécifiés ailleurs",
+   "valeur": 11990.0,
+   "originale": 11990.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CANTIN ET FILS LTEE",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-02-26",
+   "description": "Autres pièces du matériel",
+   "valeur": 21034.21,
+   "originale": 21034.21,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "The Master Group",
+   "ministere": "Défense nationale",
+   "date": "2025-06-19",
+   "description": "Matériel d'éclairage électrique, de contrôle et de distribution d'électricité",
+   "valeur": 15418.19,
+   "originale": 15418.19,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "VINCENT SACCO",
+   "ministere": "Ministère de la Justice Canada",
+   "date": "2026-02-12",
+   "description": "CONTRATS DE RECHERCHE",
+   "valeur": 16950.0,
+   "originale": 16950.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NORTH-WRIGHT AIRWAYS LTD",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-05-09",
+   "description": "Location d'aéronefs",
+   "valeur": 18237.73,
+   "originale": 18237.73,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SIEMENS CANADA LIMITED / LIMITEE",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-12-22",
+   "description": "Autre équipement",
+   "valeur": 51740.0,
+   "originale": 51740.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "RENO-MAT (9368-3530 QC INC)",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-11-10",
+   "description": "Marchandises et produits divers",
+   "valeur": 22995.0,
+   "originale": 22995.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BROOKS CORNING COMPANY LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-01-27",
+   "description": "Réparation et entretien - Édifices à bureaux",
+   "valeur": 16735.95,
+   "originale": 16735.95,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "EXP ARCHITECTS INC.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-07-03",
+   "description": "Services reliés à  la charge et la gestion des sites contaminés",
+   "valeur": 16484.4,
+   "originale": 16484.4,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NARL MARKETING LIMITED PARTNERSHIP",
+   "ministere": "Défense nationale",
+   "date": "2026-02-19",
+   "description": "Combustible diesel",
+   "valeur": 125295.0,
+   "originale": 125295.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "INDUSTRA CONSTRUCTION CORP.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-05-13",
+   "description": "Édifices à  bureaux",
+   "valeur": 82809.96,
+   "originale": 82809.96,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Fast Forward French Inc.",
+   "ministere": "Parcs Canada",
+   "date": "2025-11-03",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 36652.0,
+   "originale": 24647.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "OLSON CONSTRUCTION AND CONSULTING",
+   "ministere": "Défense nationale",
+   "date": "2025-05-26",
+   "description": "Conseillers techniques-construction",
+   "valeur": 24696.0,
+   "originale": 24696.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "IRVING OIL LIMITED",
+   "ministere": "Défense nationale",
+   "date": "2025-11-13",
+   "description": "Combustible diesel",
+   "valeur": 14271.57,
+   "originale": 14271.57,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GILBON SERVICES INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-12-18",
+   "description": "Services reliés à  la construction",
+   "valeur": 24860.0,
+   "originale": 24860.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CTS CONTAINER & TRAILER SERVICES LT",
+   "ministere": "Défense nationale",
+   "date": "2026-02-24",
+   "description": "Marchandises et produits divers",
+   "valeur": 10830.0,
+   "originale": 10830.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CEVA Air & Ocean Canada Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-07-17",
+   "description": "Autres meubles et fournitures, incluant des pièces",
+   "valeur": 41985.44,
+   "originale": 41985.44,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CHARGE SOLAR",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-12-08",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 33666.15,
+   "originale": 33666.15,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CMLABS SIMULATIONS INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-04-22",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 15650.5,
+   "originale": 15650.5,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ALL N ALL CONSTRUCTION",
+   "ministere": "Défense nationale",
+   "date": "2026-01-28",
+   "description": "Bâtiments résidentiels",
+   "valeur": 13023.61,
+   "originale": 13023.61,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Akkodis Canada Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-07-22",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 299608.2,
+   "originale": 111208.95,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DANIEL, Richard",
+   "ministere": "Commission de l'immigration et du statut de réfugié du Canada",
+   "date": "2025-12-15",
+   "description": "Contrat d'interprète pluriannuel",
+   "valeur": 30000.0,
+   "originale": 30000.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CBCL LIMITED",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-02-06",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 32304.68,
+   "originale": 32304.68,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ATS SCIENTIFIC INC.",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2025-09-02",
+   "description": "Instruments de mesure, de contrôle, de laboratoire-Instruments de médecine et d'optique",
+   "valeur": 19117.88,
+   "originale": 19117.88,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AVI-SPL",
+   "ministere": "Transports Canada",
+   "date": "2026-02-02",
+   "description": "ÉQUIPEMENT DE COMMUNICATIONS IMAGES/VIDÉOS (COMPREND LE CÂBLAGE, LES PIÈCES ET LES PÉRIPHÉRIQUES)",
+   "valeur": 24925.38,
+   "originale": 24925.38,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BIOONE",
+   "ministere": "Ressources naturelles Canada",
+   "date": "2025-08-15",
+   "description": "Abonnements électroniques et publications électroniques",
+   "valeur": 88131.56,
+   "originale": 88131.56,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AG RISK MANAGERS LIMITED",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2026-02-17",
+   "description": "Services de comptabilité et de vérification",
+   "valeur": 10360.8,
+   "originale": 10360.8,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Experis Canada Inc",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-10-09",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 61951.12,
+   "originale": 123902.24,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "LES TRADUCTEURS REUNIS, S.C.C.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-09-15",
+   "description": "Services de traduction",
+   "valeur": 27594.0,
+   "originale": 27594.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "KIA CANADA INC",
+   "ministere": "Transports Canada",
+   "date": "2025-11-04",
+   "description": "VÉHICULES AUTOMOBILES DE ROUTE",
+   "valeur": 56314.68,
+   "originale": 56314.68,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Dell Canada Inc.",
+   "ministere": "Défense nationale",
+   "date": "2026-02-10",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 171149.93,
+   "originale": 171149.93,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "JUNGLE MEDIA INC",
+   "ministere": "Office national du film",
+   "date": "2025-05-19",
+   "description": "Services de réclame",
+   "valeur": 28743.75,
+   "originale": 28743.75,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Coastal restortion",
+   "ministere": "Défense nationale",
+   "date": "2025-07-29",
+   "description": "Bâtiments industriels",
+   "valeur": 78950.0,
+   "originale": 78950.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ENERGYCAP, LLC",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-09-09",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 11065.27,
+   "originale": 11065.27,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "A-Tech Roofing Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2025-08-11",
+   "description": "Conseillers techniques-construction",
+   "valeur": 672486.0,
+   "originale": 672486.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ROYAL SOCIETY OF CHEMISTRY",
+   "ministere": "Santé Canada",
+   "date": "2025-12-16",
+   "description": "Communications - Abonnements aux services Web",
+   "valeur": 12374.99,
+   "originale": 12374.99,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ROCKY LAYNE CONSTRUCTION LTD.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-06-10",
+   "description": "Laboratoires",
+   "valeur": 3193015.34,
+   "originale": 3133794.98,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "vsquadrat GmbH",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-10-30",
+   "description": "Services de conseillers en gestion",
+   "valeur": 39318.96,
+   "originale": 39318.96,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SEATPLY",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-05-01",
+   "description": "Stocks imputés",
+   "valeur": 15440.45,
+   "originale": 15440.45,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LRL ASSOCIATES LTD.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-09-15",
+   "description": "Conseillers techniques - construction",
+   "valeur": 27120.0,
+   "originale": 27120.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "RUGGED GEOMATICS INC.",
+   "ministere": "Ressources naturelles Canada",
+   "date": "2025-08-05",
+   "description": "Compte d'attente (débit)-Autres ministères",
+   "valeur": 26973.1,
+   "originale": 26973.1,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Absolute Office Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-04-04",
+   "description": "Autres meubles et fournitures, incluant des pièces",
+   "valeur": 16431.2,
+   "originale": 16431.2,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LAURA KELLER",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-10-28",
+   "description": "Services d'interprétation",
+   "valeur": 22287.53,
+   "originale": 22287.53,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Baumanns Ventilation & Plumbing Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2026-03-23",
+   "description": "Bâtiments ou installations devant abriter du matériel de télécommunications, d'ordinateur, et de bureautique",
+   "valeur": 33593.38,
+   "originale": 33593.38,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NUMBER TEN ARCHITECTURAL GROUP",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-09-10",
+   "description": "Conseillers techniques - autres",
+   "valeur": 12405.75,
+   "originale": 12405.75,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HOLIDAY INN TORONTO AIRPORT",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-10-07",
+   "description": "Accueil",
+   "valeur": 15331.39,
+   "originale": 15331.39,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ALLIANCE NAV INC",
+   "ministere": "Défense nationale",
+   "date": "2025-10-20",
+   "description": "Réparation et entretien - Autre équipement",
+   "valeur": 10136.1,
+   "originale": 10136.1,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Agence Edgar Inc",
+   "ministere": "Parcs Canada",
+   "date": "2025-06-27",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 15521.63,
+   "originale": 15521.63,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Dominion Diving Ltd.",
+   "ministere": "Parcs Canada",
+   "date": "2025-08-11",
+   "description": "Transports d'objets non spécifiés ailleurs",
+   "valeur": 360225.18,
+   "originale": 360225.18,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PROTEIN BIOSOLUTIONS INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2026-02-20",
+   "description": "Instruments de mesure, de contrôle, de laboratoire - Instruments de médecine et d'optique",
+   "valeur": 22571.64,
+   "originale": 22571.64,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MCKESSON CANADA CORPORATION",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-04-02",
+   "description": "Produits pharmaceutiques et autres produits médicaux",
+   "valeur": 40734.66,
+   "originale": 40734.66,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TITAN ELECTRICAL GROUP INC.",
+   "ministere": "Ressources naturelles Canada",
+   "date": "2025-12-08",
+   "description": "Édifices à bureaux",
+   "valeur": 59312.82,
+   "originale": 59312.82,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HARBOUR AUTHORITY JUDE'S POINT/TIGN",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-02-06",
+   "description": "Réparation et entretien - Génie maritime",
+   "valeur": 18257.4,
+   "originale": 18257.4,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Nations Translation Group LP",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-02-10",
+   "description": "Services de traduction",
+   "valeur": 172462.5,
+   "originale": 172462.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AON REED STENHOUSE INC.",
+   "ministere": "Transports Canada",
+   "date": "2025-08-01",
+   "description": "SERVICES DE CONSEILLER EN GESTION",
+   "valeur": 40000.0,
+   "originale": 40000.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TELUS COMMUNICATIONS COMPANY",
+   "ministere": "Services partagés Canada",
+   "date": "2025-09-12",
+   "description": "Équipement de communications/de réseau (comprend les équipements analogique, numérique et combiné, le câblage, les pièces et les périphériques)",
+   "valeur": 13709.88,
+   "originale": 13709.88,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Alpine Helicopters Inc.",
+   "ministere": "Parcs Canada",
+   "date": "2025-06-19",
+   "description": "Location d'aéronefs",
+   "valeur": 19028.74,
+   "originale": 19028.74,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "L PENNEY ELECTRICAL LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-07-16",
+   "description": "Réparation et entretien - Génie maritime",
+   "valeur": 24725.0,
+   "originale": 24725.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ALLCARD LTD.",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2026-01-15",
+   "description": "Papier et cartons de papier",
+   "valeur": 25000.0,
+   "originale": 25000.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Jim Pattison Chrysler Jeep Dodge",
+   "ministere": "Défense nationale",
+   "date": "2025-09-16",
+   "description": "Véhicules automobiles de route",
+   "valeur": 130453.05,
+   "originale": 130453.05,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "THALES DIS CANADA INC",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-01-21",
+   "description": "Autres pièces du matériel",
+   "valeur": 29901.06,
+   "originale": 29901.06,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BIO-RAD LABORATORIES (CDA) LTD.",
+   "ministere": "Santé Canada",
+   "date": "2025-09-25",
+   "description": "Instruments, appareils et accessoires de mesure, de contrôle, de laboratoire, de médecine et d'optique",
+   "valeur": 11422.94,
+   "originale": 11422.94,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NORTH STAR IMAGING",
+   "ministere": "Défense nationale",
+   "date": "2025-10-17",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 10454.0,
+   "originale": 10454.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "STERIS CANADA SALES ULC",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2026-01-07",
+   "description": "Instruments, appareils et accessoires de mesure, de contrôle, de laboratoire, de médecine et d'optique",
+   "valeur": 10458.78,
+   "originale": 10458.78,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LA ROCHE",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-07-11",
+   "description": "Matériel d'éclairage électrique, de contrôle et de distribution d'électricité",
+   "valeur": 34076.27,
+   "originale": 34076.27,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "EXECAIRE INC.",
+   "ministere": "Transports Canada",
+   "date": "2025-11-14",
+   "description": "PIÈCES D'AÉRONEFS",
+   "valeur": 89592.05,
+   "originale": 89592.05,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "COLES ASSOCIATES LTD",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-05-01",
+   "description": "Conseillers techniques-construction",
+   "valeur": 182045.0,
+   "originale": 182045.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CSIPIX",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-11-25",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 30300.9,
+   "originale": 30300.9,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ULINE",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-04-10",
+   "description": "Marchandises et produits divers",
+   "valeur": 15983.55,
+   "originale": 15983.55,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ONPAR Solutions",
+   "ministere": "Service administratif des tribunaux judiciaires",
+   "date": "2025-12-01",
+   "description": "Services de protection",
+   "valeur": 10735.0,
+   "originale": 10735.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FISHER SCIENTIFIC COMPANY",
+   "ministere": "Santé Canada",
+   "date": "2025-08-20",
+   "description": "Instruments de mesure, de contrôle, de laboratoire - Instruments de médecine et d'optique",
+   "valeur": 25001.25,
+   "originale": 25001.25,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Dine-Art Furniture Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-12-18",
+   "description": "Autres meubles et fournitures, incluant des pièces",
+   "valeur": 11444.0,
+   "originale": 11444.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CHRONO AVIATION INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-07-25",
+   "description": "Voyage - Fonctionnaires - Activités opérationnelles",
+   "valeur": 19504.98,
+   "originale": 19504.98,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "RBW CONSULTING 2015 LTD",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-09-24",
+   "description": "Édifices institutionnels",
+   "valeur": 15491.87,
+   "originale": 32011.37,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "ABCO INDUSTRIES INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-05-08",
+   "description": "Pièces de navires et bateaux",
+   "valeur": 14488792.5,
+   "originale": 14488792.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GROUPE EM INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-05-29",
+   "description": "Services de bien-être",
+   "valeur": 100000.0,
+   "originale": 100000.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Creative Floor",
+   "ministere": "Défense nationale",
+   "date": "2025-12-01",
+   "description": "Bâtiments résidentiels",
+   "valeur": 13363.08,
+   "originale": 13287.87,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "MECANICACTION INC.",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-11-06",
+   "description": "Édifices institutionnels",
+   "valeur": 13629.87,
+   "originale": 13629.87,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GENERAL MOTORS OF CANADA CORPORATIO",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-08-25",
+   "description": "Véhicules automobiles de route",
+   "valeur": 54167.12,
+   "originale": 54167.12,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ONYS",
+   "ministere": "Défense nationale",
+   "date": "2025-12-22",
+   "description": "Autres pièces du matériel",
+   "valeur": 14454.0,
+   "originale": 14454.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Mountain equipment coop",
+   "ministere": "Défense nationale",
+   "date": "2025-06-23",
+   "description": "Autres pièces du matériel",
+   "valeur": 17648.97,
+   "originale": 17648.97,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MCKESSON CANADA CORPORATION",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-04-15",
+   "description": "Produits pharmaceutiques et autres produits médicaux",
+   "valeur": 13936.59,
+   "originale": 13936.59,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SPECIALTY BUILDING SERVICES INC",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-06-26",
+   "description": "Autres travaux de génie",
+   "valeur": 16204.2,
+   "originale": 16204.2,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "POWER & MINE SUPPLY CO. LTD",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-10-08",
+   "description": "Appareils de chauffage, de climatisation et de réfrigération",
+   "valeur": 16679.25,
+   "originale": 16679.25,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PURESPIRIT SOLUTIONS INC",
+   "ministere": "Commission canadienne de sûreté nucléaire",
+   "date": "2025-10-16",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 24311.41,
+   "originale": 24311.41,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "9389-3188 QUEBEC INC",
+   "ministere": "Défense nationale",
+   "date": "2026-03-19",
+   "description": "Bâtiments résidentiels",
+   "valeur": 15328.46,
+   "originale": 15050.76,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "Carahsoft Technology Corp.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-02-03",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 27114.47,
+   "originale": 27114.47,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "R&R International Translation Speci",
+   "ministere": "Conseil de la radiodiffusion et des télécommunications canadiennes",
+   "date": "2025-12-01",
+   "description": "Services de traduction",
+   "valeur": 127622.25,
+   "originale": 127622.25,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Clarke, Jeffery",
+   "ministere": "Bureau de la sécurité des transports du Canada",
+   "date": "2025-05-26",
+   "description": "Les services professionnels de communication non spécifiés ailleurs",
+   "valeur": 38995.2,
+   "originale": 38995.2,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PARM LALLI (DR)",
+   "ministere": "Services aux Autochtones Canada",
+   "date": "2025-12-03",
+   "description": "Services de santé",
+   "valeur": 31600.0,
+   "originale": 12000.0,
+   "methode": "Sans appel d'offres",
+   "versions": 2
+  },
+  {
+   "fournisseur": "WORLDWIDE PRIMATES",
+   "ministere": "Agence de la santé publique du Canada",
+   "date": "2025-08-13",
+   "description": "Animaux vivants, incluant leur fourrage",
+   "valeur": 289040.23,
+   "originale": 289040.23,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Harnois Énergies Inc.",
+   "ministere": "Parcs Canada",
+   "date": "2025-12-17",
+   "description": "Combustible diesel",
+   "valeur": 11800.95,
+   "originale": 11800.95,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NOTCH1 MANAGEMENT LTD.",
+   "ministere": "Parcs Canada",
+   "date": "2026-02-26",
+   "description": "Conseillers techniques - autres",
+   "valeur": 26250.0,
+   "originale": 26250.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DRUIDE INFORMATIQUE INC.",
+   "ministere": "Commission de l'immigration et du statut de réfugié du Canada",
+   "date": "2025-07-01",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 11661.6,
+   "originale": 11661.6,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "THE FISHIN' HOLE",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-03-18",
+   "description": "Autres vêtements",
+   "valeur": 15172.5,
+   "originale": 15172.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DrDrone Inc",
+   "ministere": "Parcs Canada",
+   "date": "2026-02-03",
+   "description": "Matériel de communications image/vidéo (inclut les pièces et périphériques connexes)",
+   "valeur": 18054.62,
+   "originale": 18054.62,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NARL MARKETING LIMITED PARTNERSHIP",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-06-05",
+   "description": "Combustible diesel",
+   "valeur": 140474.31,
+   "originale": 140474.31,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "WANI, Manzoor",
+   "ministere": "Commission de l'immigration et du statut de réfugié du Canada",
+   "date": "2025-08-28",
+   "description": "Contrat d'interprète pluriannuel",
+   "valeur": 25000.0,
+   "originale": 25000.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "C T H INSTRUMENTS LTD",
+   "ministere": "Défense nationale",
+   "date": "2025-10-29",
+   "description": "Matériel d'éclairage électrique, de contrôle et de distribution d'électricité",
+   "valeur": 12042.0,
+   "originale": 12042.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Donna Cona Inc.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-03-04",
+   "description": "Mobilier et ameublement du bureau incluant des pièces",
+   "valeur": 23423.96,
+   "originale": 23423.96,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GO DEEP INTERNATIONAL (NB) INC",
+   "ministere": "Défense nationale",
+   "date": "2025-07-24",
+   "description": "Autres pièces du matériel",
+   "valeur": 629986.85,
+   "originale": 629986.85,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HAROLD SNOW SERVICE GROUP",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-08-22",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 10582.6,
+   "originale": 10582.6,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HARBOUR AUTHORITY OF SLUICE POINT",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-10-15",
+   "description": "Réparation et entretien - Génie maritime",
+   "valeur": 13965.0,
+   "originale": 13965.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Smiths Detection Montreal Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-06-13",
+   "description": "Matières et pièces de la sécurité et de l'hygiène",
+   "valeur": 28052.93,
+   "originale": 28052.93,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "STERN POWER SYSTEMS INC.",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "date": "2025-12-23",
+   "description": "Contrats de recherche",
+   "valeur": 1028008.49,
+   "originale": 1028008.49,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BOLTS PLUS INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-08-14",
+   "description": "Marchandises et produits divers",
+   "valeur": 13017.6,
+   "originale": 13017.6,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DGH ENGINEERING LTD.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-06-24",
+   "description": "Autres bâtiments",
+   "valeur": 31473.75,
+   "originale": 31473.75,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ASCENSEURS LUMAR INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-08-21",
+   "description": "Édifices institutionnels",
+   "valeur": 11497.51,
+   "originale": 11497.51,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Murat Kaya",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-12-24",
+   "description": "Réparation et entretien - Édifices à bureaux",
+   "valeur": 11683.0,
+   "originale": 11683.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Connect Hearing",
+   "ministere": "Défense nationale",
+   "date": "2025-06-23",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 20630.93,
+   "originale": 20630.93,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "EFFECTIVE ACCELERATION VENTURES LTD",
+   "ministere": "Défense nationale",
+   "date": "2025-07-10",
+   "description": "Instruments de mesure, de contrôle, de laboratoire-Instruments de médecine et d'optique",
+   "valeur": 82782.0,
+   "originale": 82782.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TOMLINSON ENVIRONMENTAL SERVICES",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-06-27",
+   "description": "Élimination des déchets",
+   "valeur": 39550.0,
+   "originale": 39550.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NT NAVAIR TECHNOLOGIES",
+   "ministere": "Défense nationale",
+   "date": "2025-10-28",
+   "description": "Instruments de mesure, de contrôle, de laboratoire - Instruments de médecine et d'optique",
+   "valeur": 18065.31,
+   "originale": 18065.31,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Setanta Contracting Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2025-11-26",
+   "description": "Édifices à bureaux",
+   "valeur": 20713.35,
+   "originale": 19230.66,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Taylor & Francis",
+   "ministere": "Défense nationale",
+   "date": "2026-01-06",
+   "description": "Matière imprimée, incluant livres, journaux, images, textes, manuscrits et formules",
+   "valeur": 273589.13,
+   "originale": 273589.13,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GILLIAN BLACKELL",
+   "ministere": "Ministère de la Justice Canada",
+   "date": "2025-12-15",
+   "description": "AUTRES SERVICES PROFESSIONNELS NON PRÉCISÉS AILLEU",
+   "valeur": 27967.5,
+   "originale": 27967.5,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "REGULVAR INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-03-10",
+   "description": "Matériel d'éclairage, de contrôle et de distribution d'électricité",
+   "valeur": 12914.64,
+   "originale": 12914.64,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PureLogic IT Solutions Inc.",
+   "ministere": "Défense nationale",
+   "date": "2025-10-01",
+   "description": "Équipement informatique de l'environnement de Production et opérations-Serveurs, stockage, imprimantes, etc. (y compris pièces et périphériques)",
+   "valeur": 843294.35,
+   "originale": 843294.35,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "KONGSBERG MARITIME CANADA LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-07-17",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 38187.21,
+   "originale": 38187.21,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "INFLECTOR ENVIRONMENTAL SERVICES LP",
+   "ministere": "Transports Canada",
+   "date": "2026-03-10",
+   "description": "RÉPARATION ET ENTRETIEN - AUTRES BÂTIMENTS",
+   "valeur": 90541.8,
+   "originale": 90541.8,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "11169874 CANADA INC",
+   "ministere": "Agence canadienne d'inspection des aliments",
+   "date": "2025-06-25",
+   "description": "Achats de programmes de formation et cours",
+   "valeur": 39378.94,
+   "originale": 39378.94,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AEG",
+   "ministere": "Défense nationale",
+   "date": "2025-12-18",
+   "description": "Carburant d'aviation",
+   "valeur": 86734.96,
+   "originale": 86734.96,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PSI PANEL SPECIALIST INC",
+   "ministere": "Défense nationale",
+   "date": "2026-01-08",
+   "description": "Navires et bateaux",
+   "valeur": 10248.78,
+   "originale": 10248.78,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Microsoft Corporation",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-07-07",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 36060.64,
+   "originale": 36060.64,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SOFTCHOICE CORPORATION",
+   "ministere": "Services aux Autochtones Canada",
+   "date": "2026-03-30",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 78019.48,
+   "originale": 78019.48,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Convergence Blended Finance Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-10-14",
+   "description": "Autres paiements de transfert aux pays étrangers pour l'aide au développement",
+   "valeur": 57855.0,
+   "originale": 57855.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Calian Ltd",
+   "ministere": "Défense nationale",
+   "date": "2025-11-05",
+   "description": "Contrats de recherche",
+   "valeur": 89224.33,
+   "originale": 23995.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 3
+  },
+  {
+   "fournisseur": "NEOGEN CANADA INC.",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2025-08-05",
+   "description": "Services scientifiques",
+   "valeur": 13543.32,
+   "originale": 13543.32,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "J&E ENTERPRISES",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-06-11",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 33878.25,
+   "originale": 33878.25,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ROBERT BURY AND CO CANADA LTD",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-10-20",
+   "description": "Stocks imputés",
+   "valeur": 10954.44,
+   "originale": 10954.44,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "UNIVERSITY OF CALGARY",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-12-18",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 25436.92,
+   "originale": 25436.92,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PENSKE BUSINESS MEDIA LLC",
+   "ministere": "Office national du film",
+   "date": "2026-03-11",
+   "description": "Services de réclame",
+   "valeur": 11871.36,
+   "originale": 11871.36,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TECHNOREM INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-09-19",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 19988.34,
+   "originale": 19988.34,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PRESTON PHIPPS INC.",
+   "ministere": "Défense nationale",
+   "date": "2025-06-10",
+   "description": "Matériel et accessoires de plomberie",
+   "valeur": 14098.82,
+   "originale": 14098.82,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "C.O.DUBUC INC",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-08-20",
+   "description": "Réparation et entretien - Édifices à  bureaux",
+   "valeur": 11755.02,
+   "originale": 11755.02,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CAPITAL HELICOPTERS INC.",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-10-16",
+   "description": "Location d'aéronefs",
+   "valeur": 46131.12,
+   "originale": 46131.12,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DIVAN TURIZM ISLETMELERI AS.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-05-13",
+   "description": "Augmentations ou diminutions nettes dans d'autres comptes à fins déterminées",
+   "valeur": 39882.53,
+   "originale": 39882.53,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Power & Controls Engineering Ltd.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-02-27",
+   "description": "Services reliés à  la construction",
+   "valeur": 24860.0,
+   "originale": 24860.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LEVAERO AVIATION INC",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-04-29",
+   "description": "Pièces d'aéronefs",
+   "valeur": 62236.39,
+   "originale": 62236.39,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BARGREEN-ELLINGSON CANADA",
+   "ministere": "Défense nationale",
+   "date": "2026-01-05",
+   "description": "Autres pièces du matériel",
+   "valeur": 324926.23,
+   "originale": 324926.23,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "VERITEXT LITIGATION SOLUTIONS",
+   "ministere": "Ministère de la Justice Canada",
+   "date": "2025-11-25",
+   "description": "AUTRES SERVICES COMMERCIAUX QUI NE SONT PAS PRÉCIS",
+   "valeur": 17876.04,
+   "originale": 17876.04,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FORD ELLEN",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-03-25",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 36402.7,
+   "originale": 36402.7,
+   "methode": "Préavis d'adjudication (PAC)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SINCLAIR SUPPLY LTD",
+   "ministere": "Défense nationale",
+   "date": "2026-01-13",
+   "description": "Autres pièces du matériel",
+   "valeur": 15462.63,
+   "originale": 15462.63,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HUMANSCALE CANADA CORPORATION",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-11-18",
+   "description": "Stocks imputés",
+   "valeur": 85097.1,
+   "originale": 85097.1,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MOLECULAR DEVICES LLC",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2026-02-05",
+   "description": "Instruments de mesure, de contrôle, de laboratoire-Instruments de médecine et d'optique",
+   "valeur": 9256.0,
+   "originale": 9256.0,
+   "methode": "Sans appel d'offres",
+   "versions": 2
+  },
+  {
+   "fournisseur": "RIGHTWAY SANITATION SERVICES",
+   "ministere": "Défense nationale",
+   "date": "2026-02-04",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 23000.0,
+   "originale": 23000.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TURTLE ISLAND STAFFING",
+   "ministere": "Conseil de recherches en sciences naturelles et en génie du Canada",
+   "date": "2026-01-16",
+   "description": "Services d'aide temporaire",
+   "valeur": 81258.3,
+   "originale": 53110.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "Beaver Leasing and Rentals Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2025-10-30",
+   "description": "Location de véhicules automobiles et d'autres véhicules",
+   "valeur": 12860.65,
+   "originale": 20908.69,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "Kmj Construction Ltd",
+   "ministere": "Défense nationale",
+   "date": "2026-02-10",
+   "description": "Bâtiments résidentiels",
+   "valeur": 16307.0,
+   "originale": 16307.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SIMETEK CLIMATISATION INC",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-09-11",
+   "description": "Autres pièces du matériel",
+   "valeur": 15723.78,
+   "originale": 15723.78,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BTY CONSULTANCY GROUP INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-04-01",
+   "description": "Conseillers techniques - autres",
+   "valeur": 15750.0,
+   "originale": 15750.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "WELLINGTON ELECTRIC OF OTTAWA",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-04-08",
+   "description": "Édifices à  bureaux",
+   "valeur": 37968.0,
+   "originale": 37968.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SIGNALISATIONS PROSIGN QUEBEC INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-04-01",
+   "description": "Marchandises et produits divers",
+   "valeur": 18361.51,
+   "originale": 18361.51,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "STEDFAST INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-11-09",
+   "description": "Stocks imputés",
+   "valeur": 388431.54,
+   "originale": 388431.54,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CC VISUAL COMMUNICATIONS INC.",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "date": "2026-02-10",
+   "description": "Les services professionnels de communication",
+   "valeur": 18625.95,
+   "originale": 18625.95,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "COMPUGEN INC.",
+   "ministere": "Services partagés Canada",
+   "date": "2026-01-14",
+   "description": "Équipement de communications/réseau (comprend les équipement analogique, numérique et combiné, le câblage, les pièces et les périphériques)",
+   "valeur": 93768.48,
+   "originale": 93768.48,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "A FRESH LOOK",
+   "ministere": "Défense nationale",
+   "date": "2025-07-25",
+   "description": "Bâtiments résidentiels",
+   "valeur": 11636.7,
+   "originale": 10550.26,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "YAMAHA MOTOR CANADA LTD",
+   "ministere": "Défense nationale",
+   "date": "2025-11-19",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 21955.92,
+   "originale": 18565.92,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "PHASELOCK SYSTEMS INTERNATIONAL INC",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2026-02-02",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 16946.61,
+   "originale": 16946.61,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DASCO STORAGE SOLUTIONS",
+   "ministere": "Défense nationale",
+   "date": "2025-12-22",
+   "description": "Ameublement de maison, excl. des meubles",
+   "valeur": 24964.39,
+   "originale": 24964.39,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MEC PROJECTS LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-10-03",
+   "description": "Réparation et entretien - Édifices à bureaux",
+   "valeur": 20682.9,
+   "originale": 20682.9,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Jetdock Canada King Industries Inc",
+   "ministere": "Défense nationale",
+   "date": "2025-05-01",
+   "description": "Autre équipement",
+   "valeur": 39492.37,
+   "originale": 39492.37,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "10900800 CANADA INC.",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2025-09-17",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 22600.0,
+   "originale": 22600.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "VARSTEEL LTD RED DEER",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-10-14",
+   "description": "Stocks imputés",
+   "valeur": 11786.56,
+   "originale": 11786.56,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NISHA",
+   "ministere": "Défense nationale",
+   "date": "2025-07-23",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 23884.56,
+   "originale": 23884.56,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NARL MARKETING LIMITED PARTNERSHIP",
+   "ministere": "Défense nationale",
+   "date": "2026-03-25",
+   "description": "Combustible diesel",
+   "valeur": 54282.76,
+   "originale": 54282.76,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "EXPERIS CANADA INC",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "date": "2025-10-10",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 183964.0,
+   "originale": 183964.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "IPSS Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-12-26",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 41860.1,
+   "originale": 41860.1,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FOUND IN TRANSLATION, INC.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-12-06",
+   "description": "Services d'interprétation",
+   "valeur": 18585.0,
+   "originale": 18585.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ExitCertified",
+   "ministere": "Agence du revenu du Canada",
+   "date": "2025-10-16",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 13263.25,
+   "originale": 13263.25,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Silver Bright Furniture",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-01-19",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 16193.32,
+   "originale": 16193.32,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NY International Children's FilmFilm Festival (NYICFF)",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-03-07",
+   "description": "Les services professionnels de communication non spécifiés ailleurs",
+   "valeur": 19763.86,
+   "originale": 19763.86,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ADVANCED CHIPPEWA TECHNOLOGIES INC.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-03-18",
+   "description": "Équipement de l'environnement d'informatique répartie (EIR)-Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 23880.68,
+   "originale": 23880.68,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PAYZANT BUILDING PRODUCTS",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-01-27",
+   "description": "Marchandises et produits divers",
+   "valeur": 312658.4,
+   "originale": 312658.4,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MDA GEOSPATIAL SERVICES INC",
+   "ministere": "Ressources naturelles Canada",
+   "date": "2026-03-19",
+   "description": "Services d'accès à des données et à des bases de données",
+   "valeur": 2999958.17,
+   "originale": 2999958.17,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SYSTEMS FOR RESEARCH CORP.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-10-23",
+   "description": "Instruments de mesure, de contrôle, de laboratoire - Instruments de médecine et d'optique",
+   "valeur": 12762.23,
+   "originale": 12762.23,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CISION CANADA INC.",
+   "ministere": "Commissariat à la protection de la vie privée du Canada",
+   "date": "2025-10-17",
+   "description": "Les services professionnels de communication non spécifiés ailleurs",
+   "valeur": 31474.93,
+   "originale": 97285.95,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "ISLAND KEY COMPUTER LTD.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-10-07",
+   "description": "Équipement informatique de l'environnement d'informatique répartie -  Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 72647.3,
+   "originale": 72647.3,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Orangutech",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-08-14",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 382176.9,
+   "originale": 199200.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 3
+  },
+  {
+   "fournisseur": "Terminotix Inc.",
+   "ministere": "Secrétariat du Conseil du Trésor du Canada",
+   "date": "2026-01-26",
+   "description": "Licences/maintenance des logiciels système et utilitaires pour les serveurs, le stockage, les périphériques et les composantes",
+   "valeur": 20527.58,
+   "originale": 20527.58,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TREVCO CONSTRUCTION",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-01-14",
+   "description": "Réparation et entretien - Édifices à bureaux",
+   "valeur": 13764.83,
+   "originale": 9998.1,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "EMCS INDUSTRIES LTD",
+   "ministere": "Défense nationale",
+   "date": "2025-09-23",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 11219.0,
+   "originale": 6146.75,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "Kevin Faust",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-08-25",
+   "description": "Services scientifiques",
+   "valeur": 16382.63,
+   "originale": 9954.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "L.J PATTERSON SALES & SERVICE LTD",
+   "ministere": "Agence canadienne d'inspection des aliments",
+   "date": "2025-10-09",
+   "description": "Navires et bateaux",
+   "valeur": 64173.45,
+   "originale": 64173.45,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "A.H. SYSTEMS INC.",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "date": "2025-08-15",
+   "description": "Instruments, appareils et accessoires de mesure, de contrôle, de laboratoire, de médecine et d'optique",
+   "valeur": 13536.58,
+   "originale": 13536.58,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ZMT ZURICH MEDTECH AG (ZMT)",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "date": "2026-03-01",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 41924.21,
+   "originale": 41924.21,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "APPLE CANADA INC",
+   "ministere": "Office national du film",
+   "date": "2025-10-02",
+   "description": "Équipement informatique de l'environnement d'informatique répartie -  Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 27235.73,
+   "originale": 27235.73,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Linkedin Ireland Unlimited Company",
+   "ministere": "Centre canadien d'hygiène et de sécurité au travail",
+   "date": "2025-11-05",
+   "description": "Services de réclame",
+   "valeur": 35663.25,
+   "originale": 35663.25,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MODERN NIAGRA BUILDING SERVICES INC",
+   "ministere": "Défense nationale",
+   "date": "2025-10-31",
+   "description": "Édifices institutionnels",
+   "valeur": 14509.2,
+   "originale": 2709.74,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SINDBAD TRANSWORLD SERVICES",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-05-14",
+   "description": "Transport d'objets non spécifiés ailleurs",
+   "valeur": 22655.09,
+   "originale": 22655.09,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ELLEN FIELD",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-11-13",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 36750.0,
+   "originale": 36750.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LOWE-MARTIN COMPANY INC.",
+   "ministere": "Santé Canada",
+   "date": "2025-08-08",
+   "description": "Services d'imprimerie",
+   "valeur": 11277.13,
+   "originale": 11277.13,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PROFESSIONAL CLEANERS, S.A.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-12-15",
+   "description": "Nettoyage d'immeubles à contrat",
+   "valeur": 56637.78,
+   "originale": 56637.78,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Advanced Chippewa Technologies Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-02-06",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 42059.73,
+   "originale": 42059.73,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LEE, Ping",
+   "ministere": "Commission de l'immigration et du statut de réfugié du Canada",
+   "date": "2025-08-16",
+   "description": "Services d'interprétation",
+   "valeur": 22600.01,
+   "originale": 11300.01,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "THERMEC INSULATION SERVICES LTD.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-05-30",
+   "description": "Édifices à  bureaux",
+   "valeur": 24860.0,
+   "originale": 24860.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SUTHERLAND EXCAVATING LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-02-19",
+   "description": "Réparation et entretien - Édifices à bureaux",
+   "valeur": 28973.1,
+   "originale": 28973.1,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Microsoft Canada Inc.",
+   "ministere": "Ministère des Finances Canada",
+   "date": "2025-06-10",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 2781668.07,
+   "originale": 190484.85,
+   "methode": "Sans appel d'offres",
+   "versions": 21
+  },
+  {
+   "fournisseur": "WOLTERS KLUWER LIMITED",
+   "ministere": "Agence de la santé publique du Canada",
+   "date": "2025-04-01",
+   "description": "Licences/maintenance des logiciels d'applications et de bases de\r\ndonnées (y compris les Composant pris sur étagère [COTS]) et logiciels de développement et de maintenance des applications et des bases de données",
+   "valeur": 12712.5,
+   "originale": 12712.5,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "RAFAEL GUILLERMO DIAZ BARRIOS",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-03-26",
+   "description": "Réparation et entretien - Bâtiments résidentiels",
+   "valeur": 12932.64,
+   "originale": 12932.64,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "POLY-MOR CANADA INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-09-29",
+   "description": "Réparation et entretien - Routes principales, chemins et rues",
+   "valeur": 18726.78,
+   "originale": 18726.78,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AERIC INC.",
+   "ministere": "Bureau du vérificateur général du Canada",
+   "date": "2025-04-24",
+   "description": "Cotisations d'adhésion",
+   "valeur": 10214.4,
+   "originale": 10214.4,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "COLUMBIA FUELS",
+   "ministere": "Défense nationale",
+   "date": "2025-10-22",
+   "description": "Combustible diesel",
+   "valeur": 27276.29,
+   "originale": 27276.29,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "THE BELL TELEPHONE COMPANY OF",
+   "ministere": "Services partagés Canada",
+   "date": "2025-11-03",
+   "description": "Licences/maintenance des logiciels de gestion de réseau",
+   "valeur": 499927.37,
+   "originale": 499927.37,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "carrousel",
+   "ministere": "Défense nationale",
+   "date": "2026-02-11",
+   "description": "Marchandises et produits divers",
+   "valeur": 16257.74,
+   "originale": 16257.74,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PURELOGICITSOLUTIONSINC.",
+   "ministere": "Défense nationale",
+   "date": "2026-02-02",
+   "description": "Équipement informatique de l'environnement de Production et opérations-Serveurs, stockage, imprimantes, etc. (y compris pièces et périphériques)",
+   "valeur": 225803.87,
+   "originale": 225803.87,
+   "methode": "Préavis d'adjudication (PAC)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SYSCO",
+   "ministere": "Défense nationale",
+   "date": "2026-01-06",
+   "description": "Viandes, poissons et leurs préparations",
+   "valeur": 26409.82,
+   "originale": 26409.82,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HYUNDAI AUTO CANADA CORP.",
+   "ministere": "Santé Canada",
+   "date": "2025-06-17",
+   "description": "Véhicules automobiles de route",
+   "valeur": 119156.24,
+   "originale": 119156.24,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DILLON CONSULTING LIMITED /",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "date": "2025-06-27",
+   "description": "Services professionnels",
+   "valeur": 59106.75,
+   "originale": 59106.75,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BATTLEFIELD EQUIPMENT RENTALS",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-12-04",
+   "description": "Location de machinerie, de mobilier et d'installation de bureau, et d'autres équipement",
+   "valeur": 99880.95,
+   "originale": 99880.95,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "JHT Defense Inc",
+   "ministere": "Défense nationale",
+   "date": "2026-02-04",
+   "description": "Marchandises et produits divers",
+   "valeur": 13768.95,
+   "originale": 13768.95,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Solar Secure Window Film and Design",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-06-30",
+   "description": "Services reliés à  la construction",
+   "valeur": 33168.02,
+   "originale": 48906.26,
+   "methode": "Sans appel d'offres",
+   "versions": 2
+  },
+  {
+   "fournisseur": "SOUTHSIDE PLYMOUTH CHRYSLER LTD.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-03-30",
+   "description": "Véhicules automobiles de route-Non militaires",
+   "valeur": 16036.22,
+   "originale": 16036.22,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ED MALETTE ELECTRIC LTD.",
+   "ministere": "Défense nationale",
+   "date": "2026-02-12",
+   "description": "Bâtiments résidentiels",
+   "valeur": 24865.65,
+   "originale": 24865.65,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ABCE Language School Inc.",
+   "ministere": "Patrimoine canadien",
+   "date": "2025-09-01",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 14400.0,
+   "originale": 14400.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CEIC DATA(SHANGHAI)CO.,LIMITED",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-10-21",
+   "description": "Abonnements électroniques et publications électroniques",
+   "valeur": 20163.78,
+   "originale": 20163.78,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "S.I. SYSTEMS LTD.",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "date": "2026-02-26",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 153252.86,
+   "originale": 153252.86,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MESSER CANADA INC",
+   "ministere": "Défense nationale",
+   "date": "2026-02-06",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 24551.77,
+   "originale": 24551.77,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HUMANSCALE CANADA CORPORATION",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-01-07",
+   "description": "Stocks imputés",
+   "valeur": 10203.63,
+   "originale": 10203.63,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AXON PUBLIC SAFETY CANADA INC.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-04-08",
+   "description": "Armes (incluant les pièces)",
+   "valeur": 225540.0,
+   "originale": 225540.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "WOLVERINE SUPPLIES",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-12-11",
+   "description": "Armes (incluant les pièces)",
+   "valeur": 106661.25,
+   "originale": 106661.25,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SUNCOR ENERGY PRODUCTS PARTNERSHIP",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-06-11",
+   "description": "Combustible diesel",
+   "valeur": 21792.68,
+   "originale": 21792.68,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "OXE MARINE AB",
+   "ministere": "Défense nationale",
+   "date": "2026-03-13",
+   "description": "Pièces de navires et bateaux",
+   "valeur": 193308.34,
+   "originale": 193308.34,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "THE ESCAL INSTITUTE OF ADVANCED",
+   "ministere": "Défense nationale",
+   "date": "2026-02-04",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 11781.36,
+   "originale": 11781.36,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "The Canadian Corps of Commissionaires",
+   "ministere": "Centre d'analyse des opérations et déclarations financières du Canada",
+   "date": "2025-05-30",
+   "description": "Services de protection comprenant ceux du Corps des commissionnaires, les gardes de sécurité, les systèmes d'alarme, etc",
+   "valeur": 89649.68,
+   "originale": 89649.68,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LEVAERO AVIATION INC",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-12-08",
+   "description": "Pièces d'aéronefs",
+   "valeur": 15703.74,
+   "originale": 15703.74,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "STANTEC CONSULTING LTD /",
+   "ministere": "Défense nationale",
+   "date": "2026-03-06",
+   "description": "Conseillers techniques-autres",
+   "valeur": 36964.47,
+   "originale": 36964.47,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "704507 NB LTD",
+   "ministere": "Défense nationale",
+   "date": "2025-05-12",
+   "description": "Bâtiments résidentiels",
+   "valeur": 28462.5,
+   "originale": 6900.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Kings Ent.Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2026-01-30",
+   "description": "Bâtiments résidentiels",
+   "valeur": 12058.71,
+   "originale": 12058.71,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BIOCOM",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-01-15",
+   "description": "Services de relations publiques",
+   "valeur": 27713.0,
+   "originale": 27713.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Romeo One Inc",
+   "ministere": "Défense nationale",
+   "date": "2026-02-09",
+   "description": "Autres pièces du matériel",
+   "valeur": 115673.88,
+   "originale": 115673.88,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "COMPUTER MEDIA PRODUCTS LTD.",
+   "ministere": "Bureau du surintendant des institutions financières Canada",
+   "date": "2026-03-19",
+   "description": "Équipement informatique de l'environnement d'informatique répartie -  Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 14643.04,
+   "originale": 14643.04,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LE GROUPE CERES INC",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2025-10-07",
+   "description": "Animaux vivants, incluant leur fourrage",
+   "valeur": 23994.91,
+   "originale": 23994.91,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BELL TEXTRON CANADA LIMITED/BELL TEXTRON CANADA LIMITEE",
+   "ministere": "Transports Canada",
+   "date": "2025-07-09",
+   "description": "PIÈCES D'AÉRONEFS",
+   "valeur": 21660.69,
+   "originale": 21660.69,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CDW Canada",
+   "ministere": "Défense nationale",
+   "date": "2025-09-23",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 10092.48,
+   "originale": 11752.72,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TOYOTA CANADA INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-10-06",
+   "description": "Véhicules automobiles de route",
+   "valeur": 73616.2,
+   "originale": 73616.2,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ARI FINANCIAL SERVICES INC. T46163",
+   "ministere": "Bureau du Conseil privé",
+   "date": "2026-03-25",
+   "description": "R&E - Véhicules automobiles de route - Non militaires",
+   "valeur": 174410.98,
+   "originale": 174410.98,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SOFTCHOICE CORPORATION",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-12-04",
+   "description": "Équipement informatique de l'environnement d'informatique répartie -  Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 23726.61,
+   "originale": 23726.61,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "EASTPOINT ENGINEERING LIMITED",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-02-02",
+   "description": "Conseillers techniques - autres",
+   "valeur": 99360.0,
+   "originale": 99360.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CANADIAN MARITIME ENGINEERING LIMIT",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-09-09",
+   "description": "Autre machinerie et pièces",
+   "valeur": 85314.86,
+   "originale": 85314.86,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HOSKIN SCIENTIFIC LIMITED",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-07-29",
+   "description": "Réparation et entretien - Instruments, appareils et accessoires de mesure, de contrôle, de laboratoire, de médecine et d",
+   "valeur": 15198.42,
+   "originale": 15198.42,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NORTHFLEET CONCRETE FLOORS INC",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2025-12-11",
+   "description": "Autres bâtiments institutionnels",
+   "valeur": 52033.4,
+   "originale": 52033.4,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ACCESS 2 NETWORKS INC.",
+   "ministere": "Services partagés Canada",
+   "date": "2026-03-11",
+   "description": "Licences/maintenance des logiciels de gestion de réseau",
+   "valeur": 326379.03,
+   "originale": 326379.03,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ACT INC",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2026-01-20",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 10466.15,
+   "originale": 10466.15,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Nova Networks Inc.",
+   "ministere": "Musée des beaux-arts du Canada",
+   "date": "2025-08-08",
+   "description": "Biens informatique",
+   "valeur": 25378.0,
+   "originale": 25378.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FORET 3D INC",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2025-11-13",
+   "description": "Services scientifiques",
+   "valeur": 11172.7,
+   "originale": 11172.7,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CARAHSOFT TECHNOLOGY CORP.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-06-17",
+   "description": "Logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 108827.46,
+   "originale": 108827.46,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SAP Canada Inc.",
+   "ministere": "Secrétariat du Conseil du Trésor du Canada",
+   "date": "2025-12-19",
+   "description": "Licences/maintenance des logiciels d'applications et de bases de données (y compris les COTS) et logiciels de développement et de maintenance des applications et des bases de données",
+   "valeur": 3083425.86,
+   "originale": 3083425.86,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Distribution Fair D",
+   "ministere": "Défense nationale",
+   "date": "2025-12-16",
+   "description": "Autres vêtements",
+   "valeur": 24992.71,
+   "originale": 24992.71,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ASTRA INTERPRETATION",
+   "ministere": "Ministère de la Justice Canada",
+   "date": "2025-11-07",
+   "description": "SERVICES D'INTERPRÉTATION",
+   "valeur": 15820.0,
+   "originale": 15820.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "9133-1371 QUÉBEC INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-08-26",
+   "description": "Édifices à bureaux",
+   "valeur": 10347.75,
+   "originale": 10347.75,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NATIONS TRANSLATION GROUP LP",
+   "ministere": "Agence de la santé publique du Canada",
+   "date": "2026-02-23",
+   "description": "Services de traduction",
+   "valeur": 11300.0,
+   "originale": 11300.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TRUMPF INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2026-03-16",
+   "description": "Équipement de communications images/vidéos (comprend le câblage, les pièces et les périphériques)",
+   "valeur": 22520.64,
+   "originale": 22520.64,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "DART AEROSPACE",
+   "ministere": "Transports Canada",
+   "date": "2025-11-28",
+   "description": "PIÈCES D'AÉRONEFS",
+   "valeur": 13026.68,
+   "originale": 13026.68,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NORTHERN SECURITY LTD.",
+   "ministere": "Agence fédérale de développement économique pour le Nord de l’Ontario",
+   "date": "2025-12-15",
+   "description": "Services de protection",
+   "valeur": 82161.37,
+   "originale": 82161.37,
+   "methode": "Préavis d'adjudication (PAC)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ROOFTECH SYSTEMS LTD.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-01-12",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 946618.1,
+   "originale": 946618.1,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "Tyco Integrated Security Canada Inc",
+   "ministere": "Agence des services frontaliers du Canada",
+   "date": "2026-03-25",
+   "description": "Matériel et accessoires santé et sécurité",
+   "valeur": 11023.5,
+   "originale": 11023.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "INDRO ROBOTICS INC",
+   "ministere": "Transports Canada",
+   "date": "2025-10-14",
+   "description": "SERVICES DE CONSEILLERS EN GESTION",
+   "valeur": 39945.5,
+   "originale": 39945.5,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MITSUBISHI MOTOR SALES",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-10-27",
+   "description": "Véhicules automobiles de route",
+   "valeur": 121833.3,
+   "originale": 121833.3,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Push Security Ltd",
+   "ministere": "Office national du film",
+   "date": "2025-09-02",
+   "description": "Licences/maintenance des logiciels système et utilitaires pour les serveurs, le stockage, les périphériques et les composantes",
+   "valeur": 20433.37,
+   "originale": 20433.37,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ALTIS RECRUITMENT & TECHNOLOGY INC.",
+   "ministere": "Services partagés Canada",
+   "date": "2026-03-26",
+   "description": "Services professionnels dans les domaines de l'informatique, du commerce et/ou des télécommunications",
+   "valeur": 76275.0,
+   "originale": 76275.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "YAMAHA MOTOR CANADA LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-10-10",
+   "description": "Autre machinerie et pièces",
+   "valeur": 36756.3,
+   "originale": 36756.3,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CORPS CANADIEN DES COMMISSIONNAIRES",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-05-05",
+   "description": "Services de protection",
+   "valeur": 298935.0,
+   "originale": 298935.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Grainger",
+   "ministere": "Défense nationale",
+   "date": "2026-01-22",
+   "description": "Marchandises et produits divers",
+   "valeur": 13196.96,
+   "originale": 13196.96,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Canadian Corps of Commissionaires",
+   "ministere": "Agence du revenu du Canada",
+   "date": "2025-06-26",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 30064.73,
+   "originale": 23192.79,
+   "methode": "Sans appel d'offres",
+   "versions": 2
+  },
+  {
+   "fournisseur": "LOriental Appetizers",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-06-16",
+   "description": "Augmentations ou diminutions nettes dans d'autres comptes à fins déterminées",
+   "valeur": 10352.19,
+   "originale": 10352.19,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "CANADIAN MARITIME ENGINEERING",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-12-19",
+   "description": "Réparation et entretien - Édifices à  bureaux",
+   "valeur": 39537.0,
+   "originale": 39537.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NTT DATA CANADA INC",
+   "ministere": "Emploi et Développement social Canada",
+   "date": "2025-11-20",
+   "description": "Consultants en TI et en télécommunications",
+   "valeur": 172445.37,
+   "originale": 99899.39,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "FCA Canada Inc",
+   "ministere": "Agence des services frontaliers du Canada",
+   "date": "2025-09-23",
+   "description": "Véhicules automobiles de route",
+   "valeur": 70223.48,
+   "originale": 70223.48,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LIFEMARK HEALTH CORP.",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-05-29",
+   "description": "Autres services de santé, non spécifiés ailleurs",
+   "valeur": 225909.6,
+   "originale": 225909.6,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NEDCO",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-11-24",
+   "description": "Autres pièces du matériel",
+   "valeur": 13132.08,
+   "originale": 13132.08,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AFUA COOPER CONSULTING INC",
+   "ministere": "Ministère de la Justice Canada",
+   "date": "2026-01-15",
+   "description": "CONTRATS DE RECHERCHE",
+   "valeur": 22600.0,
+   "originale": 22600.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TYLER HOAR",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-05-15",
+   "description": "Services scientifiques",
+   "valeur": 28250.0,
+   "originale": 28250.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Potencia Technologies Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2026-03-18",
+   "description": "Transport d'objets non spécifiés ailleurs",
+   "valeur": 15748.91,
+   "originale": 15748.91,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Qwest Helicopters (2020) Ltd.",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2026-01-21",
+   "description": "Location d'aéronefs",
+   "valeur": 37761.68,
+   "originale": 37761.68,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "INTEGRATED PROJECT DELIVERY ALLIANCE",
+   "ministere": "Défense nationale",
+   "date": "2026-01-07",
+   "description": "Frais d'enseignement et frais de participation à des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 11652.31,
+   "originale": 11652.31,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FCA Canada Inc.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-10-15",
+   "description": "Véhicules automobiles de route",
+   "valeur": 81747.75,
+   "originale": 81747.75,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "JENMAR CONCEPTS",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-06-10",
+   "description": "Services scientifiques",
+   "valeur": 10290.0,
+   "originale": 10290.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GARDINER CENTRE",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-04-02",
+   "description": "Frais d'enseignement et frais de participation à  des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 11494.28,
+   "originale": 11494.28,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "W&O Supply",
+   "ministere": "Défense nationale",
+   "date": "2025-06-06",
+   "description": "Métaux ferreux",
+   "valeur": 22025.93,
+   "originale": 22025.93,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SEACOAST MARINE ELECTRONICS LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-05-28",
+   "description": "Équipement informatique de l'environnement de Production et opérations - Serveurs, stockage, imprimantes, etc. (y compri",
+   "valeur": 18653.69,
+   "originale": 18653.69,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "HARBOUR AUTHORITY OF ADVOCATE",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-11-20",
+   "description": "Réparation et entretien - Génie maritime",
+   "valeur": 73629.18,
+   "originale": 55161.18,
+   "methode": "Sans appel d'offres",
+   "versions": 2
+  },
+  {
+   "fournisseur": "E3 SERVICE",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-02-24",
+   "description": "Services reliés à  la charge et la gestion des sites contaminés",
+   "valeur": 29037.5,
+   "originale": 29037.5,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Teledyne Geospatial",
+   "ministere": "Défense nationale",
+   "date": "2025-07-15",
+   "description": "Conseillers en formation",
+   "valeur": 21480.0,
+   "originale": 21480.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "whtie cap supply canada inc",
+   "ministere": "Défense nationale",
+   "date": "2025-09-11",
+   "description": "Métaux ferreux",
+   "valeur": 11054.37,
+   "originale": 11054.37,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ADVANCED CHIPPEWA TECHNOLOGIES INC",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-12-15",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 93473.6,
+   "originale": 93473.6,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AVI-SPL",
+   "ministere": "Transports Canada",
+   "date": "2025-12-16",
+   "description": "ÉQUIPEMENT DE COMMUNICATIONS IMAGES/VIDÉOS (COMPREND LE CÂBLAGE, LES PIÈCES ET LES PÉRIPHÉRIQUES)",
+   "valeur": 19480.13,
+   "originale": 19480.13,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Asokan Solutions  de Bureau / Asokan Business Interior Ic.",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2026-02-09",
+   "description": "Mobilier et ameublement du bureau incluant des pièces",
+   "valeur": 389833.5,
+   "originale": 255249.68,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 4
+  },
+  {
+   "fournisseur": "Mid-West Pump Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2025-05-27",
+   "description": "Autres travaux de génie",
+   "valeur": 5582.6,
+   "originale": 16800.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FCA Canada Inc",
+   "ministere": "Agence des services frontaliers du Canada",
+   "date": "2025-11-13",
+   "description": "Véhicules automobiles de route",
+   "valeur": 77841.18,
+   "originale": 77841.18,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Calian Ltd",
+   "ministere": "Défense nationale",
+   "date": "2025-12-16",
+   "description": "Contrats de recherche",
+   "valeur": 11973.4,
+   "originale": 3504.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TJ Nolan",
+   "ministere": "Défense nationale",
+   "date": "2026-01-21",
+   "description": "Bâtiments industriels",
+   "valeur": 12882.0,
+   "originale": 12882.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "PENNECON HYDRAULIC SYSTEMS LIMITED",
+   "ministere": "Parcs Canada",
+   "date": "2025-09-11",
+   "description": "Métaux ferreux",
+   "valeur": 20607.64,
+   "originale": 20607.64,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Seasi Consulting Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-12-02",
+   "description": "Services de conseillers en gestion",
+   "valeur": 39944.83,
+   "originale": 39944.83,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "ERGOCENTRIC SEATING SYSTEMS",
+   "ministere": "Service correctionnel du Canada",
+   "date": "2026-02-25",
+   "description": "Mobilier et ameublement du bureau incluant des pièces",
+   "valeur": 14900.0,
+   "originale": 14900.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Westvale Industrial Supply",
+   "ministere": "Défense nationale",
+   "date": "2025-12-01",
+   "description": "Métaux ferreux",
+   "valeur": 20355.41,
+   "originale": 18645.41,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "SERVICE ADMINISTRATIF A P S (1978)",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2026-03-26",
+   "description": "Réparation et entretien - Édifices à  bureaux",
+   "valeur": 22068.9,
+   "originale": 22068.9,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "TECHNOLOGIES KURIOS-IT INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-06-17",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 5206187.02,
+   "originale": 1.15,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 4
+  },
+  {
+   "fournisseur": "ELSEVIER B.V.",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "date": "2026-01-01",
+   "description": "Services d'accès à des données et à des bases de données",
+   "valeur": 243908.37,
+   "originale": 243908.37,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SPARK COACHING AND CONSULTING",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-03-27",
+   "description": "Frais d'enseignement et frais de participation à  des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 21468.88,
+   "originale": 21468.88,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "WAJAX LIMITED",
+   "ministere": "Défense nationale",
+   "date": "2025-10-29",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 39004.59,
+   "originale": 39004.59,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "XEROX CANADA LTD.",
+   "ministere": "Conseil national de recherches Canada",
+   "date": "2025-05-15",
+   "description": "Licences/maintenance des logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 57426.6,
+   "originale": 57426.6,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "S&R Flooring Concepts (Ottawa) Inc.",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-07-16",
+   "description": "Autres meubles et fournitures, incluant des pièces",
+   "valeur": 23633.75,
+   "originale": 23633.75,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LEVAERO AVIATION INC",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2026-02-26",
+   "description": "Pièces d'aéronefs",
+   "valeur": 26569.59,
+   "originale": 26569.59,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "WAJAX LIMITED",
+   "ministere": "Défense nationale",
+   "date": "2025-10-14",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 56878.11,
+   "originale": 56878.11,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "1397858 GLOBAL UPHOLSTERY CO. INC.",
+   "ministere": "Défense nationale",
+   "date": "2025-10-31",
+   "description": "Papeterie et fournitures de bureau",
+   "valeur": 71463.0,
+   "originale": 71463.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "BUDGET CAR & TRUCK RENTALS",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-04-08",
+   "description": "Location de véhicules automobiles et d'autres véhicules",
+   "valeur": 12285.0,
+   "originale": 12285.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GLOBAL UPHOLSTERY CO.LTD",
+   "ministere": "Défense nationale",
+   "date": "2025-10-21",
+   "description": "Autres meubles et fournitures, incluant des pièces",
+   "valeur": 19057.38,
+   "originale": 19057.38,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "UNITED RENTALS OF CANADA INC",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-06-05",
+   "description": "Location de véhicules automobiles et d'autres véhicules",
+   "valeur": 10272.22,
+   "originale": 10272.22,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LEVITT SAFETY",
+   "ministere": "Défense nationale",
+   "date": "2025-12-16",
+   "description": "Pièces de navires et bateaux",
+   "valeur": 23836.9,
+   "originale": 24361.9,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FIREWEED HELICOPTERS LTD",
+   "ministere": "Environnement et Changement climatique Canada",
+   "date": "2025-09-08",
+   "description": "Location d'aéronefs",
+   "valeur": 51097.41,
+   "originale": 51097.41,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "1000 Islands Mechanical Ltd.",
+   "ministere": "Défense nationale",
+   "date": "2025-11-05",
+   "description": "Bâtiments résidentiels",
+   "valeur": 488611.88,
+   "originale": 446000.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 3
+  },
+  {
+   "fournisseur": "BKH SOLUTIONS CONSULTING INC.",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "date": "2026-01-26",
+   "description": "Services professionnels",
+   "valeur": 13497.5,
+   "originale": 13497.5,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "COMPUCOM CANADA CO.",
+   "ministere": "Conseil de recherches en sciences naturelles et en génie du Canada",
+   "date": "2025-09-08",
+   "description": "Logiciels clients de l'environnement d'informatique répartie (EIR)",
+   "valeur": 36359.78,
+   "originale": 36359.78,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FCA Canada Inc",
+   "ministere": "Agence des services frontaliers du Canada",
+   "date": "2025-10-27",
+   "description": "Véhicules automobiles de route",
+   "valeur": 72357.6,
+   "originale": 72357.6,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "IMPACT FOOD SOLUTIONS",
+   "ministere": "Défense nationale",
+   "date": "2026-03-03",
+   "description": "Autres services commerciaux qui ne sont pas précisés ailleurs",
+   "valeur": 10847.34,
+   "originale": 10847.34,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SOFTCHOICE CORPORATION",
+   "ministere": "Gendarmerie royale du Canada",
+   "date": "2025-09-26",
+   "description": "Logiciels d'applications et de bases de données (y compris les COTS) et logiciels de développement et de maintenance des applications et des bases de données",
+   "valeur": 27843.2,
+   "originale": 27843.2,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "SINCLAIR DENTAL CO LTD.",
+   "ministere": "Services aux Autochtones Canada",
+   "date": "2025-08-19",
+   "description": "Pièces du matériel",
+   "valeur": 30177.0,
+   "originale": 30177.0,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Thermo Fisher Scientific",
+   "ministere": "Défense nationale",
+   "date": "2025-09-04",
+   "description": "Autre équipement",
+   "valeur": 18685.68,
+   "originale": 18685.68,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 2
+  },
+  {
+   "fournisseur": "BELL CANADA",
+   "ministere": "Secrétariat du Conseil du Trésor du Canada",
+   "date": "2025-07-01",
+   "description": "Licences/maintenance des logiciels de gestion de réseau",
+   "valeur": 81054.21,
+   "originale": 81054.21,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Enterprise",
+   "ministere": "Défense nationale",
+   "date": "2026-03-31",
+   "description": "Location de véhicules automobiles et d'autres véhicules",
+   "valeur": 22745.0,
+   "originale": 22745.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "QMR STAFFING SOLUTIONS INCORPORATED QMR CONSULTING & PROFESSIONAL STAFFING",
+   "ministere": "Emploi et Développement social Canada",
+   "date": "2025-05-15",
+   "description": "Services de conseillers en gestion",
+   "valeur": 11074.0,
+   "originale": 5141.5,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GORD'S AUTO & PROPANE SERVICE INC",
+   "ministere": "Parcs Canada",
+   "date": "2026-03-09",
+   "description": "Véhicules divers",
+   "valeur": 24675.0,
+   "originale": 24675.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "NISHA",
+   "ministere": "Défense nationale",
+   "date": "2025-12-01",
+   "description": "Équipement informatique de l'environnement d'informatique répartie - Bureau/OP/ord. portable (y compris pièces et périphériques)",
+   "valeur": 12243.64,
+   "originale": 12243.64,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MOTOROLA SOLUTIONS CANADA INC",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "date": "2026-03-10",
+   "description": "Licences/maintenance des logiciels d'applications et de bases de données (y compris les COTS) et logiciels de développement et de maintenance des applications et des bases de données",
+   "valeur": 21588.65,
+   "originale": 21588.65,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "FAIRBANKS MORSE CANADA ULC",
+   "ministere": "Défense nationale",
+   "date": "2025-10-28",
+   "description": "Réparation et entretien - Navires et bateaux",
+   "valeur": 31283.19,
+   "originale": 31283.19,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "AQUA CAN FLOATATION LTD",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2026-03-05",
+   "description": "Réparation et entretien - Autres travaux de génie",
+   "valeur": 10731.4,
+   "originale": 10731.4,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "RAMPART INTERNATIONAL CORP",
+   "ministere": "Défense nationale",
+   "date": "2026-03-03",
+   "description": "Mobilier et ameublement du bureau incluant des pièces",
+   "valeur": 11877.49,
+   "originale": 11877.49,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "THERMO FISHER SCIENTIFIC",
+   "ministere": "Santé Canada",
+   "date": "2026-02-19",
+   "description": "Instruments, appareils et accessoires de mesure, de contrôle, de laboratoire, de médecine et d'optique",
+   "valeur": 178559.94,
+   "originale": 178559.94,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "LIVEARCH",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-10-02",
+   "description": "Réparation et entretien - Bâtiments résidentiels",
+   "valeur": 22364.53,
+   "originale": 22364.53,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MOTOROLA SOLUTIONS CANADA INC",
+   "ministere": "Défense nationale",
+   "date": "2025-11-13",
+   "description": "Navires et bateaux",
+   "valeur": 17180.94,
+   "originale": 17180.94,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Protak Consulting Group Inc",
+   "ministere": "Affaires mondiales Canada",
+   "date": "2025-11-05",
+   "description": "Services de conseillers en gestion",
+   "valeur": 176280.0,
+   "originale": 176280.0,
+   "methode": "Concurrentielle (appel d'offres sélectif)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "GUILLEVIN INERNATIONAL CO",
+   "ministere": "Pêches et Océans Canada",
+   "date": "2025-06-19",
+   "description": "Matières et pièces de la sécurité et de l'hygiène",
+   "valeur": 48596.68,
+   "originale": 48596.68,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "S T C G THE STANFORD (TRAINING &",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-09-01",
+   "description": "Frais d'enseignement et frais de participation à  des cours comprenant les séminaires, non spécifiés ailleurs",
+   "valeur": 38872.0,
+   "originale": 38872.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "POTENCIA TECHNOLOGIES INC.",
+   "ministere": "Agence de la santé publique du Canada",
+   "date": "2025-12-03",
+   "description": "Matériel d'éclairage, de contrôle et de distribution d'électricité",
+   "valeur": 20412.0,
+   "originale": 20412.0,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Don Mann Excavating Ltd",
+   "ministere": "Défense nationale",
+   "date": "2025-11-11",
+   "description": "Autres travaux de génie",
+   "valeur": 3371835.49,
+   "originale": 3371835.49,
+   "methode": "Concurrentielle (appel d'offres ouvert)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "MOTOROLA SOLUTIONS CANADA INC",
+   "ministere": "Défense nationale",
+   "date": "2025-10-08",
+   "description": "Équipement de communications/réseau (comprend les équipement analogique, numérique et combiné, le câblage, les pièces et",
+   "valeur": 454603.52,
+   "originale": 454603.52,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Bureau Veritas Canada (2019) Inc.",
+   "ministere": "Services publics et Approvisionnement Canada",
+   "date": "2025-12-03",
+   "description": "Autres services professionnels non précisés ailleurs",
+   "valeur": 35093.0,
+   "originale": 35093.0,
+   "methode": "Concurrentielle (traditionnelle)",
+   "versions": 1
+  },
+  {
+   "fournisseur": "Vectronic Aerospace Gmbh",
+   "ministere": "Parcs Canada",
+   "date": "2025-12-08",
+   "description": "Instruments de mesure, de contrôle, de laboratoire - Instruments de médecine et d'optique",
+   "valeur": 24634.11,
+   "originale": 24634.11,
+   "methode": "Sans appel d'offres",
+   "versions": 1
+  }
+ ]
+}

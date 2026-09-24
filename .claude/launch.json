@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tracabilite-canada",
+      "runtimeExecutable": "/Users/williamcarrier/Projets/tracabilite-canada/.venv/bin/python",
+      "runtimeArgs": ["app/app.py"],
+      "cwd": "/Users/williamcarrier/Projets/tracabilite-canada",
+      "port": 5072
+    }
+  ]
+}
