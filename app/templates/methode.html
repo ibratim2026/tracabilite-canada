@@ -4,7 +4,7 @@
 <section class="bande bande-rouge bande-courte">
   <div class="contenant etroit">
     <p class="surtitre">Méthode</p>
-    <h1>Comment on passe de 1,3 million de lignes à des chiffres fiables</h1>
+    <h1>Comment on passe de 2,6 millions de lignes à des chiffres fiables</h1>
     <p class="chapeau">Vous n'avez pas à nous croire&nbsp;: tout ce qui suit peut être refait à partir des données publiques et du <a href="https://github.com/ibratim2026/tracabilite-canada">code source</a>.</p>
   </div>
 </section>
@@ -29,11 +29,16 @@
     </div>
     {% endfor %}
 
-    <h2>4. Les noms d'entreprises sont regroupés, prudemment</h2>
-    <p>« IBM CANADA LTD. », « IBM Canada Limited » et « IBM CANADA LTEE » sont la même entreprise. Nous regroupons les noms qui ne diffèrent que par les majuscules, les accents, la ponctuation ou la forme juridique (Inc., Ltée, Limited, s.e.n.c.r.l.…). Nous ne regroupons <em>pas</em> les filiales ni les entités distinctes d'un même groupe. Chaque fiche affiche toutes les façons d'écrire le nom qu'elle réunit.</p>
+    <h2>4. Les noms sont regroupés, prudemment</h2>
+    <p>« IBM CANADA LTD. », « IBM Canada Limited » et « IBM CANADA LTEE » sont la même entreprise. Nous regroupons les noms qui ne diffèrent que par les majuscules, les accents, la ponctuation ou la forme juridique (Inc., Ltée, Limited, s.e.n.c.r.l.…). Nous ne regroupons <em>pas</em> les filiales ni les entités distinctes d'un même groupe. Chaque fiche affiche toutes les façons d'écrire le nom qu'elle réunit. Une entreprise qui reçoit à la fois des contrats et des subventions a une seule fiche.</p>
 
-    <h2>5. La période</h2>
-    <p>Les fiches couvrent les contrats signés depuis le 1<sup>er</sup> avril 2017. Avant, les déclarations sont trop inégales d'un ministère à l'autre pour être comparées. Les entreprises qui ont reçu 1&nbsp;M$ ou plus ont une fiche complète&nbsp;; toutes les autres sont dans la recherche.</p>
+    <h2>5. Les subventions et contributions</h2>
+    <p>Même source, même piège&nbsp;: le fichier des <a href="{{ s.source.url }}">subventions et contributions</a> republie chaque entente à chaque modification, avec sa nouvelle valeur totale. Nous gardons la dernière version officielle de chaque entente. Depuis 2017, l'addition naïve donnerait {{ s.naif_total.somme_lignes | argent }}&nbsp;; le vrai total est {{ s.naif_total.somme_ententes | argent }}.</p>
+    <p>Ici, <strong>pas de mise en quarantaine automatique</strong>. Nous l'avons testée, puis retirée&nbsp;: les grands écarts entre versions d'une même entente se sont tous révélés réels (une entente annulée et ramenée à 0&nbsp;$, un montant symbolique remplacé par la vraie valeur). Une règle qui aurait « corrigé » ces cas aurait effacé des faits.</p>
+    <p><strong>Les particuliers ne sont jamais nommés.</strong> Le gouvernement publie certains versements à des personnes (et des « rapports en lots » qui les regroupent). Nous les comptons dans les totaux, sans jamais afficher de nom ni les rendre cherchables.</p>
+
+    <h2>6. La période</h2>
+    <p>Les fiches couvrent les contrats signés depuis le 1<sup>er</sup> avril 2017. Avant, les déclarations sont trop inégales d'un ministère à l'autre pour être comparées. Les entreprises et organismes qui ont reçu 1&nbsp;M$ ou plus (contrats et subventions additionnés) ont une fiche complète&nbsp;; tous les autres sont dans la recherche.</p>
 
     <h2>Ce que les chiffres veulent dire</h2>
     <ul class="principes">

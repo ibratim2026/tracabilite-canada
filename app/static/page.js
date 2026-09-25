@@ -40,7 +40,7 @@ function argent(v) {
   if (!fiche || !donnees) return;
   const contrats = JSON.parse(donnees.textContent);
   const echapper = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const date = (s) => new Date(s + "T12:00").toLocaleDateString("fr-CA", { day: "numeric", month: "long", year: "numeric" });
+  const date = (s) => new Date(s + "T12:00").toLocaleDateString("fr-CA", { day: "numeric", month: "long", year: "numeric" }).replace(/^1 /, "1er ");
 
   function tirer() {
     const c = contrats[Math.floor(Math.random() * contrats.length)];
@@ -69,18 +69,22 @@ function argent(v) {
   if (!champ || !liste || !window.INDEX_RECHERCHE) return;
 
   // Même logique que le serveur : sans accents, sans ponctuation, en majuscules.
+  const TYPES = { F: "Entreprise", N: "Organisme sans but lucratif", S: "Université ou institution publique",
+    G: "Gouvernement", A: "Bénéficiaire autochtone", I: "Organisation internationale", O: "Organisme" };
   const plier = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
   const echapper = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  let index = null;
+  // L'index est découpé par les deux premières lettres de chaque mot du nom :
+  // on ne charge que le morceau utile.
+  const morceaux = {};
 
-  async function charger() {
-    if (index) return index;
-    etat.textContent = "Chargement de la liste des entreprises…";
-    const rep = await fetch(window.INDEX_RECHERCHE);
-    const brut = await rep.json();
-    index = brut.map(([nom, total, nb, slug]) => ({ nom, total, nb, slug, cle: " " + plier(nom) + " " }));
-    if (!champ.value.trim()) etat.textContent = "Prêt. Tapez au moins deux lettres.";
-    return index;
+  async function charger(prefixe) {
+    if (!morceaux[prefixe]) {
+      etat.textContent = "Recherche…";
+      morceaux[prefixe] = fetch(`${window.INDEX_RECHERCHE}/${prefixe}.json`)
+        .then((r) => (r.ok ? r.json() : []))
+        .then((brut) => brut.map(([nom, total, nb, slug, type]) => ({ nom, total, nb, slug, type, cle: " " + plier(nom) + " " })));
+    }
+    return morceaux[prefixe];
   }
 
   function surligner(nom, mots) {
@@ -98,16 +102,22 @@ function argent(v) {
     if (champ.value) url.searchParams.set("q", champ.value); else url.searchParams.delete("q");
     history.replaceState(null, "", url);
     if (q.length < 2) { liste.innerHTML = ""; etat.textContent = "Commencez à taper un nom."; return; }
-    const donnees = await charger();
     const mots = q.split(" ");
+    // Le mot le plus long est le plus discriminant : c'est son morceau qu'on charge.
+    const VIDES = new Set(["INC", "LTD", "LTEE", "LIMITED", "CORP", "CORPORATION", "CO", "THE", "OF", "AND", "DE", "DU",
+      "DES", "LA", "LE", "LES", "ET", "EN", "LP", "LLP", "ULC", "SA", "INCORPORATED", "COMPANY"]);
+    const pivot = mots.filter((m) => m.length >= 2 && !VIDES.has(m)).sort((x, y) => y.length - x.length)[0];
+    if (!pivot) { liste.innerHTML = ""; etat.textContent = "Tapez un mot plus précis du nom."; return; }
+    const donnees = await charger(pivot.slice(0, 2));
+    if (plier(champ.value) !== q) return;   // l'utilisateur a continué de taper
     // Chaque mot tapé doit apparaître au début d'un mot du nom.
     const trouves = donnees.filter((e) => mots.every((m) => e.cle.includes(" " + m)));
     const n = trouves.length;
-    etat.textContent = n === 0 ? "Aucune entreprise trouvée. Essayez une partie du nom seulement."
-      : `${n.toLocaleString("fr-CA")} entreprise${n > 1 ? "s" : ""} trouvée${n > 1 ? "s" : ""}` + (n > 30 ? " · les 30 plus importantes" : "");
+    etat.textContent = n === 0 ? "Aucun résultat. Essayez une partie du nom seulement."
+      : `${n.toLocaleString("fr-CA")} résultat${n > 1 ? "s" : ""}` + (n > 30 ? " · les 30 plus importants" : "");
     const motsBruts = champ.value.trim().split(/\s+/);
     liste.innerHTML = trouves.slice(0, 30).map((e) => {
-      const detail = `${e.nb.toLocaleString("fr-CA")} contrat${e.nb > 1 ? "s" : ""} depuis 2017`;
+      const detail = `${TYPES[e.type] || "Entreprise"} · ${e.nb.toLocaleString("fr-CA")} contrat${e.nb > 1 ? "s" : ""} ou subvention${e.nb > 1 ? "s" : ""} depuis 2017`;
       if (e.slug) {
         return `<li><a class="resultat avec-fiche" href="${window.BASE}/entreprise/${e.slug}/">
           <span class="resultat-nom">${surligner(e.nom, motsBruts)}</span><span class="resultat-total">${argent(e.total)}</span>
@@ -115,7 +125,7 @@ function argent(v) {
       }
       const officiel = "https://rechercher.ouvert.canada.ca/contrats/?search_text=" + encodeURIComponent(e.nom);
       return `<li class="resultat"><span class="resultat-nom">${surligner(e.nom, motsBruts)}</span><span class="resultat-total">${argent(e.total)}</span>
-        <span class="resultat-detail">${detail} · pas de fiche détaillée (moins de 1 M$) · <a href="${officiel}">voir sur le site officiel ↗</a></span></li>`;
+        <span class="resultat-detail">${detail} · pas de fiche détaillée (moins de 1 M$) · <a href="${officiel}">contrats sur le site officiel ↗</a></span></li>`;
     }).join("");
   }
 
@@ -123,5 +133,47 @@ function argent(v) {
   champ.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, 120); });
   const depart = new URL(location.href).searchParams.get("q");
   if (depart) { champ.value = depart; chercher(); }
-  champ.addEventListener("focus", () => charger(), { once: true });
+})();
+
+// ---- « Acheter ou donner ? » : la devinette à choix.
+(function choix() {
+  const boite = document.getElementById("choix");
+  if (!boite) return;
+  const bonne = boite.dataset.bonne;
+  boite.querySelectorAll("[data-choix]").forEach((b) => b.addEventListener("click", () => {
+    const juste = b.dataset.choix === bonne;
+    document.getElementById("choix-verdict").textContent = juste
+      ? "Exact. La plupart des gens pensent le contraire."
+      : "Ce sont les subventions, et de loin. La plupart des gens pensent le contraire.";
+    boite.querySelectorAll("[data-choix]").forEach((x) => { x.disabled = true; x.classList.toggle("choisi", x === b); });
+    document.getElementById("choix-reponse").hidden = false;
+  }));
+})();
+
+// ---- Une vraie entente, tirée au hasard.
+(function ententeAuHasard() {
+  const fiche = document.getElementById("fiche-sub");
+  const donnees = document.getElementById("echantillon-sub");
+  if (!fiche || !donnees) return;
+  const ententes = JSON.parse(donnees.textContent);
+  const echapper = (s) => String(s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const date = (s) => new Date(s + "T12:00").toLocaleDateString("fr-CA", { day: "numeric", month: "long", year: "numeric" }).replace(/^1 /, "1er ");
+  function tirer() {
+    const e = ententes[Math.floor(Math.random() * ententes.length)];
+    const ville = (e.ville || "").split(/\s*[|│]\s*/).pop();
+    const lieu = [ville, e.province].filter(Boolean).join(", ");
+    fiche.innerHTML = `
+      <p class="surtitre">${echapper(e.ministere)}</p>
+      <p class="fiche-quoi">${echapper(e.titre || e.programme)}</p>
+      <p class="fiche-montant">${argent(e.valeur)}</p>
+      <dl>
+        <dt>Bénéficiaire</dt><dd>${echapper(e.nom)}${e.type ? ` <span class="etiquette">${echapper(e.type)}</span>` : ""}</dd>
+        ${lieu ? `<dt>Où</dt><dd>${echapper(lieu)}</dd>` : ""}
+        <dt>Programme</dt><dd>${echapper(e.programme)}</dd>
+        <dt>Début</dt><dd>${date(e.debut)}</dd>
+      </dl>`;
+    fiche.style.animation = "none"; void fiche.offsetWidth; fiche.style.animation = "";
+  }
+  document.getElementById("tirer-sub").addEventListener("click", tirer);
+  tirer();
 })();

@@ -131,6 +131,61 @@ def construire_contrats(con):
     con.commit()
 
 
+# ---- Les subventions et contributions ---------------------------------------
+# Même piège que les contrats : chaque modification republie l'entente avec sa
+# valeur TOTALE (dictionnaire officiel, champ agreement_value). On garde la
+# modification la plus récente de chaque entente (même ministère + même numéro
+# de référence).
+LOTS = re.compile(r"batch report|rapport en lots", re.I)
+TYPES_BENEF = {
+    "F": "Entreprise", "N": "Organisme sans but lucratif", "S": "Université ou institution publique",
+    "G": "Gouvernement", "A": "Bénéficiaire autochtone", "I": "Organisation internationale",
+    "P": "Particulier", "O": "Autre", "": "Non précisé",
+}
+
+
+def construire_subventions(con):
+    con.execute("DROP TABLE IF EXISTS subventions")
+    con.execute("""CREATE TABLE subventions (
+        cle TEXT PRIMARY KEY, ministere TEXT, ministere_nom TEXT, type_entente TEXT, type_benef TEXT,
+        bn TEXT, nom TEXT, province TEXT, ville TEXT, circonscription TEXT, no_circ TEXT,
+        programme TEXT, titre TEXT, valeur REAL, debut TEXT, fin TEXT, reference TEXT,
+        nb_versions INTEGER, quarantaine TEXT, beneficiaire_id INTEGER, valeur_max REAL)""")
+    groupes = defaultdict(list)
+    for rowid, org, ref, modif, val in con.execute(
+            "SELECT rowid, owner_org, ref_number, no_modif, valeur FROM sub_brut"):
+        groupes[f"{org}|{ref}"].append((modif, rowid, val or 0))
+
+    # Pas de règle anti-coquilles ici : vérification faite, les grands sauts
+    # entre versions sont réels (entente annulée et ramenée à 0 $, comme celle
+    # d'UNIS/WE Charity en 2020 ; montant symbolique puis vraie valeur). La
+    # dernière version officielle fait foi. On garde aussi la valeur la plus
+    # haute jamais déclarée, pour repérer les ententes réduites ou annulées.
+    choisis = {cle: (max(vs)[1], len(vs), max(v for _, _, v in vs)) for cle, vs in groupes.items()}
+
+    requete = ("SELECT owner_org, owner_org_title, agreement_type, recipient_type, "
+               "recipient_business_number, recipient_legal_name, recipient_operating_name, "
+               "recipient_province, recipient_city, federal_riding_name_fr, federal_riding_number, "
+               "prog_name_fr, prog_name_en, agreement_title_fr, agreement_title_en, valeur, "
+               "agreement_start_date, agreement_end_date, ref_number FROM sub_brut WHERE rowid = ?")
+    lignes = []
+    for cle, (rowid, nv, v_max) in choisis.items():
+        (org, titre_org, typ, benef, bn, legal, commercial, prov, ville, circ, no_circ,
+         prog_fr, prog_en, titre_fr, titre_en, val, deb, fin, ref) = con.execute(requete, (rowid,)).fetchone()
+        nom = (legal or commercial or "").strip()
+        if LOTS.search(nom):
+            benef, nom = "LOT", "Paiements regroupés (rapport en lots)"
+        ministere_nom = titre_org.split("|")[-1].strip() if "|" in titre_org else titre_org
+        quarantaine = "valeur nulle ou négative" if val is None or val <= 0 else None
+        lignes.append((cle, org, ministere_nom, typ, benef or "", (bn or "")[:9], nom, prov, ville,
+                       circ, no_circ, (prog_fr or prog_en or "").strip(), (titre_fr or titre_en or "").strip(),
+                       val, (deb or "")[:10], (fin or "")[:10], ref, nv, quarantaine, None, v_max))
+    con.executemany(f"INSERT INTO subventions VALUES ({','.join('?' * 21)})", lignes)
+    con.execute("CREATE INDEX i_sub_debut ON subventions(debut)")
+    con.execute("CREATE INDEX i_sub_minis ON subventions(ministere)")
+    con.commit()
+
+
 # ---- Les entreprises -------------------------------------------------------
 # Le même fournisseur s'écrit de dix façons (« IBM CANADA LTD. », « IBM Canada
 # Limited »…). On regroupe sur un nom normalisé : majuscules, sans accents ni
@@ -143,7 +198,22 @@ PERIODE_DEBUT = "2017-04-01"   # avant, les déclarations sont trop inégales
 SEUIL_FICHE = 1_000_000        # une fiche complète à partir de 1 M$ reçus
 
 
+BILINGUE = re.compile(r"\s*[|│]\s*")
+
+
+def moitie_francaise(nom):
+    """« Government of Quebec | Gouvernement du Québec » -> la partie française."""
+    parties = [x for x in BILINGUE.split(nom) if x.strip()]
+    return parties[-1].strip() if parties else nom.strip()
+
+
 def normaliser(nom):
+    # Subventions : « nom anglais | nom français » (format officiel). La clé
+    # est tirée de la première moitié, pour rester stable.
+    if BILINGUE.search(nom):
+        parties = [normaliser(x) for x in BILINGUE.split(nom)]
+        parties = [x for x in parties if x]
+        return parties[0] if parties else ""
     # Noms bilingues « X LIMITED / X LIMITÉE » : si les deux moitiés disent la
     # même chose, on n'en garde qu'une.
     moities = {normaliser(m) for m in nom.split("/")} - {""} if "/" in nom else None
@@ -162,22 +232,43 @@ def fabriquer_slug(nom):
 
 
 def construire_fournisseurs(con):
-    groupes, variantes = defaultdict(list), defaultdict(Counter)
+    """Une seule fiche par entreprise ou organisme : contrats ET subventions.
+
+    Les particuliers (type P) et les paiements regroupés ne reçoivent jamais de
+    fiche ni d'entrée dans la recherche : ils comptent dans les totaux, c'est tout.
+    """
+    contrats, subventions = defaultdict(list), defaultdict(list)
+    variantes, types, provinces = defaultdict(Counter), defaultdict(Counter), defaultdict(Counter)
     for cle, nom, val in con.execute(
             "SELECT cle, fournisseur, valeur FROM contrats WHERE quarantaine IS NULL "
             f"AND date_contrat BETWEEN '{PERIODE_DEBUT}' AND date('now') AND fournisseur <> ''"):
         k = normaliser(nom)
-        if not k:
-            continue
-        groupes[k].append((cle, val))
-        variantes[k][nom] += 1
+        if k:
+            contrats[k].append((cle, val))
+            variantes[k][nom.strip()] += 1
+    for cle, nom, val, benef, prov in con.execute(
+            "SELECT cle, nom, valeur, type_benef, province FROM subventions WHERE quarantaine IS NULL "
+            f"AND debut BETWEEN '{PERIODE_DEBUT}' AND date('now') AND nom <> '' "
+            "AND type_benef NOT IN ('P', 'LOT')"):
+        k = normaliser(nom)
+        if k:
+            subventions[k].append((cle, val))
+            variantes[k][moitie_francaise(nom)] += 1
+            types[k][benef] += 1
+            if prov:
+                provinces[k][prov] += 1
+
+    total = lambda k: sum(v for _, v in contrats[k]) + sum(v for _, v in subventions[k])
+    cles = sorted(set(contrats) | set(subventions), key=lambda k: -total(k))
 
     con.execute("DROP TABLE IF EXISTS fournisseurs")
     con.execute("""CREATE TABLE fournisseurs (id INTEGER PRIMARY KEY, cle_norm TEXT, nom TEXT,
-        variantes TEXT, total REAL, nb INTEGER, slug TEXT, a_fiche INTEGER)""")
-    pris, lignes, liens = set(), [], []
-    for i, (k, cs) in enumerate(sorted(groupes.items(), key=lambda g: -sum(v for _, v in g[1])), 1):
-        total = sum(v for _, v in cs)
+        variantes TEXT, total REAL, nb INTEGER, slug TEXT, a_fiche INTEGER,
+        total_contrats REAL, nb_contrats INTEGER, total_subv REAL, nb_subv INTEGER,
+        type_benef TEXT, province TEXT)""")
+    pris, lignes, liens_c, liens_s = set(), [], [], []
+    for i, k in enumerate(cles, 1):
+        tc, ts = sum(v for _, v in contrats[k]), sum(v for _, v in subventions[k])
         # Nom affiché : de préférence une variante en casse normale, la plus fréquente.
         nom = max(variantes[k].items(), key=lambda x: (any(c.islower() for c in x[0]), x[1]))[0]
         nom = re.sub(r"\s+", " ", nom).strip(" /,")
@@ -186,12 +277,18 @@ def construire_fournisseurs(con):
         if slug in pris:   # deux noms très longs coupés au même endroit
             slug = f"{slug[:60]}-{hashlib.md5(k.encode()).hexdigest()[:6]}"
         pris.add(slug)
+        typ = types[k].most_common(1)[0][0] if types[k] else ""
+        prov = provinces[k].most_common(1)[0][0] if provinces[k] else ""
         lignes.append((i, k, nom, json.dumps(sorted(variantes[k]), ensure_ascii=False),
-                       total, len(cs), slug, int(total >= SEUIL_FICHE)))
-        liens += [(i, cle) for cle, _ in cs]
-    con.executemany("INSERT INTO fournisseurs VALUES (?,?,?,?,?,?,?,?)", lignes)
-    con.executemany("UPDATE contrats SET fournisseur_id = ? WHERE cle = ?", liens)
+                       tc + ts, len(contrats[k]) + len(subventions[k]), slug,
+                       int(tc + ts >= SEUIL_FICHE), tc, len(contrats[k]), ts, len(subventions[k]), typ, prov))
+        liens_c += [(i, cle) for cle, _ in contrats[k]]
+        liens_s += [(i, cle) for cle, _ in subventions[k]]
+    con.executemany(f"INSERT INTO fournisseurs VALUES ({','.join('?' * 14)})", lignes)
+    con.executemany("UPDATE contrats SET fournisseur_id = ? WHERE cle = ?", liens_c)
+    con.executemany("UPDATE subventions SET beneficiaire_id = ? WHERE cle = ?", liens_s)
     con.execute("CREATE INDEX i_fourn ON contrats(fournisseur_id)")
+    con.execute("CREATE INDEX i_benef ON subventions(beneficiaire_id)")
     con.execute("CREATE INDEX i_minis ON contrats(ministere)")
     con.execute("CREATE UNIQUE INDEX i_slug ON fournisseurs(slug)")
     con.commit()
@@ -301,12 +398,106 @@ def calculer(con):
     }
 
 
+def calculer_subventions(con):
+    """Chiffres de la page « Ce qu'Ottawa donne » (exercice 2025-2026)."""
+    debut, fin = EXERCICE
+    ok = f"debut BETWEEN '{debut}' AND '{fin}' AND quarantaine IS NULL"
+    un = lambda sql: con.execute(sql).fetchone()
+    pop = json.loads((RACINE / "app" / "contenu" / "population.json").read_text())
+
+    nb, total = un(f"SELECT COUNT(*), SUM(valeur) FROM subventions WHERE {ok}")
+    mediane = un(f"SELECT valeur FROM subventions WHERE {ok} ORDER BY valeur LIMIT 1 OFFSET {nb // 2}")[0]
+    lignes_ex, somme_lignes = un(f"SELECT COUNT(*), SUM(valeur) FROM sub_brut "
+                                 f"WHERE agreement_start_date BETWEEN '{debut}' AND '{fin}'")
+
+    ententes = [dict(code=c, nb=n, valeur=v) for c, n, v in con.execute(
+        f"SELECT type_entente, COUNT(*), SUM(valeur) FROM subventions WHERE {ok} GROUP BY 1 ORDER BY 3 DESC")]
+    beneficiaires = [dict(code=c, nom=TYPES_BENEF.get(c, "Paiements regroupés") if c != "LOT"
+                          else "Paiements regroupés (particuliers)", nb=n, valeur=v)
+                     for c, n, v in con.execute(
+                         f"SELECT type_benef, COUNT(*), SUM(valeur) FROM subventions WHERE {ok} "
+                         f"GROUP BY 1 ORDER BY 3 DESC")]
+    programmes = [dict(nom=p, ministere=m, nb=n, valeur=v) for p, m, n, v in con.execute(
+        f"SELECT programme, MAX(ministere_nom), COUNT(*), SUM(valeur) FROM subventions WHERE {ok} "
+        f"AND programme <> '' GROUP BY programme ORDER BY 4 DESC LIMIT 12")]
+    ministeres = [dict(code=o, nom=m, nb=n, valeur=v) for o, m, n, v in con.execute(
+        f"SELECT ministere, ministere_nom, COUNT(*), SUM(valeur) FROM subventions WHERE {ok} "
+        f"GROUP BY ministere ORDER BY 4 DESC LIMIT 10")]
+    top = [dict(nom=n, slug=sl, a_fiche=af, valeur=v, type=TYPES_BENEF.get(t, ""))
+           for n, sl, af, v, t in con.execute(
+               f"SELECT f.nom, f.slug, f.a_fiche, SUM(s.valeur), f.type_benef FROM subventions s "
+               f"JOIN fournisseurs f ON f.id = s.beneficiaire_id WHERE s.debut BETWEEN '{debut}' AND '{fin}' "
+               f"AND s.quarantaine IS NULL "
+               f"GROUP BY f.id ORDER BY 4 DESC LIMIT 12")]
+    provinces = []
+    for code, v, n, v_a in con.execute(f"SELECT province, SUM(valeur), COUNT(*), "
+                                  f"SUM(CASE WHEN type_benef = 'A' THEN valeur ELSE 0 END) FROM subventions WHERE {ok} "
+                                  f"AND province IN ({','.join(repr(p) for p in pop['provinces'])}) "
+                                  f"GROUP BY province"):
+        provinces.append(dict(code=code, nom=pop["noms"][code], valeur=v, nb=n, part_autochtone=v_a / v,
+                              par_habitant=v / pop["provinces"][code]))
+    provinces.sort(key=lambda x: -x["par_habitant"])
+    sans_province = un(f"SELECT SUM(valeur) FROM subventions WHERE {ok} AND (province = '' OR province IS NULL)")[0] or 0
+
+    par_annee = [dict(exercice=f"{a}-{a + 1}", nb=n, valeur=v) for a, n, v in con.execute(
+        "SELECT CAST(substr(debut,1,4) AS INT) - (substr(debut,6,2) < '04') a, COUNT(*), SUM(valeur) "
+        f"FROM subventions WHERE quarantaine IS NULL AND debut BETWEEN '{PERIODE_DEBUT}' AND '{fin}' "
+        "GROUP BY a ORDER BY a")]
+
+    # Les plus grosses ententes depuis 2017 (hors particuliers).
+    geantes = [dict(nom=moitie_francaise(n), ministere=m, programme=p, valeur=v, debut=d, type=TYPES_BENEF.get(t, ""),
+                    slug=sl, a_fiche=af)
+               for n, m, p, v, d, t, sl, af in con.execute(
+                   "SELECT s.nom, s.ministere_nom, s.programme, s.valeur, s.debut, s.type_benef, f.slug, f.a_fiche "
+                   "FROM subventions s LEFT JOIN fournisseurs f ON f.id = s.beneficiaire_id "
+                   f"WHERE s.quarantaine IS NULL AND s.debut BETWEEN '{PERIODE_DEBUT}' AND date('now') "
+                   "AND s.type_benef NOT IN ('P','LOT','G') AND s.nom NOT LIKE 'Gouvernement%' "
+                   "AND s.nom NOT LIKE 'Government%' AND s.nom NOT LIKE 'Province%' AND s.nom NOT LIKE 'Ministre%' "
+                   "ORDER BY s.valeur DESC LIMIT 8")]
+
+    # Ententes ramenées sous la moitié de leur plus haute valeur déclarée.
+    reduites_nb, reduites_somme = un(
+        f"SELECT COUNT(*), SUM(valeur_max - COALESCE(valeur, 0)) FROM subventions WHERE debut >= '{PERIODE_DEBUT}' "
+        "AND valeur_max >= 1e6 AND COALESCE(valeur, 0) < valeur_max * 0.5")
+    reduites = [dict(nom=moitie_francaise(n), ministere=m, max=vm, finale=v or 0, debut=d)
+                for n, m, vm, v, d in con.execute(
+                    f"SELECT nom, ministere_nom, valeur_max, valeur, debut FROM subventions "
+                    f"WHERE debut >= '{PERIODE_DEBUT}' AND valeur_max >= 1e6 AND COALESCE(valeur, 0) < valeur_max * 0.5 "
+                    "AND type_benef NOT IN ('P','LOT') ORDER BY valeur_max - COALESCE(valeur, 0) DESC LIMIT 5")]
+
+    naif_total = dict(zip(("somme_lignes", "lignes"), un(
+        f"SELECT SUM(valeur), COUNT(*) FROM sub_brut WHERE agreement_start_date BETWEEN '{PERIODE_DEBUT}' AND date('now')")))
+    naif_total.update(zip(("somme_ententes", "ententes"), un(
+        f"SELECT SUM(valeur), COUNT(*) FROM subventions WHERE debut BETWEEN '{PERIODE_DEBUT}' AND date('now') "
+        "AND quarantaine IS NULL")))
+
+    echantillon = [dict(nom=moitie_francaise(n), ministere=m, programme=p, titre=t, valeur=v, debut=d,
+                        ville=vi, province=pr, type=TYPES_BENEF.get(tb, ""))
+                   for n, m, p, t, v, d, vi, pr, tb in con.execute(
+                       f"SELECT nom, ministere_nom, programme, titre, valeur, debut, ville, province, type_benef "
+                       f"FROM subventions WHERE {ok} AND type_benef NOT IN ('P','LOT') AND programme <> '' "
+                       f"AND nom <> '' ORDER BY random() LIMIT 300")]
+
+    return dict(exercice=EXERCICE_NOM, nb=nb, total=total, mediane=mediane,
+                par_personne=total / pop["canada"], naif=dict(lignes=lignes_ex, somme_lignes=somme_lignes),
+                naif_total=naif_total, ententes=ententes, beneficiaires=beneficiaires, programmes=programmes, ministeres=ministeres,
+                top=top, provinces=provinces, sans_province=sans_province, par_annee=par_annee,
+                geantes=geantes, reduites=dict(nb=reduites_nb, somme=reduites_somme, exemples=reduites),
+                echantillon=echantillon, source=dict(
+                    nom="Gouvernement ouvert — Divulgation proactive : subventions et contributions",
+                    url="https://ouvert.canada.ca/data/fr/dataset/432527ab-7aac-45b5-81d6-7597107a7013"),
+                population_source=pop["source"])
+
+
 def main():
     con = sqlite3.connect(BASE)
     construire_contrats(con)
+    construire_subventions(con)
     construire_fournisseurs(con)
     chiffres = calculer(con)
     SORTIE.write_text(json.dumps(chiffres, ensure_ascii=False, indent=1))
+    (SORTIE.parent / "subventions.json").write_text(
+        json.dumps(calculer_subventions(con), ensure_ascii=False, indent=1))
     c = {k: v for k, v in chiffres.items() if k not in ("echantillon",)}
     print(json.dumps(c, ensure_ascii=False, indent=1))
 

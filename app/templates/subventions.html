@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block titre %}Ce qu'Ottawa donne — subventions fédérales — Traçabilité Canada{% endblock %}
+{% block description %}Les subventions et contributions fédérales, expliquées simplement et vérifiables chiffre par chiffre.{% endblock %}
+{% block contenu %}
+{% set sources %}<a href="{{ s.source.url }}">{{ s.source.nom }}</a>, données du {{ donnees_du | date_fr }}{% endset %}
+
+<!-- 1. La question -->
+<section class="bande bande-rouge heros">
+  <div class="contenant etroit">
+    <p class="surtitre">Exercice {{ s.exercice }} · subventions et contributions fédérales</p>
+    <h1>Ottawa dépense-t-il plus pour acheter… ou pour donner&nbsp;?</h1>
+    <p class="chapeau">D'un côté, les contrats&nbsp;: le gouvernement achète un navire, un logiciel, une traduction. De l'autre, les subventions et contributions&nbsp;: il finance un organisme, une usine, une communauté, sans rien acheter. Lequel pèse le plus lourd, selon vous&nbsp;?</p>
+    <div class="devinette" id="choix" data-bonne="subventions">
+      <div class="choix-boutons">
+        <button type="button" class="bouton" data-choix="contrats">Les contrats</button>
+        <button type="button" class="bouton" data-choix="egal">À peu près pareil</button>
+        <button type="button" class="bouton" data-choix="subventions">Les subventions</button>
+      </div>
+      <div class="devinette-reponse" id="choix-reponse" hidden>
+        <p id="choix-verdict" class="gros-verdict"></p>
+        <div class="comparaison claire-sur-rouge">
+          <div><p class="petit-titre">Contrats</p><p class="gros-chiffre">{{ (s.total / s.ratio_contrats) | argent }}</p></div>
+          <div class="accent"><p class="petit-titre">Subventions et contributions</p><p class="gros-chiffre">{{ s.total | argent }}</p></div>
+        </div>
+        <p>Ottawa a engagé <strong>{{ s.ratio_contrats | nombre(1) }} fois plus</strong> en subventions et contributions qu'en contrats&nbsp;: {{ s.nb | nombre }} ententes, soit <strong>{{ s.par_personne | nombre }}&nbsp;$ par Canadienne et par Canadien</strong>.</p>
+        {% call source() %}
+          <p><strong>Source&nbsp;:</strong> {{ sources }}. Ententes dont la date de début tombe dans l'exercice {{ s.exercice }}, chacune comptée une seule fois à sa valeur la plus récente.</p>
+          <p><strong>Population&nbsp;:</strong> <a href="{{ pop.source.url }}">{{ pop.source.nom }}</a>.</p>
+        {% endcall %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Subvention ou contribution -->
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Deux mots qu'on confond</p>
+    <h2>Une subvention, c'est une bourse. Une contribution, c'est un contrat de confiance.</h2>
+    <div class="comparaison">
+      {% for e in s.ententes if e.code in ('G', 'C') %}
+      <div class="{{ 'accent' if e.code == 'C' }}"><p class="petit-titre">{{ ententes[e.code] }}s</p><p class="gros-chiffre {{ 'rouge' if e.code == 'C' }}">{{ e.valeur | argent }}</p>
+        <p>{% if e.code == 'G' %}Versée si on remplit les critères. Pas de rapport à rendre sur le résultat. Comme une bourse d'études.{% else %}Versée pour faire quelque chose de précis. Il faut prouver qu'on l'a fait, sinon il faut rembourser.{% endif %}</p></div>
+      {% endfor %}
+    </div>
+    <p class="phrase-choc">{{ s.part_contributions | pourcent }} de l'argent passe par des contributions&nbsp;: <strong>l'essentiel est donc conditionnel</strong> et vérifiable.</p>
+  </div>
+</section>
+
+<!-- 3. Qui reçoit -->
+<section class="bande bande-pale">
+  <div class="contenant etroit">
+    <p class="surtitre">Qui reçoit</p>
+    <h2>Pas surtout des entreprises</h2>
+    <p class="chapeau">On imagine souvent des chèques aux grandes compagnies. En {{ s.exercice }}, les entreprises ont reçu moins que les organismes sans but lucratif et les communautés autochtones.</p>
+    <ol class="barres">
+      {% set maxb = s.beneficiaires[0].valeur %}
+      {% for b in s.beneficiaires %}
+      <li><span class="barres-nom">{{ b.nom }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (b.valeur / maxb * 100) | round(1) }}%"></span></span><span class="barres-val">{{ b.valeur | argent }}</span></li>
+      {% endfor %}
+    </ol>
+    <p><strong>Bénéficiaires autochtones&nbsp;:</strong> une grande partie de cet argent finance des services que le fédéral doit assurer dans les communautés des Premières Nations&nbsp;: écoles, santé, eau potable, logement. Ailleurs au pays, ce sont les provinces qui paient ces services.</p>
+    <p><strong>Particuliers&nbsp;:</strong> ils sont comptés dans les totaux, mais <strong>jamais nommés sur ce site</strong>. Suivre l'argent public ne veut pas dire exposer des citoyens.</p>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ sources }}. Le type de bénéficiaire est celui que déclare le ministère.</p>{% endcall %}
+  </div>
+</section>
+
+<!-- 4. Par habitant -->
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Par habitant, province par province</p>
+    <h2>Au Nunavut, {{ s.provinces[0].par_habitant | nombre }}&nbsp;$ par habitant. En Ontario, {{ (s.provinces | selectattr('code', 'equalto', 'ON') | first).par_habitant | nombre }}&nbsp;$.</h2>
+    <ol class="barres">
+      {% set maxp = s.provinces[0].par_habitant %}
+      {% for p in s.provinces %}
+      <li><span class="barres-nom">{{ p.nom }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (p.par_habitant / maxp * 100) | round(1) }}%"></span></span><span class="barres-val">{{ p.par_habitant | nombre }}&nbsp;$</span></li>
+      {% endfor %}
+    </ol>
+    {% set prov2 = s.provinces | rejectattr('code', 'in', ['NU', 'NT', 'YT']) | first %}
+    <p class="note">Première province du classement&nbsp;: {{ prov2.nom }}. {{ prov2.part_autochtone | pourcent }} de ses {{ prov2.valeur | argent }} vont à des bénéficiaires autochtones, en bonne partie des ententes du programme « Traités et Gouvernement autochtone ».</p>
+    <p class="chapeau">Pourquoi un tel écart pour les territoires&nbsp;? Le Nunavut compte {{ pop.provinces.NU | nombre }} habitants sur un territoire plus grand que le Mexique, sans route entre ses villages. Tout y coûte plus cher, et une grande partie des services y est financée directement par Ottawa.</p>
+    <p class="phrase-choc">Un chiffre par habitant ne dit pas qui est « favorisé ». Il faut toujours demander&nbsp;: <strong>qu'est-ce que cet argent paie, et combien ça coûte là-bas&nbsp;?</strong></p>
+    {% call source() %}
+      <p><strong>Calcul&nbsp;:</strong> valeur des ententes de {{ s.exercice }} selon la province du bénéficiaire, divisée par la population de la province (<a href="{{ pop.source.url }}">{{ pop.source.nom }}</a>).</p>
+      <p><strong>Limite&nbsp;:</strong> c'est l'adresse du bénéficiaire, pas le lieu où l'argent est dépensé. Un organisme national installé à Ottawa compte pour l'Ontario. {{ s.sans_province | argent }} n'ont pas de province déclarée (bénéficiaires à l'étranger, notamment).</p>
+    {% endcall %}
+  </div>
+</section>
+
+<!-- 5. Les programmes -->
+<section class="bande bande-pale">
+  <div class="contenant etroit">
+    <p class="surtitre">Pour quoi faire</p>
+    <h2>Les 12 plus gros programmes de l'année</h2>
+    <ol class="barres">
+      {% set maxg = s.programmes[0].valeur %}
+      {% for p in s.programmes %}
+      <li><span class="barres-nom" title="{{ p.nom }} — {{ p.ministere }}">{{ p.nom }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (p.valeur / maxg * 100) | round(1) }}%"></span></span><span class="barres-val">{{ p.valeur | argent }}</span></li>
+      {% endfor %}
+    </ol>
+    <p class="note">Survolez un nom pour voir le ministère responsable. « Établissement » finance l'accueil des nouveaux arrivants&nbsp;: cours de langue, aide à l'emploi, orientation.</p>
+  </div>
+</section>
+
+<!-- 6. Les géantes -->
+<section class="bande bande-rouge">
+  <div class="contenant etroit">
+    <p class="surtitre">Les plus grosses ententes depuis 2017</p>
+    <h2>Deux usines de batteries&nbsp;: {{ (s.geantes[0].valeur + s.geantes[1].valeur) | argent }}</h2>
+    <p class="chapeau">Les deux plus grosses ententes de toutes les données ne vont ni à un hôpital ni à une province, mais à deux usines de batteries pour véhicules électriques en Ontario&nbsp;: {{ s.geantes[0].nom }} ({{ s.geantes[0].valeur | argent }}) et {{ s.geantes[1].nom }} ({{ s.geantes[1].valeur | argent }}).</p>
+    <p>Attention&nbsp;: c'est le <em>montant maximal</em> inscrit à l'entente. Ce type d'aide est versé sur plusieurs années, selon ce que les usines produisent réellement.</p>
+    <ol class="liste-geantes">
+      {% for g in s.geantes %}
+      <li><span>{% if g.a_fiche %}<a href="{{ base }}/entreprise/{{ g.slug }}/">{{ g.nom }}</a>{% else %}{{ g.nom }}{% endif %}<br><small>{{ g.programme }} · {{ g.debut[:4] }}</small></span><strong>{{ g.valeur | argent }}</strong></li>
+      {% endfor %}
+    </ol>
+    <p class="note">Les gouvernements sont exclus de cette liste&nbsp;: leurs ententes avec Ottawa (santé, infrastructures) sont d'une autre nature.</p>
+  </div>
+</section>
+
+<!-- 7. Une année ne ressemble pas à l'autre -->
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">D'une année à l'autre</p>
+    <h2>{{ s.pic.exercice }}&nbsp;: {{ s.pic.valeur | argent }}, record de la période</h2>
+    {% set maxa = s.par_annee | map(attribute='valeur') | max %}
+    <div class="colonnes-annees" role="img" aria-label="Valeur des ententes signées par exercice">
+      {% for a in s.par_annee %}
+      <div class="annee {{ 'accent' if a.exercice == s.pic.exercice }}"><span class="annee-val">{{ (a.valeur / 1e9) | nombre }}</span><span class="annee-col" style="--h:{{ (a.valeur / maxa * 100) | round(1) }}%"></span><span class="annee-nom">{{ a.exercice[2:4] }}-{{ a.exercice[7:9] }}</span></div>
+      {% endfor %}
+    </div>
+    <p class="legende-carres">Valeur des ententes signées, en milliards de dollars, par exercice financier.</p>
+    <p>En 2023-2024, les deux usines de batteries et les nouvelles ententes de santé avec les provinces ont été signées la même année. Encore une fois&nbsp;: quelques ententes font l'année.</p>
+  </div>
+</section>
+
+<!-- 8. Réduites ou annulées -->
+<section class="bande bande-pale">
+  <div class="contenant etroit">
+    <p class="surtitre">Ce que les données montrent aussi</p>
+    <h2>{{ s.reduites.nb | nombre }} ententes réduites de plus de moitié, ou annulées</h2>
+    <p class="chapeau">Depuis 2017, {{ s.reduites.nb | nombre }} ententes d'un million ou plus ont été ramenées sous la moitié de leur valeur la plus haute, pour {{ s.reduites.somme | argent }} au total. Projet abandonné, entente résiliée, besoin revu à la baisse&nbsp;: les données ne disent pas pourquoi, mais elles le montrent.</p>
+    <ol class="liste-geantes claire">
+      {% for r in s.reduites.exemples %}
+      <li><span>{{ r.nom }}<br><small>{{ r.ministere }} · {{ r.debut[:4] }}</small></span><strong>{{ r.max | argent }} → {{ r.finale | argent }}</strong></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- 9. Nettoyage -->
+<section class="bande bande-sombre">
+  <div class="contenant etroit">
+    <p class="surtitre">Pourquoi on nettoie</p>
+    <h2>Même piège que les contrats&nbsp;: {{ (s.naif_total.somme_lignes - s.naif_total.somme_ententes) | argent }} comptés en double</h2>
+    <div class="comparaison">
+      <div><p class="petit-titre">Toutes les lignes depuis 2017</p><p class="gros-chiffre">{{ s.naif_total.somme_lignes | argent }}</p><p>{{ s.naif_total.lignes | nombre }} lignes</p></div>
+      <div class="accent"><p class="petit-titre">Chaque entente une fois</p><p class="gros-chiffre">{{ s.naif_total.somme_ententes | argent }}</p><p>{{ s.naif_total.ententes | nombre }} ententes</p></div>
+    </div>
+    <p>Chaque modification republie l'entente avec sa nouvelle valeur totale. Une même entente de la Fondation canadienne pour l'innovation apparaît ainsi 8 fois&nbsp;: additionnées, ces lignes donneraient 32 milliards au lieu de 5.</p>
+  </div>
+</section>
+
+<!-- 10. Au hasard -->
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Derrière les chiffres</p>
+    <h2>Une vraie entente, tirée au hasard</h2>
+    <article class="fiche" id="fiche-sub" aria-live="polite"></article>
+    <button type="button" class="bouton" id="tirer-sub">Une autre entente</button>
+    <script type="application/json" id="echantillon-sub">{{ s.echantillon | tojson }}</script>
+  </div>
+</section>
+{% endblock %}

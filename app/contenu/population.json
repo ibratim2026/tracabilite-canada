@@ -1,0 +1,7 @@
+{
+ "date": "2026-07-01",
+ "source": {"nom": "Statistique Canada, tableau 17-10-0009-01 (estimations au 1er juillet 2026, diffusées le 23 septembre 2026)", "url": "https://www150.statcan.gc.ca/t1/tbl1/fr/tv.action?pid=1710000901"},
+ "canada": 41798407,
+ "provinces": {"NL": 552462, "PE": 182989, "NS": 1103419, "NB": 883522, "QC": 9067114, "ON": 16262121, "MB": 1517379, "SK": 1278402, "AB": 5101050, "BC": 5710598, "YT": 50356, "NT": 45904, "NU": 43091},
+ "noms": {"NL": "Terre-Neuve-et-Labrador", "PE": "Île-du-Prince-Édouard", "NS": "Nouvelle-Écosse", "NB": "Nouveau-Brunswick", "QC": "Québec", "ON": "Ontario", "MB": "Manitoba", "SK": "Saskatchewan", "AB": "Alberta", "BC": "Colombie-Britannique", "YT": "Yukon", "NT": "Territoires du Nord-Ouest", "NU": "Nunavut"}
+}

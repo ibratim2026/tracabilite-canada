@@ -3,17 +3,18 @@
 {% block contenu %}
 <section class="bande bande-rouge bande-courte">
   <div class="contenant etroit">
-    <p class="surtitre">Qui signe les contrats</p>
-    <h1>{{ liste | length }} ministères et organismes, {{ r.total | argent }} depuis 2017</h1>
-    <p class="chapeau">Cliquez sur un nom pour voir à qui il achète, quoi, et comment.</p>
+    <p class="surtitre">Qui signe les chèques</p>
+    <h1>{{ liste | length }} ministères et organismes, {{ (r.total + r.total_sub) | argent }} engagés depuis 2017</h1>
+    <p class="chapeau">{{ r.total | argent }} en contrats, {{ r.total_sub | argent }} en subventions et contributions. Cliquez sur un nom pour voir à qui il verse cet argent, et pourquoi.</p>
   </div>
 </section>
 <section class="bande">
   <div class="contenant etroit">
+    <p class="legende-double"><span class="pastille pastille-contrats"></span>Contrats <span class="pastille pastille-subv"></span>Subventions et contributions</p>
     <ol class="barres liste-ministeres">
       {% set maxm = liste[0].v %}
       {% for m in liste %}
-      <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.v / maxm * 100) | round(2) }}%"></span></span><span class="barres-val">{{ m.v | argent }}</span></li>
+      <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste double"><span class="barres-plein" style="--l:{{ (m.vc / maxm * 100) | round(2) }}%"></span><span class="barres-plein subv" style="--l:{{ (m.vs / maxm * 100) | round(2) }}%"></span></span><span class="barres-val">{{ m.v | argent }}</span></li>
       {% endfor %}
     </ol>
   </div>

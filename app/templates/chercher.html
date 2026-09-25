@@ -4,12 +4,12 @@
 <section class="bande bande-rouge bande-courte">
   <div class="contenant etroit">
     <p class="surtitre">Chercher</p>
-    <h1>Qu'est-ce qu'Ottawa a payé à cette entreprise&nbsp;?</h1>
+    <h1>Combien Ottawa a-t-il versé à cette entreprise ou à cet organisme&nbsp;?</h1>
     <form class="recherche" role="search" onsubmit="return false">
       <label for="q" class="visuellement-cache">Nom de l'entreprise</label>
       <input id="q" type="search" placeholder="Tapez un nom : IBM, Irving, Deloitte…" autocomplete="off" autofocus>
     </form>
-    <p class="recherche-note">{{ r.nb_fournisseurs | nombre }} entreprises, {{ r.nb | nombre }} contrats de plus de 10&nbsp;000&nbsp;$ signés depuis le 1<sup>er</sup> avril 2017.</p>
+    <p class="recherche-note">{{ r.nb_fournisseurs | nombre }} entreprises et organismes · {{ r.nb | nombre }} contrats et {{ r.nb_sub | nombre }} subventions et contributions depuis le 1<sup>er</sup> avril 2017.</p>
   </div>
 </section>
 <section class="bande">
@@ -22,5 +22,5 @@
     </div>
   </div>
 </section>
-<script>window.INDEX_RECHERCHE = "{{ base }}/index-recherche.json"; window.BASE = "{{ base }}";</script>
+<script>window.INDEX_RECHERCHE = "{{ base }}/recherche"; window.BASE = "{{ base }}";</script>
 {% endblock %}

@@ -271,6 +271,31 @@ a.resultat .resultat-detail { color: var(--rouge); font-weight: 600; }
 
 .coquille.claire { border: 2px dashed var(--bordure); background: var(--pale); }
 
+/* ---- Subventions */
+.choix-boutons { display: flex; gap: .7rem; flex-wrap: wrap; }
+.choix-boutons .bouton { margin-top: 0; }
+.choix-boutons .bouton:disabled { opacity: .55; cursor: default; transform: none; }
+.choix-boutons .bouton.choisi { opacity: 1; outline: 3px solid #fff; outline-offset: 3px; }
+.gros-verdict { font-size: 1.3rem; font-weight: 800; }
+.comparaison.claire-sur-rouge > div { border-color: rgba(255,255,255,.35); }
+.comparaison.claire-sur-rouge > div.accent { border-color: #fff; background: rgba(255,255,255,.12); }
+.liste-geantes { list-style: none; display: grid; gap: .5rem; margin: 1.4rem 0; }
+.liste-geantes li { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+  padding: .8rem 1rem; border-radius: var(--r); background: rgba(0,0,0,.14); }
+.liste-geantes small { opacity: .85; }
+.liste-geantes strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.liste-geantes a { color: inherit; }
+.liste-geantes.claire li { background: #fff; border: 1px solid var(--bordure); }
+.note-ligne { font-size: .8rem; color: var(--gris); }
+.legende-double { font-size: .88rem; color: var(--gris); display: flex; gap: .5rem; align-items: center; margin-bottom: 1rem; }
+.pastille { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-left: .6rem; }
+.pastille:first-child { margin-left: 0; }
+.pastille-contrats { background: var(--encre); }
+.pastille-subv { background: var(--rouge); }
+.barres-piste.double { display: flex; }
+.barres-piste.double .barres-plein { border-radius: 0; flex: none; }
+.barres-plein.subv { background: var(--rouge) !important; }
+
 /* ---- Mobile */
 @media (max-width: 720px) {
   body { font-size: 16px; }

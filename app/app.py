@@ -78,6 +78,7 @@ app.jinja_env.filters.update(nombre=nombre, argent=argent, pourcent=pourcent, da
 
 NAVIGATION = [
     ("/", "Ce qu'Ottawa achète"),
+    ("/subventions/", "Ce qu'Ottawa donne"),
     ("/chercher/", "Chercher"),
     ("/ministeres/", "Ministères"),
     ("/methode/", "Méthode"),
@@ -87,11 +88,18 @@ METHODES = {
     "TC": "Concurrentielle", "OB": "Appel d'offres ouvert", "ST": "Appel d'offres sélectif",
     "AC": "Préavis d'adjudication", "TN": "Sans appel d'offres",
 }
+TYPES_BENEF = {
+    "F": "Entreprise", "N": "Organisme sans but lucratif", "S": "Université ou institution publique",
+    "G": "Gouvernement", "A": "Bénéficiaire autochtone", "I": "Organisation internationale",
+    "P": "Particulier", "O": "Autre", "": "Non précisé", "LOT": "Paiements regroupés",
+}
+ENTENTES = {"G": "Subvention", "C": "Contribution", "O": "Autre transfert"}
 
 
 @app.context_processor
 def contexte():
-    return dict(base=app.config["BASE"], version_statique=version_statique(), navigation=NAVIGATION, methodes=METHODES,
+    return dict(base=app.config["BASE"], version_statique=version_statique(), navigation=NAVIGATION,
+                methodes=METHODES, types_benef=TYPES_BENEF, ententes=ENTENTES,
                 donnees_du=charger("chiffres")["genere_le"], seuil_fiche=SEUIL_FICHE,
                 periode_debut=PERIODE_DEBUT)
 
@@ -105,11 +113,16 @@ def lien_officiel(org, reference):
     return f"https://rechercher.ouvert.canada.ca/contrats/record/{org},{reference}"
 
 
-app.jinja_env.globals["lien_officiel"] = lien_officiel
+def lien_officiel_subvention(org, reference):
+    return f"https://rechercher.ouvert.canada.ca/subventions/record/{org},{reference},current"
+
+
+app.jinja_env.globals.update(lien_officiel=lien_officiel, lien_officiel_subvention=lien_officiel_subvention)
 
 PERIODE = f"date_contrat BETWEEN '{PERIODE_DEBUT}' AND date('now') AND quarantaine IS NULL"
-# Exercice financier fédéral (avril à mars) d'une date de contrat.
-EXERCICE_SQL = "CAST(substr(date_contrat,1,4) AS INT) - (substr(date_contrat,6,2) < '04')"
+PERIODE_SUB = f"debut BETWEEN '{PERIODE_DEBUT}' AND date('now') AND quarantaine IS NULL"
+# Exercice financier fédéral (avril à mars) d'une date.
+exercice_sql = lambda col: f"CAST(substr({col},1,4) AS INT) - (substr({col},6,2) < '04')"
 
 
 @lru_cache(maxsize=1)
@@ -119,15 +132,17 @@ def reperes():
     nb, total, nb_tn, val_tn = con.execute(
         f"SELECT COUNT(*), SUM(valeur), SUM(methode='TN'), SUM(CASE WHEN methode='TN' THEN valeur END) "
         f"FROM contrats WHERE {PERIODE}").fetchone()
+    nb_sub, total_sub = con.execute(f"SELECT COUNT(*), SUM(valeur) FROM subventions WHERE {PERIODE_SUB}").fetchone()
     nb_fourn = con.execute("SELECT COUNT(*) FROM fournisseurs").fetchone()[0]
     con.close()
     return dict(nb=nb, total=total, part_tn_nb=nb_tn / nb, part_tn_valeur=val_tn / total,
-                nb_fournisseurs=nb_fourn)
+                nb_fournisseurs=nb_fourn, nb_sub=nb_sub, total_sub=total_sub)
 
 
-def par_exercice(where, params):
+def par_exercice(where, params, table="contrats"):
+    col, periode = ("date_contrat", PERIODE) if table == "contrats" else ("debut", PERIODE_SUB)
     lignes = bd().execute(
-        f"SELECT {EXERCICE_SQL} a, SUM(valeur) v, COUNT(*) n FROM contrats WHERE {PERIODE} AND {where} "
+        f"SELECT {exercice_sql(col)} a, SUM(valeur) v, COUNT(*) n FROM {table} WHERE {periode} AND {where} "
         f"GROUP BY a ORDER BY a", params).fetchall()
     trouve = {r["a"]: r for r in lignes}
     fin = date.today().year - (date.today().month < 4)
@@ -149,6 +164,10 @@ def methodes_de(where, params):
 
 CONTRAT_COLONNES = ("c.date_contrat, c.description, c.valeur, c.valeur_originale, c.methode, c.fin, "
                     "c.ministere, c.ministere_nom, c.reference, f.nom fournisseur, f.slug, f.a_fiche")
+# Les particuliers ne sont jamais nommés : leur nom est remplacé à la source.
+SUB_COLONNES = ("s.debut, s.fin, s.programme, s.titre, s.valeur, s.valeur_max, s.type_entente, s.type_benef, "
+                "s.ministere, s.ministere_nom, s.reference, s.ville, s.province, "
+                "CASE WHEN s.type_benef IN ('P','LOT') THEN NULL ELSE f.nom END beneficiaire, f.slug, f.a_fiche")
 
 
 # ---------------------------------------------------------------------------
@@ -170,18 +189,55 @@ def accueil():
     return render_template("accueil.html", c=c, page="/")
 
 
+@app.route("/subventions/")
+def subventions():
+    s = charger("subventions")
+    s["part_contributions"] = next(e["valeur"] for e in s["ententes"] if e["code"] == "C") / s["total"]
+    s["ratio_contrats"] = s["total"] / charger("chiffres")["total"]
+    a = {x["exercice"]: x["valeur"] for x in s["par_annee"]}
+    s["pic"] = max(s["par_annee"], key=lambda x: x["valeur"])
+    return render_template("subventions.html", s=s, pop=charger("population"), page="/subventions/")
+
+
 @app.route("/chercher/")
 def chercher():
     return render_template("chercher.html", r=reperes(), page="/chercher/")
 
 
-@app.route("/index-recherche.json")
-def index_recherche():
-    """Toutes les entreprises, en format compact : [nom, total, nb, slug si fiche]."""
-    lignes = bd().execute("SELECT nom, total, nb, slug, a_fiche FROM fournisseurs ORDER BY total DESC")
-    donnees = [[r["nom"], round(r["total"]), r["nb"], r["slug"] if r["a_fiche"] else 0] for r in lignes]
-    return Response(json.dumps(donnees, ensure_ascii=False, separators=(",", ":")),
-                    mimetype="application/json")
+def plier(texte):
+    """Même pliage que la recherche du navigateur : sans accents, majuscules, mots."""
+    import re, unicodedata
+    t = unicodedata.normalize("NFD", texte).encode("ascii", "ignore").decode().upper()
+    return re.sub(r"[^A-Z0-9]+", " ", t).split()
+
+
+# Mots trop communs pour servir de clé de recherche (formes juridiques, articles).
+MOTS_VIDES = {"INC", "LTD", "LTEE", "LIMITED", "CORP", "CORPORATION", "CO", "THE", "OF", "AND", "DE", "DU",
+              "DES", "LA", "LE", "LES", "ET", "EN", "LP", "LLP", "ULC", "SA", "INCORPORATED", "COMPANY"}
+
+
+@lru_cache(maxsize=1)
+def index_par_prefixe():
+    """Index découpé par les deux premières lettres de chaque mot du nom.
+
+    300 000 noms en un seul fichier, ce serait 13 Mo à charger. Découpé, la
+    recherche ne charge que le morceau utile (quelques dizaines de Ko).
+    """
+    con = sqlite3.connect(f"file:{BASE_DONNEES}?mode=ro", uri=True)
+    morceaux = {}
+    for nom, total, nb, slug, a_fiche, typ in con.execute(
+            "SELECT nom, total, nb, slug, a_fiche, type_benef FROM fournisseurs ORDER BY total DESC"):
+        entree = [nom, round(total), nb, slug if a_fiche else 0, typ]
+        for prefixe in {mot[:2] for mot in plier(nom) if len(mot) >= 2 and mot not in MOTS_VIDES}:
+            morceaux.setdefault(prefixe, []).append(entree)
+    con.close()
+    return morceaux
+
+
+@app.route("/recherche/<prefixe>.json")
+def index_recherche(prefixe):
+    donnees = index_par_prefixe().get(prefixe, [])
+    return Response(json.dumps(donnees, ensure_ascii=False, separators=(",", ":")), mimetype="application/json")
 
 
 @app.route("/entreprise/<slug>/")
@@ -192,22 +248,36 @@ def entreprise(slug):
     ou, p = "fournisseur_id = ?", (f["id"],)
     contrats = bd().execute(
         f"SELECT {CONTRAT_COLONNES} FROM contrats c JOIN fournisseurs f ON f.id = c.fournisseur_id "
-        f"WHERE {PERIODE} AND c.{ou} ORDER BY c.valeur DESC LIMIT 100", p).fetchall()
+        f"WHERE {PERIODE} AND c.{ou} ORDER BY c.valeur DESC LIMIT 30", p).fetchall()
     ministeres = bd().execute(
-        f"SELECT ministere, ministere_nom, SUM(valeur) v, COUNT(*) n FROM contrats WHERE {PERIODE} "
-        f"AND {ou} GROUP BY ministere ORDER BY v DESC", p).fetchall()
-    bornes = bd().execute(f"SELECT MIN(date_contrat), MAX(date_contrat), MAX(fin) FROM contrats "
-                          f"WHERE {PERIODE} AND {ou}", p).fetchone()
+        f"SELECT ministere, ministere_nom, SUM(v) v, SUM(n) n FROM ("
+        f"SELECT ministere, ministere_nom, valeur v, 1 n FROM contrats WHERE {PERIODE} AND {ou} UNION ALL "
+        f"SELECT ministere, ministere_nom, valeur v, 1 n FROM subventions WHERE {PERIODE_SUB} "
+        f"AND beneficiaire_id = ?) GROUP BY ministere ORDER BY v DESC", p + p).fetchall()
+    bornes = bd().execute(f"SELECT MIN(d), MAX(d), MAX(fin) FROM (SELECT date_contrat d, fin FROM contrats "
+                          f"WHERE {PERIODE} AND {ou} UNION ALL SELECT debut d, fin FROM subventions "
+                          f"WHERE {PERIODE_SUB} AND beneficiaire_id = ?)", p + p).fetchone()
+    subs = bd().execute(
+        f"SELECT {SUB_COLONNES} FROM subventions s JOIN fournisseurs f ON f.id = s.beneficiaire_id "
+        f"WHERE s.debut BETWEEN '{PERIODE_DEBUT}' AND date('now') AND s.quarantaine IS NULL "
+        f"AND s.beneficiaire_id = ? ORDER BY s.valeur DESC LIMIT 30", p).fetchall()
+    programmes = bd().execute(
+        f"SELECT programme, ministere_nom, SUM(valeur) v, COUNT(*) n FROM subventions WHERE {PERIODE_SUB} "
+        f"AND beneficiaire_id = ? GROUP BY programme ORDER BY v DESC LIMIT 8", p).fetchall()
     return render_template(
-        "entreprise.html", f=f, variantes=json.loads(f["variantes"]), contrats=contrats,
-        ministeres=ministeres, annees=par_exercice(ou, p), m=methodes_de(ou, p), r=reperes(),
+        "entreprise.html", f=f, variantes=json.loads(f["variantes"]), contrats=contrats, subs=subs,
+        programmes=programmes, ministeres=ministeres, annees=par_exercice(ou, p),
+        annees_sub=par_exercice("beneficiaire_id = ?", p, "subventions"),
+        m=methodes_de(ou, p) if f["nb_contrats"] else None, r=reperes(),
         premier=bornes[0], dernier=bornes[1], fin_max=bornes[2], population=POPULATION, page="")
 
 
 @app.route("/ministeres/")
 def ministeres():
     liste = bd().execute(
-        f"SELECT ministere, ministere_nom, SUM(valeur) v, COUNT(*) n FROM contrats WHERE {PERIODE} "
+        f"SELECT ministere, MAX(ministere_nom) ministere_nom, SUM(vc) vc, SUM(vs) vs, SUM(vc) + SUM(vs) v FROM ("
+        f"SELECT ministere, ministere_nom, valeur vc, 0 vs FROM contrats WHERE {PERIODE} UNION ALL "
+        f"SELECT ministere, ministere_nom, 0, valeur FROM subventions WHERE {PERIODE_SUB}) "
         f"GROUP BY ministere ORDER BY v DESC").fetchall()
     return render_template("ministeres.html", liste=liste, r=reperes(), page="/ministeres/")
 
@@ -215,13 +285,16 @@ def ministeres():
 @app.route("/ministere/<org>/")
 def ministere(org):
     ou, p = "ministere = ?", (org,)
-    tete = bd().execute(f"SELECT ministere_nom, SUM(valeur) v, COUNT(*) n FROM contrats "
+    tete = bd().execute(f"SELECT MAX(ministere_nom) ministere_nom, SUM(valeur) v, COUNT(*) n FROM contrats "
                         f"WHERE {PERIODE} AND {ou}", p).fetchone()
-    if not tete["n"]:
+    tete_sub = bd().execute(f"SELECT MAX(ministere_nom) ministere_nom, SUM(valeur) v, COUNT(*) n FROM subventions "
+                            f"WHERE {PERIODE_SUB} AND {ou}", p).fetchone()
+    if not tete["n"] and not tete_sub["n"]:
         abort(404)
+    nom = tete["ministere_nom"] or tete_sub["ministere_nom"]
     rang = bd().execute(
         f"SELECT COUNT(*) + 1 FROM (SELECT SUM(valeur) v FROM contrats WHERE {PERIODE} "
-        f"GROUP BY ministere HAVING v > ?)", (tete["v"],)).fetchone()[0]
+        f"GROUP BY ministere HAVING v > ?)", (tete["v"] or 0,)).fetchone()[0]
     fournisseurs = bd().execute(
         f"SELECT f.nom, f.slug, f.a_fiche, SUM(c.valeur) v, COUNT(*) n FROM contrats c "
         f"JOIN fournisseurs f ON f.id = c.fournisseur_id WHERE {PERIODE} AND c.{ou} "
@@ -231,18 +304,32 @@ def ministere(org):
         f"AND description <> '' GROUP BY description ORDER BY v DESC LIMIT 10", p).fetchall()
     contrats = bd().execute(
         f"SELECT {CONTRAT_COLONNES} FROM contrats c JOIN fournisseurs f ON f.id = c.fournisseur_id "
-        f"WHERE {PERIODE} AND c.{ou} ORDER BY c.valeur DESC LIMIT 50", p).fetchall()
-    # Part des 20 premiers fournisseurs : ce ministère dépend-il de quelques entreprises ?
-    part_top = sum(x["v"] for x in fournisseurs) / tete["v"]
+        f"WHERE {PERIODE} AND c.{ou} ORDER BY c.valeur DESC LIMIT 30", p).fetchall()
+    programmes = bd().execute(
+        f"SELECT programme, SUM(valeur) v, COUNT(*) n FROM subventions WHERE {PERIODE_SUB} AND {ou} "
+        f"GROUP BY programme ORDER BY v DESC LIMIT 10", p).fetchall()
+    # Bénéficiaires : les particuliers et paiements regroupés sont additionnés sans nom.
+    beneficiaires = bd().execute(
+        f"SELECT CASE WHEN s.type_benef IN ('P','LOT') THEN 'Particuliers (non nommés)' ELSE f.nom END nom, "
+        f"CASE WHEN s.type_benef IN ('P','LOT') THEN NULL ELSE f.slug END slug, "
+        f"CASE WHEN s.type_benef IN ('P','LOT') THEN 0 ELSE f.a_fiche END a_fiche, SUM(s.valeur) v, COUNT(*) n "
+        f"FROM subventions s LEFT JOIN fournisseurs f ON f.id = s.beneficiaire_id "
+        f"WHERE s.debut BETWEEN '{PERIODE_DEBUT}' AND date('now') AND s.quarantaine IS NULL AND s.{ou} "
+        f"GROUP BY CASE WHEN s.type_benef IN ('P','LOT') THEN -1 ELSE s.beneficiaire_id END "
+        f"ORDER BY v DESC LIMIT 15", p).fetchall()
+    part_top = sum(x["v"] for x in fournisseurs) / tete["v"] if tete["v"] else 0
     return render_template(
-        "ministere.html", org=org, tete=tete, rang=rang, fournisseurs=fournisseurs,
-        categories=categories, contrats=contrats, annees=par_exercice(ou, p), m=methodes_de(ou, p),
-        r=reperes(), part_top=part_top, population=POPULATION, page="/ministeres/")
+        "ministere.html", org=org, nom=nom, tete=tete, tete_sub=tete_sub, rang=rang, fournisseurs=fournisseurs,
+        categories=categories, contrats=contrats, programmes=programmes, beneficiaires=beneficiaires,
+        annees=par_exercice(ou, p), annees_sub=par_exercice(ou, p, "subventions"),
+        m=methodes_de(ou, p) if tete["n"] else None, r=reperes(), part_top=part_top,
+        population=POPULATION, page="/ministeres/")
 
 
 @app.route("/methode/")
 def methode():
-    return render_template("methode.html", c=charger("chiffres"), r=reperes(), page="/methode/")
+    return render_template("methode.html", c=charger("chiffres"), s=charger("subventions"), r=reperes(),
+                           page="/methode/")
 
 
 @app.errorhandler(404)

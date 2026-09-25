@@ -1,0 +1,3905 @@
+{
+ "exercice": "2025-2026",
+ "nb": 86554,
+ "total": 50186421267.44,
+ "mediane": 20984.0,
+ "par_personne": 1200.6778456279446,
+ "naif": {
+  "lignes": 92651,
+  "somme_lignes": 51413667491.86
+ },
+ "naif_total": {
+  "somme_lignes": 855185785345.2,
+  "lignes": 1146532,
+  "somme_ententes": 735298501848.21,
+  "ententes": 1000725
+ },
+ "ententes": [
+  {
+   "code": "C",
+   "nb": 48167,
+   "valeur": 37095441125.21
+  },
+  {
+   "code": "G",
+   "nb": 38385,
+   "valeur": 13089152585.8
+  },
+  {
+   "code": "O",
+   "nb": 2,
+   "valeur": 1827556.4300000002
+  }
+ ],
+ "beneficiaires": [
+  {
+   "code": "N",
+   "nom": "Organisme sans but lucratif",
+   "nb": 26062,
+   "valeur": 14727249869.17
+  },
+  {
+   "code": "A",
+   "nom": "Bénéficiaire autochtone",
+   "nb": 6988,
+   "valeur": 12970905759.12
+  },
+  {
+   "code": "F",
+   "nom": "Entreprise",
+   "nb": 18248,
+   "valeur": 6219816677.84
+  },
+  {
+   "code": "G",
+   "nom": "Gouvernement",
+   "nb": 2894,
+   "valeur": 5503849544.79
+  },
+  {
+   "code": "O",
+   "nom": "Autre",
+   "nb": 5783,
+   "valeur": 4268156705.97
+  },
+  {
+   "code": "P",
+   "nom": "Particulier",
+   "nb": 18476,
+   "valeur": 2629588135.05
+  },
+  {
+   "code": "S",
+   "nom": "Université ou institution publique",
+   "nb": 2312,
+   "valeur": 2519213151.46
+  },
+  {
+   "code": "",
+   "nom": "Non précisé",
+   "nb": 5566,
+   "valeur": 720230696.06
+  },
+  {
+   "code": "I",
+   "nom": "Organisation internationale",
+   "nb": 199,
+   "valeur": 570839435.56
+  },
+  {
+   "code": "LOT",
+   "nom": "Paiements regroupés (particuliers)",
+   "nb": 26,
+   "valeur": 56571292.42
+  }
+ ],
+ "programmes": [
+  {
+   "nom": "Établissement",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "nb": 1304,
+   "valeur": 5587284188.01
+  },
+  {
+   "nom": "Traités et Gouvernement autochtone",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "nb": 49,
+   "valeur": 2913643910.03
+  },
+  {
+   "nom": "Programme d'établissement",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "nb": 377,
+   "valeur": 2834732297.0
+  },
+  {
+   "nom": "Programme d'aide au développement international",
+   "ministere": "Affaires mondiales Canada",
+   "nb": 81,
+   "valeur": 2578694742.0
+  },
+  {
+   "nom": "Programme de résilience de l’industrie de défense canadienne (RIDC)",
+   "ministere": "Défense nationale",
+   "nb": 4,
+   "valeur": 1361003040.21
+  },
+  {
+   "nom": "Fonds canadien pour les infrastructures liées au logement",
+   "ministere": "Ministère du Logement, de l’Infrastructure et des Collectivités",
+   "nb": 22,
+   "valeur": 1235779391.0
+  },
+  {
+   "nom": "Subvention versée en vertu de l'Accord Canada-Québec",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "nb": 1,
+   "valeur": 867335000.0
+  },
+  {
+   "nom": "Recherche libre",
+   "ministere": "Instituts de recherche en santé du Canada",
+   "nb": 906,
+   "valeur": 848333204.0
+  },
+  {
+   "nom": "Développement Économique",
+   "ministere": "Services aux Autochtones Canada",
+   "nb": 178,
+   "valeur": 627317935.0
+  },
+  {
+   "nom": "Programme d'aide au logement provisoire",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "nb": 12,
+   "valeur": 625189219.0
+  },
+  {
+   "nom": "Réétablissement",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "nb": 95,
+   "valeur": 584299829.92
+  },
+  {
+   "nom": "Recherche axée sur la découverte",
+   "ministere": "Conseil de recherches en sciences naturelles et en génie du Canada",
+   "nb": 2961,
+   "valeur": 583170099.4
+  }
+ ],
+ "ministeres": [
+  {
+   "code": "cic",
+   "nom": "Immigration, Réfugiés et Citoyenneté Canada",
+   "nb": 1814,
+   "valeur": 11083139661.14
+  },
+  {
+   "code": "isc-sac",
+   "nom": "Services aux Autochtones Canada",
+   "nb": 4510,
+   "valeur": 10758860277.48
+  },
+  {
+   "code": "dfatd-maecd",
+   "nom": "Affaires mondiales Canada",
+   "nb": 789,
+   "valeur": 3969366535.14
+  },
+  {
+   "code": "aandc-aadnc",
+   "nom": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "nb": 210,
+   "valeur": 3176795632.6
+  },
+  {
+   "code": "ic",
+   "nom": "Innovation, Sciences et Développement économique Canada",
+   "nb": 191,
+   "valeur": 2515596185.0
+  },
+  {
+   "code": "nrcan-rncan",
+   "nom": "Ressources naturelles Canada",
+   "nb": 1192,
+   "valeur": 1890790555.68
+  },
+  {
+   "code": "infc",
+   "nom": "Ministère du Logement, de l’Infrastructure et des Collectivités",
+   "nb": 204,
+   "valeur": 1796292666.71
+  },
+  {
+   "code": "pch",
+   "nom": "Patrimoine canadien",
+   "nb": 9455,
+   "valeur": 1665349903.0
+  },
+  {
+   "code": "dnd-mdn",
+   "nom": "Défense nationale",
+   "nb": 267,
+   "valeur": 1522470059.52
+  },
+  {
+   "code": "sshrc-crsh",
+   "nom": "Conseil de recherches en sciences humaines du Canada",
+   "nb": 6323,
+   "valeur": 1328418389.08
+  }
+ ],
+ "top": [
+  {
+   "nom": "Province de Québec",
+   "slug": "province-of-quebec",
+   "a_fiche": 1,
+   "valeur": 955034221.0,
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Global Fund to Fight AIDS, Tuberculosis & Malaria Global Health Campus",
+   "slug": "global-fund-to-fight-aids-tuberculosis-malaria-global-health-campus",
+   "a_fiche": 1,
+   "valeur": 918000000.0,
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Ministre des Finances du Québec",
+   "slug": "ministre-des-finances-du-quebec",
+   "a_fiche": 1,
+   "valeur": 867335000.0,
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "James Smith Band",
+   "slug": "james-smith-band",
+   "a_fiche": 1,
+   "valeur": 655416375.0,
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "General Dynamics Ordnance and Tactical Systems - Canada Inc.",
+   "slug": "general-dynamics-ordnance-and-tactical-systems-canada",
+   "a_fiche": 1,
+   "valeur": 641956407.0,
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Kee Tas Kee Now Tribal Council",
+   "slug": "kee-tas-kee-now-tribal-council",
+   "a_fiche": 1,
+   "valeur": 583434443.7,
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "National Aboriginal Capital Corporations Association",
+   "slug": "national-aboriginal-capital-corporations-association",
+   "a_fiche": 1,
+   "valeur": 514323429.0,
+   "type": "Autre"
+  },
+  {
+   "nom": "Organisation internationale pour les migrations",
+   "slug": "international-organization-for-migration",
+   "a_fiche": 1,
+   "valeur": 487700356.0,
+   "type": "Organisation internationale"
+  },
+  {
+   "nom": "Ford Motor Company of Canada Ltd.",
+   "slug": "ford-motor-of-canada",
+   "a_fiche": 1,
+   "valeur": 464600000.0,
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Listuguj Mi'gmaq Government",
+   "slug": "listuguj-mi-gmaq-government",
+   "a_fiche": 1,
+   "valeur": 421102476.0,
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "General Dynamics Produits de défense et Systèmes tactique - Canada Valleyfield Inc.",
+   "slug": "general-dynamics-ordnance-and-tactical-systems-canada-valleyfield",
+   "a_fiche": 1,
+   "valeur": 413627319.0,
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Triumf",
+   "slug": "triumf",
+   "a_fiche": 1,
+   "valeur": 399145000.0,
+   "type": "Organisme sans but lucratif"
+  }
+ ],
+ "provinces": [
+  {
+   "code": "NU",
+   "nom": "Nunavut",
+   "valeur": 643836705.07,
+   "nb": 229,
+   "part_autochtone": 0.4826312751091378,
+   "par_habitant": 14941.326612749763
+  },
+  {
+   "code": "NT",
+   "nom": "Territoires du Nord-Ouest",
+   "valeur": 678787177.09,
+   "nb": 336,
+   "part_autochtone": 0.5444191921748726,
+   "par_habitant": 14787.103021305333
+  },
+  {
+   "code": "YT",
+   "nom": "Yukon",
+   "valeur": 271362591.44,
+   "nb": 289,
+   "part_autochtone": 0.08411589776937604,
+   "par_habitant": 5388.882981968385
+  },
+  {
+   "code": "SK",
+   "nom": "Saskatchewan",
+   "valeur": 5910583071.21,
+   "nb": 3920,
+   "part_autochtone": 0.7612194304205803,
+   "par_habitant": 4623.415069133183
+  },
+  {
+   "code": "MB",
+   "nom": "Manitoba",
+   "valeur": 2249968396.51,
+   "nb": 3243,
+   "part_autochtone": 0.29722338994063635,
+   "par_habitant": 1482.7992192524084
+  },
+  {
+   "code": "NB",
+   "nom": "Nouveau-Brunswick",
+   "valeur": 1177853864.48,
+   "nb": 3468,
+   "part_autochtone": 0.3028889944573067,
+   "par_habitant": 1333.1347317667246
+  },
+  {
+   "code": "PE",
+   "nom": "Île-du-Prince-Édouard",
+   "valeur": 204177018.7,
+   "nb": 943,
+   "part_autochtone": 0.06918591078438545,
+   "par_habitant": 1115.7884829142736
+  },
+  {
+   "code": "NL",
+   "nom": "Terre-Neuve-et-Labrador",
+   "valeur": 582017888.41,
+   "nb": 2692,
+   "part_autochtone": 0.12474134336031964,
+   "par_habitant": 1053.4985001864382
+  },
+  {
+   "code": "BC",
+   "nom": "Colombie-Britannique",
+   "valeur": 5543960987.97,
+   "nb": 11441,
+   "part_autochtone": 0.25986505330325677,
+   "par_habitant": 970.8196913825838
+  },
+  {
+   "code": "QC",
+   "nom": "Québec",
+   "valeur": 8720647412.04,
+   "nb": 18789,
+   "part_autochtone": 0.2692426473484432,
+   "par_habitant": 961.7886586669144
+  },
+  {
+   "code": "NS",
+   "nom": "Nouvelle-Écosse",
+   "valeur": 1032790369.84,
+   "nb": 3885,
+   "part_autochtone": 0.17017776465830955,
+   "par_habitant": 935.9911056815226
+  },
+  {
+   "code": "ON",
+   "nom": "Ontario",
+   "valeur": 14743514076.91,
+   "nb": 28748,
+   "part_autochtone": 0.10001207714918378,
+   "par_habitant": 906.6169214280228
+  },
+  {
+   "code": "AB",
+   "nom": "Alberta",
+   "valeur": 4519801897.0,
+   "nb": 7817,
+   "part_autochtone": 0.2693435007047611,
+   "par_habitant": 886.0532433518589
+  }
+ ],
+ "sans_province": 3891243384.8,
+ "par_annee": [
+  {
+   "exercice": "2017-2018",
+   "nb": 51664,
+   "valeur": 55869290491.04
+  },
+  {
+   "exercice": "2018-2019",
+   "nb": 91426,
+   "valeur": 102253010410.32
+  },
+  {
+   "exercice": "2019-2020",
+   "nb": 117285,
+   "valeur": 86260652106.09
+  },
+  {
+   "exercice": "2020-2021",
+   "nb": 173182,
+   "valeur": 111334704239.09
+  },
+  {
+   "exercice": "2021-2022",
+   "nb": 127762,
+   "valeur": 61260320612.73
+  },
+  {
+   "exercice": "2022-2023",
+   "nb": 110495,
+   "valeur": 52828373792.91
+  },
+  {
+   "exercice": "2023-2024",
+   "nb": 116397,
+   "valeur": 136998216618.96
+  },
+  {
+   "exercice": "2024-2025",
+   "nb": 107121,
+   "valeur": 64766149883.92
+  },
+  {
+   "exercice": "2025-2026",
+   "nb": 86554,
+   "valeur": 50186421267.44
+  }
+ ],
+ "geantes": [
+  {
+   "nom": "NEXTSTAR ENERGY INC.",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "programme": "Fabricants de batteries pour véhicules électriques",
+   "valeur": 14556000000.0,
+   "debut": "2024-01-01",
+   "type": "Entreprise",
+   "slug": "nextstar-energy",
+   "a_fiche": 1
+  },
+  {
+   "nom": "PowerCo Canada Inc.",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "programme": "Fabricants de batteries pour véhicules électriques",
+   "valeur": 13153475083.0,
+   "debut": "2023-05-05",
+   "type": "Entreprise",
+   "slug": "powerco-canada",
+   "a_fiche": 1
+  },
+  {
+   "nom": "First Nations Health Authority",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Gouvernance tripartite de la santé",
+   "valeur": 8219042032.0,
+   "debut": "2023-04-01",
+   "type": "Autre",
+   "slug": "first-nations-health-authority",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Canada Foundation For Innovation",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "programme": "Fondation canadienne pour I'innovation",
+   "valeur": 5128997000.0,
+   "debut": "2019-01-14",
+   "type": "Organisme sans but lucratif",
+   "slug": "canada-foundation-for-innovation",
+   "a_fiche": 1
+  },
+  {
+   "nom": "CIBC TRUST CORPORATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Infrastructure communautaire",
+   "valeur": 1491868309.0,
+   "debut": "2024-04-01",
+   "type": "Entreprise",
+   "slug": "cibc-trust",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Canada Foundation For Innovation",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "programme": "FONDATION CANADIENNE POUR L'INNOVATION",
+   "valeur": 1330000000.0,
+   "debut": "2017-04-01",
+   "type": "Organisme sans but lucratif",
+   "slug": "canada-foundation-for-innovation",
+   "a_fiche": 1
+  },
+  {
+   "nom": "SIKSIKA NATION BAND",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "programme": "Traités et Gouvernement autochtone",
+   "valeur": 1300000000.0,
+   "debut": "2022-04-01",
+   "type": "Bénéficiaire autochtone",
+   "slug": "siksika-nation-band",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Global Fund to Fight AIDS,",
+   "ministere": "Affaires mondiales Canada",
+   "programme": "Programme d'aide au développement international",
+   "valeur": 1209600000.0,
+   "debut": "2023-12-14",
+   "type": "Organisme sans but lucratif",
+   "slug": "global-fund-to-fight-aids",
+   "a_fiche": 1
+  }
+ ],
+ "reduites": {
+  "nb": 187,
+  "somme": 2911704232.67,
+  "exemples": [
+   {
+    "nom": "WE Charity Foundation",
+    "ministere": "Emploi et Développement social Canada",
+    "max": 543530000.0,
+    "finale": 0,
+    "debut": "2020-05-05"
+   },
+   {
+    "nom": "CANADA FOUNDATION FOR SUSTAINABLE DEVELOPMENT TECHNOLOGY",
+    "ministere": "Innovation, Sciences et Développement économique Canada",
+    "max": 747762060.0,
+    "finale": 302683989.0,
+    "debut": "2021-04-01"
+   },
+   {
+    "nom": "Toronto Metropolitan University",
+    "ministere": "Emploi et Développement social Canada",
+    "max": 432591187.0,
+    "finale": 54361633.0,
+    "debut": "2019-09-16"
+   },
+   {
+    "nom": "E-One Moli Energy (Canada)Limited",
+    "ministere": "Innovation, Sciences et Développement économique Canada",
+    "max": 204483000.0,
+    "finale": 0,
+    "debut": "2023-11-14"
+   },
+   {
+    "nom": "Resilience Biotechnologies Inc.",
+    "ministere": "Innovation, Sciences et Développement économique Canada",
+    "max": 199159000.0,
+    "finale": 93848000.0,
+    "debut": "2021-05-17"
+   }
+  ]
+ },
+ "echantillon": [
+  {
+   "nom": "AFRICAN ART & CULTURAL CCC INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour la présentation des arts - Soutien au Développement",
+   "titre": "Issamba Showcase",
+   "valeur": 35000.0,
+   "debut": "2025-05-01",
+   "ville": "Victoria | Victoria",
+   "province": "BC",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Native Child and Family Services of Toronto",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Native Child and Family Services of Toronto (Lanark-Frontenac-Kingston)",
+   "valeur": 22250.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "GenAg Incorporated",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "programme": "Programme d'emploi et de compétences des jeunes",
+   "titre": "Expérience de travail",
+   "valeur": 14000.0,
+   "debut": "2025-04-01",
+   "ville": "Winkler",
+   "province": "MB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "BISSELL CENTRE",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Bissell Centre's National Indigenous Peoples Day Event 2025",
+   "valeur": 5200.0,
+   "debut": "2025-06-20",
+   "ville": "Edmonton | Edmonton",
+   "province": "AB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "CORPORATION OF THE TOWNSHIP OF SOUTH ALGONQUIN",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "South Algonquin Canada Day Activities",
+   "valeur": 3020.0,
+   "debut": "2025-07-01",
+   "ville": "Whitney | Whitney",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Wang, Xianbin-Western University (The University of Western Ontario)",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Recherche axée sur la connaissance",
+   "titre": "Chaires de recherche du Canada",
+   "valeur": 1400000.0,
+   "debut": "2025-04-01",
+   "ville": "LONDON",
+   "province": "ON",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "ROSOR CORP.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Contributions aux entreprises",
+   "titre": "Système d’essaim de drones BVLOS (Beyond Visual Line-of-Sight)",
+   "valeur": 180000.0,
+   "debut": "2025-07-14",
+   "ville": "Burlington|Burlington",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "ENGLISH RIVER FIRST NATION BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Fonds d’équité en santé autochtone",
+   "titre": "2526-SK-000003",
+   "valeur": 251421.0,
+   "debut": "2025-04-01",
+   "ville": "PATUANAK",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Hospice Care Avon Maitland",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Rotary Hospice Stratford Perth (Perth-Wellington)",
+   "valeur": 5563.0,
+   "debut": "2025-04-21",
+   "ville": "Stratford",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Peterborough Junior Lacrosse Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Peterborough Junior Lacrosse Association (Peterborough-Kawartha)",
+   "valeur": 28896.0,
+   "debut": "2025-04-21",
+   "ville": "Peterborough",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "SPENCE NEIGHBOURHOOD ASSOCIATION INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme du multiculturalisme et de la lutte contre le racisme - PMLCR - Événements",
+   "titre": "On the Same Team 3x3 Basketball Event 2025",
+   "valeur": 18520.0,
+   "debut": "2025-08-01",
+   "ville": "Winnipeg | Winnipeg",
+   "province": "MB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Nipawin & District Forestry Museum Inc",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Nipawin & District Forestry Museum Inc",
+   "valeur": 9732.0,
+   "debut": "2025-04-21",
+   "ville": "Nipawin",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "INFORMATIQUE MERKAZ INC",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Programme emploi jeunesse",
+   "titre": "PEJ - Recrutement d’un spécialiste en marketing et engagement communautaire",
+   "valeur": 30000.0,
+   "debut": "2025-04-21",
+   "ville": "Montreal|Montréal",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Mount Allison Students' Union",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Mount Allison Students' Union",
+   "valeur": 5001.0,
+   "debut": "2025-04-21",
+   "ville": "Sackville",
+   "province": "NB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Town Of Buchans",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Town Of Buchans",
+   "valeur": 2240.0,
+   "debut": "2025-04-21",
+   "ville": "Buchans",
+   "province": "NL",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Saskatchewan Intercultural Association Inc.",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Programme CultureSync, CareerNet et ConnectED",
+   "valeur": 4795276.6,
+   "debut": "2025-04-01",
+   "ville": "Saskatoon",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "LUNENBURG DOC FEST",
+   "ministere": "Patrimoine canadien",
+   "programme": "Supports Canada's creative industries for high-potential projects that amplify their international reach. The Program’s main objectives are to increase the monetization and the discoverability of Canada’s creative content while supporting the export of creative industries.",
+   "titre": "Lunenburg Doc Fest's 10th Dock Market",
+   "valeur": 18500.0,
+   "debut": "2025-07-21",
+   "ville": "Lunenburg | Lunenburg",
+   "province": "NS",
+   "type": "Autre"
+  },
+  {
+   "nom": "Service National des Sauveteurs Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 65 - Société de sauvetage",
+   "valeur": 4562.0,
+   "debut": "2025-04-21",
+   "ville": "Montréal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Empowered by Nature Recreation Ltd.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Empowered by Nature Recreation Ltd.",
+   "valeur": 2444.0,
+   "debut": "2025-04-21",
+   "ville": "Maple Ridge",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "DON VALLEY NORTH TOYOTA",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 5000.0,
+   "debut": "2025-04-01",
+   "ville": "Markham|Markham",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Velotique (2013) Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – Velotique (Toronto-Danforth)",
+   "valeur": 4816.0,
+   "debut": "2025-04-21",
+   "ville": "TORONTO",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "FESTIVAL BOIS-JOLI EN FÊTE",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Commémoration Canada",
+   "titre": "",
+   "valeur": 4000.0,
+   "debut": "2025-08-15",
+   "ville": "Village Bois-Joli | Village Bois-Joli",
+   "province": "NB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "PETERS FIRST NATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Éducation",
+   "titre": "2526-BC-000016",
+   "valeur": 1059.0,
+   "debut": "2025-04-01",
+   "ville": "HOPE",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "101412 P.E.I. INC. (ACORN PRESS)",
+   "ministere": "Patrimoine canadien",
+   "programme": "The program provides grants and contributions to the Canadian-owned book industry to support the creation of Canadian books in traditional and digital formats and to ensure that readers everywhere can access them.",
+   "titre": "Publishing Support",
+   "valeur": 20987.0,
+   "debut": "2025-10-21",
+   "ville": "Charlottetown | Charlottetown",
+   "province": "PE",
+   "type": "Autre"
+  },
+  {
+   "nom": "ROYAL CANADIAN LEGION BRANCH 1",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Royal Canadian Legion Montgomery Branch 133",
+   "valeur": 5017.0,
+   "debut": "2025-04-21",
+   "ville": "Enfield",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "PAC Autism Nova Scotia Society",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Autism Nova Scotia (South Shore-St. Margaret's)",
+   "valeur": 11917.0,
+   "debut": "2025-04-21",
+   "ville": "Halifax",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Télé-université",
+   "ministere": "Savoir polaire Canada",
+   "programme": "Subventions et contributions pour l'avancement des sciences et technologies dans le Nord",
+   "titre": "Habitudes migratoires et bien-être: projet de recherche communautaire sur l’omble chevalier (iqaluppik) pour assurer des pêches durables dans la baie d’Ungava en mutation",
+   "valeur": 499986.0,
+   "debut": "2025-05-20",
+   "ville": "Québec",
+   "province": "QC",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "CITY OF MEDICINE HAT (THE) - ESPLANADE ARTS AND HERITAGE CENTRE",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour la présentation des arts - Soutien à la programmation",
+   "titre": "Esplanade presents (regular season programming)",
+   "valeur": 106320.0,
+   "debut": "2025-09-01",
+   "ville": "Medicine Hat | Medicine Hat",
+   "province": "AB",
+   "type": "Autre"
+  },
+  {
+   "nom": "FC-Paradigm Investment Group Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Programme emploi jeunesse",
+   "titre": "PEJ - Développeur",
+   "valeur": 30000.0,
+   "debut": "2025-06-02",
+   "ville": "Whitehorse|Whitehorse",
+   "province": "YT",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Masterly Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Programme emploi jeunesse",
+   "titre": "PEJ - Responsable des systèmes intelligents",
+   "valeur": 30000.0,
+   "debut": "2025-09-02",
+   "ville": "Toronto|Toronto",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "THE NORTHERN TABLE INC.",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "programme": "Affaires du Nord",
+   "titre": "2526-HQ-000086",
+   "valeur": 10000.0,
+   "debut": "2025-10-01",
+   "ville": "Iqaluit",
+   "province": "NU",
+   "type": "Autre"
+  },
+  {
+   "nom": "KING AIR TRANSPORTATION INC.",
+   "ministere": "Ressources naturelles Canada",
+   "programme": "Programme de transport écoénergétique de marchandises",
+   "titre": "King Air Transportation Inc.–  Subvention pour Modernisation",
+   "valeur": 10000.0,
+   "debut": "2025-12-07",
+   "ville": "BRAMPTON | BRAMPTON",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Innovations Scola",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 77 - Innovations Scola",
+   "valeur": 5213.0,
+   "debut": "2025-04-21",
+   "ville": "Montréal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Société du patrimoine et d'histoire de la Côte-de-Beaupré et de l'Île-d'Orléans",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 20 - Société du patrimoine et d'histoire de la Côte-de-Beaupré et de l'Ile -'Orléans",
+   "valeur": 5213.0,
+   "debut": "2025-04-21",
+   "ville": "Sainte-Anne-de-Beaupré",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "BRIDGE RIVER INDIAN BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement social",
+   "titre": "2526-BC-000055",
+   "valeur": 156500.0,
+   "debut": "2025-04-01",
+   "ville": "LILLOOET",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "L'Eveque Catholique Romain d'Edmundston",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Paroisse Saint-Jaques",
+   "valeur": 5001.0,
+   "debut": "2025-04-21",
+   "ville": "Saint-Jacques",
+   "province": "NB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "SKUPPAH INDIAN BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement social",
+   "titre": "2526-BC-000038",
+   "valeur": 56035.0,
+   "debut": "2025-04-01",
+   "ville": "LYTTON",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "YWCA British Columbia",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Fonds pour l'accessibilité - Subventions",
+   "titre": "YWCA Inclusive Signage for a Welcoming Community",
+   "valeur": 12226.0,
+   "debut": "2026-02-20",
+   "ville": "Vancouver",
+   "province": "BC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "MOSAIQUE INTERCULTURELLE",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Créer des liens-Famille en fête d’Ottawa",
+   "valeur": 3000.0,
+   "debut": "2026-03-18",
+   "ville": "Ottawa | Ottawa",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "David Fritz Golf Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – David Fritz Golf Academy (Aurora-Oak Ridges-Richmond Hill)",
+   "valeur": 4816.0,
+   "debut": "2025-06-23",
+   "ville": "Woodbridge RPO Piazza Villagio",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "HIGHBURY FORD SALES LIMITED",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 70000.0,
+   "debut": "2025-04-01",
+   "ville": "London|London",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "One Sky Now",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "One Sky Now",
+   "valeur": 2198.0,
+   "debut": "2025-06-23",
+   "ville": "Mahone Bay",
+   "province": "NS",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "The Village Children's Programs",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - McGivney Early Learning Centre (Markham-Thornhill)",
+   "valeur": 14448.0,
+   "debut": "2025-04-21",
+   "ville": "Markham",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Society for Animal Adoptions of Flamborough Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – Animal Adoptions of Flamborough (Flamborough-Glanbrook)",
+   "valeur": 5563.0,
+   "debut": "2025-04-21",
+   "ville": "Waterdown",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "BROCK MACDONALD CONSTRUCTION L",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Brock MacDonald Construction",
+   "valeur": 2198.0,
+   "debut": "2025-04-21",
+   "ville": "West Middle River",
+   "province": "NS",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "RAMGARHIA ASSOCIATION OF MANITOBA INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Canada Day 2026",
+   "valeur": 2040.0,
+   "debut": "2026-03-05",
+   "ville": "Winnipeg | Winnipeg",
+   "province": "MB",
+   "type": "Autre"
+  },
+  {
+   "nom": "THÉÂTRE GRANADA",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les espaces Culturels - Fonds du Canada pour les espaces culturels",
+   "titre": "Mise à niveau de la régie et acquisition d’une console d’éclairage GrandMA3 pour le Théâtre Granada",
+   "valeur": 53236.0,
+   "debut": "2025-07-14",
+   "ville": "Sherbrooke | Sherbrooke",
+   "province": "QC",
+   "type": "Autre"
+  },
+  {
+   "nom": "NICOL AUTO INC",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatifs pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 28750.0,
+   "debut": "2025-07-01",
+   "ville": "La Sarre|La Sarre",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "MIRAMICHI RIVER VALLEY",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "",
+   "valeur": 8000.0,
+   "debut": "2025-07-01",
+   "ville": "Blackville | Blackville",
+   "province": "NB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "We Can Win",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - We Can Win (Scarborough Southwest)",
+   "valeur": 16689.0,
+   "debut": "2025-04-21",
+   "ville": "Scarborough",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "CITY OF FREDERICTON",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Infrastructure communautaire",
+   "titre": "2526-AT-000008",
+   "valeur": 412939.0,
+   "debut": "2025-04-01",
+   "ville": "FREDERICTON",
+   "province": "NB",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Nikihk Management and Community Development Society",
+   "ministere": "Santé Canada",
+   "programme": "Programme sur l’usage et les dépendances aux substances - Fonds d'urgence pour le traitement",
+   "titre": "Kelly Lake Addictions Recovery and Community Healing Initiative",
+   "valeur": 665850.0,
+   "debut": "2025-09-23",
+   "ville": "Danson Creek",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "ALAYA CARE INC./ALAYA SOINS INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle",
+   "titre": "Mise en place de capacités d’IA agentive",
+   "valeur": 3000000.0,
+   "debut": "2025-12-01",
+   "ville": "Montreal|Montréal",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "The Cambridge Public Library Board",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - The Cambridge Public Library Board (Cambridge)",
+   "valeur": 16688.0,
+   "debut": "2025-04-21",
+   "ville": "Cambridge",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Solutions chauffantes Hot Poc inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Contributions aux entreprises",
+   "titre": "Tapis chauffant",
+   "valeur": 25000.0,
+   "debut": "2025-10-06",
+   "ville": "Saint-Denis-De-Brompton|Saint-Denis-de-Brompton",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "RISE AND SHINE ASSOCIATION (RSA) INC.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Elder Harmony: Bridging Generations for Wellness",
+   "valeur": 20700.0,
+   "debut": "2026-03-31",
+   "ville": "Brampton",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "CHIPPEWAS OF KETTLE AND STONY POINT",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Soins primaires",
+   "titre": "2526-ON-000017",
+   "valeur": 366525.0,
+   "debut": "2025-04-01",
+   "ville": "KETTLE & STONY POINT FN",
+   "province": "ON",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Camp Bretondean Corporation",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Camp Bretondean Corporation",
+   "valeur": 25086.0,
+   "debut": "2025-04-21",
+   "ville": "Albert Bridge",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "GO NORTH SURREY CHEVROLET BUICK GMC",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 105000.0,
+   "debut": "2025-04-01",
+   "ville": "Surrey|Surrey",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "UPSALA RECREATION & COMMUNITY SPORTS CENTRE",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Upsala Celebrates Canada Day! 2025",
+   "valeur": 4000.0,
+   "debut": "2025-07-01",
+   "ville": "Upsala | Upsala",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Guru Nanak Institute of Global Studies Foundation",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Guru Nanak Institiute of Global Studies",
+   "valeur": 14065.0,
+   "debut": "2025-04-21",
+   "ville": "Surrey",
+   "province": "BC",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Camp Carowanis Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 38 - Camp Carowanis Inc.",
+   "valeur": 5213.0,
+   "debut": "2025-04-21",
+   "ville": "Montréal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Sachin Sudra",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Sachin Sudra",
+   "valeur": 4200.0,
+   "debut": "2025-04-21",
+   "ville": "Calgary",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Steinbach Chamber of Commerce",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Services aux immigrants Eastman",
+   "valeur": 2492101.94,
+   "debut": "2025-04-01",
+   "ville": "Steinbach",
+   "province": "MB",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Emmanuel Baptist Church of South Huron",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – Emmanuel Baptist Church (Huron-Bruce)",
+   "valeur": 15993.0,
+   "debut": "2025-04-21",
+   "ville": "Exeter",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Nickel District Conservation Sudbury",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Conservation Sudbury (Sudbury)",
+   "valeur": 9632.0,
+   "debut": "2025-04-21",
+   "ville": "Sudbury",
+   "province": "ON",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Marine Thinking Inc.",
+   "ministere": "Agence de promotion économique du Canada atlantique",
+   "programme": "CERI - Expansion et productivité des entreprises",
+   "titre": "227361",
+   "valeur": 179836.0,
+   "debut": "2025-06-27",
+   "ville": "Halifax|Halifax",
+   "province": "NS",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "1818 FARM AND CIDERY INC.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - 1818 Farm and Cidery Inc (Kanata-Carleton)",
+   "valeur": 4816.0,
+   "debut": "2025-06-23",
+   "ville": "CARP",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "CORPORATION OF THE CITY OF MARKHAM (THE)",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour la présentation des arts - Soutien à la programmation",
+   "titre": "Programming Support",
+   "valeur": 34189.0,
+   "debut": "2025-04-01",
+   "ville": "Markham | Markham",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Commission des loisirs de Packington",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 18 - Commission des loisirs de Packington",
+   "valeur": 5213.0,
+   "debut": "2025-04-21",
+   "ville": "Packington",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "WOOD MOUNTAIN BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Services aux enfants et aux familles, Infrastructure communautaire, Développement social",
+   "titre": "2526-SK-000030",
+   "valeur": 828805.0,
+   "debut": "2025-04-01",
+   "ville": "ASSINIBOIA",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Movement: Metro Vancouver Transit Riders Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Movement: Metro Vancouver Transit Riders Association",
+   "valeur": 7107.0,
+   "debut": "2025-04-21",
+   "ville": "Vancouver",
+   "province": "BC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Lupus Canada",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – Lupus Canada (Newmarket-Aurora)",
+   "valeur": 5364.0,
+   "debut": "2025-04-21",
+   "ville": "Newmarket",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "WOLASTOQEY TRIBAL COUNCIL INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Commémoration Canada",
+   "titre": "",
+   "valeur": 13400.0,
+   "debut": "2025-09-01",
+   "ville": "Fredericton | Fredericton",
+   "province": "NB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Jeunesse Sans Frontières de la Vallée-de-la-Gatineau",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 57 - Jeunesse Sans Frontières Vallée-de-la-Gatineau",
+   "valeur": 8937.0,
+   "debut": "2025-04-21",
+   "ville": "Gracefield",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "VILLAGE OF ELNORA",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "The Village of Elnora",
+   "valeur": 1800.0,
+   "debut": "2025-04-21",
+   "ville": "Elnora",
+   "province": "AB",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "12695995 CANADA FOUNDATION",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Toronto Cultural Mingle Association (Newmarket-Aurora)",
+   "valeur": 9536.0,
+   "debut": "2025-04-21",
+   "ville": "Newmarket",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "GRAND MANAN HARBOUR AUTHORITY",
+   "ministere": "Pêches et Océans Canada",
+   "programme": "Programme de contribution par catégorie de Port pour petit bateaux",
+   "titre": "",
+   "valeur": 70000.0,
+   "debut": "2025-07-18",
+   "ville": "GRAND MANAN",
+   "province": "NB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Orleans Accounting Services Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 -  Orleans Accounting Services Inc. (Orléans)",
+   "valeur": 2408.0,
+   "debut": "2025-04-21",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "SECOND HARVEST CANADA",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "programme": "Affaires du Nord",
+   "titre": "2526-HQ-000023",
+   "valeur": 220000.0,
+   "debut": "2025-04-01",
+   "ville": "Etobicoke",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "PETIT BONHEUR DE ST-CAMILLE INC. (LE)",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour la présentation des arts - Soutien à la programmation",
+   "titre": "Programmation des arts de la scène PB",
+   "valeur": 33500.0,
+   "debut": "2025-04-01",
+   "ville": "Saint-Camille | Saint-Camille",
+   "province": "QC",
+   "type": "Autre"
+  },
+  {
+   "nom": "Newcomer Centre of Peel",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Nourrir des vies afin d'assurer l'avenir des nouveaux arrivants au Canada",
+   "valeur": 32403549.35,
+   "debut": "2025-04-01",
+   "ville": "Mississauga",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "The Governors of The University of Calgary",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "University of Calgary Gymnastics Centre - Main Campus",
+   "valeur": 21000.0,
+   "debut": "2025-06-23",
+   "ville": "Calgary",
+   "province": "AB",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Exploits Valley SPCA",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Exploits Valley SPCA",
+   "valeur": 5113.0,
+   "debut": "2025-04-21",
+   "ville": "GRAND FALLS-WINDSOR",
+   "province": "NL",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Société de criminologie du Québec",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Partenariats de recherche",
+   "titre": "Subventions Connexion",
+   "valeur": 24960.0,
+   "debut": "2025-10-01",
+   "ville": "MONTRÉAL",
+   "province": "QC",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Club de l'Age d'Or de Ste-Florence",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Socialiser, c’est la clé de la santé",
+   "valeur": 21400.0,
+   "debut": "2026-03-31",
+   "ville": "Sainte-Florence",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "St. Andrew's United Church",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 -  St. Andrew's United Church (Elgin-Middlesex-London)",
+   "valeur": 8344.0,
+   "debut": "2025-04-21",
+   "ville": "St. Thomas",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "DIVING PLONGEON CANADA",
+   "ministere": "Patrimoine canadien",
+   "programme": "Sport - Programme d'accueil - Manifestations internationales unisport",
+   "titre": "2025 World Aquatics Diving World Cup",
+   "valeur": 100000.0,
+   "debut": "2025-04-01",
+   "ville": "Ottawa | Ottawa",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "All Voices Society",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "This Is My Story",
+   "valeur": 25000.0,
+   "debut": "2026-03-31",
+   "ville": "Halifax",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "KITWANGA COMMUNITY ASSOCIATION",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Kitwanga Celebrate Canada Day",
+   "valeur": 1970.0,
+   "debut": "2025-07-01",
+   "ville": "Kitwanga | Kitwanga",
+   "province": "BC",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Boyle Street Service Society",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Boyle Street Community Services",
+   "valeur": 23889.0,
+   "debut": "2025-04-21",
+   "ville": "Edmonton",
+   "province": "AB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Entosystème inc.",
+   "ministere": "Développement économique Canada pour les régions du Québec",
+   "programme": "CERI - Productivité, numérisation et expansion",
+   "titre": "600074230",
+   "valeur": 2500000.0,
+   "debut": "2026-03-06",
+   "ville": "Drummondville",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "BURLINGTON MERCHANDISING & FIXTURES INC",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "CanExport PME",
+   "titre": "BURLINGTON MERCHANDISING & FIXTURES INC-2025-2026-1030576",
+   "valeur": 25000.0,
+   "debut": "2025-04-01",
+   "ville": "Burlington|Burlington",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Manantial Neighbourhood Services Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Manantial (York Centre)",
+   "valeur": 25032.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "GROUPE REFRACO INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "CanExport PME",
+   "titre": "GROUPE REFRACO INC.-2025-2026-1035921",
+   "valeur": 27000.0,
+   "debut": "2025-05-14",
+   "ville": "Chicoutimi|Chicoutimi",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "CATHEDRAL COMMUNICATIONS INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - Mesures spéciales pour appuyer le journalisme",
+   "titre": "Woolwich Observer",
+   "valeur": 55627.0,
+   "debut": "2025-04-01",
+   "ville": "Elmira | Elmira",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "Resilia Community Wellness Centre",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Programme d'établissement",
+   "titre": "Aurora Family Therapy Centre (centre de thérapie familiale Aurora)",
+   "valeur": 9881931.0,
+   "debut": "2025-04-01",
+   "ville": "Winnipeg",
+   "province": "MB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "CHIPPEWAS OF GEORGINA ISLAND",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Commémoration Canada",
+   "titre": "Tiny Shoes and Lowered Flags, Day of Truth and Reconciliation",
+   "valeur": 6700.0,
+   "debut": "2025-04-01",
+   "ville": "Sutton West | Sutton West",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Commerce International Québec",
+   "ministere": "Développement économique Canada pour les régions du Québec",
+   "programme": "CERI-IRRT - Initiative régionale de réponse tarifaire",
+   "titre": "600074188",
+   "valeur": 800000.0,
+   "debut": "2026-03-11",
+   "ville": "Québec",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "The Saskatchewan Parks and Recreation Association Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Saskatchewan Parks and Recreation Association",
+   "valeur": 4866.0,
+   "debut": "2025-04-21",
+   "ville": "Regina",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Romaeris Corporation",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – Romaeris (Ottawa South)",
+   "valeur": 2408.0,
+   "debut": "2025-06-23",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "CHIPPEWAS OF KETTLE AND STONY POINT",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Capacité du système de santé",
+   "titre": "2526-ON-000017",
+   "valeur": 90000.0,
+   "debut": "2025-04-01",
+   "ville": "KETTLE & STONY POINT FN",
+   "province": "ON",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "ONTARIO SOCIETY FOR CHINESE EDUCATION",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Facilitating the Diversity in Canadian Culture and Promoting Canadian Mulitulturalism",
+   "valeur": 2420.0,
+   "debut": "2025-06-27",
+   "ville": "Brampton | Brampton",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "CONSEIL URBATECK INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - Mesures spéciales pour appuyer le journalisme",
+   "titre": "FORMES",
+   "valeur": 4662.0,
+   "debut": "2025-04-01",
+   "ville": "Shawinigan | Shawinigan",
+   "province": "QC",
+   "type": "Autre"
+  },
+  {
+   "nom": "Victorian Order of Nurses for Canada - Ontario Branch",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – VON Canada-Ontario Branch (Guelph)",
+   "valeur": 11126.0,
+   "debut": "2025-04-21",
+   "ville": "Mount Forest",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "LAKESIDE GOLF & COUNTRY CLUB",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Lakeside Golf & Country Club",
+   "valeur": 33444.0,
+   "debut": "2025-04-21",
+   "ville": "Eaglesham",
+   "province": "AB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Polycultural Immigrant and Community Services",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Solutions d’établissement pour l’intégration des nouveaux arrivants – régions de Peel et de Dufferin",
+   "valeur": 15008890.1,
+   "debut": "2025-04-01",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "AEOLIAN HALL MUSICAL ARTS ASSOCIATION",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour la présentation des arts - Soutien à la programmation",
+   "titre": "Aeolian Presentation Season",
+   "valeur": 69300.0,
+   "debut": "2025-04-01",
+   "ville": "London | London",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "Canadian Media ProductionAssociation",
+   "ministere": "Affaires mondiales Canada",
+   "programme": "CanExport-Contributions",
+   "titre": "CEA - Canadian Media Producers Association - CMPA 25/26",
+   "valeur": 57500.0,
+   "debut": "2025-08-15",
+   "ville": "OTTAWA",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "EASTERN CHARLOTTE",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Age Friendly Community",
+   "valeur": 4350.0,
+   "debut": "2026-03-31",
+   "ville": "St George",
+   "province": "NB",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Royal City Soccer Club",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Royal City Soccer Club (York-Simcoe)",
+   "valeur": 11126.0,
+   "debut": "2025-04-21",
+   "ville": "Burlington",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Groupe 3737",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "PPDS-EF - Appuyer communautés de noirs - Cont",
+   "titre": "L’Initiative Appui aux Capacités des Noirs du Canada (IACNC)",
+   "valeur": 5000000.0,
+   "debut": "2025-08-27",
+   "ville": "Montreal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "AstroSankofa Arts Initiatives",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - ASTROSANKOFA (Humber River-Black Creek)",
+   "valeur": 4768.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "ENTERPRISE FLEET MANAGEMENT CANADA",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 5000.0,
+   "debut": "2025-04-01",
+   "ville": "Scarborough|Scarborough",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "MDI LANDSCAPE ARCHITECTS INC.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "MDI Landscape Architects Inc.",
+   "valeur": 2501.0,
+   "debut": "2025-04-21",
+   "ville": "Victoria",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "NUXALK NATION BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement social",
+   "titre": "2526-BC-000004",
+   "valeur": 89894.0,
+   "debut": "2025-04-01",
+   "ville": "BELLA COOLA",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Bagot, Rosemary-McGill University / Université McGill",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Recherche axée sur la connaissance",
+   "titre": "Chaires de recherche du Canada",
+   "valeur": 500000.0,
+   "debut": "2025-04-01",
+   "ville": "MONTRÉAL",
+   "province": "QC",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Viridis Research Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Programme emploi jeunesse",
+   "titre": "PEJ - Ingénieur",
+   "valeur": 30000.0,
+   "debut": "2025-10-27",
+   "ville": "Vancouver|Vancouver",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "ÉDITIONS DU SEPTENTRION INC. (LES)",
+   "ministere": "Patrimoine canadien",
+   "programme": "The program provides grants and contributions to the Canadian-owned book industry to support the creation of Canadian books in traditional and digital formats and to ensure that readers everywhere can access them.",
+   "titre": "Soutien à l’édition",
+   "valeur": 95202.0,
+   "debut": "2025-10-21",
+   "ville": "Québec | Québec",
+   "province": "QC",
+   "type": "Autre"
+  },
+  {
+   "nom": "MLTC PROGRAM SERVICES INC.",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Éducation, NRF - Subvention, Autres rapports de programme",
+   "titre": "2526-SK-000047",
+   "valeur": 636681.91,
+   "debut": "2025-04-01",
+   "ville": "MEADOW LAKE",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Globe Theatre Society",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Globe Theatre",
+   "valeur": 24329.0,
+   "debut": "2025-04-21",
+   "ville": "Regina",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "XAXLI'P INDIAN BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Affaires individuelles, Développement social, Infrastructure communautaire, Gouvernance, Éducation, Développement Économique",
+   "titre": "2526-BC-000062",
+   "valeur": 8452540.0,
+   "debut": "2025-04-01",
+   "ville": "LILLOOET",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Shuswap Band",
+   "ministere": "Pêches et Océans Canada",
+   "programme": "Programme pour la participation autochtone concernant les habitats",
+   "titre": "",
+   "valeur": 30084.0,
+   "debut": "2025-08-07",
+   "ville": "INVERMERE",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Burin Heritage Tourism Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Burin Heritage Tourism Association",
+   "valeur": 5113.0,
+   "debut": "2025-04-21",
+   "ville": "Burin",
+   "province": "NL",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "LUZERNE ROUSSE",
+   "ministere": "Patrimoine canadien",
+   "programme": "The program provides grants and contributions to the Canadian-owned book industry to support the creation of Canadian books in traditional and digital formats and to ensure that readers everywhere can access them.",
+   "titre": "Soutien à l’édition",
+   "valeur": 22070.0,
+   "debut": "2025-10-21",
+   "ville": "Saint-Jean-sur-Richelieu | Saint-Jean-sur-Richelieu",
+   "province": "QC",
+   "type": "Autre"
+  },
+  {
+   "nom": "St Barsaumo Syriac Orthodox Church",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Healthy & Happy Senior Living",
+   "valeur": 23000.0,
+   "debut": "2026-03-31",
+   "ville": "Markham",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "MARCEL COLOMB FIRST NATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement Économique",
+   "titre": "2526-HQ-000024",
+   "valeur": 45000.0,
+   "debut": "2025-05-01",
+   "ville": "LYNN LAKE",
+   "province": "MB",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Corporation touristique de Batiscan",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 70 - Corporation touristique de Batiscan",
+   "valeur": 5213.0,
+   "debut": "2025-04-21",
+   "ville": "Batiscan",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Stonegate Community Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Stonegate Community Health Centre (Etobicoke-Lakeshore)",
+   "valeur": 27813.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Thompson, Debra-McGill University / Université McGill",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Recherche axée sur la connaissance",
+   "titre": "Chaires de recherche du Canada",
+   "valeur": 500000.0,
+   "debut": "2025-07-01",
+   "ville": "MONTREAL",
+   "province": "QC",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "ATIKAMEG HEALING SHELTER FOR WOMEN & CHILDREN SOCIETY",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement social",
+   "titre": "2526-AB-000020",
+   "valeur": 469484.15,
+   "debut": "2025-04-01",
+   "ville": "ATIKAMEG",
+   "province": "AB",
+   "type": "Autre"
+  },
+  {
+   "nom": "Les Cercles de Fermières du Québec",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Métiers et accessoires",
+   "valeur": 25000.0,
+   "debut": "2026-03-31",
+   "ville": "Lac-Bouchette",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "100 NONS INC. (LE)",
+   "ministere": "Patrimoine canadien",
+   "programme": "Développement de Communautés de Langue Officielle - Vie communautaire",
+   "titre": "La Boussole",
+   "valeur": 28000.0,
+   "debut": "2025-06-01",
+   "ville": "Winnipeg | Winnipeg",
+   "province": "MB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "ESGENOOPETITJ FIRST NATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Affaires individuelles, Développement social, Infrastructure communautaire, Gouvernance, Éducation, Développement Économique, Services aux enfants et aux familles, Gestion des Terres",
+   "titre": "2526-AT-000002",
+   "valeur": 15065055.92,
+   "debut": "2025-04-01",
+   "ville": "BURNT CHURCH",
+   "province": "NB",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "VALLEE AUTOMOBILE INC",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatifs pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 30000.0,
+   "debut": "2025-07-01",
+   "ville": "Saint-Georges|Saint-Georges",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Today's Family - Caring For Your Child",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Today's Family - Caring For Your Child (Oakville North-Burlington)",
+   "valeur": 13907.0,
+   "debut": "2025-04-21",
+   "ville": "Hamilton",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Coralus",
+   "ministere": "Innovation, Sciences et Développement économique Canada",
+   "programme": "Fonds pour l?écosystème de la Stratégie pour les femmes en e",
+   "titre": "515589",
+   "valeur": 994779.0,
+   "debut": "2025-04-01",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Bench Mark Equipment & Supplies Inc",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Bench-Mark Equipment & Supplies",
+   "valeur": 4200.0,
+   "debut": "2025-04-21",
+   "ville": "Calgary",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "LEVIS FORD",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 45000.0,
+   "debut": "2025-04-01",
+   "ville": "Lévis|Lévis",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Jenga Homes Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Jenga Homes Inc.",
+   "valeur": 12600.0,
+   "debut": "2025-04-21",
+   "ville": "CALGARY",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "CAMBRIDGE FORD",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 5000.0,
+   "debut": "2025-10-01",
+   "ville": "Cambridge|Cambridge",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Robert T Orlaw, Samantha N Van",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Sweeties Fresh BC Fruits",
+   "valeur": 15003.0,
+   "debut": "2025-04-21",
+   "ville": "Quesnel",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Canmec industriel inc.",
+   "ministere": "Développement économique Canada pour les régions du Québec",
+   "programme": "CERI-IRRT - Initiative régionale de réponse tarifaire",
+   "titre": "600074025",
+   "valeur": 1000000.0,
+   "debut": "2026-02-16",
+   "ville": "Saguenay",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Cornerstone Community Church",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Cornerstone Community Church (Cambridge)",
+   "valeur": 5563.0,
+   "debut": "2025-04-21",
+   "ville": "Cambridge",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Les Éditions de l'Acadie Nouvelle (1984) ltée",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "L'Acadie Nouvelle",
+   "valeur": 4385.0,
+   "debut": "2025-04-21",
+   "ville": "Caraquet",
+   "province": "NB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "WASKESIU RECREATION ASSOCIATION INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Soccer 2026",
+   "titre": "WRA Soccer-Themed Community Art Projects, Individual Artistic Expression & Traditional Foods",
+   "valeur": 5000.0,
+   "debut": "2026-03-30",
+   "ville": "Waskesiu Lake | Waskesiu Lake",
+   "province": "SK",
+   "type": "Autre"
+  },
+  {
+   "nom": "Municipalité d'Yamachiche",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 12 - Municipalité d'Yamachiche",
+   "valeur": 1973.0,
+   "debut": "2025-04-21",
+   "ville": "Yamachiche",
+   "province": "QC",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Ts'il Kaz Koh",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Affaires individuelles, Développement social, Infrastructure communautaire, Développement Économique, Éducation",
+   "titre": "2526-BC-000043",
+   "valeur": 73920.0,
+   "debut": "2025-04-01",
+   "ville": "BURNS LAKE",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "NIL/TUO CHILD AND FAMILY SERVICES SOCIETY",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Services aux enfants et aux familles",
+   "titre": "2526-BC-000081",
+   "valeur": 301768.0,
+   "debut": "2025-04-01",
+   "ville": "SAANICHTON",
+   "province": "BC",
+   "type": "Autre"
+  },
+  {
+   "nom": "Songhees Nation",
+   "ministere": "Parcs Canada",
+   "programme": "Programme de subventions et de contributions de catégorie générale",
+   "titre": "Soutien linguistique et culturel de Lekwungen",
+   "valeur": 1000.0,
+   "debut": "2026-02-13",
+   "ville": "Victoria",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "PASSAMAQUODDY RECOGNITION GROUP INC",
+   "ministere": "Pêches et Océans Canada",
+   "programme": "Programme pour la participation autochtone concernant les habitats",
+   "titre": "25-IHPP-G-GLF-003",
+   "valeur": 79074.0,
+   "debut": "2026-02-05",
+   "ville": "ST STEPHEN",
+   "province": "NB",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Cafe du Quai de l'Anse Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 22 - Le Café du Quai",
+   "valeur": 4508.0,
+   "debut": "2025-04-21",
+   "ville": "L'Anse-Saint-Jean",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "SASKATOON TRIBAL COUNCIL URBAN FIRST NATION SERVICES INC",
+   "ministere": "Ministère de la Justice Canada",
+   "programme": "Programme de justice autochtone",
+   "titre": "Symposium sur la justice réparatrice",
+   "valeur": 16500.0,
+   "debut": "2026-03-27",
+   "ville": "Saskatoon",
+   "province": "SK",
+   "type": "Autre"
+  },
+  {
+   "nom": "University of Ottawa",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - University of Ottawa (Ottawa-Vanier)",
+   "valeur": 19264.0,
+   "debut": "2025-04-21",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Family Day Care Services",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Family Day Care Services (Scarborough-Agincourt)",
+   "valeur": 16687.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Lakehead University",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Fonds de soutien à la recherche",
+   "titre": "Sécutié de la recherche",
+   "valeur": 59696.0,
+   "debut": "2025-04-01",
+   "ville": "THUNDER BAY",
+   "province": "ON",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Bethel Eritrean Evangelical Church Edmonton",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Bethel Eritrean Evangelical Church of Edmonton",
+   "valeur": 23889.0,
+   "debut": "2025-04-21",
+   "ville": "Edmonton",
+   "province": "AB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Bear River First Nation Health Center",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Elder's Health Project",
+   "valeur": 25000.0,
+   "debut": "2026-03-31",
+   "ville": "Bear River",
+   "province": "NS",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "OJIBWAYS OF ONIGAMING FIRST NATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Infrastructure communautaire",
+   "titre": "2526-ON-000002",
+   "valeur": 53059.0,
+   "debut": "2025-04-01",
+   "ville": "NESTOR FALLS",
+   "province": "ON",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "CUMBERLAND HOUSE CREE NATION BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement Économique",
+   "titre": "2526-SK-000020",
+   "valeur": 40000.0,
+   "debut": "2025-04-01",
+   "ville": "CUMBERLAND HOUSE",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Wounded Warriors Canada",
+   "ministere": "Défense nationale",
+   "programme": "Programme de subventions pour le soutien communautaire pour les personnes survivantes d’inconduite sexuelle",
+   "titre": "Formation en premiers soins et engagement des témoins First Aid and Bystander Engagement Training",
+   "valeur": 175000.0,
+   "debut": "2025-10-01",
+   "ville": "Whitby",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "CARE Centre for Internationally Educated Nurses",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Programme de services de soutien avant et après l'arrivée du CARE Centre",
+   "valeur": 3117706.14,
+   "debut": "2025-04-01",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Alberta AdaptAbilities Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "AdaptAbilities (Edmonton Millwoods)",
+   "valeur": 65351.0,
+   "debut": "2025-04-21",
+   "ville": "Edmonton",
+   "province": "AB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "VILLAGE OF MARKINCH",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Canada Day Celebration",
+   "valeur": 2040.0,
+   "debut": "2026-03-05",
+   "ville": "Markinch | Markinch",
+   "province": "SK",
+   "type": "Autre"
+  },
+  {
+   "nom": "Lashitew, Addisu-McMaster University",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Recherche axée sur la connaissance",
+   "titre": "Chaires de recherche du Canada",
+   "valeur": 600000.0,
+   "debut": "2025-10-01",
+   "ville": "HAMILTON",
+   "province": "ON",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "The Cambridge Public Library Board",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - The Cambridge Public Library Board (Kitchener South-Hespeler)",
+   "valeur": 11125.0,
+   "debut": "2025-04-21",
+   "ville": "Cambridge",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Municipalité de Saint-Patrice-de-Beaurivage",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Fonds pour l’accessibilité - Jeunesse",
+   "titre": "Amélioration des conditions de travail des bénévoles à la bibliothèque Florence-Guay",
+   "valeur": 12000.0,
+   "debut": "2026-03-27",
+   "ville": "Saint-Patrice-de-Beaurivage",
+   "province": "QC",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "ENGLISH RIVER FIRST NATION BAND",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Autres rapports de programme, Développement Économique",
+   "titre": "2526-SK-000003",
+   "valeur": 179250.0,
+   "debut": "2025-04-01",
+   "ville": "PATUANAK",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "9068-8342 QUEBEC INC",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "CanExport PME",
+   "titre": "9068-8342 QUEBEC INC-2025-2026-1029797",
+   "valeur": 30000.0,
+   "debut": "2025-04-01",
+   "ville": "Terrebonne|Terrebonne",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "GOODABLE INC.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "CanExport PME",
+   "titre": "GOODABLE INC.-2025-2026-1033032",
+   "valeur": 25000.0,
+   "debut": "2025-04-02",
+   "ville": "Toronto|Toronto",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Cynthia G Bazinet and Matthew J Roy",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "programme": "Programme d'emploi et de compétences des jeunes",
+   "titre": "Expérience de travail",
+   "valeur": 10651.0,
+   "debut": "2025-04-01",
+   "ville": "Upper Port La Tour",
+   "province": "NS",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Navera Community Connections Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ - 2025 Navera Community Connections Inc",
+   "valeur": 16422.0,
+   "debut": "2025-04-21",
+   "ville": "SASKATOON",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Valley Commons Winery Ltd.",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "programme": "Programme d'aide au secteur du vin",
+   "titre": "Programme d'aide au secteur du vin",
+   "valeur": 37374.6,
+   "debut": "2025-04-01",
+   "ville": "Oliver",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Société de Développement Commercial Hochelaga-Maisonneuve",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 28 - Société de Développement Commercial Hochelaga-Maisonneuve",
+   "valeur": 5213.0,
+   "debut": "2025-04-21",
+   "ville": "Montréal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "1421552 Alberta Ltd",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "The Big Moo Ice Cream Parlor",
+   "valeur": 4200.0,
+   "debut": "2025-04-21",
+   "ville": "Sylvan Lake",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Malvern Family Resource Centre",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Malvern Family Resource Centre (Scarborough North)",
+   "valeur": 38937.0,
+   "debut": "2025-04-21",
+   "ville": "Scarborough",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "St. George’s Anglican Church",
+   "ministere": "Parcs Canada",
+   "programme": "Programme national de partage des frais pour les lieux patrimoniaux",
+   "titre": "Entente de contribution - Lieu historique national du Canada de l'Église-Anglicane-St. George",
+   "valeur": 250000.0,
+   "debut": "2025-07-09",
+   "ville": "Montréal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "SASKATCHEWAN FIRST NATIONS FAMILY AND COMMUNITY INSTITUTE INC.",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Développement social",
+   "titre": "2526-SK-000035",
+   "valeur": 300000.0,
+   "debut": "2025-04-01",
+   "ville": "SASKATOON",
+   "province": "SK",
+   "type": "Autre"
+  },
+  {
+   "nom": "Accompagnement Scolaire Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 15 - Accompagnement scolaire Inc.",
+   "valeur": 13524.0,
+   "debut": "2025-04-21",
+   "ville": "Montréal",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "MID-TOWN FORD SALES LIMITED",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 10000.0,
+   "debut": "2025-04-01",
+   "ville": "Winnipeg|Winnipeg",
+   "province": "MB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "VERBE MÉDIAS (LE)",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - Mesures spéciales pour appuyer le journalisme",
+   "titre": "Le Verbe",
+   "valeur": 134088.0,
+   "debut": "2025-04-01",
+   "ville": "Québec | Québec",
+   "province": "QC",
+   "type": "Autre"
+  },
+  {
+   "nom": "GLACIER FARMMEDIA LIMITED PARTNERSHIP",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - FCP - Aide aux éditeurs",
+   "titre": "Country Guide",
+   "valeur": 280373.0,
+   "debut": "2025-04-01",
+   "ville": "Winnipeg | Winnipeg",
+   "province": "MB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Moisson Montreal Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "PPDS-Enfants et familles - Subventions",
+   "titre": "Canada’s Volunteer Awards – 2024 Grant Recipients",
+   "valeur": 5000.0,
+   "debut": "2025-12-04",
+   "ville": "Montreal",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Autism Society of Newfoundland and Labrador Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Autism Society of Newfoundland and Labrador Inc. (St. John's East)",
+   "valeur": 5114.0,
+   "debut": "2025-04-21",
+   "ville": "St. John's",
+   "province": "NL",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Canadian Fossil Discovery Centre Inc",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Canadian Fossil Discovery Centre",
+   "valeur": 5032.0,
+   "debut": "2025-04-21",
+   "ville": "Morden",
+   "province": "MB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Refugee 613",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Centre d’information pour les nouveaux arrivants : améliorer les communications numériques en vue de meilleurs résultats en matière d’établissement",
+   "valeur": 4524590.65,
+   "debut": "2025-04-01",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "VILLAGER PUBLICATIONS",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - Mesures spéciales pour appuyer le journalisme",
+   "titre": "Lambeth Villager",
+   "valeur": 5567.0,
+   "debut": "2025-04-01",
+   "ville": "Melbourne | Melbourne",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "NanoTech Innovation Inc",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "NanoTech Innovation Inc",
+   "valeur": 5001.0,
+   "debut": "2025-04-21",
+   "ville": "Vancouver",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "W P Griffin Incorporated",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "programme": "Programme d'emploi et de compétences des jeunes",
+   "titre": "Programme d'emploi et de compétences des jeunes",
+   "valeur": 5904.0,
+   "debut": "2025-04-01",
+   "ville": "Elmsdale",
+   "province": "PE",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Glad Tidings Community Church",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Glad Tidings Community Church (Chatham-Kent-Leamington)",
+   "valeur": 5364.0,
+   "debut": "2025-04-21",
+   "ville": "Blenheim",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Vitality Landscaping Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Vitality Landscaping Inc. (Kanata-Carleton)",
+   "valeur": 7224.0,
+   "debut": "2025-06-23",
+   "ville": "Dunrobin",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "2442359 Ontario Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle",
+   "titre": "Développement d’une méthode de fabrication de drones à grande vitesse et d’un système de drones aux capacités améliorées",
+   "valeur": 943850.0,
+   "debut": "2025-12-15",
+   "ville": "Ottawa|Ottawa",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "INNISFAIL AND DISTRICT HISTORICAL SOCIETY",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Canada Day Celebration",
+   "valeur": 2270.0,
+   "debut": "2025-07-01",
+   "ville": "Innisfail | Innisfail",
+   "province": "AB",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Waterski and Wakeboard Saskatchewan",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Waterski and Wakeboard Saskatchewan",
+   "valeur": 24329.0,
+   "debut": "2025-04-21",
+   "ville": "Saskatoon",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "CAMP QUALITY CANADA",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Camp Quality Canada (Algoma-Manitoulin-Kapuskasing)",
+   "valeur": 11126.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Evolve Skate Camp Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Evolve Camps (Oakville North-Burlington)",
+   "valeur": 4816.0,
+   "debut": "2025-04-21",
+   "ville": "North York",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Applied Quantum Materials Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Applied Quantum Materials Inc.",
+   "valeur": 2100.0,
+   "debut": "2025-04-21",
+   "ville": "Edmonton",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Le Moulin d'or de Rémigny",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Matériel de diffusion pour activités",
+   "valeur": 7832.0,
+   "debut": "2026-03-31",
+   "ville": "Rémigny",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Tłı̨chǫ Government",
+   "ministere": "Savoir polaire Canada",
+   "programme": "Subventions pour soutenir la recherche et les activités relatives aux régions polaires",
+   "titre": "Réunion scientifique annuelle d'ArcticNet 2025",
+   "valeur": 2500.0,
+   "debut": "2025-04-01",
+   "ville": "Behchoko",
+   "province": "NT",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "INVERNESS SOUTH ANGLERS ASSOCIATION",
+   "ministere": "Pêches et Océans Canada",
+   "programme": "Programme d’intendance de l’habitat",
+   "titre": "",
+   "valeur": 70000.0,
+   "debut": "2025-09-04",
+   "ville": "MABOU",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Stz'uminus First Nation",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Stz'uminus First Nation",
+   "valeur": 34697.0,
+   "debut": "2025-04-21",
+   "ville": "Ladysmith",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Hunters Market Company",
+   "ministere": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "programme": "Affaires du Nord",
+   "titre": "2526-HQ-000010",
+   "valeur": 20000.0,
+   "debut": "2025-04-01",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "Frisch Engineered Products Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Frisch Engineered Products Inc.",
+   "valeur": 4200.0,
+   "debut": "2025-04-21",
+   "ville": "BATTLEFORD",
+   "province": "SK",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Parkdale Golden Age Foundation",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Parkdale Golden Age Foundation (Parkdale-High Park)",
+   "valeur": 11126.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Achev",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Sytème HARTs (History of Assessment, Referral and Training system) - SYSTÈME INTÉGRÉ DE GESTION DES DONNÉES LINGUISTIQUES",
+   "valeur": 2502808.25,
+   "debut": "2025-04-01",
+   "ville": "Mississauga",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Michaelis, Vladimir-University of Alberta",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Recherche axée sur la connaissance",
+   "titre": "Chaires de recherche du Canada",
+   "valeur": 500000.0,
+   "debut": "2025-09-01",
+   "ville": "EDMONTON",
+   "province": "AB",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "HELP GROUP FRIENDS ORGANIZATION",
+   "ministere": "Patrimoine canadien",
+   "programme": "Mise en valeur des langues officielles - Promotion de la dualité linguistique",
+   "titre": "Multilingual Friendship and Game Programs for Seniors",
+   "valeur": 2500.0,
+   "debut": "2026-03-19",
+   "ville": "Markham | Markham",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "87144 Newfoundland and Labrador Incorporated",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Cohen's Home Furnishings",
+   "valeur": 2240.0,
+   "debut": "2025-04-21",
+   "ville": "Forteau",
+   "province": "NL",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "POP MONTRÉAL INTERNATIONAL MUSIC FESTIVAL - FESTIVAL INTERNATIONAL DE MUSIQUE POP MONTRÉAL",
+   "ministere": "Patrimoine canadien",
+   "programme": "Développement de Communautés de Langue Officielle - Vie communautaire",
+   "titre": "POP Montreal and LOVE Quebec: Advanced Photo Club and Exposition",
+   "valeur": 10000.0,
+   "debut": "2025-07-01",
+   "ville": "Montréal | Montréal",
+   "province": "QC",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "JIM PATTISON INDUSTRIES LTD",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatifs pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 5000.0,
+   "debut": "2025-07-01",
+   "ville": "Saint-Léonard|Saint-Léonard",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Marcoux Machining Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Marcoux Machining Inc.",
+   "valeur": 2193.0,
+   "debut": "2025-04-21",
+   "ville": "Saint-Ignace",
+   "province": "NB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Airport Golflans LTD",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Anderson Links Golf and Country Club (Orléans)",
+   "valeur": 4816.0,
+   "debut": "2025-04-21",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "RIVER VALLEY FORD",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 15000.0,
+   "debut": "2026-01-01",
+   "ville": "Mission|Mission",
+   "province": "BC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Little Mircles Child Care & Learning Centre",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 –Little Miracles Child Care and Learning Centre (Markham-Unionville)",
+   "valeur": 4816.0,
+   "debut": "2025-04-21",
+   "ville": "Markham",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Fundy Guild Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Friends of Fundy (Alma, NB)",
+   "valeur": 10002.0,
+   "debut": "2025-04-21",
+   "ville": "Alma",
+   "province": "NB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "London Regional Children's Museum",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - London Children's Museum (London North Centre)",
+   "valeur": 27812.0,
+   "debut": "2025-04-21",
+   "ville": "London",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "ETOBIGROW INC.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – EtobiGrow (Eglinton-Lawrence)",
+   "valeur": 2408.0,
+   "debut": "2025-04-21",
+   "ville": "North York",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "FOUNDATION FOR THE VICTORIA SYMPHONY",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour l'investissement en culture - Incitatif aux fonds de dotation",
+   "titre": "Victoria Symphony Society",
+   "valeur": 103704.0,
+   "debut": "2025-12-01",
+   "ville": "Victoria | Victoria",
+   "province": "BC",
+   "type": "Autre"
+  },
+  {
+   "nom": "Chabad Jewish Centre of Durham Region",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Loaves of Love - Promoting Healthy Aging through Challah Workshops",
+   "valeur": 24700.0,
+   "debut": "2026-03-31",
+   "ville": "Whitby",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Estevan Art Gallery & Museum Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Estevan Art Gallery & Museum",
+   "valeur": 4866.0,
+   "debut": "2025-04-21",
+   "ville": "Estevan",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Make-A-Wish Foundation of Canada / Fondation Rêves d'enfants Canada",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – Make-A-Wish Canada (Don Valley West)",
+   "valeur": 15297.0,
+   "debut": "2025-04-21",
+   "ville": "Pickering",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "MAI (MONTRÉAL, ARTS INTERCULTURELS)",
+   "ministere": "Patrimoine canadien",
+   "programme": "Mise en valeur des langues officielles - Promotion de la dualité linguistique",
+   "titre": "Célébration du 25ème anniversaire du Montréal, arts interculturels",
+   "valeur": 2505.0,
+   "debut": "2025-05-07",
+   "ville": "Montréal | Montréal",
+   "province": "QC",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Municipality of Bristol",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 57 - Municipality of Bristol",
+   "valeur": 4347.0,
+   "debut": "2025-04-21",
+   "ville": "Bristol",
+   "province": "QC",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "NATOAGANEG",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Infrastructure communautaire, Éducation",
+   "titre": "2526-AT-000031",
+   "valeur": 2290465.8,
+   "debut": "2025-04-01",
+   "ville": "EEL GROUND",
+   "province": "NB",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Ts'il Kaz Koh",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Éducation",
+   "titre": "2526-BC-000043",
+   "valeur": 1136.0,
+   "debut": "2025-04-01",
+   "ville": "BURNS LAKE",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "RONALD THIBAULT CHEVROLET CADILLAC BUICK GMC LTD",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatifs pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 35000.0,
+   "debut": "2025-07-01",
+   "ville": "Sherbrooke|Sherbrooke",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "SPIDERWEBSHOW PERFORMANCE",
+   "ministere": "Patrimoine canadien",
+   "programme": "The program gives Canadians access to a variety of professional artistic experiences in their communities. Provides financial assistance to Canadian not-for-profit organizations that professionally present arts festivals or performing arts series, as well as their support organizations.",
+   "titre": "2026 / 2027 FOLDA Festival",
+   "valeur": 49276.0,
+   "debut": "2025-10-10",
+   "ville": "Kingston | Kingston",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "Office du tourisme et des congrès de rivière-du-loup inc",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 51 - Tourisme Rivière-du-Loup",
+   "valeur": 10426.0,
+   "debut": "2025-04-21",
+   "ville": "Rivière-du-Loup",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "KTUNAXA/KINBASKET CHILD AND FAMILY SERVICE SOCIETY",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Services aux enfants et aux familles",
+   "titre": "2526-BC-000082",
+   "valeur": 437300.0,
+   "debut": "2025-04-01",
+   "ville": "CRANBROOK",
+   "province": "BC",
+   "type": "Autre"
+  },
+  {
+   "nom": "MacBride Museum Society",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "MacBride Museum",
+   "valeur": 65303.0,
+   "debut": "2025-04-21",
+   "ville": "Whitehorse",
+   "province": "YT",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Best Care Canada Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Best Care Canada Inc. (Thunder Bay-Rainy River)",
+   "valeur": 2322.0,
+   "debut": "2025-04-21",
+   "ville": "Thunder Bay",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Rayonier A.M. Canada G.P.",
+   "ministere": "Développement économique Canada pour les régions du Québec",
+   "programme": "CERI - Productivité, numérisation et expansion",
+   "titre": "600073233",
+   "valeur": 162500.0,
+   "debut": "2026-03-31",
+   "ville": "Témiscaming",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "HopeSpring Cancer Support Centre",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - HopeSpring Cancer Support Centre (Kitchener Centre)",
+   "valeur": 9632.0,
+   "debut": "2025-04-21",
+   "ville": "Kitchener",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "York Factory First Nation",
+   "ministere": "Parcs Canada",
+   "programme": "Programme de subventions et de contributions de catégorie générale",
+   "titre": "Rassemblement à Winnipeg pour discuter de la faisabilité d’une aire marine nationale de conservation dans l’ouest de la baie d’Hudson",
+   "valeur": 15000.0,
+   "debut": "2026-03-25",
+   "ville": "York Landing",
+   "province": "MB",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Inverness Historical Society",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Inverness Miners Museum",
+   "valeur": 5017.0,
+   "debut": "2025-04-21",
+   "ville": "Inverness",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "INDO-CANADIAN SENIOR GROUP OF N.S.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Canada Day",
+   "valeur": 1250.0,
+   "debut": "2026-03-05",
+   "ville": "Halifax | Halifax",
+   "province": "NS",
+   "type": "Autre"
+  },
+  {
+   "nom": "ESK'ETEMC",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Éducation",
+   "titre": "2526-BC-000039",
+   "valeur": 1224013.0,
+   "debut": "2025-04-01",
+   "ville": "ALKALI LAKE",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Kilter Brewing Company Ltd.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Contributions aux entreprises",
+   "titre": "Optimisation des processus pour augmenter la capacité de production et l’efficacité",
+   "valeur": 75000.0,
+   "debut": "2025-07-07",
+   "ville": "Winnipeg|Winnipeg",
+   "province": "MB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "9228-1476 Québec Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Programme emploi jeunesse",
+   "titre": "PEJ - Ingénierie, simulation numérique & optimisation",
+   "valeur": 30000.0,
+   "debut": "2025-09-29",
+   "ville": "Montreal|Montréal",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "PEATLANDS PROTECTION SOCIETY",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Peatlands Protection Society",
+   "valeur": 11370.0,
+   "debut": "2025-04-21",
+   "ville": "Delta",
+   "province": "BC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "YMCA of Simcoe/Muskoka",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - YMCA of Simcoe/Muskoka (Simcoe North)",
+   "valeur": 27812.0,
+   "debut": "2025-04-21",
+   "ville": "Barrie",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Maison de la Famille de la Vallée du Richelieu",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 11 - Maison de la Famille de la Vallée du Richelieu",
+   "valeur": 9235.0,
+   "debut": "2025-04-21",
+   "ville": "Beloeil",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "ARQUIVES: CANADA’S QUEER ARCHIVES (THE)",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme d'aide aux musées - Museum Assistance Program-Collections Management",
+   "titre": "COVID Cataloguing Project",
+   "valeur": 50000.0,
+   "debut": "2025-05-05",
+   "ville": "Toronto | Toronto",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "MIAM MAG INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - FCP - Aide aux éditeurs",
+   "titre": "",
+   "valeur": 30103.0,
+   "debut": "2025-04-01",
+   "ville": "Montréal | Montréal",
+   "province": "QC",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "YORKTON TRIBAL ADMINISTRATION INC.",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Gouvernance",
+   "titre": "2526-SK-000058",
+   "valeur": 97944.0,
+   "debut": "2025-04-01",
+   "ville": "YORKTON",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "The Village Connection Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Village Connection Inc.",
+   "valeur": 4313.0,
+   "debut": "2025-04-21",
+   "ville": "St. Pierre-Jolys",
+   "province": "MB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "ONION LAKE NATIVE JUSTICE INC.",
+   "ministere": "Ministère de la Justice Canada",
+   "programme": "Programme de justice autochtone",
+   "titre": "Coordonnateur des communautés plus sûres",
+   "valeur": 25000.0,
+   "debut": "2025-11-28",
+   "ville": "Onion Lake",
+   "province": "SK",
+   "type": "Autre"
+  },
+  {
+   "nom": "ESGENOOPETITJ FIRST NATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Affaires individuelles, Infrastructure communautaire",
+   "titre": "2526-AT-000002",
+   "valeur": 116180.86,
+   "debut": "2025-04-01",
+   "ville": "BURNT CHURCH",
+   "province": "NB",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Smart Housing Corp.",
+   "ministere": "Agence fédérale de développement économique pour le Nord de l’Ontario",
+   "programme": "Initiative régionale pour l’innovation en construction résidentielle",
+   "titre": "900726",
+   "valeur": 200000.0,
+   "debut": "2026-01-30",
+   "ville": "BRACEBRIDGE",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Waypoints Community Services Association",
+   "ministere": "Ministère de la Justice Canada",
+   "programme": "Fonds d'aide aux victimes",
+   "titre": "Outils de guérison culturellement pertinents",
+   "valeur": 5000.0,
+   "debut": "2026-02-01",
+   "ville": "Fort McMurray",
+   "province": "AB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "GRANT HAVEN MANAGEMENT INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les périodiques - Mesures spéciales pour appuyer le journalisme",
+   "titre": "Tillsonburg Post",
+   "valeur": 2045.0,
+   "debut": "2025-04-01",
+   "ville": "St. Marys | St. Marys",
+   "province": "ON",
+   "type": "Autre"
+  },
+  {
+   "nom": "DOWNTOWN PENTICTON ASSOCIATION",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Canada Day",
+   "valeur": 13000.0,
+   "debut": "2026-03-18",
+   "ville": "Penticton | Penticton",
+   "province": "BC",
+   "type": "Autre"
+  },
+  {
+   "nom": "Canadian Journal of Career Development",
+   "ministere": "Conseil de recherches en sciences humaines du Canada",
+   "programme": "Recherche axée sur la connaissance",
+   "titre": "Aide à l'édition savante",
+   "valeur": 150000.0,
+   "debut": "2026-03-01",
+   "ville": "ST. JOHN'S",
+   "province": "NL",
+   "type": "Autre"
+  },
+  {
+   "nom": "Municipalité de la Paroisse de Sainte-Sabine",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Modernisation et achat d'équipements pour les aînés",
+   "valeur": 5096.0,
+   "debut": "2026-03-31",
+   "ville": "Sainte-Sabine",
+   "province": "QC",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Mesivta Lubavitch Toronto",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Mesivta Lubavitch or MLT (Eglinton-Lawrence)",
+   "valeur": 11126.0,
+   "debut": "2025-04-21",
+   "ville": "North York",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "The Cross-Cultural Community Services Association",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Programme d'établissement",
+   "titre": "Programme d’autonomisation et d’accueil des nouveaux arrivants (région de Peel)",
+   "valeur": 3230161.0,
+   "debut": "2025-04-01",
+   "ville": "Markham",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Locations et aventures C-Nuk Inc.",
+   "ministere": "Développement économique Canada pour les régions du Québec",
+   "programme": "Le Programme De Développement Économique Du Québec (PDEQ)",
+   "titre": "600073100",
+   "valeur": 63975.0,
+   "debut": "2025-10-06",
+   "ville": "Kuujjuarapik",
+   "province": "QC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "L'HÔTELLERIE ST. NORBERT GUEST HOUSE INC.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "St. Norbert Arts Centre (SNAC)",
+   "valeur": 15097.0,
+   "debut": "2025-04-21",
+   "ville": "Winnipeg",
+   "province": "MB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Comité de gestion du Parc régional de la rivière Mitis",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 06 - Parc régional de la rivière Mitis",
+   "valeur": 10426.0,
+   "debut": "2025-04-21",
+   "ville": "Sainte-Flavie",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "BLAINVILLE FORD INC.",
+   "ministere": "Transports Canada",
+   "programme": "Programme d’incitatives pour l’achat de véhicules à zéro émission",
+   "titre": "Entente pour le remboursement d'incitatif(s) offert dans le cadre du programme iVZE",
+   "valeur": 15000.0,
+   "debut": "2025-04-01",
+   "ville": "Blainville|Blainville",
+   "province": "QC",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "ZEXA LIVE Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Contributions aux entreprises",
+   "titre": "Enregistrement musical en direct à l’aide d’une caméra multidirectionnelle intégrée à un téléphone intelligent et de l’IA",
+   "valeur": 100000.0,
+   "debut": "2025-05-01",
+   "ville": "Calgary|Calgary",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Le Groupe InnovaNor",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Projet d’offre de services d’établissement dans la région de Hearst à Cochrane",
+   "valeur": 1042322.1,
+   "debut": "2025-04-01",
+   "ville": "Hearst",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "TL'ESQOX",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Infrastructure communautaire, Développement Économique",
+   "titre": "2526-BC-000041",
+   "valeur": 93241.0,
+   "debut": "2025-04-01",
+   "ville": "RISKE CREEK",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "THUNDERCHILD FIRST NATION",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Soins primaires, Transformation du système de santé, Protection de la santé publique, Promotion de la santé et prévention des maladies",
+   "titre": "2526-SK-000040",
+   "valeur": 91481.0,
+   "debut": "2025-04-01",
+   "ville": "TURTLEFORD",
+   "province": "SK",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Rainbow Routes Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Rainbow Routes Association (Sudbury)",
+   "valeur": 16689.0,
+   "debut": "2025-04-21",
+   "ville": "Sudbury",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Crump Enterprises Ltd",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Crump Enterprises Ltd (Lambton-Kent-Middlesex)",
+   "valeur": 2408.0,
+   "debut": "2025-04-21",
+   "ville": "Ilderton",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Department of Industry, Energy and Technology",
+   "ministere": "Agence de promotion économique du Canada atlantique",
+   "programme": "ACCIA - Activités de participation aux marchés à long terme",
+   "titre": "227479",
+   "valeur": 192500.0,
+   "debut": "2025-05-16",
+   "ville": "St. John's|St. John's",
+   "province": "NL",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "William Frankland, Susannah Murphy",
+   "ministere": "Agriculture et Agroalimentaire Canada",
+   "programme": "Programme d'emploi et de compétences des jeunes",
+   "titre": "Expérience de travail",
+   "valeur": 4320.0,
+   "debut": "2025-04-01",
+   "ville": "Saint Andrews",
+   "province": "NS",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Brain Injury Association Quinte District",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Brain Injury Association Quinte District (Bay of Quinte)",
+   "valeur": 5563.0,
+   "debut": "2025-04-21",
+   "ville": "Belleville",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Les aînés de Saint-Michel-des-Saints (ASMS)",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Aînés branchés ensemble",
+   "valeur": 11832.0,
+   "debut": "2026-03-31",
+   "ville": "Saint-Michel-des-Saints",
+   "province": "QC",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "RENAISSANCE PRO",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "ÉEC 2025 - Renaissance Pro (Ottawa-Vanier)",
+   "valeur": 11125.0,
+   "debut": "2025-06-23",
+   "ville": "VANIER (OTTAWA)",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Grand River Community Health Centre",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Community Health Worker (Brantford-Brant)",
+   "valeur": 5563.0,
+   "debut": "2025-04-21",
+   "ville": "Brantford",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Skeetchestn Indian Band",
+   "ministere": "La Régie de l’énergie du Canada",
+   "programme": "Subventions et contributions pour appuyer la participation des peuples autochtones et des parties prenantes aux activités de la Régie, notamment aux activités visant les processus décisionnels, la mobilisation et la surveillance de la sécurité et de l’environnement",
+   "titre": "Aide financière accordée pour participer aux activités de mobilisation en amont menées par la Régie pour l'atténuation permanente de l'érosion du passage du Deadman River 5.",
+   "valeur": 5000.0,
+   "debut": "2026-03-03",
+   "ville": "Savona",
+   "province": "BC",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Municipalité de Saint-Denis-de-Brompton",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 61 - Municipalité de Saint-Denis-de-Brompton",
+   "valeur": 2254.0,
+   "debut": "2025-04-21",
+   "ville": "Saint-Denis-de-Brompton",
+   "province": "QC",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "CANADA SWAHILI FESTIVAL",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 – CANADA SWAHILI FESTIVAL (Brampton North)",
+   "valeur": 9632.0,
+   "debut": "2025-04-21",
+   "ville": "OAKVILLE",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "WATERMARK THEATRE INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Fonds du Canada pour les espaces Culturels - Fonds du Canada pour les espaces culturels",
+   "titre": "Watermark Accessibility Project",
+   "valeur": 8232.0,
+   "debut": "2025-05-31",
+   "ville": "North Rustico | North Rustico",
+   "province": "PE",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Nutrilawn Toronto Ltd",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Nutrilawn & Mosquito.buzz (Hamilton Mountain)",
+   "valeur": 4816.0,
+   "debut": "2025-04-21",
+   "ville": "Mississauga",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "RAFO RIVE-NORD INC.",
+   "ministere": "Patrimoine canadien",
+   "programme": "Développement de Communautés de Langue Officielle - Vie communautaire",
+   "titre": "FACC - Le rêve d'Elliot Lake",
+   "valeur": 25850.0,
+   "debut": "2025-09-01",
+   "ville": "Elliot Lake | Elliot Lake",
+   "province": "ON",
+   "type": "Non précisé"
+  },
+  {
+   "nom": "Comité du Patrimoine de l'École du Rang II d'Authier",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 02 - Comité du Patrimoine de l'École du Rang II d'Authier",
+   "valeur": 15639.0,
+   "debut": "2025-04-21",
+   "ville": "Authier",
+   "province": "QC",
+   "type": "Organisation internationale"
+  },
+  {
+   "nom": "Lac Ste. Anne County",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Lac Ste. Anne County",
+   "valeur": 54600.0,
+   "debut": "2025-04-21",
+   "ville": "Sangudo",
+   "province": "AB",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "FISH ON THE BAY",
+   "ministere": "Agence canadienne de développement économique du Nord",
+   "programme": "les initiatives communautaires dans les collectivités isolées du Nord",
+   "titre": "Poissonnerie professionnelle",
+   "valeur": 99800.0,
+   "debut": "2025-04-01",
+   "ville": "YELLOWKNIFE",
+   "province": "NT",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Draft Guys INC",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Draft Guys INC",
+   "valeur": 2193.0,
+   "debut": "2025-06-16",
+   "ville": "Dieppe",
+   "province": "NB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Weenusk First Nation",
+   "ministere": "Agence d'évaluation d'impact du Canada",
+   "programme": "Programme d'aide financière aux participants",
+   "titre": "",
+   "valeur": 10000.0,
+   "debut": "2025-10-07",
+   "ville": "Peawanuck",
+   "province": "ON",
+   "type": "Bénéficiaire autochtone"
+  },
+  {
+   "nom": "Action for Humanity Canada",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Action for Humanity Canada (Milton)",
+   "valeur": 11126.0,
+   "debut": "2025-04-21",
+   "ville": "Milton",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Kalpavriksha Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Wize Computing Academy (Ottawa-Vanier)",
+   "valeur": 7224.0,
+   "debut": "2025-04-21",
+   "ville": "Ottawa",
+   "province": "ON",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "CITY OF WEYBURN - WEYBURN LEISURE CENTRE",
+   "ministere": "Patrimoine canadien",
+   "programme": "Programme des célébrations et commémorations - Le Canada en fête!",
+   "titre": "Weyburn Canada Day Celebrations 2026",
+   "valeur": 14000.0,
+   "debut": "2026-03-18",
+   "ville": "Weyburn | Weyburn",
+   "province": "SK",
+   "type": "Autre"
+  },
+  {
+   "nom": "Chinook Cheese Ltd.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Contributions aux entreprises",
+   "titre": "Développement d’un nouveau type de fromage - Kashkaval",
+   "valeur": 75000.0,
+   "debut": "2025-07-01",
+   "ville": "Calgary|Calgary",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Maritime Geothermal Ltd.",
+   "ministere": "Agence de promotion économique du Canada atlantique",
+   "programme": "CERI-Expansion et productivité des entreprises (EPE)",
+   "titre": "227520",
+   "valeur": 1640000.0,
+   "debut": "2025-08-01",
+   "ville": "Petitcodiac",
+   "province": "NB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Calgary Cerebral Palsy Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Cerebral Palsy Kids and Families",
+   "valeur": 119438.0,
+   "debut": "2025-04-21",
+   "ville": "Calgary",
+   "province": "AB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Manitoba Track and Field Association Inc.",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Athletics Manitoba",
+   "valeur": 5032.0,
+   "debut": "2025-04-21",
+   "ville": "Winnipeg",
+   "province": "MB",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "MUNICIPALITE de la PAROISSE DE",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "EEC 32 - Municipalité de Sainte-Rose-du-Nord",
+   "valeur": 2254.0,
+   "debut": "2025-04-21",
+   "ville": "Sainte-Rose-du-Nord",
+   "province": "QC",
+   "type": "Gouvernement"
+  },
+  {
+   "nom": "Planetary Technologies Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "CanExport PME",
+   "titre": "Planetary Technologies Inc.-2025-2026-1033705",
+   "valeur": 10500.0,
+   "debut": "2025-05-02",
+   "ville": "Dartmouth|Dartmouth",
+   "province": "NS",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Atlantic Region Association of Immigrant Serving Agencies  (ARAISA)",
+   "ministere": "Immigration, Réfugiés et Citoyenneté Canada",
+   "programme": "Établissement",
+   "titre": "Mettre en relation pour optimiser les résultats : Une approche collaborative pour appuyer l’établissement et l’intégration dans la région de l’Atlantique",
+   "valeur": 5110280.52,
+   "debut": "2025-04-01",
+   "ville": "Halifax",
+   "province": "NS",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Burlaok Canoe Club",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "CSJ 2025 - Burloak Canoe Club (Oakville)",
+   "valeur": 29204.0,
+   "debut": "2025-04-21",
+   "ville": "Oakville",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "University of Saskatchewan Northern Medical Services",
+   "ministere": "Services aux Autochtones Canada",
+   "programme": "Protection de la santé publique",
+   "titre": "2526-SK-000024",
+   "valeur": 200000.0,
+   "debut": "2025-04-01",
+   "ville": "Saskatoon",
+   "province": "SK",
+   "type": "Université ou institution publique"
+  },
+  {
+   "nom": "Lloydminster Learning Council Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Learning Through Seniors",
+   "valeur": 24950.0,
+   "debut": "2026-03-31",
+   "ville": "Lloydminster",
+   "province": "SK",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Peel Multicultural Council",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Programme Nouveaux Horizons pour les aînés",
+   "titre": "Immigrant Seniors’ Elder Abuse Awareness Series",
+   "valeur": 23215.0,
+   "debut": "2026-03-31",
+   "ville": "Mississauga",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "Nature Conservancy of Canada",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Nature Conservancy of Canada (Beausejour)",
+   "valeur": 5001.0,
+   "debut": "2025-04-21",
+   "ville": "Toronto",
+   "province": "ON",
+   "type": "Organisme sans but lucratif"
+  },
+  {
+   "nom": "CarboMat Inc.",
+   "ministere": "Conseil national de recherches Canada",
+   "programme": "Programme d’aide à la recherche industrielle – Contributions aux entreprises",
+   "titre": "Amélioration de la qualité des fibres de carbone dérivées de l’asphaltene",
+   "valeur": 300000.0,
+   "debut": "2025-04-01",
+   "ville": "Calgary|Calgary",
+   "province": "AB",
+   "type": "Entreprise"
+  },
+  {
+   "nom": "Corner Brook Baseball Association",
+   "ministere": "Emploi et Développement social Canada",
+   "programme": "Jeunesse - Emplois d'été Canada",
+   "titre": "Corner Brook Baseball Association",
+   "valeur": 35793.0,
+   "debut": "2025-04-21",
+   "ville": "Corner Brook",
+   "province": "NL",
+   "type": "Organisme sans but lucratif"
+  }
+ ],
+ "source": {
+  "nom": "Gouvernement ouvert — Divulgation proactive : subventions et contributions",
+  "url": "https://ouvert.canada.ca/data/fr/dataset/432527ab-7aac-45b5-81d6-7597107a7013"
+ },
+ "population_source": {
+  "nom": "Statistique Canada, tableau 17-10-0009-01 (estimations au 1er juillet 2026, diffusées le 23 septembre 2026)",
+  "url": "https://www150.statcan.gc.ca/t1/tbl1/fr/tv.action?pid=1710000901"
+ }
+}

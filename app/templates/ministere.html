@@ -1,24 +1,26 @@
 {% extends "base.html" %}
-{% from "_macros.html" import barres_annees, table_contrats, jauge_tn with context %}
-{% block titre %}{{ tete.ministere_nom }} — contrats — Traçabilité Canada{% endblock %}
-{% block description %}{{ tete.ministere_nom }} : {{ tete.v | argent }} en contrats depuis 2017. À qui, pour quoi, comment.{% endblock %}
+{% from "_macros.html" import barres_annees, table_contrats, table_subventions, jauge_tn with context %}
+{% block titre %}{{ nom }} — contrats et subventions — Traçabilité Canada{% endblock %}
+{% block description %}{{ nom }} : contrats et subventions depuis 2017. À qui, pour quoi, comment.{% endblock %}
 {% block contenu %}
+{% set total = (tete.v or 0) + (tete_sub.v or 0) %}
 <section class="bande bande-rouge bande-courte">
   <div class="contenant">
-    <p class="surtitre">Ministère ou organisme · contrats signés depuis avril 2017</p>
-    <h1>{{ tete.ministere_nom }}</h1>
+    <p class="surtitre">Ministère ou organisme · engagements signés depuis avril 2017</p>
+    <h1>{{ nom }}</h1>
     <div class="faits">
-      <div><p class="gros-chiffre">{{ tete.v | argent }}</p><p>en {{ tete.n | nombre }} contrats</p></div>
-      <div><p class="gros-chiffre">{{ rang }}<sup>{{ 'er' if rang == 1 else 'e' }}</sup></p><p>plus gros acheteur fédéral</p></div>
-      <div><p class="gros-chiffre">{{ (tete.v / r.total) | pourcent }}</p><p>de tous les contrats fédéraux</p></div>
+      <div><p class="gros-chiffre">{{ (tete.v or 0) | argent }}</p><p>en {{ tete.n | nombre }} contrats</p></div>
+      <div><p class="gros-chiffre">{{ (tete_sub.v or 0) | argent }}</p><p>en {{ tete_sub.n | nombre }} subventions et contributions</p></div>
+      <div><p class="gros-chiffre">{{ (total / population) | nombre }}&nbsp;$</p><p>par Canadienne et par Canadien</p></div>
     </div>
-    <p class="phrase-choc">Ses 20 plus gros fournisseurs reçoivent <strong>{{ part_top | pourcent }}</strong> de l'argent qu'il confie en contrats.</p>
+    {% if tete.n and fournisseurs %}<p class="phrase-choc">Ses 20 plus gros fournisseurs reçoivent <strong>{{ part_top | pourcent }}</strong> de l'argent qu'il confie en contrats.</p>{% endif %}
     {% call source() %}
-      <p><strong>Source&nbsp;:</strong> Gouvernement ouvert, <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">contrats de plus de 10&nbsp;000&nbsp;$</a>, données du {{ donnees_du | date_fr }}. Contrats déclarés par ce ministère, signés depuis le 1<sup>er</sup> avril 2017, chacun compté une fois à sa valeur la plus récente.</p>
+      <p><strong>Sources&nbsp;:</strong> Gouvernement ouvert, <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">contrats</a> et <a href="https://ouvert.canada.ca/data/fr/dataset/432527ab-7aac-45b5-81d6-7597107a7013">subventions et contributions</a>, données du {{ donnees_du | date_fr }}. Engagements déclarés par ce ministère depuis le 1<sup>er</sup> avril 2017, chacun compté une fois à sa valeur la plus récente.</p>
     {% endcall %}
   </div>
 </section>
 
+{% if tete.n %}
 <section class="bande">
   <div class="contenant grille-fiche">
     <div>
@@ -31,9 +33,8 @@
       </ol>
     </div>
     <div>
-      <h2>Au fil des années</h2>
+      <h2>Contrats, au fil des années</h2>
       {{ barres_annees(annees) }}
-      <p class="note">Valeur des contrats signés chaque exercice (avril à mars).</p>
       <h2>Ce qu'il achète</h2>
       <ol class="barres compactes">
         {% set maxc = categories[0].v %}
@@ -62,8 +63,37 @@
 
 <section class="bande">
   <div class="contenant">
-    <h2>Ses 50 plus gros contrats</h2>
+    <h2>Ses 30 plus gros contrats</h2>
     {{ table_contrats(contrats, montrer_ministere=false) }}
   </div>
 </section>
+{% endif %}
+
+{% if tete_sub.n %}
+<section class="bande {{ 'bande-pale' if tete.n }}">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>À qui il verse des subventions</h2>
+      <ol class="barres">
+        {% set maxb = beneficiaires[0].v %}
+        {% for x in beneficiaires %}
+        <li>{% if x.a_fiche %}<a class="barres-nom" href="{{ base }}/entreprise/{{ x.slug }}/">{{ x.nom }}</a>{% else %}<span class="barres-nom">{{ x.nom }}</span>{% endif %}<span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.v / maxb * 100) | round(1) }}%"></span></span><span class="barres-val">{{ x.v | argent }}</span></li>
+        {% endfor %}
+      </ol>
+      <p class="note">Les particuliers ne sont jamais nommés sur ce site&nbsp;: leurs montants sont additionnés.</p>
+    </div>
+    <div>
+      <h2>Subventions, au fil des années</h2>
+      {{ barres_annees(annees_sub) }}
+      <h2>Par programme</h2>
+      <ol class="barres compactes">
+        {% set maxp = programmes[0].v %}
+        {% for x in programmes %}
+        <li><span class="barres-nom" title="{{ x.programme }}">{{ x.programme or 'Non précisé' }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.v / maxp * 100) | round(1) }}%"></span></span><span class="barres-val">{{ x.v | argent }}</span></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endif %}
 {% endblock %}

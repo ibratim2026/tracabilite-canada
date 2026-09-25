@@ -47,3 +47,30 @@
   <div class="jauge-ligne"><span>Moyenne fédérale</span><span class="jauge-piste"><span class="jauge-plein" style="--l:{{ (moyenne * 100) | round(1) }}%"></span></span><strong>{{ moyenne | pourcent }}</strong></div>
 </div>
 {% endmacro %}
+
+{% macro table_subventions(subs, montrer_beneficiaire=true, montrer_ministere=true) %}
+<div class="table-defile">
+<table class="contrats">
+  <thead><tr>
+    <th>Début</th>
+    {% if montrer_beneficiaire %}<th>Bénéficiaire</th>{% endif %}
+    {% if montrer_ministere %}<th>Ministère</th>{% endif %}
+    <th>Programme</th><th>Type</th><th class="nombre">Valeur</th><th><span class="visuellement-cache">Source</span></th>
+  </tr></thead>
+  <tbody>
+  {% for s in subs %}
+  <tr>
+    <td data-l="Début">{{ s.debut | date_fr }}</td>
+    {% if montrer_beneficiaire %}<td data-l="Bénéficiaire">{% if not s.beneficiaire %}<em>Particulier (non nommé)</em>{% elif s.a_fiche %}<a href="{{ base }}/entreprise/{{ s.slug }}/">{{ s.beneficiaire }}</a>{% else %}{{ s.beneficiaire }}{% endif %}</td>{% endif %}
+    {% if montrer_ministere %}<td data-l="Ministère"><a href="{{ base }}/ministere/{{ s.ministere }}/">{{ s.ministere_nom }}</a></td>{% endif %}
+    <td data-l="Programme">{{ s.programme or '—' }}{% if s.titre and s.titre != s.programme %}<br><span class="note-ligne">{{ s.titre | truncate(110) }}</span>{% endif %}{% if s.fin and s.debut and s.fin[:4] | int >= s.debut[:4] | int + 3 %} <span class="etiquette">jusqu'en {{ s.fin[:4] }}</span>{% endif %}</td>
+    <td data-l="Type">{{ ententes.get(s.type_entente, '—') }}</td>
+    <td data-l="Valeur" class="nombre"><strong>{{ s.valeur | argent }}</strong>
+      {% if s.valeur_max and s.valeur_max > s.valeur * 1.5 %}<br><span class="modifie">réduite, était {{ s.valeur_max | argent }}</span>{% endif %}</td>
+    <td><a class="lien-officiel" href="{{ lien_officiel_subvention(s.ministere, s.reference) }}">Fiche officielle&nbsp;↗</a></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endmacro %}

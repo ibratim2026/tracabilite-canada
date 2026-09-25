@@ -1,7 +1,8 @@
 #!/bin/zsh
 # Mise à jour quotidienne de Traçabilité Canada, lancée par launchd à 5 h 30.
 #
-# 1. Télécharge le fichier fédéral des contrats (640 Mo). Si le téléchargement
+# 1. Télécharge les fichiers fédéraux des contrats (640 Mo) et des subventions
+#    (2,3 Go). Si le téléchargement
 #    échoue ou semble tronqué, on s'arrête : le site garde les données d'hier.
 # 2. Reconstruit la base, recalcule les chiffres, exporte le site statique.
 #    L'export vérifie chaque lien interne et échoue plutôt que de publier un
@@ -29,7 +30,20 @@ fi
 mv data/contracts.csv.tmp data/contracts.csv
 echo "Téléchargé : $TAILLE octets"
 
+# Subventions et contributions (2,3 Go), même prudence.
+URL_SUB="https://open.canada.ca/data/dataset/432527ab-7aac-45b5-81d6-7597107a7013/resource/1d15a62f-5656-49ad-8c88-f40ce689d831/download/grants.csv"
+curl -sSL --retry 3 --max-time 3600 -o data/grants.csv.tmp "$URL_SUB"
+TAILLE_SUB=$(stat -f%z data/grants.csv.tmp)
+if (( TAILLE_SUB < 1500000000 )) || ! head -c 200 data/grants.csv.tmp | grep -q "ref_number"; then
+  echo "Téléchargement des subventions suspect ($TAILLE_SUB octets) : on garde les données d'hier."
+  rm -f data/grants.csv.tmp
+  exit 1
+fi
+mv data/grants.csv.tmp data/grants.csv
+echo "Subventions téléchargées : $TAILLE_SUB octets"
+
 .venv/bin/python pipeline/ingerer.py
+.venv/bin/python pipeline/ingerer_subventions.py
 .venv/bin/python pipeline/analyser.py > /dev/null
 .venv/bin/python pipeline/exporter.py
 

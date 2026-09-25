@@ -16,7 +16,7 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE / "app"))
-from app import app, BASE_DONNEES  # noqa: E402
+from app import app, BASE_DONNEES, index_par_prefixe  # noqa: E402
 
 SORTIE = RACINE / "build"
 BASE = "/tracabilite-canada"
@@ -24,8 +24,10 @@ BASE = "/tracabilite-canada"
 
 def pages():
     con = sqlite3.connect(BASE_DONNEES)
-    yield from ["/", "/chercher/", "/ministeres/", "/methode/"]
-    for (org,) in con.execute("SELECT DISTINCT ministere FROM contrats WHERE fournisseur_id IS NOT NULL"):
+    yield from ["/", "/subventions/", "/chercher/", "/ministeres/", "/methode/"]
+    for (org,) in con.execute("SELECT DISTINCT ministere FROM contrats WHERE fournisseur_id IS NOT NULL "
+                              "UNION SELECT DISTINCT ministere FROM subventions WHERE debut >= '2017-04-01' "
+                              "AND quarantaine IS NULL"):
         yield f"/ministere/{org}/"
     for (slug,) in con.execute("SELECT slug FROM fournisseurs WHERE a_fiche = 1"):
         yield f"/entreprise/{slug}/"
@@ -60,7 +62,9 @@ def main():
         cible.write_bytes(rep.data)
         n += 1
 
-    (SORTIE / "index-recherche.json").write_bytes(client.get("/index-recherche.json").data)
+    (SORTIE / "recherche").mkdir()
+    for prefixe in index_par_prefixe():
+        (SORTIE / "recherche" / f"{prefixe}.json").write_bytes(client.get(f"/recherche/{prefixe}.json").data)
     (SORTIE / "404.html").write_bytes(client.get("/page-introuvable/").data)
     (SORTIE / ".nojekyll").write_text("")
 

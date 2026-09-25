@@ -1,26 +1,27 @@
 {% extends "base.html" %}
-{% from "_macros.html" import barres_annees, table_contrats, jauge_tn with context %}
-{% block titre %}{{ f.nom }} — contrats fédéraux — Traçabilité Canada{% endblock %}
-{% block description %}{{ f.nom }} : {{ f.total | argent }} en contrats fédéraux depuis 2017, ministère par ministère, contrat par contrat.{% endblock %}
+{% from "_macros.html" import barres_annees, table_contrats, table_subventions, jauge_tn with context %}
+{% block titre %}{{ f.nom }} — argent fédéral reçu — Traçabilité Canada{% endblock %}
+{% block description %}{{ f.nom }} : {{ f.total | argent }} reçus du gouvernement fédéral depuis 2017, en contrats et en subventions, ministère par ministère.{% endblock %}
 {% block contenu %}
 {% set par_personne = f.total / population %}
 <section class="bande bande-rouge bande-courte">
   <div class="contenant">
-    <p class="surtitre">Entreprise · contrats fédéraux depuis avril 2017</p>
+    <p class="surtitre">{{ types_benef.get(f.type_benef, 'Entreprise') if f.type_benef else 'Entreprise' }} · argent fédéral reçu depuis avril 2017</p>
     <h1>{{ f.nom }}</h1>
     <div class="faits">
-      <div><p class="gros-chiffre">{{ f.total | argent }}</p><p>en {{ f.nb | nombre }} contrat{{ 's' if f.nb > 1 }}</p></div>
-      <div><p class="gros-chiffre">{{ f.id | nombre }}<sup>{{ 'er' if f.id == 1 else 'e' }}</sup></p><p>plus gros fournisseur fédéral, sur {{ r.nb_fournisseurs | nombre }}</p></div>
-      <div><p class="gros-chiffre">{{ ministeres | length }}</p><p>ministère{{ 's' if ministeres | length > 1 }} ou organisme{{ 's' if ministeres | length > 1 }} client{{ 's' if ministeres | length > 1 }}</p></div>
+      <div><p class="gros-chiffre">{{ f.total | argent }}</p><p>au total, dont
+        {% if f.nb_contrats %}{{ f.total_contrats | argent }} en {{ f.nb_contrats | nombre }} contrat{{ 's' if f.nb_contrats > 1 }}{% endif %}{% if f.nb_contrats and f.nb_subv %} et {% endif %}{% if f.nb_subv %}{{ f.total_subv | argent }} en {{ f.nb_subv | nombre }} subvention{{ 's' if f.nb_subv > 1 }} ou contribution{{ 's' if f.nb_subv > 1 }}{% endif %}</p></div>
+      <div><p class="gros-chiffre">{{ f.id | nombre }}<sup>{{ 'er' if f.id == 1 else 'e' }}</sup></p><p>plus important bénéficiaire de l'argent fédéral, sur {{ r.nb_fournisseurs | nombre }}</p></div>
+      <div><p class="gros-chiffre">{{ ministeres | length }}</p><p>ministère{{ 's' if ministeres | length > 1 }} ou organisme{{ 's' if ministeres | length > 1 }} fédéra{{ 'ux' if ministeres | length > 1 else 'l' }}</p></div>
     </div>
     <p class="phrase-choc">
       {% if par_personne >= 1 %}Ramené à la population, c'est <strong>{{ par_personne | nombre(0 if par_personne >= 10 else 2) }}&nbsp;$ par Canadienne et par Canadien</strong>.
       {% else %}Ramené à la population, c'est <strong>{{ (par_personne * 100) | nombre(1) }}&nbsp;¢ par Canadienne et par Canadien</strong>.{% endif %}
-      {% if fin_max and fin_max > donnees_du %} Certains de ses contrats courent jusqu'en <strong>{{ fin_max[:4] }}</strong>.{% endif %}
+      {% if fin_max and fin_max > donnees_du %} Certains de ses engagements courent jusqu'en <strong>{{ fin_max[:4] }}</strong>.{% endif %}
     </p>
     {% call source() %}
-      <p><strong>Source&nbsp;:</strong> Gouvernement ouvert, <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">contrats de plus de 10&nbsp;000&nbsp;$</a>, données du {{ donnees_du | date_fr }}. Chaque contrat est compté une seule fois, à sa valeur la plus récente, taxes comprises.</p>
-      <p><strong>Période&nbsp;:</strong> contrats signés du {{ premier | date_fr }} au {{ dernier | date_fr }}. Le rang compare le total reçu depuis avril 2017 par les {{ r.nb_fournisseurs | nombre }} entreprises des données.</p>
+      <p><strong>Sources&nbsp;:</strong> Gouvernement ouvert, <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">contrats de plus de 10&nbsp;000&nbsp;$</a> et <a href="https://ouvert.canada.ca/data/fr/dataset/432527ab-7aac-45b5-81d6-7597107a7013">subventions et contributions</a>, données du {{ donnees_du | date_fr }}. Chaque contrat et chaque entente sont comptés une seule fois, à leur valeur la plus récente.</p>
+      <p><strong>Période&nbsp;:</strong> du {{ premier | date_fr }} au {{ dernier | date_fr }}. Le rang compare le total reçu depuis avril 2017 par les {{ r.nb_fournisseurs | nombre }} entreprises et organismes des données (les particuliers ne sont pas classés).</p>
       <p><strong>Par personne&nbsp;:</strong> {{ f.total | argent }} ÷ {{ population | nombre }} habitants (Statistique Canada, 1<sup>er</sup> juillet 2026).</p>
     {% endcall %}
   </div>
@@ -29,26 +30,33 @@
 <section class="bande">
   <div class="contenant grille-fiche">
     <div>
-      <h2>Qui lui achète</h2>
+      <h2>Qui lui verse de l'argent</h2>
       <ol class="barres">
         {% set maxm = ministeres[0].v %}
-        {% for m in ministeres[:10] %}
-        <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.v / maxm * 100) | round(1) }}%"></span></span><span class="barres-val">{{ m.v | argent }}</span></li>
+        {% for x in ministeres[:10] %}
+        <li><a class="barres-nom" href="{{ base }}/ministere/{{ x.ministere }}/">{{ x.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.v / maxm * 100) | round(1) }}%"></span></span><span class="barres-val">{{ x.v | argent }}</span></li>
         {% endfor %}
       </ol>
       {% if ministeres | length > 10 %}<p class="note">Et {{ ministeres | length - 10 }} autres.</p>{% endif %}
       {% if ministeres | length > 1 and ministeres[0].v / f.total > 0.9 %}
-      <p class="constat">{{ (ministeres[0].v / f.total) | pourcent }} de ses contrats viennent d'un seul client&nbsp;: {{ ministeres[0].ministere_nom }}.</p>
+      <p class="constat">{{ (ministeres[0].v / f.total) | pourcent }} de cet argent vient d'une seule source&nbsp;: {{ ministeres[0].ministere_nom }}.</p>
       {% endif %}
     </div>
     <div>
-      <h2>Au fil des années</h2>
+      {% if f.nb_contrats %}
+      <h2>Contrats, au fil des années</h2>
       {{ barres_annees(annees) }}
-      <p class="note">Valeur des contrats signés chaque exercice (avril à mars). Un contrat de plusieurs années est inscrit en entier l'année de sa signature.</p>
+      {% endif %}
+      {% if f.nb_subv %}
+      <h2>Subventions, au fil des années</h2>
+      {{ barres_annees(annees_sub) }}
+      {% endif %}
+      <p class="note">Valeur signée chaque exercice (avril à mars). Un engagement de plusieurs années est inscrit en entier l'année de sa signature.</p>
     </div>
   </div>
 </section>
 
+{% if f.nb_contrats %}
 <section class="bande bande-pale">
   <div class="contenant grille-fiche">
     <div>
@@ -74,18 +82,39 @@
 <section class="bande">
   <div class="contenant">
     <h2>Ses contrats, du plus gros au plus petit</h2>
-    {% if f.nb > contrats | length %}<p class="note">Les {{ contrats | length }} plus gros sur {{ f.nb | nombre }}. La liste complète est sur la <a href="https://rechercher.ouvert.canada.ca/contrats/?search_text={{ f.nom | urlencode }}">recherche officielle</a>.</p>{% endif %}
+    {% if f.nb_contrats > contrats | length %}<p class="note">Les {{ contrats | length }} plus gros sur {{ f.nb_contrats | nombre }}. La liste complète est sur la <a href="https://rechercher.ouvert.canada.ca/contrats/?search_text={{ f.nom | urlencode }}">recherche officielle</a>.</p>{% endif %}
     {{ table_contrats(contrats, montrer_fournisseur=false) }}
   </div>
 </section>
+{% endif %}
+
+{% if f.nb_subv %}
+<section class="bande {{ 'bande-pale' if not f.nb_contrats }}">
+  <div class="contenant">
+    <h2>Ses subventions et contributions</h2>
+    <p class="chapeau">Une <strong>subvention</strong> est versée sans obligation de rendre des comptes sur le résultat. Une <strong>contribution</strong> est conditionnelle&nbsp;: le bénéficiaire doit prouver qu'il a fait ce qui était prévu, et peut devoir rembourser.</p>
+    {% if programmes | length > 1 %}
+    <h3>Par programme</h3>
+    <ol class="barres compactes">
+      {% set maxp = programmes[0].v %}
+      {% for x in programmes %}
+      <li><span class="barres-nom" title="{{ x.programme }}">{{ x.programme or 'Non précisé' }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.v / maxp * 100) | round(1) }}%"></span></span><span class="barres-val">{{ x.v | argent }}</span></li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+    {% if f.nb_subv > subs | length %}<p class="note">Les {{ subs | length }} plus importantes sur {{ f.nb_subv | nombre }}. La liste complète est sur la <a href="https://rechercher.ouvert.canada.ca/subventions/?search_text={{ f.nom | urlencode }}">recherche officielle</a>.</p>{% endif %}
+    {{ table_subventions(subs, montrer_beneficiaire=false) }}
+  </div>
+</section>
+{% endif %}
 
 <section class="bande bande-pale">
   <div class="contenant etroit">
     <h2>Ce que cette fiche ne dit pas</h2>
     <ul class="principes">
-      <li><strong>Un montant n'est pas un reproche.</strong> Une entreprise qui reçoit beaucoup de contrats peut simplement être la seule à fabriquer ce dont le gouvernement a besoin.</li>
-      <li><strong>Pas les subventions</strong> ni les contrats de moins de 10&nbsp;000&nbsp;$. Les subventions arrivent bientôt.</li>
-      <li><strong>Pas ce qui a été payé</strong>, mais ce qui a été engagé. Un contrat peut être annulé ou ne pas être dépensé en entier.</li>
+      <li><strong>Un montant n'est pas un reproche.</strong> Recevoir beaucoup de contrats ou de subventions peut simplement vouloir dire qu'on fait ce dont le pays a besoin.</li>
+      <li><strong>Pas ce qui a été payé</strong>, mais ce qui a été engagé. Un engagement peut être annulé ou ne pas être dépensé en entier.</li>
+      <li><strong>Pas forcément les petits montants.</strong> Les ministères ne sont pas tenus de publier un à un les contrats de moins de 10&nbsp;000&nbsp;$ ni les subventions de moins de 25&nbsp;000&nbsp;$.</li>
       <li><strong>Pas les filiales ni les sous-traitants.</strong> On regroupe seulement les façons d'écrire le même nom.</li>
     </ul>
     <details class="source">
