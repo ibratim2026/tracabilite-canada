@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titre %}Les ministères — Traçabilité Canada{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre">Qui signe les contrats</p>
+    <h1>{{ liste | length }} ministères et organismes, {{ r.total | argent }} depuis 2017</h1>
+    <p class="chapeau">Cliquez sur un nom pour voir à qui il achète, quoi, et comment.</p>
+  </div>
+</section>
+<section class="bande">
+  <div class="contenant etroit">
+    <ol class="barres liste-ministeres">
+      {% set maxm = liste[0].v %}
+      {% for m in liste %}
+      <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.v / maxm * 100) | round(2) }}%"></span></span><span class="barres-val">{{ m.v | argent }}</span></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endblock %}

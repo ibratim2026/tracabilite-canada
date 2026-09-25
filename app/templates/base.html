@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titre %}Traçabilité Canada{% endblock %}</title>
+<meta name="description" content="{% block description %}Suivre l'argent public fédéral, chiffre par chiffre, sources à l'appui.{% endblock %}">
+<link rel="stylesheet" href="{{ base }}/static/style.css?v={{ version_statique }}">
+</head>
+<body>
+
+{% macro source() %}
+<details class="source">
+  <summary>D'où vient ce chiffre&nbsp;?</summary>
+  <div class="source-corps">{{ caller() }}</div>
+</details>
+{% endmacro %}
+
+<header class="entete">
+  <div class="contenant entete-rangee">
+    <a class="marque" href="{{ base }}/"><span class="marque-point"></span>Traçabilité Canada</a>
+    <nav class="menu" aria-label="Navigation principale">
+      {% for chemin, nom in navigation %}
+      <a href="{{ base }}{{ chemin }}"{% if page == chemin %} aria-current="page"{% endif %}>{{ nom }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+  <div class="entete-note"><div class="contenant">Initiative citoyenne indépendante · pas un site du gouvernement</div></div>
+</header>
+
+<main>
+{% block contenu %}{% endblock %}
+</main>
+
+<footer class="pied">
+  <div class="contenant">
+    <p>Traçabilité Canada · données du {{ donnees_du | date_fr }} · <a href="{{ base }}/methode/">méthode et limites</a> · <a href="https://github.com/ibratim2026/tracabilite-canada">code source</a></p>
+    <p>Données publiées par le gouvernement du Canada sous la <a href="https://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada">Licence du gouvernement ouvert — Canada</a>. Un signal n'est pas une accusation.</p>
+  </div>
+</footer>
+
+<script src="{{ base }}/static/page.js?v={{ version_statique }}"></script>
+</body>
+</html>

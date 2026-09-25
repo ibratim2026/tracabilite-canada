@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titre %}Chercher une entreprise — Traçabilité Canada{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre">Chercher</p>
+    <h1>Qu'est-ce qu'Ottawa a payé à cette entreprise&nbsp;?</h1>
+    <form class="recherche" role="search" onsubmit="return false">
+      <label for="q" class="visuellement-cache">Nom de l'entreprise</label>
+      <input id="q" type="search" placeholder="Tapez un nom : IBM, Irving, Deloitte…" autocomplete="off" autofocus>
+    </form>
+    <p class="recherche-note">{{ r.nb_fournisseurs | nombre }} entreprises, {{ r.nb | nombre }} contrats de plus de 10&nbsp;000&nbsp;$ signés depuis le 1<sup>er</sup> avril 2017.</p>
+  </div>
+</section>
+<section class="bande">
+  <div class="contenant etroit">
+    <p id="etat" class="recherche-etat" aria-live="polite">Commencez à taper un nom.</p>
+    <ol id="resultats" class="resultats"></ol>
+    <div class="encadre">
+      <p><strong>Comment lire les résultats.</strong> Les entreprises qui ont reçu 1&nbsp;M$ ou plus ont une fiche complète. Pour les autres, on affiche le total et le nombre de contrats, avec un lien vers la recherche officielle du gouvernement.</p>
+      <p>Une même entreprise s'écrit parfois de dix façons dans les données. On les regroupe quand seul le détail change (majuscules, ponctuation, « Inc. », « Ltée »…). Deux entités distinctes d'un même groupe, comme « IBM Canada » et « IBM Global Business Services », restent séparées. <a href="{{ base }}/methode/">En savoir plus</a>.</p>
+    </div>
+  </div>
+</section>
+<script>window.INDEX_RECHERCHE = "{{ base }}/index-recherche.json"; window.BASE = "{{ base }}";</script>
+{% endblock %}

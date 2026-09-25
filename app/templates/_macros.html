@@ -1,0 +1,49 @@
+{# Composants partagés par les fiches. #}
+
+{% macro barres_annees(annees, accent=None) %}
+{% set maxa = annees | map(attribute='valeur') | max %}
+<div class="colonnes-annees petites" role="img" aria-label="Valeur des contrats signés par exercice financier">
+  {% for a in annees %}
+  <div class="annee {{ 'accent' if a.exercice == accent }} {{ 'en-cours' if a.en_cours }}" title="{{ a.exercice }}{{ ' (en cours)' if a.en_cours }} : {{ a.valeur | argent }}, {{ a.nb | nombre }} contrats">
+    <span class="annee-val">{{ a.valeur | argent if a.valeur else '0' }}</span>
+    <span class="annee-col" style="--h:{{ ((a.valeur / maxa * 100) if maxa else 0) | round(1) }}%"></span>
+    <span class="annee-nom">{{ a.exercice[2:] }}{% if a.en_cours %}<br>en cours{% endif %}</span>
+  </div>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro table_contrats(contrats, montrer_fournisseur=true, montrer_ministere=true) %}
+<div class="table-defile">
+<table class="contrats">
+  <thead><tr>
+    <th>Signé le</th>
+    {% if montrer_fournisseur %}<th>Entreprise</th>{% endif %}
+    {% if montrer_ministere %}<th>Ministère</th>{% endif %}
+    <th>Quoi</th><th>Attribution</th><th class="nombre">Valeur</th><th><span class="visuellement-cache">Source</span></th>
+  </tr></thead>
+  <tbody>
+  {% for c in contrats %}
+  <tr>
+    <td data-l="Signé le">{{ c.date_contrat | date_fr }}</td>
+    {% if montrer_fournisseur %}<td data-l="Entreprise">{% if c.a_fiche %}<a href="{{ base }}/entreprise/{{ c.slug }}/">{{ c.fournisseur }}</a>{% else %}{{ c.fournisseur }}{% endif %}</td>{% endif %}
+    {% if montrer_ministere %}<td data-l="Ministère"><a href="{{ base }}/ministere/{{ c.ministere }}/">{{ c.ministere_nom }}</a></td>{% endif %}
+    <td data-l="Quoi">{{ c.description or '—' }}{% if c.fin and c.fin[:4] | int >= c.date_contrat[:4] | int + 3 %} <span class="etiquette">jusqu'en {{ c.fin[:4] }}</span>{% endif %}</td>
+    <td data-l="Attribution"><span class="methode methode-{{ c.methode or 'X' }}">{{ methodes.get(c.methode, 'Non précisée') }}</span></td>
+    <td data-l="Valeur" class="nombre"><strong>{{ c.valeur | argent }}</strong>
+      {% if c.valeur_originale and c.valeur > c.valeur_originale * 1.001 %}<br><span class="modifie">signé à {{ c.valeur_originale | argent }}</span>{% endif %}</td>
+    <td><a class="lien-officiel" href="{{ lien_officiel(c.ministere, c.reference) }}">Fiche officielle&nbsp;↗</a></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endmacro %}
+
+{% macro jauge_tn(part, moyenne, sujet) %}
+{# Compare une part « sans appel d'offres » à la moyenne fédérale. #}
+<div class="jauge">
+  <div class="jauge-ligne"><span>{{ sujet }}</span><span class="jauge-piste"><span class="jauge-plein accent" style="--l:{{ (part * 100) | round(1) }}%"></span></span><strong>{{ part | pourcent }}</strong></div>
+  <div class="jauge-ligne"><span>Moyenne fédérale</span><span class="jauge-piste"><span class="jauge-plein" style="--l:{{ (moyenne * 100) | round(1) }}%"></span></span><strong>{{ moyenne | pourcent }}</strong></div>
+</div>
+{% endmacro %}

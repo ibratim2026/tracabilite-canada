@@ -1,29 +1,8 @@
-<!doctype html>
-<html lang="fr-CA">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ce qu'Ottawa achète — Traçabilité Canada</title>
-<meta name="description" content="Les contrats fédéraux de plus de 10 000 $, expliqués simplement et vérifiables chiffre par chiffre.">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block titre %}Ce qu'Ottawa achète — Traçabilité Canada{% endblock %}
+{% block description %}Les contrats fédéraux de plus de 10 000 $, expliqués simplement et vérifiables chiffre par chiffre.{% endblock %}
+{% block contenu %}
 
-{% macro source(titre) %}
-<details class="source">
-  <summary>D'où vient ce chiffre&nbsp;?</summary>
-  <div class="source-corps">{{ caller() }}</div>
-</details>
-{% endmacro %}
-
-<header class="entete">
-  <div class="contenant entete-rangee">
-    <a class="marque" href="/"><span class="marque-point"></span>Traçabilité Canada</a>
-    <span class="entete-note">Initiative citoyenne indépendante · pas un site du gouvernement</span>
-  </div>
-</header>
-
-<main>
 
 <!-- 1. La question d'abord -->
 <section class="bande bande-rouge heros">
@@ -44,13 +23,26 @@
         <p>C'est la valeur totale de <strong>{{ c.nb | nombre }} contrats</strong>. Autrement dit,
           {{ c.contrats_par_jour | nombre }} contrats signés <em>chaque jour ouvrable</em>, pour
           {{ c.par_jour | argent }} par jour.</p>
-        {% call source("total") %}
+        {% call source() %}
           <p><strong>Source&nbsp;:</strong> <a href="{{ c.sources.contrats.url }}">{{ c.sources.contrats.nom }}</a>, fichier téléchargé le {{ c.genere_le }}.</p>
           <p><strong>Calcul&nbsp;:</strong> somme de la valeur finale de chaque contrat dont la date de signature tombe dans l'exercice. Chaque contrat n'est compté qu'une fois, même s'il a été modifié (voir plus bas, « Pourquoi on nettoie »).</p>
           <p><strong>Attention&nbsp;:</strong> c'est la valeur <em>totale</em> des contrats, taxes comprises. Un contrat de 10 ans signé cette année y figure au complet, même si l'argent sera versé sur 10 ans. Les jours ouvrables ({{ c.jours_ouvrables }}) comptent du lundi au vendredi, sans retirer les jours fériés.</p>
         {% endcall %}
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Chercher -->
+<section class="bande bande-pale bande-courte">
+  <div class="contenant etroit">
+    <form class="recherche-accueil" action="{{ base }}/chercher/" method="get" role="search">
+      <label for="q-accueil">Une entreprise vous intrigue&nbsp;? Voyez ce qu'elle a reçu d'Ottawa.</label>
+      <div class="recherche-rangee">
+        <input id="q-accueil" name="q" type="search" placeholder="Ex. : IBM, Irving, Deloitte…" autocomplete="off">
+        <button class="bouton" type="submit">Chercher</button>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -66,7 +58,7 @@
       <div class="echelle-ligne accent"><span class="echelle-qte">{{ (c.total / 1e9) | nombre(1) }} milliards de secondes</span><span class="echelle-barre" style="--l:100%"></span><span class="echelle-duree">{{ c.annees_en_secondes | nombre }} ans</span></div>
     </div>
     <p class="phrase-choc">Si Ottawa avait déposé 1&nbsp;$ par seconde, il aurait fallu commencer vers l'an <strong>{{ c.annee_depart }}</strong>, bien avant que Jacques Cartier ne plante sa croix à Gaspé (1534), pour réunir la somme des contrats d'<em>une seule année</em>.</p>
-    {% call source("echelle") %}
+    {% call source() %}
       <p><strong>Calcul&nbsp;:</strong> {{ c.total | nombre }}&nbsp;$ ÷ 31&nbsp;557&nbsp;600 secondes (une année moyenne de 365,25 jours) = {{ c.annees_en_secondes | nombre(1) }} ans. 2026 − {{ c.annees_en_secondes | nombre }} = {{ c.annee_depart }}.</p>
     {% endcall %}
   </div>
@@ -84,7 +76,7 @@
     <div class="carte-chiffre">
       <p class="gros-chiffre rouge">{{ c.par_personne | nombre }}&nbsp;$</p>
       <p>par personne</p>
-      {% call source("personne") %}
+      {% call source() %}
         <p><strong>Calcul&nbsp;:</strong> {{ c.total | argent }} ÷ {{ c.population | nombre }} habitants.</p>
         <p><strong>Population&nbsp;:</strong> <a href="{{ c.sources.population.url }}">{{ c.sources.population.nom }}</a>.</p>
       {% endcall %}
@@ -102,7 +94,7 @@
       <div><p class="petit-titre">Moyenne</p><p class="gros-chiffre">{{ c.moyenne | argent }}</p><p>Tirée vers le haut par quelques contrats géants.</p></div>
       <div class="accent"><p class="petit-titre">Médiane</p><p class="gros-chiffre rouge">{{ c.mediane | argent }}</p><p>La moitié des contrats valent moins, l'autre moitié plus. C'est le vrai contrat « ordinaire »&nbsp;: une traduction, un entretien d'édifice, un logiciel.</p></div>
     </div>
-    {% call source("mediane") %}
+    {% call source() %}
       <p><strong>Calcul&nbsp;:</strong> moyenne = {{ c.total | argent }} ÷ {{ c.nb | nombre }} contrats. Médiane = valeur du contrat situé exactement au milieu quand on les classe du plus petit au plus grand.</p>
     {% endcall %}
   </div>
@@ -127,7 +119,7 @@
       </figure>
     </div>
     <p class="chapeau">Conséquence pratique&nbsp;: pour surveiller l'argent public, inutile de lire 65&nbsp;000 contrats. Quelques centaines suffisent à couvrir les deux tiers de la somme.</p>
-    {% call source("concentration") %}
+    {% call source() %}
       <p><strong>Calcul&nbsp;:</strong> on classe les {{ c.nb | nombre }} contrats de l'exercice du plus gros au plus petit, on additionne les {{ c.nb_top1 }} premiers (1&nbsp;%), puis on divise par le total.</p>
     {% endcall %}
   </div>
@@ -145,7 +137,7 @@
       <li><span class="barres-nom">{{ m.nom }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.valeur / max * 100) | round(1) }}%"></span></span><span class="barres-val">{{ m.valeur | argent }}</span></li>
       {% endfor %}
     </ol>
-    {% call source("ministeres") %}
+    {% call source() %}
       <p><strong>Calcul&nbsp;:</strong> somme de la valeur des contrats de l'exercice, par ministère ou organisme déclarant. Les dix premiers sur {{ c.ministeres | length }} affichés.</p>
     {% endcall %}
   </div>
@@ -164,7 +156,7 @@
     </div>
     <p>Exemple typique de « droits exclusifs »&nbsp;: la licence d'un logiciel déjà utilisé partout au gouvernement. Un seul fabricant peut la vendre. Faire un appel d'offres serait du théâtre.</p>
     <p class="phrase-choc">Sans appel d'offres ne veut pas dire illégal. Ça veut dire&nbsp;: <strong>à expliquer</strong>. C'est justement le rôle de ce site.</p>
-    {% call source("sans-appel") %}
+    {% call source() %}
       <p><strong>Calcul&nbsp;:</strong> contrats dont la méthode d'attribution déclarée est « non concurrentielle » (code TN), soit {{ c.sans_appel.nb | nombre }} contrats pour {{ c.sans_appel.valeur | argent }} ({{ c.sans_appel.part_valeur | pourcent }} de la valeur). Les raisons viennent du champ « raison de l'appel d'offres limité » déclaré par chaque ministère, tel que défini dans le <a href="https://www.tbs-sct.canada.ca/pol/doc-fra.aspx?id=32763">guide du Conseil du Trésor</a>.</p>
       <p>« Aucune raison exigée »&nbsp;: sous certains seuils, les accords commerciaux n'obligent pas à justifier. La moitié de ces contrats valent moins de 25&nbsp;000&nbsp;$.</p>
     {% endcall %}
@@ -182,7 +174,7 @@
     <div class="carte-chiffre">
       <p class="gros-chiffre rouge">+{{ c.modifies.croissance | argent }}</p>
       <p>ajoutés après signature, sur les contrats de {{ c.exercice }} seulement</p>
-      {% call source("modifies") %}
+      {% call source() %}
         <p><strong>Calcul&nbsp;:</strong> pour chaque contrat de l'exercice, valeur actuelle moins valeur d'origine déclarée, lorsque la différence est positive. Ces contrats sont récents&nbsp;: le chiffre grandira à mesure que d'autres modifications seront déclarées.</p>
         {% set top = c.modifies.top %}
         {% set ajout = top | sum(attribute='valeur') - top | sum(attribute='originale') %}
@@ -255,7 +247,7 @@
     <h2>Et le budget au complet&nbsp;? {{ c.budget.charges | argent }}.</h2>
     <p class="chapeau">En {{ c.budget.exercice }}, le gouvernement fédéral a dépensé {{ c.budget.charges | argent }}, soit environ <strong>{{ c.budget.par_seconde | nombre }}&nbsp;$ par seconde</strong>, jour et nuit. Les contrats n'en sont qu'une pièce&nbsp;: l'essentiel va aux pensions, aux allocations, aux provinces… et {{ c.budget.dette | argent }} aux intérêts sur la dette.</p>
     <p>C'est la suite de ce site&nbsp;: suivre chaque dollar, pas seulement ceux qui passent par un contrat.</p>
-    {% call source("budget") %}
+    {% call source() %}
       <p><strong>Source&nbsp;:</strong> <a href="{{ c.budget.url }}">{{ c.budget.nom }}</a>. Dernier exercice dont les résultats sont publiés.</p>
       <p><strong>Calcul&nbsp;:</strong> {{ c.budget.charges | argent }} ÷ 31&nbsp;536&nbsp;000 secondes dans une année.</p>
       <p><strong>Pourquoi on ne divise pas l'un par l'autre&nbsp;:</strong> le budget compte ce qui est dépensé dans l'année&nbsp;; les contrats comptent des engagements parfois étalés sur des décennies. Les comparer directement induirait en erreur.</p>
@@ -276,14 +268,4 @@
   </div>
 </section>
 
-</main>
-
-<footer class="pied">
-  <div class="contenant">
-    <p>Traçabilité Canada · prototype · données du {{ c.genere_le }}. Données publiées par le gouvernement du Canada sous la <a href="https://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada">Licence du gouvernement ouvert — Canada</a>.</p>
-  </div>
-</footer>
-
-<script src="{{ url_for('static', filename='page.js') }}"></script>
-</body>
-</html>
+{% endblock %}

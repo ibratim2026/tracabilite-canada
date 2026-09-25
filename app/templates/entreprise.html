@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% from "_macros.html" import barres_annees, table_contrats, jauge_tn with context %}
+{% block titre %}{{ f.nom }} — contrats fédéraux — Traçabilité Canada{% endblock %}
+{% block description %}{{ f.nom }} : {{ f.total | argent }} en contrats fédéraux depuis 2017, ministère par ministère, contrat par contrat.{% endblock %}
+{% block contenu %}
+{% set par_personne = f.total / population %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant">
+    <p class="surtitre">Entreprise · contrats fédéraux depuis avril 2017</p>
+    <h1>{{ f.nom }}</h1>
+    <div class="faits">
+      <div><p class="gros-chiffre">{{ f.total | argent }}</p><p>en {{ f.nb | nombre }} contrat{{ 's' if f.nb > 1 }}</p></div>
+      <div><p class="gros-chiffre">{{ f.id | nombre }}<sup>{{ 'er' if f.id == 1 else 'e' }}</sup></p><p>plus gros fournisseur fédéral, sur {{ r.nb_fournisseurs | nombre }}</p></div>
+      <div><p class="gros-chiffre">{{ ministeres | length }}</p><p>ministère{{ 's' if ministeres | length > 1 }} ou organisme{{ 's' if ministeres | length > 1 }} client{{ 's' if ministeres | length > 1 }}</p></div>
+    </div>
+    <p class="phrase-choc">
+      {% if par_personne >= 1 %}Ramené à la population, c'est <strong>{{ par_personne | nombre(0 if par_personne >= 10 else 2) }}&nbsp;$ par Canadienne et par Canadien</strong>.
+      {% else %}Ramené à la population, c'est <strong>{{ (par_personne * 100) | nombre(1) }}&nbsp;¢ par Canadienne et par Canadien</strong>.{% endif %}
+      {% if fin_max and fin_max > donnees_du %} Certains de ses contrats courent jusqu'en <strong>{{ fin_max[:4] }}</strong>.{% endif %}
+    </p>
+    {% call source() %}
+      <p><strong>Source&nbsp;:</strong> Gouvernement ouvert, <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">contrats de plus de 10&nbsp;000&nbsp;$</a>, données du {{ donnees_du | date_fr }}. Chaque contrat est compté une seule fois, à sa valeur la plus récente, taxes comprises.</p>
+      <p><strong>Période&nbsp;:</strong> contrats signés du {{ premier | date_fr }} au {{ dernier | date_fr }}. Le rang compare le total reçu depuis avril 2017 par les {{ r.nb_fournisseurs | nombre }} entreprises des données.</p>
+      <p><strong>Par personne&nbsp;:</strong> {{ f.total | argent }} ÷ {{ population | nombre }} habitants (Statistique Canada, 1<sup>er</sup> juillet 2026).</p>
+    {% endcall %}
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>Qui lui achète</h2>
+      <ol class="barres">
+        {% set maxm = ministeres[0].v %}
+        {% for m in ministeres[:10] %}
+        <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.v / maxm * 100) | round(1) }}%"></span></span><span class="barres-val">{{ m.v | argent }}</span></li>
+        {% endfor %}
+      </ol>
+      {% if ministeres | length > 10 %}<p class="note">Et {{ ministeres | length - 10 }} autres.</p>{% endif %}
+      {% if ministeres | length > 1 and ministeres[0].v / f.total > 0.9 %}
+      <p class="constat">{{ (ministeres[0].v / f.total) | pourcent }} de ses contrats viennent d'un seul client&nbsp;: {{ ministeres[0].ministere_nom }}.</p>
+      {% endif %}
+    </div>
+    <div>
+      <h2>Au fil des années</h2>
+      {{ barres_annees(annees) }}
+      <p class="note">Valeur des contrats signés chaque exercice (avril à mars). Un contrat de plusieurs années est inscrit en entier l'année de sa signature.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>Comment elle a obtenu ses contrats</h2>
+      <p>Part de la valeur de ses contrats attribuée <strong>sans appel d'offres</strong>&nbsp;:</p>
+      {{ jauge_tn(m.part_tn_valeur, r.part_tn_valeur, f.nom) }}
+      {% if m.part_tn_valeur > r.part_tn_valeur * 1.5 and m.n_tn %}
+      <p class="note">C'est plus que la moyenne. Ça s'explique souvent&nbsp;: licence d'un logiciel qu'un seul fabricant vend, pièces d'un équipement déjà acheté, urgence. La raison déclarée figure dans chaque fiche officielle.</p>
+      {% endif %}
+    </div>
+    <div>
+      <h2>Après la signature</h2>
+      {% if m.n_modifies %}
+      <p class="gros-chiffre petit rouge">+{{ m.croissance | argent }}</p>
+      <p>{{ m.n_modifies | nombre }} de ses contrats ont grossi après leur signature. Une phase de plus, un délai prolongé&nbsp;: souvent normal, mais c'est là qu'il faut regarder.</p>
+      {% else %}
+      <p>Aucun de ses contrats n'a grossi après sa signature, selon les données déclarées.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <h2>Ses contrats, du plus gros au plus petit</h2>
+    {% if f.nb > contrats | length %}<p class="note">Les {{ contrats | length }} plus gros sur {{ f.nb | nombre }}. La liste complète est sur la <a href="https://rechercher.ouvert.canada.ca/contrats/?search_text={{ f.nom | urlencode }}">recherche officielle</a>.</p>{% endif %}
+    {{ table_contrats(contrats, montrer_fournisseur=false) }}
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant etroit">
+    <h2>Ce que cette fiche ne dit pas</h2>
+    <ul class="principes">
+      <li><strong>Un montant n'est pas un reproche.</strong> Une entreprise qui reçoit beaucoup de contrats peut simplement être la seule à fabriquer ce dont le gouvernement a besoin.</li>
+      <li><strong>Pas les subventions</strong> ni les contrats de moins de 10&nbsp;000&nbsp;$. Les subventions arrivent bientôt.</li>
+      <li><strong>Pas ce qui a été payé</strong>, mais ce qui a été engagé. Un contrat peut être annulé ou ne pas être dépensé en entier.</li>
+      <li><strong>Pas les filiales ni les sous-traitants.</strong> On regroupe seulement les façons d'écrire le même nom.</li>
+    </ul>
+    <details class="source">
+      <summary>Les {{ variantes | length }} façon{{ 's' if variantes | length > 1 }} d'écrire ce nom dans les données</summary>
+      <div class="source-corps"><ul class="liste-simple">{% for v in variantes %}<li>{{ v }}</li>{% endfor %}</ul></div>
+    </details>
+  </div>
+</section>
+{% endblock %}

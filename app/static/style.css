@@ -62,7 +62,12 @@ h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem); line-height: 1.12; lette
 .marque { font-weight: 800; letter-spacing: -0.02em; color: var(--encre); text-decoration: none;
   display: flex; align-items: center; gap: .55rem; font-size: 1.1rem; }
 .marque-point { width: 14px; height: 14px; background: var(--rouge); border-radius: 3px; transform: rotate(45deg); }
-.entete-note { font-size: .82rem; color: var(--gris); }
+.entete-note { font-size: .78rem; color: var(--gris); background: var(--pale); padding: .3rem 0; }
+.menu { display: flex; gap: .3rem; flex-wrap: wrap; }
+.menu a { color: var(--encre); text-decoration: none; font-weight: 600; font-size: .93rem;
+  padding: .45rem .8rem; border-radius: 999px; transition: background var(--t); }
+.menu a:hover { background: var(--pale); }
+.menu a[aria-current="page"] { background: var(--rouge); color: #fff; }
 
 /* ---- Bandes pleine largeur */
 .bande { padding: clamp(3rem, 2rem + 4vw, 5.5rem) 0; }
@@ -188,6 +193,83 @@ h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem); line-height: 1.12; lette
 
 .pied { border-top: 1px solid var(--bordure); padding: 2rem 0; font-size: .85rem; color: var(--gris); }
 
+/* ---- Utilitaires */
+.visuellement-cache { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bande-courte { padding: clamp(2.2rem, 1.6rem + 2.5vw, 3.6rem) 0; }
+.note { font-size: .88rem; color: var(--gris); margin-top: .6rem; }
+.bande-rouge .note { color: rgba(255,255,255,.85); }
+.constat { margin-top: 1rem; padding: .8rem 1rem; background: var(--rouge-pale); border-radius: var(--r); font-weight: 600; }
+.encadre { margin-top: 2.5rem; padding: 1.3rem 1.4rem; border-radius: var(--r); background: var(--pale); font-size: .95rem; }
+.prose h2 { margin-top: 2.6rem; }
+.prose p, .prose ul { max-width: 68ch; }
+.gros-chiffre.petit { font-size: clamp(2rem, 1.5rem + 2vw, 2.8rem); }
+.etiquette { display: inline-block; font-size: .75rem; font-weight: 700; background: var(--pale);
+  border-radius: 999px; padding: .05rem .5rem; margin-left: .2rem; white-space: nowrap; }
+
+/* ---- Fiches : les faits en tête */
+.faits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.4rem 0 .4rem; }
+.faits > div { background: rgba(0,0,0,.14); border-radius: 18px; padding: 1.1rem 1.3rem; }
+.faits .gros-chiffre { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.7rem); margin: 0 0 .3rem; }
+.faits p:last-child { font-size: .92rem; opacity: .9; margin: 0; }
+.faits sup { font-size: .45em; }
+.grille-fiche { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.grille-fiche h2:first-child { margin-top: 0; }
+.barres a.barres-nom { color: var(--encre); }
+.barres a.barres-nom:hover { color: var(--rouge); }
+.barres.compactes li { font-size: .85rem; }
+.grille-fiche .barres li { grid-template-columns: minmax(0, 1fr) minmax(60px, 38%) 4.6rem; }
+.liste-ministeres li { grid-template-columns: minmax(0, 21rem) 1fr 5.5rem; }
+.colonnes-annees.petites { height: 190px; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: .3rem; }
+.annee.en-cours .annee-col { background: repeating-linear-gradient(45deg, var(--gris) 0 4px, var(--bordure) 4px 8px); }
+.colonnes-annees.petites .annee-val { font-size: .62rem; white-space: nowrap; }
+
+/* ---- Jauge « sans appel d'offres » */
+.jauge { display: grid; gap: .7rem; margin: 1rem 0; }
+.jauge-ligne { display: grid; grid-template-columns: minmax(0, 11rem) 1fr 3.5rem; gap: .8rem; align-items: center; font-size: .92rem; }
+.jauge-ligne > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.jauge-piste { height: 14px; background: #fff; border-radius: 4px; overflow: hidden; border: 1px solid var(--bordure); }
+.jauge-plein { display: block; height: 100%; width: var(--l); background: var(--gris); }
+.jauge-plein.accent { background: var(--rouge); }
+.jauge-ligne strong { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---- Table des contrats (cartes sur mobile) */
+.table-defile { overflow-x: auto; margin-top: 1rem; }
+table.contrats { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.contrats th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--gris); padding: .6rem .6rem; border-bottom: 2px solid var(--encre); }
+.contrats td { padding: .7rem .6rem; border-bottom: 1px solid var(--bordure); vertical-align: top; }
+.contrats td:first-child { white-space: nowrap; }
+.contrats .nombre { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.contrats a { color: var(--encre); }
+.contrats a:hover { color: var(--rouge); }
+.modifie { font-size: .78rem; color: var(--rouge); }
+.methode { font-size: .78rem; font-weight: 600; white-space: nowrap; }
+.methode-TN { color: var(--rouge); }
+a.lien-officiel { font-size: .8rem; white-space: nowrap; color: var(--rouge); }
+
+/* ---- Recherche */
+.recherche input, .recherche-accueil input { width: 100%; font: inherit; font-size: 1.2rem; padding: 1rem 1.2rem;
+  border-radius: 14px; border: 0; margin-top: 1rem; color: var(--encre); }
+.recherche input:focus-visible { outline: 3px solid #fff; }
+.recherche-note { font-size: .9rem; margin-top: .8rem; opacity: .9; }
+.recherche-accueil label { font-weight: 700; font-size: 1.15rem; }
+.recherche-rangee { display: flex; gap: .6rem; align-items: center; }
+.recherche-accueil input { border: 2px solid var(--bordure); margin-top: .8rem; font-size: 1.05rem; }
+.recherche-accueil .bouton { margin-top: .8rem; white-space: nowrap; }
+.recherche-etat { color: var(--gris); font-size: .95rem; }
+.resultats { list-style: none; margin-top: 1rem; display: grid; gap: .5rem; }
+.resultat { display: grid; grid-template-columns: 1fr auto; gap: .3rem 1rem; align-items: baseline;
+  padding: 1rem 1.2rem; border: 1px solid var(--bordure); border-radius: var(--r); }
+.resultat a.resultat-nom { font-weight: 700; font-size: 1.05rem; color: var(--encre); }
+a.resultat:hover, .resultat a.resultat-nom:hover { color: var(--rouge); }
+.resultat-nom { font-weight: 700; font-size: 1.05rem; }
+.resultat-total { font-weight: 800; font-variant-numeric: tabular-nums; }
+.resultat-detail { grid-column: 1 / -1; font-size: .85rem; color: var(--gris); }
+.resultat.avec-fiche { border-color: var(--encre); }
+.resultat mark { background: #ffe08a; color: inherit; border-radius: 2px; }
+
+.coquille.claire { border: 2px dashed var(--bordure); background: var(--pale); }
+
 /* ---- Mobile */
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -199,6 +281,21 @@ h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem); line-height: 1.12; lette
   .colonnes-annees { height: 200px; gap: .25rem; }
   .annee-val { font-size: .66rem; }
   .annee-nom { font-size: .62rem; }
-  .entete-note { font-size: .75rem; }
+  .entete-note { font-size: .72rem; }
+  .menu { width: 100%; }
+  .menu a { font-size: .85rem; padding: .35rem .6rem; }
+  .faits, .grille-fiche { grid-template-columns: 1fr; }
+  .grille-fiche { gap: 2rem; }
+  .grille-fiche .barres li, .liste-ministeres li { grid-template-columns: 1fr auto; }
+  .jauge-ligne { grid-template-columns: 1fr 3.5rem; }
+  .jauge-piste { grid-column: 1 / -1; grid-row: 2; }
+  .recherche-rangee { flex-direction: column; align-items: stretch; }
+  /* La table devient une pile de cartes. */
+  table.contrats thead { display: none; }
+  table.contrats, .contrats tbody, .contrats tr, .contrats td { display: block; width: 100%; }
+  .contrats tr { border: 1px solid var(--bordure); border-radius: var(--r); padding: .7rem .9rem; margin-bottom: .7rem; }
+  .contrats td { border: 0; padding: .2rem 0; text-align: left !important; white-space: normal !important; }
+  .contrats td[data-l]::before { content: attr(data-l); display: block; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--gris); }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

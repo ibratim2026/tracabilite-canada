@@ -13,7 +13,8 @@ Trois décisions de nettoyage, toutes expliquées au public sur la page :
 Le résultat va dans app/contenu/chiffres.json, avec pour chaque chiffre sa
 source et la façon dont il a été calculé.
 """
-import json, re, sqlite3, random
+import hashlib, json, re, sqlite3, unicodedata
+from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
@@ -80,7 +81,8 @@ def construire_contrats(con):
     con.execute("""CREATE TABLE contrats (
         cle TEXT PRIMARY KEY, ministere TEXT, ministere_nom TEXT, fournisseur TEXT,
         pays TEXT, date_contrat TEXT, description TEXT, methode TEXT, raison TEXT,
-        valeur REAL, valeur_originale REAL, nb_versions INTEGER, quarantaine TEXT)""")
+        valeur REAL, valeur_originale REAL, nb_versions INTEGER, quarantaine TEXT,
+        reference TEXT, debut TEXT, fin TEXT, fournisseur_id INTEGER)""")
     # On regroupe toutes les versions de chaque contrat.
     groupes = {}
     for rowid, org, pid, ref, periode, val, orig, modif in con.execute(
@@ -114,15 +116,84 @@ def construire_contrats(con):
     lignes = []
     requete = ("SELECT owner_org, owner_org_title, vendor_name, country_of_vendor, contract_date, "
                "description_fr, solicitation_procedure, limited_tendering_reason, valeur, "
-               "valeur_originale FROM brut WHERE rowid = ?")
+               "valeur_originale, reference_number, contract_period_start, delivery_date "
+               "FROM brut WHERE rowid = ?")
     for cle, (_, rowid) in derniers.items():
-        org, titre, fourn, pays, dt, desc, meth, raison, val, orig = con.execute(requete, (rowid,)).fetchone()
+        org, titre, fourn, pays, dt, desc, meth, raison, val, orig, ref, deb, fin = \
+            con.execute(requete, (rowid,)).fetchone()
         nom = titre.split("|")[-1].strip() if "|" in titre else titre
         quarantaine = "valeur nulle ou négative" if val is None or val <= 0 else None
         lignes.append((cle, org, nom, (fourn or "").strip(), pays, (dt or "")[:10],
-                       (desc or "").strip(), meth, raison, val, orig, versions[cle], quarantaine))
-    con.executemany("INSERT INTO contrats VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", lignes)
+                       (desc or "").strip(), meth, raison, val, orig, versions[cle], quarantaine,
+                       ref, (deb or "")[:10], (fin or "")[:10], None))
+    con.executemany("INSERT INTO contrats VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", lignes)
     con.execute("CREATE INDEX i_date ON contrats(date_contrat)")
+    con.commit()
+
+
+# ---- Les entreprises -------------------------------------------------------
+# Le même fournisseur s'écrit de dix façons (« IBM CANADA LTD. », « IBM Canada
+# Limited »…). On regroupe sur un nom normalisé : majuscules, sans accents ni
+# ponctuation, sans les formes juridiques. Les variantes sont conservées et
+# affichées sur chaque fiche, pour que le regroupement reste vérifiable.
+FORMES_JURIDIQUES = re.compile(
+    r"\b(INC|INCORPORATED|INCORPOREE|LTD|LTEE|LIMITED|LIMITEE|CORP|CORPORATION|CO|COMPANY|"
+    r"LLP|LP|ULC|LLC|SENC|SENCRL|S E N C R L|SA|SAS|GMBH|PLC|AG|THE)\b")
+PERIODE_DEBUT = "2017-04-01"   # avant, les déclarations sont trop inégales
+SEUIL_FICHE = 1_000_000        # une fiche complète à partir de 1 M$ reçus
+
+
+def normaliser(nom):
+    # Noms bilingues « X LIMITED / X LIMITÉE » : si les deux moitiés disent la
+    # même chose, on n'en garde qu'une.
+    moities = {normaliser(m) for m in nom.split("/")} - {""} if "/" in nom else None
+    if moities and len(moities) == 1:
+        return moities.pop()
+    n = unicodedata.normalize("NFKD", nom).encode("ascii", "ignore").decode().upper()
+    n = re.sub(r"[^A-Z0-9 ]", " ", n)
+    n = FORMES_JURIDIQUES.sub(" ", n)
+    return re.sub(r"\s+", " ", n).strip()
+
+
+def fabriquer_slug(nom):
+    s = unicodedata.normalize("NFKD", nom).encode("ascii", "ignore").decode().lower()
+    s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    return s[:70].rstrip("-") or "sans-nom"
+
+
+def construire_fournisseurs(con):
+    groupes, variantes = defaultdict(list), defaultdict(Counter)
+    for cle, nom, val in con.execute(
+            "SELECT cle, fournisseur, valeur FROM contrats WHERE quarantaine IS NULL "
+            f"AND date_contrat BETWEEN '{PERIODE_DEBUT}' AND date('now') AND fournisseur <> ''"):
+        k = normaliser(nom)
+        if not k:
+            continue
+        groupes[k].append((cle, val))
+        variantes[k][nom] += 1
+
+    con.execute("DROP TABLE IF EXISTS fournisseurs")
+    con.execute("""CREATE TABLE fournisseurs (id INTEGER PRIMARY KEY, cle_norm TEXT, nom TEXT,
+        variantes TEXT, total REAL, nb INTEGER, slug TEXT, a_fiche INTEGER)""")
+    pris, lignes, liens = set(), [], []
+    for i, (k, cs) in enumerate(sorted(groupes.items(), key=lambda g: -sum(v for _, v in g[1])), 1):
+        total = sum(v for _, v in cs)
+        # Nom affiché : de préférence une variante en casse normale, la plus fréquente.
+        nom = max(variantes[k].items(), key=lambda x: (any(c.islower() for c in x[0]), x[1]))[0]
+        nom = re.sub(r"\s+", " ", nom).strip(" /,")
+        # Adresse stable d'une mise à jour à l'autre : tirée du nom normalisé.
+        slug = fabriquer_slug(k)
+        if slug in pris:   # deux noms très longs coupés au même endroit
+            slug = f"{slug[:60]}-{hashlib.md5(k.encode()).hexdigest()[:6]}"
+        pris.add(slug)
+        lignes.append((i, k, nom, json.dumps(sorted(variantes[k]), ensure_ascii=False),
+                       total, len(cs), slug, int(total >= SEUIL_FICHE)))
+        liens += [(i, cle) for cle, _ in cs]
+    con.executemany("INSERT INTO fournisseurs VALUES (?,?,?,?,?,?,?,?)", lignes)
+    con.executemany("UPDATE contrats SET fournisseur_id = ? WHERE cle = ?", liens)
+    con.execute("CREATE INDEX i_fourn ON contrats(fournisseur_id)")
+    con.execute("CREATE INDEX i_minis ON contrats(ministere)")
+    con.execute("CREATE UNIQUE INDEX i_slug ON fournisseurs(slug)")
     con.commit()
 
 
@@ -233,6 +304,7 @@ def calculer(con):
 def main():
     con = sqlite3.connect(BASE)
     construire_contrats(con)
+    construire_fournisseurs(con)
     chiffres = calculer(con)
     SORTIE.write_text(json.dumps(chiffres, ensure_ascii=False, indent=1))
     c = {k: v for k, v in chiffres.items() if k not in ("echantillon",)}

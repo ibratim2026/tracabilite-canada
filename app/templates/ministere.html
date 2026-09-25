@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% from "_macros.html" import barres_annees, table_contrats, jauge_tn with context %}
+{% block titre %}{{ tete.ministere_nom }} — contrats — Traçabilité Canada{% endblock %}
+{% block description %}{{ tete.ministere_nom }} : {{ tete.v | argent }} en contrats depuis 2017. À qui, pour quoi, comment.{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant">
+    <p class="surtitre">Ministère ou organisme · contrats signés depuis avril 2017</p>
+    <h1>{{ tete.ministere_nom }}</h1>
+    <div class="faits">
+      <div><p class="gros-chiffre">{{ tete.v | argent }}</p><p>en {{ tete.n | nombre }} contrats</p></div>
+      <div><p class="gros-chiffre">{{ rang }}<sup>{{ 'er' if rang == 1 else 'e' }}</sup></p><p>plus gros acheteur fédéral</p></div>
+      <div><p class="gros-chiffre">{{ (tete.v / r.total) | pourcent }}</p><p>de tous les contrats fédéraux</p></div>
+    </div>
+    <p class="phrase-choc">Ses 20 plus gros fournisseurs reçoivent <strong>{{ part_top | pourcent }}</strong> de l'argent qu'il confie en contrats.</p>
+    {% call source() %}
+      <p><strong>Source&nbsp;:</strong> Gouvernement ouvert, <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">contrats de plus de 10&nbsp;000&nbsp;$</a>, données du {{ donnees_du | date_fr }}. Contrats déclarés par ce ministère, signés depuis le 1<sup>er</sup> avril 2017, chacun compté une fois à sa valeur la plus récente.</p>
+    {% endcall %}
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>À qui il achète</h2>
+      <ol class="barres">
+        {% set maxf = fournisseurs[0].v %}
+        {% for x in fournisseurs %}
+        <li>{% if x.a_fiche %}<a class="barres-nom" href="{{ base }}/entreprise/{{ x.slug }}/">{{ x.nom }}</a>{% else %}<span class="barres-nom">{{ x.nom }}</span>{% endif %}<span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.v / maxf * 100) | round(1) }}%"></span></span><span class="barres-val">{{ x.v | argent }}</span></li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div>
+      <h2>Au fil des années</h2>
+      {{ barres_annees(annees) }}
+      <p class="note">Valeur des contrats signés chaque exercice (avril à mars).</p>
+      <h2>Ce qu'il achète</h2>
+      <ol class="barres compactes">
+        {% set maxc = categories[0].v %}
+        {% for x in categories %}
+        <li><span class="barres-nom" title="{{ x.description }}">{{ x.description }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.v / maxc * 100) | round(1) }}%"></span></span><span class="barres-val">{{ x.v | argent }}</span></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>Sans appel d'offres</h2>
+      <p>Part de la valeur de ses contrats attribuée sans appel d'offres&nbsp;:</p>
+      {{ jauge_tn(m.part_tn_valeur, r.part_tn_valeur, "Ce ministère") }}
+    </div>
+    <div>
+      <h2>Après la signature</h2>
+      <p class="gros-chiffre petit rouge">+{{ m.croissance | argent }}</p>
+      <p>ajoutés après signature sur {{ m.n_modifies | nombre }} contrats.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <h2>Ses 50 plus gros contrats</h2>
+    {{ table_contrats(contrats, montrer_ministere=false) }}
+  </div>
+</section>
+{% endblock %}

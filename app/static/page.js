@@ -60,3 +60,68 @@ function argent(v) {
   document.getElementById("tirer").addEventListener("click", tirer);
   tirer();
 })();
+
+// ---- Recherche d'entreprises, entièrement dans le navigateur.
+(function recherche() {
+  const champ = document.getElementById("q");
+  const liste = document.getElementById("resultats");
+  const etat = document.getElementById("etat");
+  if (!champ || !liste || !window.INDEX_RECHERCHE) return;
+
+  // Même logique que le serveur : sans accents, sans ponctuation, en majuscules.
+  const plier = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
+  const echapper = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  let index = null;
+
+  async function charger() {
+    if (index) return index;
+    etat.textContent = "Chargement de la liste des entreprises…";
+    const rep = await fetch(window.INDEX_RECHERCHE);
+    const brut = await rep.json();
+    index = brut.map(([nom, total, nb, slug]) => ({ nom, total, nb, slug, cle: " " + plier(nom) + " " }));
+    if (!champ.value.trim()) etat.textContent = "Prêt. Tapez au moins deux lettres.";
+    return index;
+  }
+
+  function surligner(nom, mots) {
+    let html = echapper(nom);
+    for (const m of mots) {
+      if (m.length < 2) continue;
+      html = html.replace(new RegExp("(" + m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "i"), "<mark>$1</mark>");
+    }
+    return html;
+  }
+
+  async function chercher() {
+    const q = plier(champ.value);
+    const url = new URL(location.href);
+    if (champ.value) url.searchParams.set("q", champ.value); else url.searchParams.delete("q");
+    history.replaceState(null, "", url);
+    if (q.length < 2) { liste.innerHTML = ""; etat.textContent = "Commencez à taper un nom."; return; }
+    const donnees = await charger();
+    const mots = q.split(" ");
+    // Chaque mot tapé doit apparaître au début d'un mot du nom.
+    const trouves = donnees.filter((e) => mots.every((m) => e.cle.includes(" " + m)));
+    const n = trouves.length;
+    etat.textContent = n === 0 ? "Aucune entreprise trouvée. Essayez une partie du nom seulement."
+      : `${n.toLocaleString("fr-CA")} entreprise${n > 1 ? "s" : ""} trouvée${n > 1 ? "s" : ""}` + (n > 30 ? " · les 30 plus importantes" : "");
+    const motsBruts = champ.value.trim().split(/\s+/);
+    liste.innerHTML = trouves.slice(0, 30).map((e) => {
+      const detail = `${e.nb.toLocaleString("fr-CA")} contrat${e.nb > 1 ? "s" : ""} depuis 2017`;
+      if (e.slug) {
+        return `<li><a class="resultat avec-fiche" href="${window.BASE}/entreprise/${e.slug}/">
+          <span class="resultat-nom">${surligner(e.nom, motsBruts)}</span><span class="resultat-total">${argent(e.total)}</span>
+          <span class="resultat-detail">${detail} · voir la fiche →</span></a></li>`;
+      }
+      const officiel = "https://rechercher.ouvert.canada.ca/contrats/?search_text=" + encodeURIComponent(e.nom);
+      return `<li class="resultat"><span class="resultat-nom">${surligner(e.nom, motsBruts)}</span><span class="resultat-total">${argent(e.total)}</span>
+        <span class="resultat-detail">${detail} · pas de fiche détaillée (moins de 1 M$) · <a href="${officiel}">voir sur le site officiel ↗</a></span></li>`;
+    }).join("");
+  }
+
+  let minuterie;
+  champ.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, 120); });
+  const depart = new URL(location.href).searchParams.get("q");
+  if (depart) { champ.value = depart; chercher(); }
+  champ.addEventListener("focus", () => charger(), { once: true });
+})();

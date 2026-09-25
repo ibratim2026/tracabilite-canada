@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block titre %}Méthode et limites — Traçabilité Canada{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre">Méthode</p>
+    <h1>Comment on passe de 1,3 million de lignes à des chiffres fiables</h1>
+    <p class="chapeau">Vous n'avez pas à nous croire&nbsp;: tout ce qui suit peut être refait à partir des données publiques et du <a href="https://github.com/ibratim2026/tracabilite-canada">code source</a>.</p>
+  </div>
+</section>
+<section class="bande">
+  <div class="contenant etroit prose">
+    <h2>La source</h2>
+    <p>Chaque ministère fédéral doit publier ses contrats de plus de 10&nbsp;000&nbsp;$ tous les trois mois. Le gouvernement les réunit dans un seul fichier sur <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">ouvert.canada.ca</a>. Nous le téléchargeons en entier. Dernier téléchargement&nbsp;: {{ donnees_du | date_fr }}.</p>
+
+    <h2>1. Une ligne n'est pas un contrat</h2>
+    <p>Quand un contrat est modifié, le ministère publie une nouvelle ligne avec le <em>nouveau total</em>. Additionner toutes les lignes compte donc le même contrat plusieurs fois. Nous gardons seulement la version la plus récente de chaque contrat (même ministère, même numéro d'achat).</p>
+    <p>Résultat&nbsp;: {{ c.nettoyage.lignes_brutes | nombre }} lignes deviennent {{ c.nettoyage.contrats_uniques | nombre }} contrats. Pour 2024-2025, l'addition naïve donnerait {{ c.naif['2024-2025'].somme_lignes | argent }}&nbsp;; le vrai total est {{ c.naif['2024-2025'].somme_contrats | argent }}.</p>
+
+    <h2>2. Les offres à commandes sont mises à part</h2>
+    <p>Une « offre à commandes » est un plafond&nbsp;: le fournisseur peut recevoir des commandes jusqu'à ce montant, mais rien n'est encore engagé. Les additionner gonflerait artificiellement les totaux. Nous les excluons.</p>
+
+    <h2>3. Les erreurs évidentes sont écartées, et montrées</h2>
+    <p>Nous mettons une version de côté seulement quand elle se contredit elle-même&nbsp;: plus de 100&nbsp;M$, plus de 50 fois toutes les autres versions du même contrat, <em>et</em> plus de 50 fois sa propre valeur d'origine et sa propre modification. La règle est volontairement étroite&nbsp;: un contrat qui a vraiment grossi ne doit jamais être caché.</p>
+    {% for q in c.coquilles %}
+    <div class="coquille claire">
+      <p><strong>{{ q.fournisseur }}</strong> · {{ q.ministere }} · {{ q.date | date_fr }}</p>
+      <p>Valeur déclarée&nbsp;: <strong>{{ q.valeur | nombre }}&nbsp;$</strong>. Les autres versions du même contrat&nbsp;: environ {{ q.voisine | argent }}.</p>
+    </div>
+    {% endfor %}
+
+    <h2>4. Les noms d'entreprises sont regroupés, prudemment</h2>
+    <p>« IBM CANADA LTD. », « IBM Canada Limited » et « IBM CANADA LTEE » sont la même entreprise. Nous regroupons les noms qui ne diffèrent que par les majuscules, les accents, la ponctuation ou la forme juridique (Inc., Ltée, Limited, s.e.n.c.r.l.…). Nous ne regroupons <em>pas</em> les filiales ni les entités distinctes d'un même groupe. Chaque fiche affiche toutes les façons d'écrire le nom qu'elle réunit.</p>
+
+    <h2>5. La période</h2>
+    <p>Les fiches couvrent les contrats signés depuis le 1<sup>er</sup> avril 2017. Avant, les déclarations sont trop inégales d'un ministère à l'autre pour être comparées. Les entreprises qui ont reçu 1&nbsp;M$ ou plus ont une fiche complète&nbsp;; toutes les autres sont dans la recherche.</p>
+
+    <h2>Ce que les chiffres veulent dire</h2>
+    <ul class="principes">
+      <li><strong>Valeur engagée, pas dépensée.</strong> Un contrat de 25 ans est inscrit en entier à sa date de signature.</li>
+      <li><strong>Taxes comprises</strong>, selon la consigne du Conseil du Trésor.</li>
+      <li><strong>« Sans appel d'offres »</strong> est la méthode déclarée par le ministère. Ça ne veut pas dire illégal&nbsp;: les règles le permettent dans plusieurs cas (fournisseur unique, urgence, petite valeur). La raison est dans la fiche officielle de chaque contrat.</li>
+      <li><strong>Un signal n'est pas une accusation.</strong> Chaque écart mérite une explication avant une interprétation.</li>
+    </ul>
+
+    <h2>Une erreur&nbsp;?</h2>
+    <p>Si un chiffre vous semble faux, <a href="https://github.com/ibratim2026/tracabilite-canada/issues">signalez-le</a>. Les corrections sont faites en public et datées.</p>
+  </div>
+</section>
+{% endblock %}
