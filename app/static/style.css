@@ -260,8 +260,9 @@ a.lien-officiel { font-size: .8rem; white-space: nowrap; color: var(--rouge); }
 .resultats { list-style: none; margin-top: 1rem; display: grid; gap: .5rem; }
 .resultat { display: grid; grid-template-columns: 1fr auto; gap: .3rem 1rem; align-items: baseline;
   padding: 1rem 1.2rem; border: 1px solid var(--bordure); border-radius: var(--r); }
-.resultat a.resultat-nom { font-weight: 700; font-size: 1.05rem; color: var(--encre); }
-a.resultat:hover, .resultat a.resultat-nom:hover { color: var(--rouge); }
+a.resultat { text-decoration: none; color: var(--encre); transition: border-color var(--t), background var(--t); }
+a.resultat:hover { border-color: var(--rouge); background: var(--rouge-pale); }
+a.resultat .resultat-detail { color: var(--rouge); font-weight: 600; }
 .resultat-nom { font-weight: 700; font-size: 1.05rem; }
 .resultat-total { font-weight: 800; font-variant-numeric: tabular-nums; }
 .resultat-detail { grid-column: 1 / -1; font-size: .85rem; color: var(--gris); }
