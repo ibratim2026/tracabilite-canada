@@ -5,19 +5,39 @@ anti-complot. Un signal n'est pas une accusation, chaque chiffre a sa source.
 
 ## État (25 septembre 2026)
 
-Étape 1 du plan terminée :
+Pages (toutes statiques, exportées par `pipeline/exporter.py`) :
 
-- `/` — page vitrine « Ce qu'Ottawa achète » (exercice 2025-2026)
-- `/chercher/` — recherche parmi ~90 000 entreprises, dans le navigateur
-  (`index-recherche.json`, ~1,5 Mo compressé)
-- `/entreprise/<slug>/` — fiche des ~8 700 entreprises ayant reçu ≥ 1 M$
-  depuis avril 2017. L'adresse vient du nom normalisé : stable.
-- `/ministere/<code>/` et `/ministeres/` — fiches des ministères
-- `/methode/` — nettoyage, regroupement, limites
+- `/` — « Ce qu'Ottawa achète » (contrats 2025-2026)
+- `/subventions/` — « Ce qu'Ottawa donne » (subventions et contributions)
+- `/a-examiner/` et `/a-examiner/<signal>/` — six signaux publics (`pipeline/signaux.py`)
+- `/chercher/` — recherche dans ~300 000 entreprises et organismes, index
+  découpé par préfixe de mot (`/recherche/XX.json`)
+- `/entreprise/<slug>/` — ~26 700 fiches (≥ 1 M$ reçus, contrats + subventions)
+- `/ministere/<code>/`, `/ministeres/`
+- `/comprendre/` : budget en une page, Ottawa et les provinces, On clarifie
+  (chiffres sourcés dans `app/contenu/budget.json`, à rafraîchir à chaque
+  Rapport financier annuel, en général à l'automne)
+- `/methode/`
 
-Plan (validé par William) : 1. recherche + fiches ✔ · 2. subventions ·
-3. « À examiner en priorité » (signaux) · 4. lobbying → contrats ·
-5. pages « Comprendre » · élection fédérale à la toute fin.
+Plan validé par William : 1 ✔ recherche et fiches · 2 ✔ subventions ·
+3 ✔ signaux · 4 lobbying → contrats (**bloqué** : le Commissariat au lobbying
+refuse les téléchargements automatisés, voir plus bas) · 5 ✔ Comprendre ·
+élection fédérale en dernier.
+
+## Règles de publication (non négociables)
+
+- **Les particuliers ne sont jamais nommés** (type P et « rapports en lots »
+  des subventions) : comptés dans les totaux, jamais affichés ni cherchables.
+- **Pas de champ « ancien fonctionnaire »** : il vise des personnes.
+- Aucun mot accusatoire : « ★ À examiner en priorité », jamais « fraude ».
+- Pas de quarantaine automatique pour les subventions : testée, elle
+  effaçait des faits réels (WE Charity ramenée à 0 $, etc.).
+
+## Poids du site
+
+~26 800 pages, ~525 Mo (limite GitHub Pages : 1 Go). Le poids vient du
+nombre de fiches (≥ 1 M$). Si ça devient un problème : monter le seuil
+`SEUIL_FICHE` (2 M$ ≈ 17 000 fiches) dans `analyser.py` ET `app.py`.
 
 ## En ligne
 
@@ -25,7 +45,7 @@ Plan (validé par William) : 1. recherche + fiches ✔ · 2. subventions ·
 - Code : https://github.com/ibratim2026/tracabilite-canada (branche `main`)
 - **Mise à jour automatique chaque jour à 5 h 30** : launchd
   `com.tracabilite-canada.maj` → `~/Library/Application Support/tracabilite-canada/run-maj.sh`
-  → `mettre_a_jour.sh` (téléchargement, base, chiffres, export, publication).
+  → `mettre_a_jour.sh` (téléchargement des contrats et des subventions, base, chiffres, signaux, export, publication). Dure environ 10 minutes.
   Journal : `data/maj.log`. Chaque publication remplace la précédente sur
   `gh-pages` (un seul commit, sinon +200 Mo par jour).
 - L'export échoue s'il trouve un lien interne mort : rien n'est publié.
@@ -62,3 +82,13 @@ curl -sL -o data/contracts.csv "https://open.canada.ca/data/dataset/d8f85d91-7de
 Subventions et contributions, registre des lobbyistes (croisement
 lobbying → contrats), fiches fournisseurs, export statique, mise à jour
 automatique.
+
+## Lobbying (étape 4) — à faire
+
+Le Commissariat au lobbying protège ses fichiers par une vérification
+anti-robots : impossible de les télécharger automatiquement, et on ne la
+contourne pas. Les deux fichiers doivent être téléchargés à la main dans un
+navigateur, puis déposés dans `data/lobby/` :
+
+- Enregistrements : https://lobbycanada.gc.ca/media/zwcjycef/registrations_enregistrements_ocl_cal.zip
+- Rapports de communication mensuels : https://lobbycanada.gc.ca/media/mqbbmaqk/communications_ocl_cal.zip
