@@ -45,6 +45,7 @@ echo "Subventions téléchargées : $TAILLE_SUB octets"
 .venv/bin/python pipeline/ingerer.py
 .venv/bin/python pipeline/ingerer_subventions.py
 .venv/bin/python pipeline/analyser.py > /dev/null
+.venv/bin/python pipeline/signaux.py
 .venv/bin/python pipeline/exporter.py
 
 # Dépôt git temporaire hors du dossier exporté : jamais de .git dans build/.

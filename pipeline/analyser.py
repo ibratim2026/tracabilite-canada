@@ -82,7 +82,7 @@ def construire_contrats(con):
         cle TEXT PRIMARY KEY, ministere TEXT, ministere_nom TEXT, fournisseur TEXT,
         pays TEXT, date_contrat TEXT, description TEXT, methode TEXT, raison TEXT,
         valeur REAL, valeur_originale REAL, nb_versions INTEGER, quarantaine TEXT,
-        reference TEXT, debut TEXT, fin TEXT, fournisseur_id INTEGER)""")
+        reference TEXT, debut TEXT, fin TEXT, fournisseur_id INTEGER, nb_offres TEXT)""")
     # On regroupe toutes les versions de chaque contrat.
     groupes = {}
     for rowid, org, pid, ref, periode, val, orig, modif in con.execute(
@@ -116,17 +116,17 @@ def construire_contrats(con):
     lignes = []
     requete = ("SELECT owner_org, owner_org_title, vendor_name, country_of_vendor, contract_date, "
                "description_fr, solicitation_procedure, limited_tendering_reason, valeur, "
-               "valeur_originale, reference_number, contract_period_start, delivery_date "
+               "valeur_originale, reference_number, contract_period_start, delivery_date, number_of_bids "
                "FROM brut WHERE rowid = ?")
     for cle, (_, rowid) in derniers.items():
-        org, titre, fourn, pays, dt, desc, meth, raison, val, orig, ref, deb, fin = \
+        org, titre, fourn, pays, dt, desc, meth, raison, val, orig, ref, deb, fin, offres = \
             con.execute(requete, (rowid,)).fetchone()
         nom = titre.split("|")[-1].strip() if "|" in titre else titre
         quarantaine = "valeur nulle ou négative" if val is None or val <= 0 else None
         lignes.append((cle, org, nom, (fourn or "").strip(), pays, (dt or "")[:10],
                        (desc or "").strip(), meth, raison, val, orig, versions[cle], quarantaine,
-                       ref, (deb or "")[:10], (fin or "")[:10], None))
-    con.executemany("INSERT INTO contrats VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", lignes)
+                       ref, (deb or "")[:10], (fin or "")[:10], None, (offres or "").strip()))
+    con.executemany("INSERT INTO contrats VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", lignes)
     con.execute("CREATE INDEX i_date ON contrats(date_contrat)")
     con.commit()
 

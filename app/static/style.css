@@ -296,6 +296,22 @@ a.resultat .resultat-detail { color: var(--rouge); font-weight: 600; }
 .barres-piste.double .barres-plein { border-radius: 0; flex: none; }
 .barres-plein.subv { background: var(--rouge) !important; }
 
+/* ---- Signaux */
+.surtitre a { color: inherit; }
+.cartes-signaux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.carte-signal { display: block; border: 1px solid var(--bordure); border-radius: 18px; padding: 1.3rem;
+  color: var(--encre); text-decoration: none; transition: border-color var(--t), transform var(--t); }
+.carte-signal:hover { border-color: var(--rouge); transform: translateY(-2px); text-decoration: none; }
+.carte-signal h3 { margin: .6rem 0 .2rem; font-size: 1.15rem; }
+.carte-nb { font-weight: 800; color: var(--rouge); margin-bottom: .4rem; }
+.puce-signal { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  padding: .12rem .5rem; border-radius: 999px; background: var(--encre); color: #fff !important; text-decoration: none;
+  margin: 0 .25rem .3rem 0; white-space: nowrap; }
+.puce-SANS_APPEL, .puce-SOUM_UNIQUE { background: var(--rouge); }
+.puce-SAUT { background: #7a5a00; }
+.puce-PETITS_REPETES { background: var(--gris); }
+.signaux-ligne { display: block; }
+
 /* ---- Mobile */
 @media (max-width: 720px) {
   body { font-size: 16px; }

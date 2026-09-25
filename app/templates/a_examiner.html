@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from "_macros.html" import table_contrats with context %}
+{% block titre %}À examiner en priorité — Traçabilité Canada{% endblock %}
+{% block description %}Les contrats fédéraux qui méritent une explication, selon des règles publiques. Un signal n'est pas une accusation.{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge heros">
+  <div class="contenant etroit">
+    <p class="surtitre">À examiner en priorité</p>
+    <h1>Un détecteur de fumée, pas un juge</h1>
+    <p class="chapeau">Un détecteur de fumée sonne pour un incendie, mais aussi pour une rôtie brûlée. Son travail n'est pas de dire lequel des deux&nbsp;: c'est de vous faire lever la tête. Nos signaux font la même chose avec les contrats fédéraux.</p>
+    <div class="faits">
+      <div><p class="gros-chiffre">{{ nb_prio | nombre }}</p><p>contrats cumulent 3 signaux ou plus ★</p></div>
+      <div><p class="gros-chiffre">{{ val_prio | argent }}</p><p>leur valeur totale</p></div>
+      <div><p class="gros-chiffre">{{ (grands_signal / grands) | pourcent }}</p><p>des contrats de 100&nbsp;000&nbsp;$ et plus ont au moins un signal</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <h2>Six règles, toutes publiques</h2>
+    <p class="chapeau">Chaque règle est simple et identique pour tout le monde. Pour chacune, on vous dit aussi ce qui l'explique souvent, sans faute de personne.</p>
+    <div class="cartes-signaux">
+      {% for code, d in signaux_def.items() %}
+      <a class="carte-signal" href="{{ base }}/a-examiner/{{ code | lower | replace('_', '-') }}/">
+        <span class="puce-signal puce-{{ code }}">{{ d.court }}</span>
+        <h3>{{ d.nom }}</h3>
+        <p class="carte-nb">{{ comptes.get(code, {}).get('nb', 0) | nombre }} contrats</p>
+        <p>{{ d.regle }}</p>
+        <p class="note"><strong>Souvent normal&nbsp;:</strong> {{ d.normal }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant">
+    <h2>★ Les 60 plus gros contrats à 3 signaux ou plus</h2>
+    <p class="chapeau">Trois règles différentes qui sonnent pour le même contrat, ce n'est pas une preuve. C'est une raison de demander des explications au ministère. Chaque ligne mène à la fiche officielle.</p>
+    {{ table_contrats(prioritaires) }}
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant etroit">
+    <h2>Ce que les signaux ne disent pas</h2>
+    <ul class="principes">
+      <li><strong>Pas de fraude, pas de faute.</strong> Aucun signal ne le prouve, ni ne le suggère. Nous n'employons jamais de mot accusatoire.</li>
+      <li><strong>Pas tout.</strong> Un contrat sans signal peut poser problème, et beaucoup de problèmes ne se voient pas dans les données.</li>
+      <li><strong>Pas le contexte.</strong> Une pandémie, une guerre, une urgence changent les règles du jeu. Les données ne le disent pas.</li>
+      <li><strong>Les données peuvent se tromper.</strong> Un signal peut venir d'une erreur de saisie du ministère. Vérifiez toujours la fiche officielle.</li>
+    </ul>
+    <p>Vous connaissez l'explication d'un signal&nbsp;? <a href="https://github.com/ibratim2026/tracabilite-canada/issues">Dites-le-nous</a>&nbsp;: nous l'ajouterons, publiquement.</p>
+  </div>
+</section>
+{% endblock %}

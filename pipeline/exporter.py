@@ -24,7 +24,10 @@ BASE = "/tracabilite-canada"
 
 def pages():
     con = sqlite3.connect(BASE_DONNEES)
-    yield from ["/", "/subventions/", "/chercher/", "/ministeres/", "/methode/"]
+    yield from ["/", "/subventions/", "/a-examiner/", "/chercher/", "/ministeres/", "/methode/"]
+    from app import SIGNAUX
+    for t in SIGNAUX:
+        yield f"/a-examiner/{t.lower().replace('_', '-')}/"
     for (org,) in con.execute("SELECT DISTINCT ministere FROM contrats WHERE fournisseur_id IS NOT NULL "
                               "UNION SELECT DISTINCT ministere FROM subventions WHERE debut >= '2017-04-01' "
                               "AND quarantaine IS NULL"):

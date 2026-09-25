@@ -28,7 +28,7 @@
     <td data-l="Signé le">{{ c.date_contrat | date_fr }}</td>
     {% if montrer_fournisseur %}<td data-l="Entreprise">{% if c.a_fiche %}<a href="{{ base }}/entreprise/{{ c.slug }}/">{{ c.fournisseur }}</a>{% else %}{{ c.fournisseur }}{% endif %}</td>{% endif %}
     {% if montrer_ministere %}<td data-l="Ministère"><a href="{{ base }}/ministere/{{ c.ministere }}/">{{ c.ministere_nom }}</a></td>{% endif %}
-    <td data-l="Quoi">{{ c.description or '—' }}{% if c.fin and c.fin[:4] | int >= c.date_contrat[:4] | int + 3 %} <span class="etiquette">jusqu'en {{ c.fin[:4] }}</span>{% endif %}</td>
+    <td data-l="Quoi">{% if c.signaux %}<span class="signaux-ligne">{% for t in c.signaux.split(',') | unique %}<a class="puce-signal puce-{{ t }}" href="{{ base }}/a-examiner/{{ t | lower | replace('_', '-') }}/" title="{{ signaux_def[t].nom }}">{{ signaux_def[t].court }}</a>{% endfor %}</span>{% endif %}{{ c.description or '—' }}{% if c.fin and c.fin[:4] | int >= c.date_contrat[:4] | int + 3 %} <span class="etiquette">jusqu'en {{ c.fin[:4] }}</span>{% endif %}</td>
     <td data-l="Attribution"><span class="methode methode-{{ c.methode or 'X' }}">{{ methodes.get(c.methode, 'Non précisée') }}</span></td>
     <td data-l="Valeur" class="nombre"><strong>{{ c.valeur | argent }}</strong>
       {% if c.valeur_originale and c.valeur > c.valeur_originale * 1.001 %}<br><span class="modifie">signé à {{ c.valeur_originale | argent }}</span>{% endif %}</td>

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% from "_macros.html" import table_contrats with context %}
+{% block titre %}{{ d.nom }} — À examiner — Traçabilité Canada{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre"><a href="{{ base }}/a-examiner/">À examiner</a> · signal</p>
+    <h1>{{ d.nom }}</h1>
+    <p class="chapeau">{{ d.regle }}</p>
+    <div class="faits">
+      <div><p class="gros-chiffre">{{ nb | nombre }}</p><p>contrats depuis 2017</p></div>
+      <div><p class="gros-chiffre">{{ valeur | argent }}</p><p>leur valeur totale</p></div>
+    </div>
+    <p class="phrase-choc"><strong>Souvent normal&nbsp;:</strong> {{ d.normal }}</p>
+  </div>
+</section>
+<section class="bande">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>Les ministères où ce signal revient le plus</h2>
+      <ol class="barres">
+        {% set maxm = par_ministere[0].n %}
+        {% for m in par_ministere %}
+        <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.n / maxm * 100) | round(1) }}%"></span></span><span class="barres-val">{{ m.n | nombre }}</span></li>
+        {% endfor %}
+      </ol>
+      <p class="note">En nombre de contrats. Un grand ministère a plus de contrats, donc plus de signaux&nbsp;: ce classement ne mesure pas la « qualité » d'un ministère.</p>
+    </div>
+    <div>
+      <h2>Comment lire la liste</h2>
+      <p>Les 100 contrats ci-dessous sont classés par gravité, puis par valeur. Chaque ligne mène à la fiche officielle du gouvernement&nbsp;: c'est elle qui fait foi.</p>
+    </div>
+  </div>
+</section>
+<section class="bande bande-pale">
+  <div class="contenant">
+    <div class="table-defile">
+    <table class="contrats">
+      <thead><tr><th>Signé le</th><th>Entreprise</th><th>Ministère</th><th>Ce que dit la règle</th><th class="nombre">Valeur</th><th><span class="visuellement-cache">Source</span></th></tr></thead>
+      <tbody>
+      {% for c in lignes %}
+      <tr>
+        <td data-l="Signé le">{{ c.date_contrat | date_fr }}</td>
+        <td data-l="Entreprise">{% if c.a_fiche %}<a href="{{ base }}/entreprise/{{ c.slug }}/">{{ c.fournisseur }}</a>{% else %}{{ c.fournisseur }}{% endif %}</td>
+        <td data-l="Ministère"><a href="{{ base }}/ministere/{{ c.ministere }}/">{{ c.ministere_nom }}</a></td>
+        <td data-l="Ce que dit la règle">{{ c.detail }}<br><span class="note-ligne">{{ c.description }}</span></td>
+        <td data-l="Valeur" class="nombre"><strong>{{ c.valeur | argent }}</strong>{% if c.valeur_originale and c.valeur > c.valeur_originale * 1.001 %}<br><span class="modifie">signé à {{ c.valeur_originale | argent }}</span>{% endif %}</td>
+        <td><a class="lien-officiel" href="{{ lien_officiel(c.ministere, c.reference) }}">Fiche officielle&nbsp;↗</a></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

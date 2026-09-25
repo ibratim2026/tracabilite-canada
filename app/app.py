@@ -77,8 +77,9 @@ def date_fr(s):
 app.jinja_env.filters.update(nombre=nombre, argent=argent, pourcent=pourcent, date_fr=date_fr)
 
 NAVIGATION = [
-    ("/", "Ce qu'Ottawa achète"),
-    ("/subventions/", "Ce qu'Ottawa donne"),
+    ("/", "Contrats"),
+    ("/subventions/", "Subventions"),
+    ("/a-examiner/", "À examiner"),
     ("/chercher/", "Chercher"),
     ("/ministeres/", "Ministères"),
     ("/methode/", "Méthode"),
@@ -99,7 +100,7 @@ ENTENTES = {"G": "Subvention", "C": "Contribution", "O": "Autre transfert"}
 @app.context_processor
 def contexte():
     return dict(base=app.config["BASE"], version_statique=version_statique(), navigation=NAVIGATION,
-                methodes=METHODES, types_benef=TYPES_BENEF, ententes=ENTENTES,
+                methodes=METHODES, signaux_def=SIGNAUX, types_benef=TYPES_BENEF, ententes=ENTENTES,
                 donnees_du=charger("chiffres")["genere_le"], seuil_fiche=SEUIL_FICHE,
                 periode_debut=PERIODE_DEBUT)
 
@@ -163,7 +164,30 @@ def methodes_de(where, params):
 
 
 CONTRAT_COLONNES = ("c.date_contrat, c.description, c.valeur, c.valeur_originale, c.methode, c.fin, "
-                    "c.ministere, c.ministere_nom, c.reference, f.nom fournisseur, f.slug, f.a_fiche")
+                    "c.ministere, c.ministere_nom, c.reference, f.nom fournisseur, f.slug, f.a_fiche, "
+                    "(SELECT types FROM signaux_contrat sc WHERE sc.cle = c.cle) signaux")
+
+# Les signaux : nom court, explication, et ce qui peut l'expliquer sans faute de personne.
+SIGNAUX = {
+    "CROISSANCE": dict(nom="A grossi après signature", court="Grossi",
+        regle="Le contrat vaut aujourd'hui au moins 25 % de plus que le montant signé (contrats signés à 25 000 $ ou plus).",
+        normal="Phase supplémentaire prévue, délai prolongé, hausse des coûts d'un projet de plusieurs années."),
+    "SAUT": dict(nom="Saut à vérifier", court="Saut",
+        regle="La valeur actuelle dépasse 20 fois le montant signé (et au moins 1 M$).",
+        normal="Des options prévues dès le départ, déclarées comme modifications. Parfois, une erreur de saisie."),
+    "SANS_APPEL": dict(nom="Sans appel d'offres", court="Sans appel",
+        regle="Contrat de 100 000 $ ou plus attribué sans appel d'offres. La raison déclarée est affichée.",
+        normal="Un seul fournisseur possible (logiciel, pièces d'origine), urgence réelle, sécurité nationale."),
+    "SOUM_UNIQUE": dict(nom="Un seul soumissionnaire", court="1 offre",
+        regle="Appel d'offres concurrentiel de 100 000 $ ou plus auquel une seule entreprise a répondu.",
+        normal="Marché très spécialisé, exigences que peu d'entreprises peuvent remplir, délai court."),
+    "MODIFS_SERIE": dict(nom="Modifications en série", court="Modifié",
+        regle="Trois modifications déclarées ou plus sur le même contrat.",
+        normal="Contrat de longue durée renouvelé chaque année, ajustements administratifs."),
+    "PETITS_REPETES": dict(nom="Petits contrats répétés", court="Répétés",
+        regle="Au moins cinq contrats sans appel d'offres de moins de 25 000 $ chacun, même ministère, même fournisseur, même année, pour 100 000 $ ou plus.",
+        normal="Achats courants auprès d'un fournisseur habituel (fournitures, abonnements, pièces)."),
+}
 # Les particuliers ne sont jamais nommés : leur nom est remplacé à la source.
 SUB_COLONNES = ("s.debut, s.fin, s.programme, s.titre, s.valeur, s.valeur_max, s.type_entente, s.type_benef, "
                 "s.ministere, s.ministere_nom, s.reference, s.ville, s.province, "
@@ -324,6 +348,44 @@ def ministere(org):
         annees=par_exercice(ou, p), annees_sub=par_exercice(ou, p, "subventions"),
         m=methodes_de(ou, p) if tete["n"] else None, r=reperes(), part_top=part_top,
         population=POPULATION, page="/ministeres/")
+
+
+@app.route("/a-examiner/")
+def a_examiner():
+    comptes = {t: dict(nb=n, valeur=v) for t, n, v in bd().execute(
+        "SELECT s.type, COUNT(DISTINCT s.cle), SUM(c.valeur) FROM signaux s JOIN contrats c ON c.cle = s.cle "
+        "GROUP BY s.type")}
+    prioritaires = bd().execute(
+        f"SELECT {CONTRAT_COLONNES}, sc.nb FROM signaux_contrat sc JOIN contrats c ON c.cle = sc.cle "
+        f"JOIN fournisseurs f ON f.id = c.fournisseur_id WHERE sc.nb >= 3 ORDER BY c.valeur DESC LIMIT 60").fetchall()
+    nb_prio, val_prio = bd().execute(
+        "SELECT COUNT(*), SUM(c.valeur) FROM signaux_contrat sc JOIN contrats c ON c.cle = sc.cle "
+        "WHERE sc.nb >= 3").fetchone()
+    grands, grands_signal = bd().execute(
+        f"SELECT COUNT(*), SUM(EXISTS(SELECT 1 FROM signaux_contrat sc WHERE sc.cle = c.cle)) FROM contrats c "
+        f"WHERE {PERIODE} AND valeur >= 100000").fetchone()
+    return render_template("a_examiner.html", comptes=comptes, prioritaires=prioritaires, nb_prio=nb_prio,
+                           val_prio=val_prio, grands=grands, grands_signal=grands_signal, r=reperes(),
+                           page="/a-examiner/")
+
+
+@app.route("/a-examiner/<type_signal>/")
+def signal_type(type_signal):
+    t = type_signal.upper().replace("-", "_")
+    if t not in SIGNAUX:
+        abort(404)
+    lignes = bd().execute(
+        f"SELECT {CONTRAT_COLONNES}, s.gravite, s.detail FROM signaux s JOIN contrats c ON c.cle = s.cle "
+        f"JOIN fournisseurs f ON f.id = c.fournisseur_id WHERE s.type = ? "
+        f"ORDER BY s.gravite DESC, c.valeur DESC LIMIT 100", (t,)).fetchall()
+    nb, valeur = bd().execute("SELECT COUNT(DISTINCT s.cle), SUM(c.valeur) FROM signaux s "
+                              "JOIN contrats c ON c.cle = s.cle WHERE s.type = ?", (t,)).fetchone()
+    par_ministere = bd().execute(
+        "SELECT c.ministere, c.ministere_nom, COUNT(*) n, SUM(c.valeur) v FROM signaux s "
+        "JOIN contrats c ON c.cle = s.cle WHERE s.type = ? GROUP BY c.ministere ORDER BY n DESC LIMIT 10",
+        (t,)).fetchall()
+    return render_template("signal.html", t=t, d=SIGNAUX[t], lignes=lignes, nb=nb, valeur=valeur,
+                           par_ministere=par_ministere, page="/a-examiner/")
 
 
 @app.route("/methode/")
