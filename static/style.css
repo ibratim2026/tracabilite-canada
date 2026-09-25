@@ -326,6 +326,51 @@ div.carte-signal:hover { transform: none; border-color: var(--bordure); }
 .contrats.sur-rouge td { border-color: rgba(255,255,255,.25); }
 .contrats.sur-rouge a { color: #fff; }
 
+/* ---- Couverture (page d'accueil) */
+.couverture { background: var(--sombre); color: #fff; padding: clamp(3.5rem, 2.5rem + 5vw, 7rem) 0 clamp(3rem, 2rem + 4vw, 5.5rem); }
+.couverture .surtitre { color: #ff9aa9; }
+.couverture h1 { color: #fff; font-size: clamp(2.4rem, 1.4rem + 4.6vw, 4.6rem); line-height: 1.02;
+  letter-spacing: -0.04em; max-width: 20ch; margin: .8rem 0 1.2rem; }
+.accent-rouge { color: #ff4d63; white-space: nowrap; }
+.couverture-chapeau { font-size: clamp(1.1rem, 1rem + .5vw, 1.3rem); line-height: 1.5; color: rgba(255,255,255,.78); max-width: 60ch; }
+.compteur { margin: 2.6rem 0 2.2rem; padding: 1.6rem 0; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15); }
+.compteur-etiquette { font-size: .95rem; color: rgba(255,255,255,.7); }
+.compteur-valeur { font-size: clamp(2.8rem, 1.5rem + 7vw, 6rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1.05;
+  color: #ff4d63; font-variant-numeric: tabular-nums; margin: .3rem 0 .4rem; }
+.compteur-note { font-size: .9rem; color: rgba(255,255,255,.65); }
+.compteur-note a, .couverture .note a { color: #fff; }
+.couverture-recherche { display: flex; gap: .6rem; max-width: 780px; }
+.couverture-recherche input { flex: 1; font: inherit; font-size: 1.1rem; padding: 1.05rem 1.3rem; border-radius: 14px; border: 0; color: var(--encre); min-width: 0; }
+.couverture-recherche input:focus-visible { outline: 3px solid #ff4d63; }
+.couverture-recherche .bouton { margin: 0; padding: 0 1.6rem; border-radius: 14px; }
+.couverture-aide { font-size: .85rem; color: rgba(255,255,255,.55); margin-top: .8rem; }
+
+.chiffres-cles { border-bottom: 1px solid var(--bordure); }
+.rangee-chiffres { display: grid; grid-template-columns: repeat(4, 1fr); }
+.rangee-chiffres a { display: flex; flex-direction: column; gap: .3rem; padding: .4rem 1.4rem; color: var(--encre);
+  text-decoration: none; border-left: 1px solid var(--bordure); }
+.rangee-chiffres a:first-child { border-left: 0; padding-left: 0; }
+.rangee-chiffres a:hover .rc-valeur { color: var(--rouge); }
+.rc-valeur { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem); font-weight: 800; letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums; line-height: 1.05; transition: color var(--t); }
+.rc-libelle { font-size: .9rem; color: var(--gris); line-height: 1.35; }
+
+.portes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.4rem; }
+.porte { display: flex; flex-direction: column; gap: .8rem; background: #fff; border-radius: 18px; padding: 1.6rem;
+  color: var(--encre); text-decoration: none; border: 1px solid var(--bordure);
+  transition: transform var(--t), border-color var(--t), box-shadow var(--t); }
+.porte:hover { transform: translateY(-3px); border-color: var(--rouge); box-shadow: 0 14px 30px rgba(60,20,20,.1); text-decoration: none; }
+.porte-rubrique { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--rouge); }
+.porte-fait { font-size: 1.3rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.25; flex: 1; }
+.porte-suite { font-size: .9rem; font-weight: 600; color: var(--gris); }
+.porte:hover .porte-suite { color: var(--rouge); }
+
+.regles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 1.6rem 0 1.4rem; }
+.regles h3 { color: #fff; margin-top: .4rem; }
+.regles p { color: rgba(255,255,255,.75); }
+.regle-no { font-size: 2.4rem; font-weight: 800; color: #ff4d63; line-height: 1; }
+.bande-sombre .note { color: rgba(255,255,255,.6); }
+
 /* ---- Mobile */
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -338,8 +383,18 @@ div.carte-signal:hover { transform: none; border-color: var(--bordure); }
   .annee-val { font-size: .66rem; }
   .annee-nom { font-size: .62rem; }
   .entete-note { font-size: .72rem; }
-  .menu { width: 100%; }
-  .menu a { font-size: .82rem; padding: .3rem .5rem; }
+  .rangee-chiffres { grid-template-columns: 1fr 1fr; gap: 1.2rem 0; }
+  .rangee-chiffres a:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .rangee-chiffres a { padding: 0 0 0 1rem; }
+  .portes, .regles { grid-template-columns: 1fr; }
+  .couverture-recherche { flex-direction: column; }
+  .couverture-recherche .bouton { padding: .9rem; }
+  /* Menu sur une ligne, qu'on fait défiler du doigt. */
+  .entete-rangee { flex-wrap: nowrap; flex-direction: column; align-items: stretch; gap: .4rem; }
+  .menu { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px .2rem;
+    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+  .menu::-webkit-scrollbar { display: none; }
+  .menu a { font-size: .88rem; padding: .35rem .7rem; white-space: nowrap; flex: none; }
   .faits, .grille-fiche { grid-template-columns: 1fr; }
   .grille-fiche { gap: 2rem; }
   .grille-fiche .barres li, .liste-ministeres li { grid-template-columns: 1fr auto; }

@@ -177,3 +177,21 @@ function argent(v) {
   document.getElementById("tirer-sub").addEventListener("click", tirer);
   tirer();
 })();
+
+// ---- Couverture : l'argent dépensé depuis l'arrivée sur la page.
+(function compteur() {
+  const el = document.getElementById("compteur");
+  if (!el) return;
+  const parSeconde = Number(el.dataset.parSeconde);
+  const debut = performance.now();
+  const afficher = () => {
+    const v = Math.floor(((performance.now() - debut) / 1000) * parSeconde);
+    el.textContent = v.toLocaleString("fr-CA") + "\u00a0$";
+  };
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    setInterval(afficher, 1000);
+  } else {
+    const boucle = () => { afficher(); requestAnimationFrame(boucle); };
+    requestAnimationFrame(boucle);
+  }
+})();
