@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Méthode et limites — Traçabilité Canada</title>
+<meta name="description" content="Suivre l'argent public fédéral, chiffre par chiffre, sources à l'appui.">
+<link rel="stylesheet" href="/tracabilite-canada/static/style.css?v=1790347582">
+</head>
+<body>
+
+
+<header class="entete">
+  <div class="contenant entete-rangee">
+    <a class="marque" href="/tracabilite-canada/"><span class="marque-point"></span>Traçabilité Canada</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="/tracabilite-canada/">Contrats</a>
+      <a href="/tracabilite-canada/subventions/">Subventions</a>
+      <a href="/tracabilite-canada/a-examiner/">À examiner</a>
+      <a href="/tracabilite-canada/chercher/">Chercher</a>
+      <a href="/tracabilite-canada/ministeres/">Ministères</a>
+      <a href="/tracabilite-canada/comprendre/">Comprendre</a>
+    </nav>
+  </div>
+  <div class="entete-note"><div class="contenant">Initiative citoyenne indépendante · pas un site du gouvernement · <a href="/tracabilite-canada/methode/">méthode</a></div></div>
+</header>
+
+<main>
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre">Méthode</p>
+    <h1>Comment on passe de 2,6 millions de lignes à des chiffres fiables</h1>
+    <p class="chapeau">Vous n'avez pas à nous croire&nbsp;: tout ce qui suit peut être refait à partir des données publiques et du <a href="https://github.com/ibratim2026/tracabilite-canada">code source</a>.</p>
+  </div>
+</section>
+<section class="bande">
+  <div class="contenant etroit prose">
+    <h2>La source</h2>
+    <p>Chaque ministère fédéral doit publier ses contrats de plus de 10&nbsp;000&nbsp;$ tous les trois mois. Le gouvernement les réunit dans un seul fichier sur <a href="https://ouvert.canada.ca/data/fr/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b">ouvert.canada.ca</a>. Nous le téléchargeons en entier. Dernier téléchargement&nbsp;: 25 sept. 2026.</p>
+
+    <h2>1. Une ligne n'est pas un contrat</h2>
+    <p>Quand un contrat est modifié, le ministère publie une nouvelle ligne avec le <em>nouveau total</em>. Additionner toutes les lignes compte donc le même contrat plusieurs fois. Nous gardons seulement la version la plus récente de chaque contrat (même ministère, même numéro d'achat).</p>
+    <p>Résultat&nbsp;: 1 313 276 lignes deviennent 1 038 149 contrats. Pour 2024-2025, l'addition naïve donnerait 117,0 G$&nbsp;; le vrai total est 56,6 G$.</p>
+
+    <h2>2. Les offres à commandes sont mises à part</h2>
+    <p>Une « offre à commandes » est un plafond&nbsp;: le fournisseur peut recevoir des commandes jusqu'à ce montant, mais rien n'est encore engagé. Les additionner gonflerait artificiellement les totaux. Nous les excluons.</p>
+
+    <h2>3. Les erreurs évidentes sont écartées, et montrées</h2>
+    <p>Nous mettons une version de côté seulement quand elle se contredit elle-même&nbsp;: plus de 100&nbsp;M$, plus de 50 fois toutes les autres versions du même contrat, <em>et</em> plus de 50 fois sa propre valeur d'origine et sa propre modification. La règle est volontairement étroite&nbsp;: un contrat qui a vraiment grossi ne doit jamais être caché.</p>
+    <div class="coquille claire">
+      <p><strong>BANCTEC (CANADA), INC.</strong> · Services publics et Approvisionnement Canada · 4 juill. 2024</p>
+      <p>Valeur déclarée&nbsp;: <strong>20 027 319 128&nbsp;$</strong>. Les autres versions du même contrat&nbsp;: environ 27,5 M$.</p>
+    </div>
+
+    <h2>4. Les noms sont regroupés, prudemment</h2>
+    <p>« IBM CANADA LTD. », « IBM Canada Limited » et « IBM CANADA LTEE » sont la même entreprise. Nous regroupons les noms qui ne diffèrent que par les majuscules, les accents, la ponctuation ou la forme juridique (Inc., Ltée, Limited, s.e.n.c.r.l.…). Nous ne regroupons <em>pas</em> les filiales ni les entités distinctes d'un même groupe. Chaque fiche affiche toutes les façons d'écrire le nom qu'elle réunit. Une entreprise qui reçoit à la fois des contrats et des subventions a une seule fiche.</p>
+
+    <h2>5. Les subventions et contributions</h2>
+    <p>Même source, même piège&nbsp;: le fichier des <a href="https://ouvert.canada.ca/data/fr/dataset/432527ab-7aac-45b5-81d6-7597107a7013">subventions et contributions</a> republie chaque entente à chaque modification, avec sa nouvelle valeur totale. Nous gardons la dernière version officielle de chaque entente. Depuis 2017, l'addition naïve donnerait 855,2 G$&nbsp;; le vrai total est 735,3 G$.</p>
+    <p>Ici, <strong>pas de mise en quarantaine automatique</strong>. Nous l'avons testée, puis retirée&nbsp;: les grands écarts entre versions d'une même entente se sont tous révélés réels (une entente annulée et ramenée à 0&nbsp;$, un montant symbolique remplacé par la vraie valeur). Une règle qui aurait « corrigé » ces cas aurait effacé des faits.</p>
+    <p><strong>Les particuliers ne sont jamais nommés.</strong> Le gouvernement publie certains versements à des personnes (et des « rapports en lots » qui les regroupent). Nous les comptons dans les totaux, sans jamais afficher de nom ni les rendre cherchables.</p>
+
+    <h2>6. La période</h2>
+    <p>Les fiches couvrent les contrats signés depuis le 1<sup>er</sup> avril 2017. Avant, les déclarations sont trop inégales d'un ministère à l'autre pour être comparées. Les entreprises et organismes qui ont reçu 1&nbsp;M$ ou plus (contrats et subventions additionnés) ont une fiche complète&nbsp;; tous les autres sont dans la recherche.</p>
+
+    <h2>7. Les signaux « À examiner »</h2>
+    <p>Six règles simples, les mêmes pour tous, repèrent les contrats qui méritent une explication&nbsp;: croissance après signature, saut de valeur, absence d'appel d'offres, soumissionnaire unique, modifications en série, petits contrats répétés. Elles sont décrites une à une sur la page <a href="/tracabilite-canada/a-examiner/">À examiner</a>, avec ce qui les explique souvent sans faute de personne. Le fichier fédéral indique aussi si un contrat a été accordé à un ancien fonctionnaire&nbsp;: nous n'utilisons pas ce champ, qui vise des personnes plutôt que l'usage de l'argent.</p>
+
+    <h2>Ce que les chiffres veulent dire</h2>
+    <ul class="principes">
+      <li><strong>Valeur engagée, pas dépensée.</strong> Un contrat de 25 ans est inscrit en entier à sa date de signature.</li>
+      <li><strong>Taxes comprises</strong>, selon la consigne du Conseil du Trésor.</li>
+      <li><strong>« Sans appel d'offres »</strong> est la méthode déclarée par le ministère. Ça ne veut pas dire illégal&nbsp;: les règles le permettent dans plusieurs cas (fournisseur unique, urgence, petite valeur). La raison est dans la fiche officielle de chaque contrat.</li>
+      <li><strong>Un signal n'est pas une accusation.</strong> Chaque écart mérite une explication avant une interprétation.</li>
+    </ul>
+
+    <h2>Une erreur&nbsp;?</h2>
+    <p>Si un chiffre vous semble faux, <a href="https://github.com/ibratim2026/tracabilite-canada/issues">signalez-le</a>. Les corrections sont faites en public et datées.</p>
+  </div>
+</section>
+</main>
+
+<footer class="pied">
+  <div class="contenant">
+    <p>Traçabilité Canada · données du 25 sept. 2026 · <a href="/tracabilite-canada/methode/">méthode et limites</a> · <a href="https://github.com/ibratim2026/tracabilite-canada">code source</a></p>
+    <p>Données publiées par le gouvernement du Canada sous la <a href="https://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada">Licence du gouvernement ouvert — Canada</a>. Un signal n'est pas une accusation.</p>
+  </div>
+</footer>
+
+<script src="/tracabilite-canada/static/page.js?v=1790347582"></script>
+</body>
+</html>
