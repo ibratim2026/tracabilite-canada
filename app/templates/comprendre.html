@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titre %}Comprendre — Traçabilité Canada{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre">Comprendre</p>
+    <h1>Les grands chiffres d'Ottawa, sans jargon</h1>
+    <p class="chapeau">Avant de juger une dépense, il faut savoir d'où vient l'argent, où il va, et ce que « déficit », « dette » ou « péréquation » veulent vraiment dire. Chaque chiffre vient d'une source officielle, citée sous chaque section.</p>
+  </div>
+</section>
+<section class="bande">
+  <div class="contenant">
+    <div class="cartes-signaux">
+      <a class="carte-signal" href="{{ base }}/comprendre/budget/"><p class="surtitre">Le budget en une page</p><h3>{{ b.charges | argent }} dépensés, {{ b.revenus | argent }} perçus</h3><p>D'où vient chaque dollar, où il va, et pourquoi 10&nbsp;¢ de chaque dollar d'impôt partent en intérêts.</p></a>
+      <a class="carte-signal" href="{{ base }}/comprendre/provinces/"><p class="surtitre">Ottawa et les provinces</p><h3>La péréquation, expliquée sans chicane</h3><p>Qui reçoit quoi, comment c'est calculé, et pourquoi l'Alberta ne fait pas de chèque au Québec.</p></a>
+      <a class="carte-signal" href="{{ base }}/comprendre/on-clarifie/"><p class="surtitre">On clarifie</p><h3>Six impressions, confrontées aux chiffres</h3><p>« Ottawa arrose les grandes entreprises », « sans appel d'offres, c'est illégal »… Vrai, faux, ou plus nuancé&nbsp;?</p></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

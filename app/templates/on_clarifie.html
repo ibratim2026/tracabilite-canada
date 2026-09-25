@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block titre %}On clarifie — Traçabilité Canada{% endblock %}
+{% block description %}Six impressions répandues sur l'argent fédéral, confrontées aux chiffres officiels.{% endblock %}
+{% block contenu %}
+{% set pct = (entreprises.valeur / s.total) %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant etroit">
+    <p class="surtitre">On clarifie</p>
+    <h1>Six impressions, confrontées aux chiffres</h1>
+    <p class="chapeau">Une impression vient toujours de quelque part. On explique d'où elle vient, puis ce que disent les données. Pas pour dire qui a raison&nbsp;: pour que chacun parte des mêmes faits.</p>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant etroit clarifications">
+
+    <article class="clarif">
+      <p class="clarif-impression">« Ottawa arrose surtout les grandes entreprises. »</p>
+      <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> les très grosses ententes font les manchettes, comme les {{ (s.geantes[0].valeur + s.geantes[1].valeur) | argent }} promis à deux usines de batteries.</p>
+      <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> en {{ s.exercice }}, les entreprises ont reçu {{ entreprises.valeur | argent }} des {{ s.total | argent }} de subventions et contributions, soit <strong>{{ pct | pourcent }}</strong>. Les organismes sans but lucratif et les communautés autochtones ont reçu davantage.</p>
+      <p class="note"><a href="{{ base }}/subventions/">Voir le détail</a> · source&nbsp;: <a href="{{ s.source.url }}">{{ s.source.nom }}</a></p>
+    </article>
+
+    <article class="clarif">
+      <p class="clarif-impression">« Un contrat sans appel d'offres, c'est illégal. »</p>
+      <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> plusieurs scandales ont commencé par des contrats attribués sans concours.</p>
+      <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> en {{ c.exercice }}, {{ tn.nb | nombre }} contrats ont été signés sans appel d'offres, et le ministère en déclare la raison. La plus fréquente&nbsp;: aucune justification n'était exigée, souvent parce que le montant est petit. Viennent ensuite les droits exclusifs ({{ raisons['71'].nb | nombre }} contrats)&nbsp;: un seul fournisseur peut légalement vendre le produit. <strong>C'est permis, mais ça doit s'expliquer.</strong></p>
+      <p class="note"><a href="{{ base }}/a-examiner/sans-appel/">Voir les plus gros</a> · source&nbsp;: <a href="{{ c.sources.contrats.url }}">{{ c.sources.contrats.nom }}</a></p>
+    </article>
+
+    <article class="clarif">
+      <p class="clarif-impression">« Les intérêts sur la dette, c'est un détail. »</p>
+      <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> pendant des années, les taux d'intérêt étaient très bas, et on en parlait peu.</p>
+      <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> en {{ b.exercice }}, Ottawa a payé {{ b.interets | argent }} d'intérêts, soit <strong>{{ (b.interets_sur_revenus * 100) | nombre(1) }}&nbsp;¢ de chaque dollar perçu</strong>. C'est près de deux fois ce qu'il verse en prestations pour enfants.</p>
+      <p class="note"><a href="{{ base }}/comprendre/budget/">Le budget en une page</a> · source&nbsp;: <a href="{{ b.source.url }}">{{ b.source.nom }}</a></p>
+    </article>
+
+    <article class="clarif">
+      <p class="clarif-impression">« L'Alberta paie la péréquation du Québec. »</p>
+      <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> l'Alberta n'en reçoit pas, le Québec reçoit le plus gros montant ({{ part_qc | pourcent }} du total).</p>
+      <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> la péréquation est payée par Ottawa, à même les impôts fédéraux de tous les Canadiens, Québécois compris. Aucune province ne fait de chèque à une autre. Et par habitant, le Québec n'est pas en tête des provinces qui en reçoivent.</p>
+      <p class="note"><a href="{{ base }}/comprendre/provinces/">Ottawa et les provinces</a> · source&nbsp;: <a href="{{ b.transferts.source.url }}">{{ b.transferts.source.nom }}</a></p>
+    </article>
+
+    <article class="clarif">
+      <p class="clarif-impression">« Les dépenses en contrats ont explosé. »</p>
+      <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> certaines années affichent des totaux spectaculaires, comme 2024-2025.</p>
+      <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> en 2024-2025, {{ c.geants_2024 | length }} contrats d'un milliard ou plus représentent {{ (c.geants_2024 | sum(attribute='valeur')) | argent }} du total. Ce sont surtout des navires et de la formation militaire engagés pour 20 ou 25 ans, inscrits d'un coup. L'année suivante, le total est retombé à {{ c.total | argent }}. <strong>Avant de conclure à une tendance, demandez combien de contrats font la différence.</strong></p>
+      <p class="note"><a href="{{ base }}/">Ce qu'Ottawa achète</a> · source&nbsp;: <a href="{{ c.sources.contrats.url }}">{{ c.sources.contrats.nom }}</a></p>
+    </article>
+
+    <article class="clarif">
+      <p class="clarif-impression">« Il suffit d'additionner les données publiques pour voir le scandale. »</p>
+      <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> les fichiers sont publics, et les totaux bruts sont vertigineux.</p>
+      <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> additionner toutes les lignes compte les mêmes contrats et ententes plusieurs fois. Depuis 2017, les subventions paraissent valoir {{ s.naif_total.somme_lignes | argent }}, au lieu de {{ s.naif_total.somme_ententes | argent }}. Pour les contrats de 2024-2025, c'est {{ c.naif['2024-2025'].somme_lignes | argent }} au lieu de {{ c.naif['2024-2025'].somme_contrats | argent }}. <strong>La transparence exige aussi de bien compter.</strong></p>
+      <p class="note"><a href="{{ base }}/methode/">Notre méthode</a></p>
+    </article>
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block titre %}Le budget fédéral en une page — Traçabilité Canada{% endblock %}
+{% block description %}D'où vient chaque dollar du fédéral, où il va, la dette et ses intérêts, expliqués simplement.{% endblock %}
+{% block contenu %}
+{% set f = b.famille %}
+{% set src %}<a href="{{ b.source.url }}">{{ b.source.nom }}</a>{% endset %}
+
+<section class="bande bande-rouge heros">
+  <div class="contenant etroit">
+    <p class="surtitre">Le budget fédéral en une page · exercice {{ b.exercice }}</p>
+    <h1>Sur chaque dollar d'impôt, combien part en intérêts sur la dette&nbsp;?</h1>
+    <div class="devinette" id="choix" data-bonne="10"
+         data-juste="Exact : un peu plus de 10 ¢ sur chaque dollar."
+         data-faux="Réponse : un peu plus de 10 ¢ sur chaque dollar.">
+      <div class="choix-boutons">
+        <button type="button" class="bouton" data-choix="1">1&nbsp;¢</button>
+        <button type="button" class="bouton" data-choix="5">5&nbsp;¢</button>
+        <button type="button" class="bouton" data-choix="10">10&nbsp;¢</button>
+        <button type="button" class="bouton" data-choix="25">25&nbsp;¢</button>
+      </div>
+      <div class="devinette-reponse" id="choix-reponse" hidden>
+        <p id="choix-verdict" class="gros-verdict"></p>
+        <p class="gros-chiffre">{{ (b.interets_sur_revenus * 100) | nombre(1) }}&nbsp;¢</p>
+        <p>En {{ b.exercice }}, Ottawa a payé <strong>{{ b.interets | argent }} d'intérêts</strong>, soit {{ b.interets_par_seconde | nombre }}&nbsp;$ chaque seconde. C'est presque deux fois tout ce qu'il verse en prestations pour enfants ({{ 28.574e9 | argent }}).</p>
+        {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Le rapport chiffre à 10,5&nbsp;% la part des revenus consacrée aux intérêts.</p>{% endcall %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Si le Canada était une famille</p>
+    <h2>Divisons tout par 10 millions</h2>
+    <p class="chapeau">Les milliards n'ont pas de sens pour personne. Ramenons le budget fédéral à celui d'un ménage, en divisant chaque montant par 10 millions.</p>
+    <div class="table-defile">
+    <table class="contrats famille">
+      <tbody>
+        <tr><td>Revenus de l'année</td><td class="nombre"><strong>{{ (b.revenus / f) | nombre }}&nbsp;$</strong></td></tr>
+        <tr><td>Dépenses de l'année</td><td class="nombre"><strong>{{ (b.charges / f) | nombre }}&nbsp;$</strong></td></tr>
+        <tr><td>Il manque (le <strong>déficit</strong>)</td><td class="nombre rouge"><strong>{{ (b.deficit / f) | nombre }}&nbsp;$</strong></td></tr>
+        <tr><td>Ce qu'il doit déjà (la <strong>dette</strong>)</td><td class="nombre"><strong>{{ (b.dette / f) | nombre }}&nbsp;$</strong></td></tr>
+        <tr><td>Intérêts payés cette année</td><td class="nombre rouge"><strong>{{ (b.interets / f) | nombre }}&nbsp;$</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="phrase-choc">Un ménage qui gagne {{ (b.revenus / f) | nombre }}&nbsp;$, dépense {{ (b.charges / f) | nombre }}&nbsp;$ et doit {{ (b.dette / f) | nombre }}&nbsp;$. <strong>Inquiétant&nbsp;? Ça dépend d'une chose</strong>&nbsp;: la dette grandit-elle plus vite que les revenus&nbsp;?</p>
+    <p>Un pays n'est pas tout à fait une famille&nbsp;: il ne prend pas sa retraite, et ses revenus grandissent avec l'économie. C'est pourquoi les économistes comparent la dette à la taille de l'économie (le PIB). Au 31 mars 2025, la dette fédérale valait <strong>{{ (b.dette_pib * 100) | nombre(1) }}&nbsp;% du PIB</strong>, contre {{ (b.dette_pib_avant * 100) | nombre(1) }}&nbsp;% un an plus tôt.</p>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Calcul&nbsp;: chaque montant officiel divisé par 10&nbsp;000&nbsp;000.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant grille-fiche">
+    <div>
+      <p class="surtitre">D'où vient chaque dollar</p>
+      <h2>{{ b.revenus | argent }} de revenus</h2>
+      <ol class="barres">
+        {% set maxr = b.revenus_detail | map(attribute='valeur') | max %}
+        {% for x in b.revenus_detail | sort(attribute='valeur', reverse=true) %}
+        <li><span class="barres-nom" title="{{ x.nom }}">{{ x.nom }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.valeur / maxr * 100) | round(1) }}%"></span></span><span class="barres-val">{{ (x.valeur / b.revenus * 100) | nombre }}&nbsp;¢</span></li>
+        {% endfor %}
+      </ol>
+      <p class="note">Sur chaque dollar perçu. Près de la moitié vient de l'impôt sur le revenu des particuliers.</p>
+    </div>
+    <div>
+      <p class="surtitre">Où va chaque dollar</p>
+      <h2>{{ b.charges | argent }} de dépenses</h2>
+      <ol class="barres">
+        {% set maxc = b.charges_detail | map(attribute='valeur') | max %}
+        {% for x in b.charges_detail | sort(attribute='valeur', reverse=true) if x.valeur > 0 %}
+        <li><span class="barres-nom" title="{{ x.nom }}">{{ x.nom }}</span><span class="barres-piste"><span class="barres-plein" style="--l:{{ (x.valeur / maxc * 100) | round(1) }}%"></span></span><span class="barres-val">{{ (x.valeur / b.charges * 100) | nombre }}&nbsp;¢</span></li>
+        {% endfor %}
+      </ol>
+      <p class="note">Sur chaque dollar dépensé. Une ligne négative ({{ 2.169e9 | argent }} de prestations COVID-19 récupérées) n'est pas affichée.</p>
+    </div>
+  </div>
+  <div class="contenant">{% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}, tableaux des revenus et des charges.</p>{% endcall %}</div>
+</section>
+
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Déficit ou dette&nbsp;?</p>
+    <h2>Le déficit, c'est le robinet. La dette, c'est la baignoire.</h2>
+    <p class="chapeau">On confond souvent les deux. Le <strong>déficit</strong>, c'est ce qui manque <em>cette année</em>&nbsp;: {{ b.deficit | argent }} en {{ b.exercice }}. La <strong>dette</strong>, c'est tout ce qui s'est accumulé au fil des décennies&nbsp;: {{ b.dette | argent }}.</p>
+    <p>Tant que le robinet coule (déficit), la baignoire se remplit (dette). Fermer le robinet ne vide pas la baignoire&nbsp;: ça l'empêche seulement de monter.</p>
+    <div class="faits clair">
+      <div><p class="gros-chiffre">{{ b.dette_par_personne | nombre }}&nbsp;$</p><p>de dette fédérale par personne</p></div>
+      <div><p class="gros-chiffre">{{ b.par_seconde | nombre }}&nbsp;$</p><p>dépensés chaque seconde</p></div>
+      <div><p class="gros-chiffre">{{ b.interets_par_seconde | nombre }}&nbsp;$</p><p>d'intérêts chaque seconde</p></div>
+    </div>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Par personne&nbsp;: {{ b.dette | argent }} ÷ {{ b.population.valeur | nombre }} habitants (<a href="{{ b.population.url }}">{{ b.population.nom }}</a>). Par seconde&nbsp;: montant annuel ÷ 31&nbsp;536&nbsp;000 secondes.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande bande-rouge">
+  <div class="contenant etroit">
+    <p class="surtitre">Et les contrats dans tout ça&nbsp;?</p>
+    <h2>Une pièce du casse-tête, pas tout le casse-tête</h2>
+    <p class="chapeau">Les contrats et les subventions que suit ce site se trouvent surtout dans deux lignes&nbsp;: « fonctionnement du gouvernement » et « autres paiements de transfert ». Les pensions, l'assurance-emploi et les transferts aux provinces ne passent ni par un contrat ni par une subvention.</p>
+    <p><a class="bouton" href="{{ base }}/">Ce qu'Ottawa achète</a> <a class="bouton" href="{{ base }}/subventions/">Ce qu'Ottawa donne</a></p>
+  </div>
+</section>
+{% endblock %}

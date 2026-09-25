@@ -24,7 +24,8 @@ BASE = "/tracabilite-canada"
 
 def pages():
     con = sqlite3.connect(BASE_DONNEES)
-    yield from ["/", "/subventions/", "/a-examiner/", "/chercher/", "/ministeres/", "/methode/"]
+    yield from ["/", "/subventions/", "/a-examiner/", "/chercher/", "/ministeres/", "/methode/",
+                "/comprendre/", "/comprendre/budget/", "/comprendre/provinces/", "/comprendre/on-clarifie/"]
     from app import SIGNAUX
     for t in SIGNAUX:
         yield f"/a-examiner/{t.lower().replace('_', '-')}/"

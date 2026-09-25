@@ -1,0 +1,151 @@
+{
+ "exercice": "2024-2025",
+ "source": {
+  "nom": "Ministère des Finances Canada, Rapport financier annuel du gouvernement du Canada, exercice 2024-2025",
+  "url": "https://www.canada.ca/fr/ministere-finances/services/publications/rapport-financier-annuel/2025.html"
+ },
+ "revenus": 511000000000.0,
+ "charges": 547300000000.0,
+ "deficit": 36300000000.0,
+ "dette": 1266500000000.0,
+ "dette_pib": 0.412,
+ "dette_pib_avant": 0.421,
+ "interets": 53400000000.0,
+ "interets_sur_revenus": 0.105,
+ "revenus_detail": [
+  {
+   "nom": "Impôt sur le revenu des particuliers",
+   "valeur": 234300000000.0
+  },
+  {
+   "nom": "Impôt sur le revenu des sociétés",
+   "valeur": 97000000000.0
+  },
+  {
+   "nom": "TPS",
+   "valeur": 52500000000.0
+  },
+  {
+   "nom": "Cotisations d'assurance-emploi",
+   "valeur": 31500000000.0
+  },
+  {
+   "nom": "Tarification de la pollution",
+   "valeur": 13600000000.0
+  },
+  {
+   "nom": "Impôt des non-résidents",
+   "valeur": 13500000000.0
+  },
+  {
+   "nom": "Taxes et droits (énergie, importations, accise)",
+   "valeur": 19400000000.0
+  },
+  {
+   "nom": "Autres revenus (sociétés d'État, ventes, placements)",
+   "valeur": 49200000000.0
+  }
+ ],
+ "charges_detail": [
+  {
+   "nom": "Prestations aux aînés (Sécurité de la vieillesse, Supplément de revenu garanti)",
+   "valeur": 80294000000.0
+  },
+  {
+   "nom": "Transferts aux provinces et territoires (santé, péréquation…)",
+   "valeur": 105100000000.0
+  },
+  {
+   "nom": "Autres paiements de transfert (subventions, contributions…)",
+   "valeur": 107100000000.0
+  },
+  {
+   "nom": "Fonctionnement du gouvernement (salaires, achats, Défense…)",
+   "valeur": 130500000000.0
+  },
+  {
+   "nom": "Intérêts sur la dette",
+   "valeur": 53400000000.0
+  },
+  {
+   "nom": "Prestations pour enfants",
+   "valeur": 28574000000.0
+  },
+  {
+   "nom": "Assurance-emploi et mesures de soutien",
+   "valeur": 24880000000.0
+  },
+  {
+   "nom": "Retour des produits de la tarification de la pollution",
+   "valeur": 15600000000.0
+  },
+  {
+   "nom": "Pertes actuarielles nettes (régimes de retraite)",
+   "valeur": 4000000000.0
+  },
+  {
+   "nom": "Prestations COVID-19 récupérées (montant négatif)",
+   "valeur": -2169000000.0
+  }
+ ],
+ "transferts": {
+  "source": {
+   "nom": "Ministère des Finances Canada, Principaux transferts fédéraux (mis à jour le 11 décembre 2025)",
+   "url": "https://www.canada.ca/fr/ministere-finances/programmes/transferts-federaux/principaux-transferts-federaux.html"
+  },
+  "exercice": "2026-2027",
+  "sante": 57419000000.0,
+  "social": 17939000000.0,
+  "perequation": 27160000000.0,
+  "territoires": 5844000000.0,
+  "total": 108362000000.0,
+  "perequation_par_province": {
+   "QC": 13907000000.0,
+   "MB": 5044000000.0,
+   "NS": 3538000000.0,
+   "NB": 3360000000.0,
+   "PE": 723000000.0,
+   "ON": 406000000.0,
+   "NL": 182000000.0,
+   "SK": 0,
+   "AB": 0,
+   "BC": 0
+  },
+  "total_par_province": {
+   "QC": 30256000000.0,
+   "ON": 29750000000.0,
+   "BC": 10259000000.0,
+   "AB": 9235000000.0,
+   "MB": 7781000000.0,
+   "NS": 5517000000.0,
+   "NB": 4939000000.0,
+   "NU": 2434000000.0,
+   "SK": 2305000000.0,
+   "NT": 1991000000.0,
+   "YT": 1667000000.0,
+   "NL": 1173000000.0,
+   "PE": 1055000000.0
+  },
+  "par_habitant_officiel": {
+   "QC": 3317,
+   "ON": 1817,
+   "BC": 1792,
+   "AB": 1792,
+   "MB": 5094,
+   "NS": 4998,
+   "NB": 5605,
+   "NU": 57594,
+   "SK": 1792,
+   "NT": 42666,
+   "YT": 34034,
+   "NL": 2121,
+   "PE": 5685
+  }
+ },
+ "population": {
+  "valeur": 41162593,
+  "date": "2024-07-01",
+  "nom": "Statistique Canada, tableau 17-10-0009-01 (1er juillet 2024)",
+  "url": "https://www150.statcan.gc.ca/t1/tbl1/fr/tv.action?pid=1710000901"
+ }
+}

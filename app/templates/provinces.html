@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block titre %}Ottawa et les provinces : la péréquation expliquée — Traçabilité Canada{% endblock %}
+{% block description %}Qui reçoit quoi d'Ottawa, comment la péréquation est calculée, et ce qu'elle n'est pas.{% endblock %}
+{% block contenu %}
+{% set src %}<a href="{{ t.source.url }}">{{ t.source.nom }}</a>{% endset %}
+
+<section class="bande bande-rouge heros">
+  <div class="contenant etroit">
+    <p class="surtitre">Ottawa et les provinces · exercice {{ t.exercice }}</p>
+    <h1>Le Québec reçoit le plus gros chèque de péréquation. Mais par habitant&nbsp;?</h1>
+    <div class="devinette" id="choix" data-bonne="{{ rang_qc }}"
+         data-juste="Exact."
+         data-faux="Réponse : {{ rang_qc }}e sur {{ receveuses | length }}.">
+      <p class="devinette-etiquette">Parmi les {{ receveuses | length }} provinces qui en reçoivent, le Québec arrive…</p>
+      <div class="choix-boutons">
+        <button type="button" class="bouton" data-choix="1">1<sup>er</sup></button>
+        <button type="button" class="bouton" data-choix="3">3<sup>e</sup></button>
+        <button type="button" class="bouton" data-choix="{{ rang_qc }}">{{ rang_qc }}<sup>e</sup></button>
+      </div>
+      <div class="devinette-reponse" id="choix-reponse" hidden>
+        <p id="choix-verdict" class="gros-verdict"></p>
+        <p>Le Québec reçoit {{ qc.per | argent }}, soit {{ (qc.per / t.perequation) | pourcent }} de toute la péréquation. Mais il compte aussi beaucoup d'habitants&nbsp;: <strong>{{ qc.per_hab | nombre }}&nbsp;$ par personne</strong>, contre {{ receveuses[0].per_hab | nombre }}&nbsp;$ {{ pop.dans[receveuses[0].code] }}.</p>
+        {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Par habitant&nbsp;: calcul de Traçabilité Canada, avec les estimations de population au 1<sup>er</sup> juillet 2026 (<a href="{{ pop.source.url }}">Statistique Canada</a>).</p>{% endcall %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Les quatre grands transferts</p>
+    <h2>{{ t.total | argent }} versés aux provinces et territoires en {{ t.exercice }}</h2>
+    <div class="cartes-signaux">
+      <div class="carte-signal"><h3>Santé</h3><p class="carte-nb">{{ t.sante | argent }}</p><p>Le plus gros. Versé à toutes les provinces selon leur population, pour les hôpitaux et les soins.</p></div>
+      <div class="carte-signal"><h3>Péréquation</h3><p class="carte-nb">{{ t.perequation | argent }}</p><p>Seulement aux provinces dont la capacité de lever des impôts est sous la moyenne.</p></div>
+      <div class="carte-signal"><h3>Programmes sociaux</h3><p class="carte-nb">{{ t.social | argent }}</p><p>Éducation postsecondaire, aide sociale, services de garde. Selon la population.</p></div>
+      <div class="carte-signal"><h3>Territoires</h3><p class="carte-nb">{{ t.territoires | argent }}</p><p>Une formule à part pour le Yukon, les Territoires du Nord-Ouest et le Nunavut, où les services coûtent beaucoup plus cher.</p></div>
+    </div>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Les montants de santé et de programmes sociaux sont des estimations préliminaires, selon la page officielle.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant etroit">
+    <p class="surtitre">La péréquation, sans chicane</p>
+    <h2>L'Alberta ne fait pas de chèque au Québec</h2>
+    <p class="chapeau">C'est l'idée reçue la plus tenace. En réalité, la péréquation est payée par Ottawa, à même les impôts fédéraux que <em>tous</em> les Canadiens paient, y compris au Québec. Aucune province ne verse d'argent à une autre.</p>
+    <p><strong>Le principe est dans la Constitution</strong> (article 36 de la Loi constitutionnelle de 1982)&nbsp;: permettre à chaque province d'offrir des services publics comparables, avec des impôts comparables.</p>
+    <p><strong>Le calcul ne regarde pas si les gens sont riches</strong>, mais combien une province <em>pourrait</em> percevoir si elle appliquait des taux d'imposition moyens. Une province qui a moins de « capacité fiscale » que la moyenne reçoit de quoi réduire l'écart (la formule comporte des plafonds).</p>
+    <p class="phrase-choc">Analogie&nbsp;: ce n'est pas un voisin qui paie l'épicerie d'un autre. C'est un fonds commun, alimenté par tout le monde, qui garantit un minimum à chacun.</p>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant etroit">
+    <p class="surtitre">Province par province</p>
+    <h2>Qui reçoit quoi en {{ t.exercice }}</h2>
+    <div class="table-defile">
+    <table class="contrats">
+      <thead><tr><th>Province ou territoire</th><th class="nombre">Péréquation</th><th class="nombre">Péréquation par habitant</th><th class="nombre">Tous les grands transferts, par habitant</th></tr></thead>
+      <tbody>
+      {% for x in lignes %}
+      <tr>
+        <td data-l="Province">{{ x.nom }}</td>
+        <td data-l="Péréquation" class="nombre">{% if x.per is none %}<span class="note-ligne">formule territoriale</span>{% elif x.per %}{{ x.per | argent }}{% else %}0&nbsp;${% endif %}</td>
+        <td data-l="Péréquation par habitant" class="nombre">{% if x.per_hab %}{{ x.per_hab | nombre }}&nbsp;${% else %}—{% endif %}</td>
+        <td data-l="Tous les transferts, par habitant" class="nombre"><strong>{{ x.total_hab | nombre }}&nbsp;$</strong></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Dernière colonne&nbsp;: chiffres officiels du ministère des Finances. Péréquation par habitant&nbsp;: notre calcul, avec la population de Statistique Canada au 1<sup>er</sup> juillet 2026.</p>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Population&nbsp;: <a href="{{ pop.source.url }}">{{ pop.source.nom }}</a>.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant etroit">
+    <h2>Ce que ce tableau ne dit pas</h2>
+    <ul class="principes">
+      <li><strong>Qui « gagne » dans la fédération.</strong> Ottawa dépense aussi directement dans chaque province (pensions, Défense, contrats, subventions). Faire le bilan complet est un exercice beaucoup plus vaste, et contesté entre experts.</li>
+      <li><strong>Si la formule est juste.</strong> Elle est débattue depuis des décennies. Nous montrons comment elle fonctionne, pas ce qu'il faudrait en penser.</li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

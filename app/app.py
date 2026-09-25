@@ -82,7 +82,7 @@ NAVIGATION = [
     ("/a-examiner/", "À examiner"),
     ("/chercher/", "Chercher"),
     ("/ministeres/", "Ministères"),
-    ("/methode/", "Méthode"),
+    ("/comprendre/", "Comprendre"),
 ]
 
 METHODES = {
@@ -386,6 +386,50 @@ def signal_type(type_signal):
         (t,)).fetchall()
     return render_template("signal.html", t=t, d=SIGNAUX[t], lignes=lignes, nb=nb, valeur=valeur,
                            par_ministere=par_ministere, page="/a-examiner/")
+
+
+@app.route("/comprendre/")
+def comprendre():
+    return render_template("comprendre.html", b=charger("budget"), page="/comprendre/")
+
+
+@app.route("/comprendre/budget/")
+def budget():
+    b = charger("budget")
+    b["par_seconde"] = b["charges"] / (365 * 24 * 3600)
+    b["interets_par_seconde"] = b["interets"] / (365 * 24 * 3600)
+    b["dette_par_personne"] = b["dette"] / b["population"]["valeur"]
+    b["famille"] = 1e7   # on divise tout par 10 millions
+    return render_template("budget.html", b=b, page="/comprendre/")
+
+
+@app.route("/comprendre/provinces/")
+def provinces():
+    b, pop = charger("budget"), charger("population")
+    t = b["transferts"]
+    lignes = []
+    for code, total in t["total_par_province"].items():
+        per = t["perequation_par_province"].get(code)
+        lignes.append(dict(code=code, nom=pop["noms"][code], total=total, per=per,
+                           per_hab=(per / pop["provinces"][code]) if per is not None else None,
+                           total_hab=t["par_habitant_officiel"][code]))
+    receveuses = sorted([x for x in lignes if x["per"]], key=lambda x: -x["per_hab"])
+    qc = next(x for x in lignes if x["code"] == "QC")
+    rang_qc = [x["code"] for x in receveuses].index("QC") + 1
+    return render_template("provinces.html", b=b, t=t, pop=pop, lignes=sorted(lignes, key=lambda x: -x["total"]),
+                           receveuses=receveuses, qc=qc, rang_qc=rang_qc, page="/comprendre/")
+
+
+@app.route("/comprendre/on-clarifie/")
+def on_clarifie():
+    b, c, s = charger("budget"), charger("chiffres"), charger("subventions")
+    entreprises = next(x for x in s["beneficiaires"] if x["code"] == "F")
+    tn = next(x for x in c["methodes"] if x["code"] == "TN")
+    raisons = {r["code"]: r for r in c["raisons_sans_appel"]}
+    t = b["transferts"]
+    return render_template("on_clarifie.html", b=b, c=c, s=s, entreprises=entreprises, tn=tn, raisons=raisons,
+                           part_qc=t["perequation_par_province"]["QC"] / t["perequation"],
+                           pop=charger("population"), page="/comprendre/")
 
 
 @app.route("/methode/")

@@ -143,8 +143,8 @@ function argent(v) {
   boite.querySelectorAll("[data-choix]").forEach((b) => b.addEventListener("click", () => {
     const juste = b.dataset.choix === bonne;
     document.getElementById("choix-verdict").textContent = juste
-      ? "Exact. La plupart des gens pensent le contraire."
-      : "Ce sont les subventions, et de loin. La plupart des gens pensent le contraire.";
+      ? (boite.dataset.juste || "Exact. La plupart des gens pensent le contraire.")
+      : (boite.dataset.faux || "Ce sont les subventions, et de loin. La plupart des gens pensent le contraire.");
     boite.querySelectorAll("[data-choix]").forEach((x) => { x.disabled = true; x.classList.toggle("choisi", x === b); });
     document.getElementById("choix-reponse").hidden = false;
   }));

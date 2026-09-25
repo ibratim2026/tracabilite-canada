@@ -77,7 +77,7 @@
       {% endfor %}
     </ol>
     {% set prov2 = s.provinces | rejectattr('code', 'in', ['NU', 'NT', 'YT']) | first %}
-    <p class="note">Première province du classement&nbsp;: {{ prov2.nom }}. {{ prov2.part_autochtone | pourcent }} de ses {{ prov2.valeur | argent }} vont à des bénéficiaires autochtones, en bonne partie des ententes du programme « Traités et Gouvernement autochtone ».</p>
+    <p class="note">Première province du classement&nbsp;: {{ prov2.nom }}. {% set dans = pop.dans[prov2.code] %}{{ dans[0] | upper }}{{ dans[1:] }}, {{ prov2.part_autochtone | pourcent }} des {{ prov2.valeur | argent }} vont à des bénéficiaires autochtones, en bonne partie des ententes du programme « Traités et Gouvernement autochtone ».</p>
     <p class="chapeau">Pourquoi un tel écart pour les territoires&nbsp;? Le Nunavut compte {{ pop.provinces.NU | nombre }} habitants sur un territoire plus grand que le Mexique, sans route entre ses villages. Tout y coûte plus cher, et une grande partie des services y est financée directement par Ottawa.</p>
     <p class="phrase-choc">Un chiffre par habitant ne dit pas qui est « favorisé ». Il faut toujours demander&nbsp;: <strong>qu'est-ce que cet argent paie, et combien ça coûte là-bas&nbsp;?</strong></p>
     {% call source() %}
