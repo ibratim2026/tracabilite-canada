@@ -4,31 +4,21 @@
 {% block contenu %}
 {% set sources %}<a href="{{ s.source.url }}">{{ s.source.nom }}</a>, données du {{ donnees_du | date_fr }}{% endset %}
 
-<!-- 1. La question -->
+<!-- 1. Le fait d'abord -->
 <section class="bande bande-rouge heros">
   <div class="contenant etroit">
-    <p class="surtitre">Exercice {{ s.exercice }} · subventions et contributions fédérales</p>
-    <h1>Ottawa dépense-t-il plus pour acheter… ou pour donner&nbsp;?</h1>
-    <p class="chapeau">D'un côté, les contrats&nbsp;: le gouvernement achète un navire, un logiciel, une traduction. De l'autre, les subventions et contributions&nbsp;: il finance un organisme, une usine, une communauté, sans rien acheter. Lequel pèse le plus lourd, selon vous&nbsp;?</p>
-    <div class="devinette" id="choix" data-bonne="subventions">
-      <div class="choix-boutons">
-        <button type="button" class="bouton" data-choix="contrats">Les contrats</button>
-        <button type="button" class="bouton" data-choix="egal">À peu près pareil</button>
-        <button type="button" class="bouton" data-choix="subventions">Les subventions</button>
-      </div>
-      <div class="devinette-reponse" id="choix-reponse" hidden>
-        <p id="choix-verdict" class="gros-verdict"></p>
-        <div class="comparaison claire-sur-rouge">
-          <div><p class="petit-titre">Contrats</p><p class="gros-chiffre">{{ (s.total / s.ratio_contrats) | argent }}</p></div>
-          <div class="accent"><p class="petit-titre">Subventions et contributions</p><p class="gros-chiffre">{{ s.total | argent }}</p></div>
-        </div>
-        <p>Ottawa a engagé <strong>{{ s.ratio_contrats | nombre(1) }} fois plus</strong> en subventions et contributions qu'en contrats&nbsp;: {{ s.nb | nombre }} ententes, soit <strong>{{ s.par_personne | nombre }}&nbsp;$ par Canadienne et par Canadien</strong>.</p>
-        {% call source() %}
-          <p><strong>Source&nbsp;:</strong> {{ sources }}. Ententes dont la date de début tombe dans l'exercice {{ s.exercice }}, chacune comptée une seule fois à sa valeur la plus récente.</p>
-          <p><strong>Population&nbsp;:</strong> <a href="{{ pop.source.url }}">{{ pop.source.nom }}</a>.</p>
-        {% endcall %}
-      </div>
+    <p class="surtitre">Ce qu'Ottawa donne · exercice {{ s.exercice | replace('-', '‑') }}</p>
+    <h1>Ottawa donne {{ s.ratio_contrats | nombre(1) }} fois plus qu'il n'achète.</h1>
+    <p class="chapeau">D'un côté, les contrats&nbsp;: le gouvernement achète un navire, un logiciel, une traduction. De l'autre, les subventions et contributions&nbsp;: il finance un organisme, une usine, une communauté, sans rien acheter. La plupart des gens pensent que les contrats pèsent plus lourd. C'est l'inverse.</p>
+    <div class="comparaison claire-sur-rouge">
+      <div><p class="petit-titre">Contrats</p><p class="gros-chiffre">{{ (s.total / s.ratio_contrats) | argent }}</p></div>
+      <div class="accent"><p class="petit-titre">Subventions et contributions</p><p class="gros-chiffre">{{ s.total | argent }}</p></div>
     </div>
+    <p>{{ s.nb | nombre }} ententes, soit <strong>{{ s.par_personne | nombre }}&nbsp;$ par Canadienne et par Canadien</strong>.</p>
+    {% call source() %}
+      <p><strong>Source&nbsp;:</strong> {{ sources }}. Ententes dont la date de début tombe dans l'exercice {{ s.exercice }}, chacune comptée une seule fois à sa valeur la plus récente.</p>
+      <p><strong>Population&nbsp;:</strong> <a href="{{ pop.source.url }}">{{ pop.source.nom }}</a>.</p>
+    {% endcall %}
   </div>
 </section>
 

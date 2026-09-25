@@ -46,7 +46,7 @@
       <p class="clarif-impression">« Les dépenses en contrats ont explosé. »</p>
       <p class="clarif-origine"><strong>D'où vient l'impression&nbsp;:</strong> certaines années affichent des totaux spectaculaires, comme 2024-2025.</p>
       <p class="clarif-chiffres"><strong>Ce que disent les chiffres&nbsp;:</strong> en 2024-2025, {{ c.geants_2024 | length }} contrats d'un milliard ou plus représentent {{ (c.geants_2024 | sum(attribute='valeur')) | argent }} du total. Ce sont surtout des navires et de la formation militaire engagés pour 20 ou 25 ans, inscrits d'un coup. L'année suivante, le total est retombé à {{ c.total | argent }}. <strong>Avant de conclure à une tendance, demandez combien de contrats font la différence.</strong></p>
-      <p class="note"><a href="{{ base }}/">Ce qu'Ottawa achète</a> · source&nbsp;: <a href="{{ c.sources.contrats.url }}">{{ c.sources.contrats.nom }}</a></p>
+      <p class="note"><a href="{{ base }}/contrats/">Ce qu'Ottawa achète</a> · source&nbsp;: <a href="{{ c.sources.contrats.url }}">{{ c.sources.contrats.nom }}</a></p>
     </article>
 
     <article class="clarif">

@@ -77,7 +77,7 @@ def date_fr(s):
 app.jinja_env.filters.update(nombre=nombre, argent=argent, pourcent=pourcent, date_fr=date_fr)
 
 NAVIGATION = [
-    ("/", "Contrats"),
+    ("/contrats/", "Contrats"),
     ("/subventions/", "Subventions"),
     ("/lobbying/", "Lobbying"),
     ("/a-examiner/", "À examiner"),
@@ -198,6 +198,18 @@ SUB_COLONNES = ("s.debut, s.fin, s.programme, s.titre, s.valeur, s.valeur_max, s
 # ---------------------------------------------------------------------------
 @app.route("/")
 def accueil():
+    c, s, b = charger("chiffres"), charger("subventions"), charger("budget")
+    l = charger("lobby") if (RACINE / "contenu" / "lobby.json").exists() else None
+    nb_prio = bd().execute("SELECT COUNT(*) FROM signaux_contrat WHERE nb >= 3").fetchone()[0]
+    entreprises = next(x for x in s["beneficiaires"] if x["code"] == "F")
+    return render_template(
+        "accueil.html", c=c, s=s, b=b, l=l, r=reperes(), nb_prio=nb_prio,
+        par_seconde=b["charges"] / (365 * 24 * 3600), part_entreprises=entreprises["valeur"] / s["total"],
+        lignes=c["nettoyage"]["lignes_brutes"] + bd().execute("SELECT COUNT(*) FROM sub_brut").fetchone()[0], page="/")
+
+
+@app.route("/contrats/")
+def contrats():
     c = charger("chiffres")
     c["moyenne"] = c["total"] / c["nb"]
     c["par_jour"] = c["total"] / c["jours_ouvrables"]
@@ -211,7 +223,7 @@ def accueil():
     c["annees_en_secondes"] = c["total"] / 31_557_600       # une année moyenne, en secondes
     c["annee_depart"] = 2026 - round(c["annees_en_secondes"])
     c["budget"]["par_seconde"] = c["budget"]["charges"] / (365 * 24 * 3600)
-    return render_template("accueil.html", c=c, page="/")
+    return render_template("contrats.html", c=c, page="/contrats/")
 
 
 @app.route("/subventions/")

@@ -6,23 +6,10 @@
 
 <section class="bande bande-rouge heros">
   <div class="contenant etroit">
-    <p class="surtitre">Ottawa et les provinces · exercice {{ t.exercice }}</p>
-    <h1>Le Québec reçoit le plus gros chèque de péréquation. Mais par habitant&nbsp;?</h1>
-    <div class="devinette" id="choix" data-bonne="{{ rang_qc }}"
-         data-juste="Exact."
-         data-faux="Réponse : {{ rang_qc }}e sur {{ receveuses | length }}.">
-      <p class="devinette-etiquette">Parmi les {{ receveuses | length }} provinces qui en reçoivent, le Québec arrive…</p>
-      <div class="choix-boutons">
-        <button type="button" class="bouton" data-choix="1">1<sup>er</sup></button>
-        <button type="button" class="bouton" data-choix="3">3<sup>e</sup></button>
-        <button type="button" class="bouton" data-choix="{{ rang_qc }}">{{ rang_qc }}<sup>e</sup></button>
-      </div>
-      <div class="devinette-reponse" id="choix-reponse" hidden>
-        <p id="choix-verdict" class="gros-verdict"></p>
-        <p>Le Québec reçoit {{ qc.per | argent }}, soit {{ (qc.per / t.perequation) | pourcent }} de toute la péréquation. Mais il compte aussi beaucoup d'habitants&nbsp;: <strong>{{ qc.per_hab | nombre }}&nbsp;$ par personne</strong>, contre {{ receveuses[0].per_hab | nombre }}&nbsp;$ {{ pop.dans[receveuses[0].code] }}.</p>
-        {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Par habitant&nbsp;: calcul de Traçabilité Canada, avec les estimations de population au 1<sup>er</sup> juillet 2026 (<a href="{{ pop.source.url }}">Statistique Canada</a>).</p>{% endcall %}
-      </div>
-    </div>
+    <p class="surtitre">Ottawa et les provinces · exercice {{ t.exercice | replace('-', '‑') }}</p>
+    <h1>Le Québec reçoit le plus gros chèque de péréquation. Par habitant, il arrive {{ rang_qc }}<sup>e</sup>.</h1>
+    <p class="chapeau">Le Québec reçoit {{ qc.per | argent }}, soit {{ (qc.per / t.perequation) | pourcent }} de toute la péréquation. Mais il compte aussi beaucoup d'habitants&nbsp;: <strong>{{ qc.per_hab | nombre }}&nbsp;$ par personne</strong>, contre {{ receveuses[0].per_hab | nombre }}&nbsp;$ {{ pop.dans[receveuses[0].code] }}. Et non, l'Alberta ne fait pas de chèque au Québec.</p>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Par habitant&nbsp;: calcul de Traçabilité Canada, avec les estimations de population au 1<sup>er</sup> juillet 2026 (<a href="{{ pop.source.url }}">Statistique Canada</a>).</p>{% endcall %}
   </div>
 </section>
 

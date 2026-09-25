@@ -7,24 +7,10 @@
 
 <section class="bande bande-rouge heros">
   <div class="contenant etroit">
-    <p class="surtitre">Le budget fédéral en une page · exercice {{ b.exercice }}</p>
-    <h1>Sur chaque dollar d'impôt, combien part en intérêts sur la dette&nbsp;?</h1>
-    <div class="devinette" id="choix" data-bonne="10"
-         data-juste="Exact : un peu plus de 10 ¢ sur chaque dollar."
-         data-faux="Réponse : un peu plus de 10 ¢ sur chaque dollar.">
-      <div class="choix-boutons">
-        <button type="button" class="bouton" data-choix="1">1&nbsp;¢</button>
-        <button type="button" class="bouton" data-choix="5">5&nbsp;¢</button>
-        <button type="button" class="bouton" data-choix="10">10&nbsp;¢</button>
-        <button type="button" class="bouton" data-choix="25">25&nbsp;¢</button>
-      </div>
-      <div class="devinette-reponse" id="choix-reponse" hidden>
-        <p id="choix-verdict" class="gros-verdict"></p>
-        <p class="gros-chiffre">{{ (b.interets_sur_revenus * 100) | nombre(1) }}&nbsp;¢</p>
-        <p>En {{ b.exercice }}, Ottawa a payé <strong>{{ b.interets | argent }} d'intérêts</strong>, soit {{ b.interets_par_seconde | nombre }}&nbsp;$ chaque seconde. C'est presque deux fois tout ce qu'il verse en prestations pour enfants ({{ 28.574e9 | argent }}).</p>
-        {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Le rapport chiffre à 10,5&nbsp;% la part des revenus consacrée aux intérêts.</p>{% endcall %}
-      </div>
-    </div>
+    <p class="surtitre">Le budget fédéral en une page · exercice {{ b.exercice | replace('-', '‑') }}</p>
+    <h1>Sur chaque dollar d'impôt, {{ (b.interets_sur_revenus * 100) | nombre(1) }}&nbsp;¢ paient les intérêts de la dette.</h1>
+    <p class="chapeau">En {{ b.exercice }}, Ottawa a payé <strong>{{ b.interets | argent }} d'intérêts</strong>, soit {{ b.interets_par_seconde | nombre }}&nbsp;$ chaque seconde. C'est presque deux fois tout ce qu'il verse en prestations pour enfants ({{ 28.574e9 | argent }}). Voici d'où vient l'argent, où il va, et ce que « déficit » et « dette » veulent vraiment dire.</p>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Le rapport chiffre à 10,5&nbsp;% la part des revenus consacrée aux intérêts.</p>{% endcall %}
   </div>
 </section>
 
@@ -98,7 +84,7 @@
     <p class="surtitre">Et les contrats dans tout ça&nbsp;?</p>
     <h2>Une pièce du casse-tête, pas tout le casse-tête</h2>
     <p class="chapeau">Les contrats et les subventions que suit ce site se trouvent surtout dans deux lignes&nbsp;: « fonctionnement du gouvernement » et « autres paiements de transfert ». Les pensions, l'assurance-emploi et les transferts aux provinces ne passent ni par un contrat ni par une subvention.</p>
-    <p><a class="bouton" href="{{ base }}/">Ce qu'Ottawa achète</a> <a class="bouton" href="{{ base }}/subventions/">Ce qu'Ottawa donne</a></p>
+    <p><a class="bouton" href="{{ base }}/contrats/">Ce qu'Ottawa achète</a> <a class="bouton" href="{{ base }}/subventions/">Ce qu'Ottawa donne</a></p>
   </div>
 </section>
 {% endblock %}

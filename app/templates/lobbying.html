@@ -6,22 +6,9 @@
 <section class="bande bande-rouge heros">
   <div class="contenant etroit">
     <p class="surtitre">Lobbying · depuis avril 2017</p>
-    <h1>Combien de fois des lobbyistes ont-ils parlé au fédéral, selon vous&nbsp;?</h1>
-    <div class="devinette" id="choix" data-bonne="275000"
-         data-juste="Exact. C'est beaucoup, et c'est déclaré."
-         data-faux="Réponse : plus de 275 000 fois. C'est beaucoup, et c'est déclaré.">
-      <div class="choix-boutons">
-        <button type="button" class="bouton" data-choix="2700">2&nbsp;700</button>
-        <button type="button" class="bouton" data-choix="27000">27&nbsp;000</button>
-        <button type="button" class="bouton" data-choix="275000">275&nbsp;000</button>
-      </div>
-      <div class="devinette-reponse" id="choix-reponse" hidden>
-        <p id="choix-verdict" class="gros-verdict"></p>
-        <p class="gros-chiffre">{{ l.nb | nombre }}</p>
-        <p>communications déclarées par {{ l.nb_orgs | nombre }} organisations, soit environ <strong>{{ l.par_jour | nombre }} par jour ouvrable</strong>.</p>
-        {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Communications datées du 1<sup>er</sup> avril 2017 au {{ l.donnees_du | date_fr }}. Par jour ouvrable&nbsp;: approximation sur 261 jours par année.</p>{% endcall %}
-      </div>
-    </div>
+    <h1>{{ l.nb | nombre }} conversations déclarées avec le pouvoir fédéral.</h1>
+    <p class="chapeau">{{ l.nb_orgs | nombre }} organisations ont déclaré avoir parlé à des ministres, des députés ou des hauts fonctionnaires fédéraux&nbsp;: environ {{ l.par_jour | nombre }} fois par jour ouvrable. Qui parle à qui, sur quoi, et qui reçoit ensuite de l'argent de ces mêmes ministères&nbsp;?</p>
+    {% call source() %}<p><strong>Source&nbsp;:</strong> {{ src }}. Communications datées du 1<sup>er</sup> avril 2017 au {{ l.donnees_du | date_fr }}. Par jour ouvrable&nbsp;: approximation sur 261 jours par année.</p>{% endcall %}
   </div>
 </section>
 
