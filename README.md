@@ -20,8 +20,7 @@ Pages (toutes statiques, exportées par `pipeline/exporter.py`) :
 - `/methode/`
 
 Plan validé par William : 1 ✔ recherche et fiches · 2 ✔ subventions ·
-3 ✔ signaux · 4 lobbying → contrats (**bloqué** : le Commissariat au lobbying
-refuse les téléchargements automatisés, voir plus bas) · 5 ✔ Comprendre ·
+3 ✔ signaux · 4 ✔ lobbying (fichiers manuels, voir plus bas) · 5 ✔ Comprendre ·
 élection fédérale en dernier.
 
 ## Règles de publication (non négociables)
@@ -83,12 +82,20 @@ Subventions et contributions, registre des lobbyistes (croisement
 lobbying → contrats), fiches fournisseurs, export statique, mise à jour
 automatique.
 
-## Lobbying (étape 4) — à faire
+## Lobbying (étape 4)
 
-Le Commissariat au lobbying protège ses fichiers par une vérification
-anti-robots : impossible de les télécharger automatiquement, et on ne la
-contourne pas. Les deux fichiers doivent être téléchargés à la main dans un
-navigateur, puis déposés dans `data/lobby/` :
+Page `/lobbying/` et section « Lobbying déclaré » sur les fiches
+(`pipeline/ingerer_lobby.py` puis `pipeline/lobby.py`). Seules les
+organisations et les institutions sont affichées, jamais les noms des
+lobbyistes ni des responsables rencontrés.
 
-- Enregistrements : https://lobbycanada.gc.ca/media/zwcjycef/registrations_enregistrements_ocl_cal.zip
-- Rapports de communication mensuels : https://lobbycanada.gc.ca/media/mqbbmaqk/communications_ocl_cal.zip
+Le Commissariat au lobbying bloque les téléchargements automatisés (on ne
+contourne pas). **Environ une fois par mois**, William télécharge à la main
+ces deux fichiers et les dépose dans `data/lobby/` (en remplaçant les
+anciens) ; la mise à jour du lendemain matin les dézippe et les relit :
+
+- https://lobbycanada.gc.ca/media/zwcjycef/registrations_enregistrements_ocl_cal.zip
+- https://lobbycanada.gc.ca/media/mqbbmaqk/communications_ocl_cal.zip
+
+Pièges : fichiers en Windows-1252 (pas UTF-8) ; une même organisation change
+de numéro à chaque enregistrement, on regroupe par nom normalisé.

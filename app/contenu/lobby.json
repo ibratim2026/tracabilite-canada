@@ -1,0 +1,540 @@
+{
+ "debut": "2017-04-01",
+ "nb": 275554,
+ "nb_orgs": 6854,
+ "orgs_avec_argent": 2505,
+ "institutions": [
+  {
+   "nom": "Chambre des communes",
+   "code": "",
+   "nb": 85483
+  },
+  {
+   "nom": "Innovation, Sciences et Développement économique Canada",
+   "code": "ic",
+   "nb": 28482
+  },
+  {
+   "nom": "Ministère des Finances Canada",
+   "code": "fin",
+   "nb": 18235
+  },
+  {
+   "nom": "Ressources naturelles Canada",
+   "code": "nrcan-rncan",
+   "nb": 14321
+  },
+  {
+   "nom": "Environnement et Changement climatique Canada",
+   "code": "ec",
+   "nb": 13858
+  },
+  {
+   "nom": "Affaires mondiales Canada",
+   "code": "dfatd-maecd",
+   "nb": 13833
+  },
+  {
+   "nom": "Cabinet du premier ministre",
+   "code": "",
+   "nb": 13019
+  },
+  {
+   "nom": "Sénat",
+   "code": "",
+   "nb": 11504
+  },
+  {
+   "nom": "Santé Canada",
+   "code": "hc-sc",
+   "nb": 8462
+  },
+  {
+   "nom": "Emploi et Développement social Canada",
+   "code": "esdc-edsc",
+   "nb": 8202
+  },
+  {
+   "nom": "Transports Canada",
+   "code": "tc",
+   "nb": 7900
+  },
+  {
+   "nom": "Agriculture et Agroalimentaire Canada",
+   "code": "aafc-aac",
+   "nb": 7440
+  },
+  {
+   "nom": "Patrimoine canadien",
+   "code": "pch",
+   "nb": 7229
+  },
+  {
+   "nom": "Bureau du Conseil privé",
+   "code": "pco-bcp",
+   "nb": 6724
+  },
+  {
+   "nom": "Ministère du Logement, de l’Infrastructure et des Collectivités",
+   "code": "infc",
+   "nb": 5349
+  }
+ ],
+ "orgs": [
+  {
+   "nom": "L'association minière du Canada (AMC)",
+   "nb": 1648,
+   "recu": 0,
+   "slug": null,
+   "a_fiche": 0
+  },
+  {
+   "nom": "La Chambre de commerce du Canada",
+   "nb": 1624,
+   "recu": 31704696.88,
+   "slug": "canadian-chamber-of-commerce",
+   "a_fiche": 1
+  },
+  {
+   "nom": "FÉDÉRATION CANADIENNE DES MUNICIPALITÉS",
+   "nb": 1570,
+   "recu": 891242231.0,
+   "slug": "federation-of-canadian-municipalities",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Canadian Canola Growers Association",
+   "nb": 1475,
+   "recu": 0,
+   "slug": null,
+   "a_fiche": 0
+  },
+  {
+   "nom": "Le Centre consultatif des relations juives et israéliennes",
+   "nb": 1449,
+   "recu": 51813.0,
+   "slug": "centre-for-israel-and-jewish-affairs",
+   "a_fiche": 0
+  },
+  {
+   "nom": "Association canadienne des bovins",
+   "nb": 1448,
+   "recu": 10934858.0,
+   "slug": "canadian-cattle-association",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Universités Canada",
+   "nb": 1337,
+   "recu": 52682755.0,
+   "slug": "universities-canada",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Canola Council of Canada",
+   "nb": 1332,
+   "recu": 71320514.0,
+   "slug": "canola-council-of-canada",
+   "a_fiche": 1
+  },
+  {
+   "nom": "TELUS Corporation",
+   "nb": 1319,
+   "recu": 15987509.23,
+   "slug": "telus",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Fédération canadienne de l’entreprise indépendante (FCEI)",
+   "nb": 1279,
+   "recu": 0,
+   "slug": null,
+   "a_fiche": 0
+  },
+  {
+   "nom": "Association Canadienne des Producteurs Pétroliers",
+   "nb": 1217,
+   "recu": 0,
+   "slug": null,
+   "a_fiche": 0
+  },
+  {
+   "nom": "Environmental Defence Canada",
+   "nb": 1197,
+   "recu": 31800.0,
+   "slug": "environmental-defence-canada",
+   "a_fiche": 0
+  },
+  {
+   "nom": "Congrès du travail du Canada",
+   "nb": 1132,
+   "recu": 1023905.0,
+   "slug": "canadian-labour-congress",
+   "a_fiche": 1
+  },
+  {
+   "nom": "Association médicale canadienne",
+   "nb": 1128,
+   "recu": 0,
+   "slug": null,
+   "a_fiche": 0
+  },
+  {
+   "nom": "Les Producteurs de poulet du Canada",
+   "nb": 1107,
+   "recu": 20333897.0,
+   "slug": "chicken-farmers-of-canada",
+   "a_fiche": 1
+  }
+ ],
+ "croises": [
+  {
+   "nom": "NEXTSTAR ENERGY INC.",
+   "slug": "nextstar-energy",
+   "a_fiche": 1,
+   "communications": 20,
+   "argent": 15056000000.0,
+   "principal": "Innovation, Sciences et Développement économique Canada",
+   "principal_comm": 20,
+   "principal_argent": 15056000000.0
+  },
+  {
+   "nom": "Vancouver Shipyards Co Ltd",
+   "slug": "vancouver-shipyards",
+   "a_fiche": 1,
+   "communications": 110,
+   "argent": 14346618992.66,
+   "principal": "Défense nationale",
+   "principal_comm": 59,
+   "principal_argent": 7491871828.72
+  },
+  {
+   "nom": "Irving Shipbuilding Incorporated",
+   "slug": "irving-shipbuilding",
+   "a_fiche": 1,
+   "communications": 344,
+   "argent": 12073131624.24,
+   "principal": "Défense nationale",
+   "principal_comm": 158,
+   "principal_argent": 12071506708.84
+  },
+  {
+   "nom": "Chantier Davie Canada Inc",
+   "slug": "chantier-davie-canada",
+   "a_fiche": 1,
+   "communications": 83,
+   "argent": 6398399241.16,
+   "principal": "Pêches et Océans Canada",
+   "principal_comm": 35,
+   "principal_argent": 4536689860.22
+  },
+  {
+   "nom": "IBM Canada Ltd.",
+   "slug": "ibm-canada",
+   "a_fiche": 1,
+   "communications": 197,
+   "argent": 4502553917.629999,
+   "principal": "Services partagés Canada",
+   "principal_comm": 20,
+   "principal_argent": 3179150955.23
+  },
+  {
+   "nom": "Bell Textron Canada Limited",
+   "slug": "bell-textron-canada",
+   "a_fiche": 1,
+   "communications": 19,
+   "argent": 3100547319.03,
+   "principal": "Défense nationale",
+   "principal_comm": 15,
+   "principal_argent": 3081822094.15
+  },
+  {
+   "nom": "Microsoft Canada Inc.",
+   "slug": "microsoft-canada",
+   "a_fiche": 1,
+   "communications": 289,
+   "argent": 2835190849.89,
+   "principal": "Services partagés Canada",
+   "principal_comm": 42,
+   "principal_argent": 2107967810.37
+  },
+  {
+   "nom": "General Dynamics Land Systems - Canada Corporation",
+   "slug": "general-dynamics-land-systems-canada",
+   "a_fiche": 1,
+   "communications": 71,
+   "argent": 2255300757.79,
+   "principal": "Défense nationale",
+   "principal_comm": 50,
+   "principal_argent": 2192635143.17
+  },
+  {
+   "nom": "MacDonald, Dettwiler and Associates Inc.",
+   "slug": "macdonald-dettwiler-and-associates",
+   "a_fiche": 1,
+   "communications": 15,
+   "argent": 2241240052.1200004,
+   "principal": "Agence spatiale canadienne",
+   "principal_comm": 14,
+   "principal_argent": 2206924100.4300003
+  },
+  {
+   "nom": "Pomerleau Inc.",
+   "slug": "pomerleau",
+   "a_fiche": 1,
+   "communications": 8,
+   "argent": 2016268570.34,
+   "principal": "Services publics et Approvisionnement Canada",
+   "principal_comm": 6,
+   "principal_argent": 1684355775.53
+  },
+  {
+   "nom": "General Atomics Aeronautical Systems Inc.",
+   "slug": "general-atomics-aeronautical-systems",
+   "a_fiche": 1,
+   "communications": 5,
+   "argent": 1792979385.49,
+   "principal": "Défense nationale",
+   "principal_comm": 5,
+   "principal_argent": 1792979385.49
+  },
+  {
+   "nom": "Thales Canada Inc",
+   "slug": "thales-canada",
+   "a_fiche": 1,
+   "communications": 55,
+   "argent": 1761255786.65,
+   "principal": "Défense nationale",
+   "principal_comm": 50,
+   "principal_argent": 1744822674.44
+  },
+  {
+   "nom": "CANADA MEDIA FUND CORPORATION",
+   "slug": "canada-media-fund",
+   "a_fiche": 1,
+   "communications": 3,
+   "argent": 1695291926.0,
+   "principal": "Patrimoine canadien",
+   "principal_comm": 3,
+   "principal_argent": 1695291926.0
+  },
+  {
+   "nom": "Kee Tas Kee Now Tribal Council",
+   "slug": "kee-tas-kee-now-tribal-council",
+   "a_fiche": 1,
+   "communications": 11,
+   "argent": 1559419804.19,
+   "principal": "Services aux Autochtones Canada",
+   "principal_comm": 8,
+   "principal_argent": 1559270995.19
+  },
+  {
+   "nom": "Nunavut Tunngavik Inc",
+   "slug": "nunavut-tunngavik",
+   "a_fiche": 1,
+   "communications": 16,
+   "argent": 1256249615.09,
+   "principal": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "principal_comm": 8,
+   "principal_argent": 1187329705.09
+  },
+  {
+   "nom": "Mitacs Inc.",
+   "slug": "mitacs",
+   "a_fiche": 1,
+   "communications": 177,
+   "argent": 1201003422.0,
+   "principal": "Innovation, Sciences et Développement économique Canada",
+   "principal_comm": 150,
+   "principal_argent": 1191697038.0
+  },
+  {
+   "nom": "Leonardo UK Ltd.",
+   "slug": "leonardo-uk",
+   "a_fiche": 1,
+   "communications": 24,
+   "argent": 1190885425.26,
+   "principal": "Défense nationale",
+   "principal_comm": 24,
+   "principal_argent": 1190885425.26
+  },
+  {
+   "nom": "Nunatsiavut Government",
+   "slug": "nunatsiavut-government",
+   "a_fiche": 1,
+   "communications": 18,
+   "argent": 1190127173.21,
+   "principal": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "principal_comm": 6,
+   "principal_argent": 1090017253.21
+  },
+  {
+   "nom": "L3Harris MAS Inc.",
+   "slug": "l3harris-mas",
+   "a_fiche": 1,
+   "communications": 7,
+   "argent": 1180656562.94,
+   "principal": "Défense nationale",
+   "principal_comm": 7,
+   "principal_argent": 1180656562.94
+  },
+  {
+   "nom": "Nisga'a Nation",
+   "slug": "nisga-a-nation",
+   "a_fiche": 1,
+   "communications": 14,
+   "argent": 1163087007.92,
+   "principal": "Relations Couronne-Autochtones et Affaires du Nord Canada",
+   "principal_comm": 7,
+   "principal_argent": 1158947033.92
+  },
+  {
+   "nom": "WSP Canada Inc.",
+   "slug": "wsp-canada",
+   "a_fiche": 1,
+   "communications": 12,
+   "argent": 1126288594.3000002,
+   "principal": "Services publics et Approvisionnement Canada",
+   "principal_comm": 1,
+   "principal_argent": 1123781311.66
+  },
+  {
+   "nom": "General Dynamics Ordnance and Tactical Systems - Canada Inc.",
+   "slug": "general-dynamics-ordnance-and-tactical-systems-canada",
+   "a_fiche": 1,
+   "communications": 14,
+   "argent": 1115526308.42,
+   "principal": "Défense nationale",
+   "principal_comm": 14,
+   "principal_argent": 1115526308.42
+  },
+  {
+   "nom": "National Aboriginal Capital Corporations Association",
+   "slug": "national-aboriginal-capital-corporations-association",
+   "a_fiche": 1,
+   "communications": 14,
+   "argent": 970130832.2,
+   "principal": "Services aux Autochtones Canada",
+   "principal_comm": 10,
+   "principal_argent": 969875832.2
+  },
+  {
+   "nom": "Triumf",
+   "slug": "triumf",
+   "a_fiche": 1,
+   "communications": 14,
+   "argent": 941346610.0,
+   "principal": "Conseil national de recherches Canada",
+   "principal_comm": 14,
+   "principal_argent": 941346610.0
+  },
+  {
+   "nom": "CAE Inc.",
+   "slug": "cae",
+   "a_fiche": 1,
+   "communications": 260,
+   "argent": 896690135.63,
+   "principal": "Innovation, Sciences et Développement économique Canada",
+   "principal_comm": 130,
+   "principal_argent": 323497242.16
+  }
+ ],
+ "sujets": [
+  {
+   "nom": "Environnement",
+   "nb": 32035
+  },
+  {
+   "nom": "Développement économique",
+   "nb": 30306
+  },
+  {
+   "nom": "Santé",
+   "nb": 27029
+  },
+  {
+   "nom": "Industrie",
+   "nb": 26976
+  },
+  {
+   "nom": "Énergie",
+   "nb": 22292
+  },
+  {
+   "nom": "Commerce international",
+   "nb": 20811
+  },
+  {
+   "nom": "Agriculture",
+   "nb": 18642
+  },
+  {
+   "nom": "Impôts et finances",
+   "nb": 17308
+  },
+  {
+   "nom": "Sciences et technologies",
+   "nb": 16529
+  },
+  {
+   "nom": "Transports",
+   "nb": 16363
+  },
+  {
+   "nom": "Infrastructure",
+   "nb": 16173
+  },
+  {
+   "nom": "Recherche et développement",
+   "nb": 15025
+  }
+ ],
+ "par_annee": [
+  {
+   "exercice": "2017-2018",
+   "nb": 23330
+  },
+  {
+   "exercice": "2018-2019",
+   "nb": 23378
+  },
+  {
+   "exercice": "2019-2020",
+   "nb": 18986
+  },
+  {
+   "exercice": "2020-2021",
+   "nb": 29044
+  },
+  {
+   "exercice": "2021-2022",
+   "nb": 24689
+  },
+  {
+   "exercice": "2022-2023",
+   "nb": 30690
+  },
+  {
+   "exercice": "2023-2024",
+   "nb": 34498
+  },
+  {
+   "exercice": "2024-2025",
+   "nb": 31096
+  },
+  {
+   "exercice": "2025-2026",
+   "nb": 40099
+  },
+  {
+   "exercice": "2026-2027",
+   "nb": 19744
+  }
+ ],
+ "donnees_du": "2026-09-20",
+ "publie": "2026-09-20",
+ "source": {
+  "nom": "Commissariat au lobbying du Canada, Registre des lobbyistes, rapports de communication mensuels",
+  "url": "https://ouvert.canada.ca/data/fr/dataset/a34eb330-7136-4f5e-9f5f-3ba41df58b06"
+ }
+}

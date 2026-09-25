@@ -79,6 +79,7 @@ app.jinja_env.filters.update(nombre=nombre, argent=argent, pourcent=pourcent, da
 NAVIGATION = [
     ("/", "Contrats"),
     ("/subventions/", "Subventions"),
+    ("/lobbying/", "Lobbying"),
     ("/a-examiner/", "À examiner"),
     ("/chercher/", "Chercher"),
     ("/ministeres/", "Ministères"),
@@ -223,6 +224,13 @@ def subventions():
     return render_template("subventions.html", s=s, pop=charger("population"), page="/subventions/")
 
 
+@app.route("/lobbying/")
+def lobbying():
+    l = charger("lobby")
+    l["par_jour"] = l["nb"] / (len(l["par_annee"]) - 0.5) / 261   # ~jours ouvrables ; dernier exercice à moitié
+    return render_template("lobbying.html", l=l, page="/lobbying/")
+
+
 @app.route("/chercher/")
 def chercher():
     return render_template("chercher.html", r=reperes(), page="/chercher/")
@@ -288,8 +296,13 @@ def entreprise(slug):
     programmes = bd().execute(
         f"SELECT programme, ministere_nom, SUM(valeur) v, COUNT(*) n FROM subventions WHERE {PERIODE_SUB} "
         f"AND beneficiaire_id = ? GROUP BY programme ORDER BY v DESC LIMIT 8", p).fetchall()
+    lobby = lobby_ministeres = None
+    if bd().execute("SELECT 1 FROM sqlite_master WHERE name = 'lobby_totaux'").fetchone():
+        lobby = bd().execute("SELECT * FROM lobby_totaux WHERE fournisseur_id = ?", p).fetchone()
+        lobby_ministeres = bd().execute("SELECT * FROM lobby_fiche WHERE fournisseur_id = ? "
+                                        "ORDER BY communications DESC LIMIT 10", p).fetchall()
     return render_template(
-        "entreprise.html", f=f, variantes=json.loads(f["variantes"]), contrats=contrats, subs=subs,
+        "entreprise.html", lobby=lobby, lobby_ministeres=lobby_ministeres, f=f, variantes=json.loads(f["variantes"]), contrats=contrats, subs=subs,
         programmes=programmes, ministeres=ministeres, annees=par_exercice(ou, p),
         annees_sub=par_exercice("beneficiaire_id = ?", p, "subventions"),
         m=methodes_de(ou, p) if f["nb_contrats"] else None, r=reperes(),

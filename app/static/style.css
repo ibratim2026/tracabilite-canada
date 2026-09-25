@@ -322,6 +322,10 @@ table.famille td { font-size: 1.05rem; padding: .8rem .6rem; }
 .entete-note a { color: inherit; }
 div.carte-signal:hover { transform: none; border-color: var(--bordure); }
 
+.contrats.sur-rouge th { color: rgba(255,255,255,.8); border-color: #fff; }
+.contrats.sur-rouge td { border-color: rgba(255,255,255,.25); }
+.contrats.sur-rouge a { color: #fff; }
+
 /* ---- Mobile */
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -335,7 +339,7 @@ div.carte-signal:hover { transform: none; border-color: var(--bordure); }
   .annee-nom { font-size: .62rem; }
   .entete-note { font-size: .72rem; }
   .menu { width: 100%; }
-  .menu a { font-size: .85rem; padding: .35rem .6rem; }
+  .menu a { font-size: .82rem; padding: .3rem .5rem; }
   .faits, .grille-fiche { grid-template-columns: 1fr; }
   .grille-fiche { gap: 2rem; }
   .grille-fiche .barres li, .liste-ministeres li { grid-template-columns: 1fr auto; }
