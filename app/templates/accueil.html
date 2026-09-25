@@ -17,10 +17,11 @@
 
     <form class="couverture-recherche" action="{{ base }}/chercher/" method="get" role="search">
       <label for="q-accueil" class="visuellement-cache">Chercher une entreprise ou un organisme</label>
-      <input id="q-accueil" name="q" type="search" placeholder="Qui reçoit l'argent d'Ottawa ? Tapez IBM, Irving, Université Laval…" autocomplete="off">
+      <input id="q-accueil" name="q" type="search" placeholder="Une entreprise, un organisme : IBM, Irving…" autocomplete="off">
       <button class="bouton" type="submit">Chercher</button>
     </form>
     <p class="couverture-aide">{{ r.nb_fournisseurs | nombre }} entreprises et organismes · chaque chiffre avec sa source officielle</p>
+    <p class="couverture-cta"><a class="bouton" href="{{ base }}/suivre-l-argent/">Suivre l'argent, étape par étape</a> <a class="lien-clair" href="{{ base }}/ecarts/">Voir les écarts →</a></p>
   </div>
 </section>
 
@@ -38,8 +39,18 @@
 <section class="bande bande-pale">
   <div class="contenant">
     <p class="surtitre">Par où commencer</p>
-    <h2>Six portes d'entrée, un fait chacune</h2>
+    <h2>Par où l'argent passe, un fait à chaque étape</h2>
     <div class="portes">
+      <a class="porte porte-une" href="{{ base }}/suivre-l-argent/">
+        <span class="porte-rubrique">Où va l'argent</span>
+        <span class="porte-fait">De votre chèque de paie jusqu'au compte d'une entreprise&nbsp;: le trajet complet.</span>
+        <span class="porte-suite">Suivre l'argent →</span>
+      </a>
+      <a class="porte" href="{{ base }}/ecarts/">
+        <span class="porte-rubrique">Les écarts</span>
+        <span class="porte-fait">{{ ecarts_total | argent }} ajoutés à des contrats après leur signature, depuis 2017.</span>
+        <span class="porte-suite">Signés à un prix, rendus à un autre →</span>
+      </a>
       <a class="porte" href="{{ base }}/contrats/">
         <span class="porte-rubrique">Ce qu'Ottawa achète</span>
         <span class="porte-fait">1&nbsp;% des contrats reçoivent {{ c.part_top1 | pourcent }} de l'argent.</span>
@@ -66,11 +77,6 @@
         <span class="porte-rubrique">Comprendre</span>
         <span class="porte-fait">L'Alberta ne fait pas de chèque au Québec.</span>
         <span class="porte-suite">La péréquation expliquée →</span>
-      </a>
-      <a class="porte" href="{{ base }}/ministeres/">
-        <span class="porte-rubrique">Qui signe les chèques</span>
-        <span class="porte-fait">{{ (r.total + r.total_sub) | argent }} engagés par les ministères depuis 2017.</span>
-        <span class="porte-suite">Les ministères →</span>
       </a>
     </div>
   </div>

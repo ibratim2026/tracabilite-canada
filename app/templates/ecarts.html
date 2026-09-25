@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% from "_macros.html" import table_contrats, drapeau with context %}
+{% block titre %}Les écarts : contrats signés à un prix, rendus à un autre — Traçabilité Canada{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge heros">
+  <div class="contenant etroit">
+    <p class="surtitre">Suivre l'argent · les écarts depuis avril 2017</p>
+    <h1>{{ total_nb | nombre }} contrats valent aujourd'hui plus que le prix signé. Écart total&nbsp;: {{ total_dollars | argent }}.</h1>
+    <p class="chapeau">Un contrat est signé à un montant, puis modifié&nbsp;: phase de plus, délai, imprévu. On compare sa valeur actuelle au montant signé. Au-delà de +10&nbsp;%, il reçoit un drapeau, dont la couleur dit la gravité.</p>
+    <div class="legende-drapeaux">
+      <span class="drapeau drapeau-1">▲ +10 à 25&nbsp;%</span><span class="drapeau drapeau-2">▲ +25 à 50&nbsp;%</span><span class="drapeau drapeau-3">▲ plus de +50&nbsp;%</span><span class="drapeau drapeau-saut">⚑ plus de 20 fois&nbsp;: à vérifier</span>
+    </div>
+    {% call source() %}<p><strong>Calcul&nbsp;:</strong> valeur la plus récente déclarée comparée à la valeur d'origine déclarée, pour les contrats signés à 25&nbsp;000&nbsp;$ ou plus depuis le 1<sup>er</sup> avril 2017 ({{ nb_contrats | nombre }} contrats, {{ total_signe | argent }} signés). Les {{ sauts | nombre }} contrats qui valent plus de 20 fois leur montant signé sont exclus du total&nbsp;: c'est souvent une façon de déclarer des options prévues, parfois une erreur de saisie. Ils sont listés sur la page <a href="{{ base }}/a-examiner/saut/">Saut à vérifier</a>.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <div class="cartes-signaux">
+      {% for g in gravites %}
+      <div class="carte-signal"><span class="drapeau drapeau-{{ g.g }}">▲ {{ g.nom }}</span><h3>{{ g.nb | nombre }} contrats</h3><p class="carte-nb">+{{ g.dollars | argent }}</p><p>{% if g.g == 1 %}L'ajustement ordinaire d'un projet&nbsp;: souvent sans histoire.{% elif g.g == 2 %}Un projet qui a pris de l'ampleur. Ça mérite de savoir pourquoi.{% else %}Le contrat vaut une fois et demie son prix, ou plus. La question se pose, même si la réponse est souvent bonne.{% endif %}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>Où les écarts s'accumulent</h2>
+      <ol class="barres">
+        {% set maxm = par_ministere[0].d %}
+        {% for m in par_ministere %}
+        <li><a class="barres-nom" href="{{ base }}/ministere/{{ m.ministere }}/">{{ m.ministere_nom }}</a><span class="barres-piste"><span class="barres-plein" style="--l:{{ (m.d / maxm * 100) | round(1) }}%"></span></span><span class="barres-val">+{{ m.d | argent }}</span></li>
+        {% endfor %}
+      </ol>
+      <p class="note">Écart total en dollars. Un grand ministère signe plus de contrats, donc accumule plus d'écarts&nbsp;: ce n'est pas une note de gestion.</p>
+    </div>
+    <div>
+      <h2>Ce qui l'explique souvent</h2>
+      <ul class="principes">
+        <li><strong>Une option prévue dès le départ</strong> et exercée plus tard&nbsp;: année supplémentaire, quantité additionnelle.</li>
+        <li><strong>Un projet de plusieurs années</strong> dont les coûts ont suivi l'inflation ou les imprévus.</li>
+        <li><strong>Un besoin qui a grandi</strong>&nbsp;: la pandémie a fait exploser plusieurs contrats de 2020-2021.</li>
+        <li><strong>Et parfois, un mauvais estimé ou un contrat mal géré.</strong> C'est ce que les vérificateurs cherchent, et ce que la fiche officielle aide à comprendre.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <h2>Les 50 plus grands écarts, en dollars</h2>
+    {{ table_contrats(en_dollars) }}
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant">
+    <h2>Les 50 plus grands écarts, en pourcentage</h2>
+    <p class="chapeau">Parmi les contrats signés à 1&nbsp;M$ ou plus. Un petit contrat qui double fait moins de bruit qu'un gros qui prend 20&nbsp;%&nbsp;: les deux méritent d'être vus.</p>
+    {{ table_contrats(en_pct) }}
+  </div>
+</section>
+{% endblock %}

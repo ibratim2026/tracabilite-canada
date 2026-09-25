@@ -1,3 +1,31 @@
+{% macro drapeau(e) %}{% if e.saut %}<span class="drapeau drapeau-saut" title="Plus de 20 fois le montant signé : à vérifier">⚑ ×{{ e.ratio | round | int }} à vérifier</span>{% else %}<span class="drapeau drapeau-{{ e.gravite }}" title="Écart entre la valeur actuelle et le montant signé">▲ +{{ e.pct | nombre }}&nbsp;%</span>{% endif %}{% endmacro %}
+
+{% macro flux(f, id) %}
+<div class="flux-defile">
+<svg class="flux" viewBox="0 0 {{ f.largeur }} {{ f.hauteur }}" role="img" aria-labelledby="{{ id }}-titre">
+  <title id="{{ id }}-titre">Diagramme de flux : l'épaisseur de chaque bande est proportionnelle au montant.</title>
+  {% for b in f.bandes %}<path class="bande-flux {{ b.classe }}" d="{{ b.d }}"><title>{{ b.de }} → {{ b.vers }} : {{ b.valeur | argent }}</title></path>{% endfor %}
+  {% for n in f.noeuds %}
+  <g class="noeud {{ n.classe or '' }}">
+    {% if n.url %}<a href="{{ base }}{{ n.url }}">{% endif %}
+    <rect x="{{ n.x | round(1) }}" y="{{ n.y | round(1) }}" width="{{ n.w }}" height="{{ n.h | round(1) }}" rx="2"><title>{{ n.nom }} : {{ n.valeur | argent }}</title></rect>
+    {% if n.premiere or n.derniere %}
+    {% set tx = n.x - 8 if n.premiere else n.x + n.w + 8 %}
+    <text x="{{ tx | round(1) }}" y="{{ (n.y + n.h / 2) | round(1) }}" text-anchor="{{ 'end' if n.premiere else 'start' }}" dominant-baseline="middle">
+      <tspan class="flux-nom">{{ n.nom | truncate(34, true, '…') }}</tspan><tspan class="flux-val" dx="6">{{ n.valeur | argent }}</tspan>
+    </text>
+    {% else %}
+    <text class="flux-milieu" x="{{ (n.x + n.w / 2) | round(1) }}" y="{{ (n.y - 10) | round(1) }}" text-anchor="middle">
+      <tspan class="flux-nom">{{ n.nom }}</tspan><tspan class="flux-val" dx="6">{{ n.valeur | argent }}</tspan>
+    </text>
+    {% endif %}
+    {% if n.url %}</a>{% endif %}
+  </g>
+  {% endfor %}
+</svg>
+</div>
+{% endmacro %}
+
 {# Composants partagés par les fiches. #}
 
 {% macro barres_annees(annees, accent=None) %}
@@ -31,8 +59,8 @@
     <td data-l="Quoi">{% if c.signaux %}<span class="signaux-ligne">{% for t in c.signaux.split(',') | unique %}<a class="puce-signal puce-{{ t }}" href="{{ base }}/a-examiner/{{ t | lower | replace('_', '-') }}/" title="{{ signaux_def[t].nom }}">{{ signaux_def[t].court }}</a>{% endfor %}</span>{% endif %}{{ c.description or '—' }}{% if c.fin and c.fin[:4] | int >= c.date_contrat[:4] | int + 3 %} <span class="etiquette">jusqu'en {{ c.fin[:4] }}</span>{% endif %}</td>
     <td data-l="Attribution"><span class="methode methode-{{ c.methode or 'X' }}">{{ methodes.get(c.methode, 'Non précisée') }}</span></td>
     <td data-l="Valeur" class="nombre"><strong>{{ c.valeur | argent }}</strong>
-      {% if c.valeur_originale and c.valeur > c.valeur_originale * 1.001 %}<br><span class="modifie">signé à {{ c.valeur_originale | argent }}</span>{% endif %}</td>
-    <td><a class="lien-officiel" href="{{ lien_officiel(c.ministere, c.reference) }}">Fiche officielle&nbsp;↗</a></td>
+      {% set e = ecart(c.valeur, c.valeur_originale) %}{% if e %}<br>{{ drapeau(e) }}<br><span class="modifie">signé à {{ c.valeur_originale | argent }}</span>{% elif c.valeur_originale and c.valeur > c.valeur_originale * 1.001 %}<br><span class="modifie">signé à {{ c.valeur_originale | argent }}</span>{% endif %}</td>
+    <td>{% if c.page_contrat %}<a class="lien-trace" href="{{ base }}/contrat/{{ c.page_contrat }}/">Suivre ce contrat&nbsp;→</a><br>{% endif %}<a class="lien-officiel" href="{{ lien_officiel(c.ministere, c.reference) }}">Fiche officielle&nbsp;↗</a></td>
   </tr>
   {% endfor %}
   </tbody>

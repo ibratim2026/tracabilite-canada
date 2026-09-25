@@ -24,7 +24,7 @@ BASE = "/tracabilite-canada"
 
 def pages():
     con = sqlite3.connect(BASE_DONNEES)
-    yield from ["/", "/contrats/", "/subventions/", "/lobbying/", "/a-examiner/", "/chercher/", "/ministeres/", "/methode/",
+    yield from ["/", "/suivre-l-argent/", "/ecarts/", "/contrats/", "/subventions/", "/lobbying/", "/a-examiner/", "/chercher/", "/ministeres/", "/methode/",
                 "/comprendre/", "/comprendre/budget/", "/comprendre/provinces/", "/comprendre/on-clarifie/"]
     from app import SIGNAUX
     for t in SIGNAUX:
@@ -35,6 +35,8 @@ def pages():
         yield f"/ministere/{org}/"
     for (slug,) in con.execute("SELECT slug FROM fournisseurs WHERE a_fiche = 1"):
         yield f"/entreprise/{slug}/"
+    for (slug,) in con.execute("SELECT slug FROM contrat_page"):
+        yield f"/contrat/{slug}/"
     con.close()
 
 

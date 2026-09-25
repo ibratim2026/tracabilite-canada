@@ -17,14 +17,22 @@
 {% endmacro %}
 
 <header class="entete">
+  {% set rub = rubrique_de(page) %}
   <div class="contenant entete-rangee">
     <a class="marque" href="{{ base }}/"><span class="marque-point"></span>Traçabilité Canada</a>
-    <nav class="menu" aria-label="Navigation principale">
-      {% for chemin, nom in navigation %}
-      <a href="{{ base }}{{ chemin }}"{% if page == chemin %} aria-current="page"{% endif %}>{{ nom }}</a>
+    <nav class="menu" aria-label="Rubriques">
+      {% for r in navigation %}
+      <a href="{{ base }}{{ r.url }}"{% if rub and rub.nom == r.nom %} aria-current="true"{% endif %}>{{ r.nom }}</a>
       {% endfor %}
     </nav>
   </div>
+  {% if rub and rub.sous %}
+  <div class="sous-menu"><nav class="contenant sous-menu-liens" aria-label="{{ rub.nom }}">
+    {% for url, nom in rub.sous %}
+    <a href="{{ base }}{{ url }}"{% if page == url %} aria-current="page"{% endif %}>{{ nom }}</a>
+    {% endfor %}
+  </nav></div>
+  {% endif %}
   <div class="entete-note"><div class="contenant">Initiative citoyenne indépendante · pas un site du gouvernement · <a href="{{ base }}/methode/">méthode</a></div></div>
 </header>
 

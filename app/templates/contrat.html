@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% from "_macros.html" import drapeau with context %}
+{% block titre %}{{ c.fournisseur_nom or c.fournisseur }} · {{ c.ministere_nom }} · {{ c.valeur | argent }} — Traçabilité Canada{% endblock %}
+{% block description %}Contrat de {{ c.ministere_nom }} avec {{ c.fournisseur_nom or c.fournisseur }} : signé à {{ c.valeur_originale | argent }}, aujourd'hui {{ c.valeur | argent }}. La trace de chaque modification.{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge bande-courte">
+  <div class="contenant">
+    <p class="surtitre">Suivre ce contrat · <a href="{{ base }}/ministere/{{ c.ministere }}/">{{ c.ministere_nom }}</a></p>
+    <h1>{{ c.description or 'Contrat' }}</h1>
+    <p class="chapeau">Fournisseur&nbsp;: {% if c.a_fiche %}<a href="{{ base }}/entreprise/{{ c.slug }}/">{{ c.fournisseur_nom }}</a>{% else %}{{ c.fournisseur_nom or c.fournisseur }}{% endif %} · signé le {{ c.date_contrat | date_fr }}{% if c.fin %} · jusqu'au {{ c.fin | date_fr }}{% endif %}</p>
+    <div class="trajet">
+      <div><p class="petit-titre">Signé à</p><p class="gros-chiffre">{{ (c.valeur_originale or c.valeur) | argent }}</p></div>
+      <div class="trajet-fleche" aria-hidden="true">→</div>
+      <div><p class="petit-titre">Aujourd'hui</p><p class="gros-chiffre">{{ c.valeur | argent }}</p></div>
+      {% if e %}<div class="trajet-drapeau">{{ drapeau(e) }}<p>{% if e.saut %}Plus de 20 fois le montant signé&nbsp;: souvent des options prévues dès le départ, parfois une erreur de saisie.{% else %}+{{ e.dollars | argent }} depuis la signature.{% endif %}</p></div>{% endif %}
+    </div>
+    {% if signaux %}
+    <div class="signaux-fiche">
+      {% for s in signaux %}<a class="puce-signal puce-{{ s.type }}" href="{{ base }}/a-examiner/{{ s.type | lower | replace('_', '-') }}/">{{ signaux_def[s.type].nom }}</a>{% endfor %}
+      {% if signaux | map(attribute='type') | unique | list | length >= 3 %}<span class="puce-signal puce-prio">★ À examiner en priorité</span>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant grille-fiche">
+    <div>
+      <h2>La trace, déclaration par déclaration</h2>
+      {% set n = points | length %}
+      {% if n > 1 %}
+      {% set L, H, mg, mb = 600, 240, 10, 30 %}
+      <svg class="trace" viewBox="0 0 {{ L }} {{ H }}" role="img" aria-label="Évolution de la valeur déclarée du contrat">
+        {% set y_signe = mg + (H - mg - mb) * (1 - (c.valeur_originale or 0) / haut) %}
+        {% if c.valeur_originale %}<line class="trace-signe" x1="0" x2="{{ L }}" y1="{{ y_signe | round(1) }}" y2="{{ y_signe | round(1) }}"/><text class="trace-etiquette" x="4" y="{{ (y_signe - 6) | round(1) }}">signé&nbsp;: {{ c.valeur_originale | argent }}</text>{% endif %}
+        {% set pas = (L - 20) / (n - 1) %}
+        {% set chemin = namespace(d="") %}
+        {% for v in points %}
+          {% set x = 10 + loop.index0 * pas %}{% set y = mg + (H - mg - mb) * (1 - v.valeur / haut) %}
+          {% if loop.first %}{% set chemin.d = "M" ~ (x | round(1)) ~ "," ~ (y | round(1)) %}{% else %}{% set chemin.d = chemin.d ~ " H" ~ (x | round(1)) ~ " V" ~ (y | round(1)) %}{% endif %}
+        {% endfor %}
+        <path class="trace-ligne" d="{{ chemin.d }}"/>
+        {% for v in points %}
+          {% set x = 10 + loop.index0 * pas %}{% set y = mg + (H - mg - mb) * (1 - v.valeur / haut) %}
+          <circle class="trace-point" cx="{{ x | round(1) }}" cy="{{ y | round(1) }}" r="5"><title>{{ v.periode }} : {{ v.valeur | argent }}</title></circle>
+          {% if loop.first or loop.last %}<text class="trace-etiquette" x="{{ x | round(1) }}" y="{{ H - 8 }}" text-anchor="{{ 'start' if loop.first else 'end' }}">{{ v.periode[:9] }}</text>{% endif %}
+        {% endfor %}
+      </svg>
+      {% else %}
+      <p>Ce contrat n'a été déclaré qu'une fois&nbsp;: aucune modification publiée.</p>
+      {% endif %}
+      <div class="table-defile">
+      <table class="versions">
+        <thead><tr><th>Trimestre déclaré</th><th>Type</th><th class="nombre">Valeur déclarée</th><th class="nombre">Modification</th></tr></thead>
+        <tbody>
+        {% for v in versions %}
+        <tr{% if v.ecartee %} class="ligne-ecartee"{% endif %}>
+          <td data-l="Trimestre">{{ v.periode }}</td>
+          <td data-l="Type">{{ 'Modification' if v.type == 'A' else 'Contrat' }}{% if v.ecartee %} <span class="etiquette">écartée&nbsp;: erreur évidente</span>{% endif %}</td>
+          <td data-l="Valeur" class="nombre"><strong>{{ v.valeur | argent }}</strong></td>
+          <td data-l="Modification" class="nombre">{% if v.modif %}{{ '+' if v.modif > 0 }}{{ v.modif | argent }}{% else %}—{% endif %}</td>
+        </tr>
+        {% if v.commentaire %}<tr class="ligne-commentaire"><td colspan="4">{{ v.commentaire }}</td></tr>{% endif %}
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Chaque ligne est une déclaration trimestrielle du ministère, telle que publiée. Les commentaires sont ceux du ministère.</p>
+    </div>
+    <div>
+      <h2>Ce qu'on sait</h2>
+      <dl class="faits-contrat">
+        <dt>Ministère</dt><dd><a href="{{ base }}/ministere/{{ c.ministere }}/">{{ c.ministere_nom }}</a></dd>
+        <dt>Fournisseur</dt><dd>{% if c.a_fiche %}<a href="{{ base }}/entreprise/{{ c.slug }}/">{{ c.fournisseur_nom }}</a>{% else %}{{ c.fournisseur_nom or c.fournisseur }}{% endif %}</dd>
+        <dt>Attribution</dt><dd>{{ methodes.get(c.methode, 'Non précisée') }}</dd>
+        {% if c.nb_offres %}<dt>Soumissions reçues</dt><dd>{{ c.nb_offres }}</dd>{% endif %}
+        <dt>Signé le</dt><dd>{{ c.date_contrat | date_fr }}</dd>
+        {% if c.fin %}<dt>Fin prévue</dt><dd>{{ c.fin | date_fr }}</dd>{% endif %}
+        <dt>Déclarations publiées</dt><dd>{{ versions | length }}</dd>
+      </dl>
+      {% if signaux %}
+      <h3>Pourquoi ce contrat a des signaux</h3>
+      <ul class="principes">
+        {% for s in signaux %}<li><strong>{{ signaux_def[s.type].nom }}.</strong> {{ s.detail }} <span class="note-ligne">Souvent normal&nbsp;: {{ signaux_def[s.type].normal | lower }}</span></li>{% endfor %}
+      </ul>
+      {% endif %}
+      <p><a class="bouton" href="{{ lien_officiel(c.ministere, c.reference) }}">Voir la fiche officielle&nbsp;↗</a></p>
+      <p class="note">Un signal n'est pas une accusation. La fiche officielle du gouvernement fait foi&nbsp;; elle contient aussi les raisons déclarées et les accords commerciaux applicables.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

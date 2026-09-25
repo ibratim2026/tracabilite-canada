@@ -77,14 +77,27 @@ def date_fr(s):
 app.jinja_env.filters.update(nombre=nombre, argent=argent, pourcent=pourcent, date_fr=date_fr)
 
 NAVIGATION = [
-    ("/contrats/", "Contrats"),
-    ("/subventions/", "Subventions"),
-    ("/lobbying/", "Lobbying"),
-    ("/a-examiner/", "À examiner"),
-    ("/chercher/", "Chercher"),
-    ("/ministeres/", "Ministères"),
-    ("/comprendre/", "Comprendre"),
+    dict(nom="Suivre l'argent", url="/suivre-l-argent/", sous=[
+        ("/suivre-l-argent/", "Où va l'argent"), ("/contrats/", "Contrats"), ("/subventions/", "Subventions"),
+        ("/lobbying/", "Lobbying"), ("/ecarts/", "Les écarts"), ("/a-examiner/", "À examiner"),
+        ("/ministeres/", "Ministères")]),
+    dict(nom="Comprendre", url="/comprendre/", sous=[
+        ("/comprendre/", "Vue d'ensemble"), ("/comprendre/budget/", "Le budget en une page"),
+        ("/comprendre/provinces/", "Ottawa et les provinces"), ("/comprendre/on-clarifie/", "On clarifie")]),
+    dict(nom="Chercher", url="/chercher/", sous=[]),
+    dict(nom="Méthode", url="/methode/", sous=[]),
 ]
+
+
+def rubrique_de(page):
+    """La rubrique active : celle dont un sous-onglet (ou l'adresse) correspond à la page."""
+    if not page:
+        return NAVIGATION[0]
+    for r in NAVIGATION:
+        if page == r["url"] or any(page == u for u, _ in r["sous"]):
+            return r
+    return NAVIGATION[0] if page.startswith(("/contrat/", "/ministere/", "/a-examiner/", "/entreprise/")) else None
+
 
 METHODES = {
     "TC": "Concurrentielle", "OB": "Appel d'offres ouvert", "ST": "Appel d'offres sélectif",
@@ -101,6 +114,7 @@ ENTENTES = {"G": "Subvention", "C": "Contribution", "O": "Autre transfert"}
 @app.context_processor
 def contexte():
     return dict(base=app.config["BASE"], version_statique=version_statique(), navigation=NAVIGATION,
+                rubrique_de=rubrique_de, ecart=ecart,
                 methodes=METHODES, signaux_def=SIGNAUX, types_benef=TYPES_BENEF, ententes=ENTENTES,
                 donnees_du=charger("chiffres")["genere_le"], seuil_fiche=SEUIL_FICHE,
                 periode_debut=PERIODE_DEBUT)
@@ -109,6 +123,21 @@ def contexte():
 def version_statique():
     """Change dès qu'on modifie le CSS ou le JS : les navigateurs ne gardent pas l'ancien."""
     return int(max((RACINE / "static" / f).stat().st_mtime for f in ("style.css", "page.js")))
+
+
+def ecart(valeur, originale):
+    """Écart entre la valeur actuelle et le montant signé, avec sa gravité.
+
+    Gravité comme sur le site québécois : +10 % (1), +25 % (2), +50 % (3).
+    Contrats signés à 25 000 $ ou plus. Au-delà de 20 fois : « saut à vérifier ».
+    """
+    if not valeur or not originale or originale < 25000 or valeur <= originale * 1.10:
+        return None
+    ratio = valeur / originale
+    if ratio > 20:
+        return dict(saut=True, gravite=0, pct=None, dollars=valeur - originale, ratio=ratio)
+    return dict(saut=False, gravite=3 if ratio > 1.5 else 2 if ratio > 1.25 else 1,
+                pct=(ratio - 1) * 100, dollars=valeur - originale, ratio=ratio)
 
 
 def lien_officiel(org, reference):
@@ -166,7 +195,8 @@ def methodes_de(where, params):
 
 CONTRAT_COLONNES = ("c.date_contrat, c.description, c.valeur, c.valeur_originale, c.methode, c.fin, "
                     "c.ministere, c.ministere_nom, c.reference, f.nom fournisseur, f.slug, f.a_fiche, "
-                    "(SELECT types FROM signaux_contrat sc WHERE sc.cle = c.cle) signaux")
+                    "(SELECT types FROM signaux_contrat sc WHERE sc.cle = c.cle) signaux, "
+                    "(SELECT slug FROM contrat_page cp WHERE cp.cle = c.cle) page_contrat")
 
 # Les signaux : nom court, explication, et ce qui peut l'expliquer sans faute de personne.
 SIGNAUX = {
@@ -202,10 +232,169 @@ def accueil():
     l = charger("lobby") if (RACINE / "contenu" / "lobby.json").exists() else None
     nb_prio = bd().execute("SELECT COUNT(*) FROM signaux_contrat WHERE nb >= 3").fetchone()[0]
     entreprises = next(x for x in s["beneficiaires"] if x["code"] == "F")
+    ecarts_total = bd().execute(
+        f"SELECT SUM(valeur - valeur_originale) FROM contrats WHERE {PERIODE} AND valeur_originale >= 25000 "
+        f"AND valeur > valeur_originale * 1.10 AND valeur <= valeur_originale * 20").fetchone()[0]
     return render_template(
-        "accueil.html", c=c, s=s, b=b, l=l, r=reperes(), nb_prio=nb_prio,
+        "accueil.html", c=c, s=s, b=b, l=l, r=reperes(), nb_prio=nb_prio, ecarts_total=ecarts_total,
         par_seconde=b["charges"] / (365 * 24 * 3600), part_entreprises=entreprises["valeur"] / s["total"],
         lignes=c["nettoyage"]["lignes_brutes"] + bd().execute("SELECT COUNT(*) FROM sub_brut").fetchone()[0], page="/")
+
+
+ECART_SQL = ("valeur_originale >= 25000 AND valeur > valeur_originale * 1.10 "
+             "AND valeur <= valeur_originale * 20")
+
+
+@app.route("/suivre-l-argent/")
+def suivre():
+    from sankey import sankey
+    c, s, b = charger("chiffres"), charger("subventions"), charger("budget")
+
+    # 1. Le budget : d'où vient l'argent, où il va (exercice du Rapport financier annuel).
+    rev = {x["nom"]: x["valeur"] for x in b["revenus_detail"]}
+    sources = [("imp", "Impôt des particuliers", rev["Impôt sur le revenu des particuliers"]),
+               ("soc", "Impôt des sociétés", rev["Impôt sur le revenu des sociétés"]),
+               ("tps", "TPS", rev["TPS"]), ("ae", "Cotisations d'assurance-emploi", rev["Cotisations d'assurance-emploi"]),
+               ("pol", "Tarification de la pollution", rev["Tarification de la pollution"]),
+               ("aut", "Autres taxes et revenus", b["revenus"] - sum(rev[k] for k in (
+                   "Impôt sur le revenu des particuliers", "Impôt sur le revenu des sociétés", "TPS",
+                   "Cotisations d'assurance-emploi", "Tarification de la pollution"))),
+               ("emp", "Emprunt (le déficit)", b["deficit"])]
+    dep = {x["nom"]: x["valeur"] for x in b["charges_detail"]}
+    trouve = lambda debut: next(v for k, v in dep.items() if k.startswith(debut))
+    depenses = [("ain", "Prestations aux aînés", trouve("Prestations aux aînés"), "/comprendre/budget/"),
+                ("enf", "Prestations pour enfants", trouve("Prestations pour enfants"), "/comprendre/budget/"),
+                ("aem", "Assurance-emploi", trouve("Assurance-emploi"), "/comprendre/budget/"),
+                ("pro", "Transferts aux provinces", trouve("Transferts aux provinces"), "/comprendre/provinces/"),
+                ("sub", "Subventions et autres transferts", trouve("Autres paiements"), "/subventions/"),
+                ("fon", "Fonctionnement (dont les contrats)", trouve("Fonctionnement"), "/contrats/"),
+                ("int", "Intérêts sur la dette", trouve("Intérêts"), "/comprendre/budget/"),
+                ("rpo", "Retour de la tarification de la pollution", trouve("Retour"), None),
+                ("div", "Autres (retraites, récupérations)", b["charges"] - sum(x[2] for x in [
+                    ("", "", trouve(k)) for k in ("Prestations aux aînés", "Prestations pour enfants", "Assurance-emploi",
+                                                   "Transferts aux provinces", "Autres paiements", "Fonctionnement",
+                                                   "Intérêts", "Retour")]), None)]
+    noeuds = {k: dict(nom=n) for k, n, _ in sources}
+    noeuds["emp"]["classe"] = "rouge"
+    noeuds["bud"] = dict(nom="Budget fédéral", classe="fonce")
+    for k, n, _, url in depenses:
+        noeuds[k] = dict(nom=n, url=url)
+    noeuds["int"]["classe"] = "rouge"
+    liens = [(k, "bud", v) for k, _, v in sources] + [("bud", k, v) for k, _, v, _ in depenses]
+    flux_budget = sankey([[k for k, *_ in sources], ["bud"], [k for k, *_ in depenses]], noeuds, liens)
+
+    # 2. L'argent qu'on peut suivre au dollar près : contrats et subventions de l'exercice.
+    debut, fin = "2025-04-01", "2026-03-31"
+    par_minis = {}
+    for m, nom, v in bd().execute(f"SELECT ministere, MAX(ministere_nom), SUM(valeur) FROM contrats WHERE "
+                                  f"date_contrat BETWEEN '{debut}' AND '{fin}' AND quarantaine IS NULL GROUP BY 1"):
+        par_minis.setdefault(m, dict(nom=nom, c=0, s=0))["c"] = v
+    for m, nom, v in bd().execute(f"SELECT ministere, MAX(ministere_nom), SUM(valeur) FROM subventions WHERE "
+                                  f"debut BETWEEN '{debut}' AND '{fin}' AND quarantaine IS NULL GROUP BY 1"):
+        par_minis.setdefault(m, dict(nom=nom, c=0, s=0))["s"] = v
+    classes = sorted(par_minis.items(), key=lambda x: -(x[1]["c"] + x[1]["s"]))
+    tete, reste = classes[:8], classes[8:]
+    noeuds2, liens2, gauche = {}, [], []
+    for m, d in tete:
+        noeuds2[m] = dict(nom=d["nom"], url=f"/ministere/{m}/")
+        gauche.append(m)
+        liens2 += [(m, "C", d["c"])] if d["c"] else []
+        liens2 += [(m, "S", d["s"])] if d["s"] else []
+    noeuds2["autres"] = dict(nom=f"{len(reste)} autres ministères et organismes", url="/ministeres/")
+    gauche.append("autres")
+    liens2 += [("autres", "C", sum(d["c"] for _, d in reste)), ("autres", "S", sum(d["s"] for _, d in reste))]
+    noeuds2["C"] = dict(nom="Contrats", classe="fonce", url="/contrats/")
+    noeuds2["S"] = dict(nom="Subventions et contributions", classe="rouge", url="/subventions/", classe_lien="lien-rouge")
+    groupes = {"F": ("ent", "Entreprises"), "N": ("obnl", "Organismes sans but lucratif"),
+               "A": ("aut", "Bénéficiaires autochtones"), "G": ("gou", "Gouvernements"),
+               "S": ("uni", "Universités et institutions"), "P": ("par", "Particuliers (jamais nommés)"),
+               "LOT": ("par", "Particuliers (jamais nommés)")}
+    droite = {}
+    for x in s["beneficiaires"]:
+        k, nom = groupes.get(x["code"], ("div", "Autres bénéficiaires"))
+        droite.setdefault(k, [nom, 0])[1] += x["valeur"]
+    total_c = sum(d["c"] for _, d in classes)
+    droite.setdefault("ent", ["Entreprises", 0])
+    for k, (nom, v) in droite.items():
+        noeuds2[k] = dict(nom=nom)
+        if v:
+            liens2.append(("S", k, v))
+    noeuds2["ent"] = dict(nom="Entreprises et fournisseurs", url="/chercher/")
+    liens2.append(("C", "ent", total_c))
+    ordre_droite = [k for k in ("ent", "obnl", "aut", "gou", "uni", "par", "div") if k in droite]
+    flux_suivi = sankey([gauche, ["C", "S"], ordre_droite], noeuds2, liens2, hauteur=560)
+
+    # 3. Ce qui va bien, ce qui mérite une explication (exercice 2025-2026).
+    ok = f"date_contrat BETWEEN '{debut}' AND '{fin}' AND quarantaine IS NULL"
+    un = lambda q: bd().execute(q).fetchone()
+    nb, total, v_conc, jamais, conc_connus, conc_plusieurs = un(
+        f"SELECT COUNT(*), SUM(valeur), SUM(CASE WHEN methode IN ('TC','OB','ST') THEN valeur ELSE 0 END), "
+        f"SUM(valeur <= COALESCE(valeur_originale, valeur) * 1.001), "
+        f"SUM(methode IN ('TC','OB','ST') AND nb_offres NOT IN ('', '0')), "
+        f"SUM(methode IN ('TC','OB','ST') AND CAST(nb_offres AS INT) >= 2) FROM contrats WHERE {ok}")
+    ecarts_nb, ecarts_dollars = un(f"SELECT COUNT(*), SUM(valeur - valeur_originale) FROM contrats "
+                                   f"WHERE {PERIODE} AND {ECART_SQL} AND valeur > valeur_originale * 1.5")
+    sig = dict(bd().execute("SELECT type, COUNT(DISTINCT cle) FROM signaux GROUP BY type").fetchall())
+    nb_prio = un("SELECT COUNT(*) FROM signaux_contrat WHERE nb >= 3")[0]
+    top_ecarts = bd().execute(
+        f"SELECT {CONTRAT_COLONNES} FROM contrats c JOIN fournisseurs f ON f.id = c.fournisseur_id "
+        f"WHERE c.date_contrat BETWEEN '{PERIODE_DEBUT}' AND date('now') AND c.quarantaine IS NULL "
+        f"AND c.{ECART_SQL.replace(' AND valeur', ' AND c.valeur')} "
+        f"ORDER BY c.valeur - c.valeur_originale DESC LIMIT 10").fetchall()
+    return render_template(
+        "suivre.html", b=b, c=c, s=s, flux_budget=flux_budget, flux_suivi=flux_suivi,
+        bien=dict(part_conc=v_conc / total, jamais=jamais / nb, plusieurs=conc_plusieurs / conc_connus if conc_connus else 0),
+        expl=dict(ecarts_nb=ecarts_nb, ecarts_dollars=ecarts_dollars, sans_appel=sig.get("SANS_APPEL", 0),
+                  soum_unique=sig.get("SOUM_UNIQUE", 0), prio=nb_prio),
+        top_ecarts=top_ecarts, page="/suivre-l-argent/")
+
+
+@app.route("/ecarts/")
+def ecarts():
+    base_ecart = f"{PERIODE} AND {ECART_SQL}"
+    gravites = []
+    for g, (bas, haut, nom) in enumerate([(1.10, 1.25, "+10 % à +25 %"), (1.25, 1.5, "+25 % à +50 %"),
+                                          (1.5, 20, "plus de +50 %")], 1):
+        n, d = bd().execute(f"SELECT COUNT(*), SUM(valeur - valeur_originale) FROM contrats WHERE {base_ecart} "
+                            f"AND valeur > valeur_originale * {bas} AND valeur <= valeur_originale * {haut}").fetchone()
+        gravites.append(dict(g=g, nom=nom, nb=n, dollars=d))
+    total_nb = sum(x["nb"] for x in gravites)
+    total_dollars = sum(x["dollars"] for x in gravites)
+    nb_contrats, total_signe = bd().execute(
+        f"SELECT COUNT(*), SUM(valeur_originale) FROM contrats WHERE {PERIODE} AND valeur_originale >= 25000").fetchone()
+    par_ministere = bd().execute(
+        f"SELECT ministere, MAX(ministere_nom) ministere_nom, COUNT(*) n, SUM(valeur - valeur_originale) d "
+        f"FROM contrats WHERE {base_ecart} GROUP BY ministere ORDER BY d DESC LIMIT 12").fetchall()
+    joint = f"c.date_contrat BETWEEN '{PERIODE_DEBUT}' AND date('now') AND c.quarantaine IS NULL " \
+            f"AND c.valeur_originale >= 25000 AND c.valeur > c.valeur_originale * 1.10 AND c.valeur <= c.valeur_originale * 20"
+    en_dollars = bd().execute(
+        f"SELECT {CONTRAT_COLONNES} FROM contrats c JOIN fournisseurs f ON f.id = c.fournisseur_id WHERE {joint} "
+        f"ORDER BY c.valeur - c.valeur_originale DESC LIMIT 50").fetchall()
+    en_pct = bd().execute(
+        f"SELECT {CONTRAT_COLONNES} FROM contrats c JOIN fournisseurs f ON f.id = c.fournisseur_id WHERE {joint} "
+        f"AND c.valeur_originale >= 1e6 ORDER BY c.valeur / c.valeur_originale DESC LIMIT 50").fetchall()
+    sauts = bd().execute(f"SELECT COUNT(*) FROM contrats WHERE {PERIODE} AND valeur_originale >= 25000 "
+                         f"AND valeur > valeur_originale * 20").fetchone()[0]
+    return render_template("ecarts.html", gravites=gravites, total_nb=total_nb, total_dollars=total_dollars,
+                           nb_contrats=nb_contrats, total_signe=total_signe, par_ministere=par_ministere,
+                           en_dollars=en_dollars, en_pct=en_pct, sauts=sauts, page="/ecarts/")
+
+
+@app.route("/contrat/<path:slug_contrat>/")
+def contrat(slug_contrat):
+    p = bd().execute("SELECT cle FROM contrat_page WHERE slug = ?", (slug_contrat,)).fetchone()
+    if not p:
+        abort(404)
+    c = bd().execute(
+        f"SELECT c.*, f.nom fournisseur_nom, f.slug, f.a_fiche FROM contrats c "
+        f"LEFT JOIN fournisseurs f ON f.id = c.fournisseur_id WHERE c.cle = ?", (p["cle"],)).fetchone()
+    versions = bd().execute("SELECT * FROM versions WHERE cle = ? ORDER BY ordre", (p["cle"],)).fetchall()
+    signaux = bd().execute("SELECT * FROM signaux WHERE cle = ? ORDER BY gravite DESC", (p["cle"],)).fetchall()
+    # La trace en escalier : chaque version déclarée, dans l'ordre.
+    points = [v for v in versions if v["valeur"] and not v["ecartee"]]
+    haut = max([v["valeur"] for v in points] + [c["valeur_originale"] or 0, c["valeur"] or 0]) or 1
+    return render_template("contrat.html", c=c, versions=versions, signaux=signaux, points=points, haut=haut,
+                           e=ecart(c["valeur"], c["valeur_originale"]), page="")
 
 
 @app.route("/contrats/")

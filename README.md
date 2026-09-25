@@ -5,7 +5,17 @@ anti-complot. Un signal n'est pas une accusation, chaque chiffre a sa source.
 
 ## État (25 septembre 2026)
 
-Pages (toutes statiques, exportées par `pipeline/exporter.py`) :
+Pages (toutes statiques, exportées par `pipeline/exporter.py`). Menu à deux
+niveaux comme Traçabilité Québec : **Suivre l'argent** (Où va l'argent,
+Contrats, Subventions, Lobbying, Les écarts, À examiner, Ministères) ·
+**Comprendre** · Chercher · Méthode.
+
+- `/suivre-l-argent/` — deux diagrammes de flux (budget ; ministères → contrats
+  ou subventions → bénéficiaires), bilan « ce qui va bien / mérite une
+  explication », plus grands écarts (`app/sankey.py`, SVG sans bibliothèque)
+- `/ecarts/` — écart = valeur actuelle vs montant signé ; drapeaux +10/+25/+50 %
+- `/contrat/<ministère>/<numéro>/` — ~11 200 fiches (≥ 5 M$, écart > 50 % dès
+  250 000 $, ou ★) avec la trace trimestre par trimestre (`pipeline/traces.py`)
 
 - `/` — « Ce qu'Ottawa achète » (contrats 2025-2026)
 - `/subventions/` — « Ce qu'Ottawa donne » (subventions et contributions)
@@ -34,7 +44,7 @@ Plan validé par William : 1 ✔ recherche et fiches · 2 ✔ subventions ·
 
 ## Poids du site
 
-~26 800 pages, ~525 Mo (limite GitHub Pages : 1 Go). Le poids vient du
+~38 000 pages, ~630 Mo (limite GitHub Pages : 1 Go). Les fiches de contrats à 1 M$ portaient le site à 770 Mo : seuil relevé à 5 M$. Le poids vient du
 nombre de fiches (≥ 1 M$). Si ça devient un problème : monter le seuil
 `SEUIL_FICHE` (2 M$ ≈ 17 000 fiches) dans `analyser.py` ET `app.py`.
 

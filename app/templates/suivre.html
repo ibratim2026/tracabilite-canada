@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_macros.html" import flux, table_contrats with context %}
+{% block titre %}Où va l'argent — suivre l'argent fédéral — Traçabilité Canada{% endblock %}
+{% block description %}De vos impôts jusqu'aux entreprises et aux organismes : le chemin de l'argent fédéral, ce qui va bien, et les plus grands écarts.{% endblock %}
+{% block contenu %}
+<section class="bande bande-rouge heros">
+  <div class="contenant etroit">
+    <p class="surtitre">Suivre l'argent</p>
+    <h1>De votre chèque de paie jusqu'au compte d'une entreprise&nbsp;: le chemin de l'argent fédéral.</h1>
+    <p class="chapeau">Ottawa a perçu {{ b.revenus | argent }} et dépensé {{ b.charges | argent }} en {{ b.exercice }}. Une partie de cet argent se suit au dollar près, jusqu'à celui qui le reçoit&nbsp;: les contrats et les subventions. Voici le trajet, étape par étape.</p>
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <p class="surtitre">Étape 1 · Le budget, exercice {{ b.exercice }}</p>
+    <h2>D'où vient l'argent, où il part</h2>
+    <p class="chapeau">L'épaisseur de chaque bande est proportionnelle au montant. À gauche, ce qu'Ottawa perçoit, et ce qu'il emprunte pour couvrir le déficit. À droite, ce qu'il dépense. Cliquez sur une dépense pour aller plus loin.</p>
+    {{ flux(flux_budget, "flux-budget") }}
+    {% call source() %}<p><strong>Source&nbsp;:</strong> <a href="{{ b.source.url }}">{{ b.source.nom }}</a>. « Emprunt » représente le déficit de l'année&nbsp;: {{ b.deficit | argent }} dépensés de plus que perçus.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant">
+    <p class="surtitre">Étape 2 · L'argent qu'on suit au dollar près, exercice {{ c.exercice }}</p>
+    <h2>Qui signe, sous quelle forme, et qui reçoit</h2>
+    <p class="chapeau">Les contrats et les subventions sont publiés un à un. On peut donc suivre chaque dollar du ministère qui le verse jusqu'à l'organisation qui le reçoit. Cliquez sur un ministère pour voir ses bénéficiaires.</p>
+    {{ flux(flux_suivi, "flux-suivi") }}
+    <p class="note">Les deux étapes ne s'additionnent pas&nbsp;: le budget compte ce qui est dépensé dans l'année, alors que les contrats et les subventions comptent ce qui est engagé à leur signature, parfois pour plusieurs années.</p>
+    {% call source() %}<p><strong>Sources&nbsp;:</strong> Gouvernement ouvert, <a href="{{ c.sources.contrats.url }}">contrats</a> et <a href="{{ s.source.url }}">subventions et contributions</a>, engagements signés du 1<sup>er</sup> avril 2025 au 31 mars 2026, chacun compté une fois.</p>{% endcall %}
+  </div>
+</section>
+
+<section class="bande">
+  <div class="contenant">
+    <p class="surtitre">Étape 3 · Le bilan</p>
+    <h2>Ce qui va bien, ce qui mérite une explication</h2>
+    <div class="bilan">
+      <div class="bilan-colonne bien">
+        <h3>Ce qui va bien</h3>
+        <ul>
+          <li><strong>{{ bien.part_conc | pourcent }}</strong> de la valeur des contrats de {{ c.exercice }} a été attribuée par appel d'offres.</li>
+          <li><strong>{{ bien.jamais | pourcent }}</strong> des contrats n'ont jamais grossi après leur signature.</li>
+          <li>Quand on connaît le nombre d'offres, <strong>{{ bien.plusieurs | pourcent }}</strong> des appels d'offres ont reçu au moins deux soumissions.</li>
+          <li>Chaque contrat de plus de 10&nbsp;000&nbsp;$ et chaque subvention sont publiés un à un, avec le nom du bénéficiaire. Peu de pays en font autant.</li>
+        </ul>
+      </div>
+      <div class="bilan-colonne expl">
+        <h3>Ce qui mérite une explication</h3>
+        <ul>
+          <li><a href="{{ base }}/ecarts/"><strong>{{ expl.ecarts_nb | nombre }}</strong> contrats valent plus de 50&nbsp;% de plus qu'à leur signature</a>, pour {{ expl.ecarts_dollars | argent }} ajoutés depuis 2017.</li>
+          <li><a href="{{ base }}/a-examiner/sans-appel/"><strong>{{ expl.sans_appel | nombre }}</strong> contrats de 100&nbsp;000&nbsp;$ ou plus</a> ont été attribués sans appel d'offres.</li>
+          <li><a href="{{ base }}/a-examiner/soum-unique/"><strong>{{ expl.soum_unique | nombre }}</strong> appels d'offres</a> n'ont reçu qu'une seule soumission.</li>
+          <li><a href="{{ base }}/a-examiner/"><strong>{{ expl.prio | nombre }}</strong> contrats</a> cumulent trois signaux ou plus&nbsp;: ★ à examiner en priorité.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bande bande-pale">
+  <div class="contenant">
+    <p class="surtitre">Les plus grands écarts observés</p>
+    <h2>Signés à un prix, rendus à un autre</h2>
+    <p class="chapeau">Les dix contrats dont la valeur a le plus augmenté depuis leur signature, en dollars. Le drapeau indique l'écart en pourcentage. Cliquez sur « Suivre ce contrat » pour voir chaque modification, trimestre par trimestre.</p>
+    {{ table_contrats(top_ecarts) }}
+    <p><a class="bouton" href="{{ base }}/ecarts/">Tous les écarts</a></p>
+  </div>
+</section>
+{% endblock %}
